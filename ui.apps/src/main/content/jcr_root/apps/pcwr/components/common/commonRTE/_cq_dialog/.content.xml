@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Custom RTE"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
+        <items jcr:primaryType="nt:unstructured">
+            <column
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/container">
+                <items jcr:primaryType="nt:unstructured">
+                    
+                    <richText
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                        fieldLabel="Text"
+                        name="./richText"
+                        useFixedInlineToolbar="{Boolean}true">
+						<rtePlugins jcr:primaryType="nt:unstructured">
+	                        <edit
+	                            jcr:primaryType="nt:unstructured"
+	                            features="*"/>
+	                        <format
+	                            jcr:primaryType="nt:unstructured"
+	                            features="*"/>
+	                        <justify
+	                            jcr:primaryType="nt:unstructured"
+	                            features="*"/>
+	                        <lists
+	                            jcr:primaryType="nt:unstructured"
+	                            features="*"/>
+							<paraformat 
+								jcr:primaryType="nt:unstructured"
+								features="*">
+                                <formats jcr:primaryType="nt:unstructured">
+                                    <default_p
+                                        jcr:primaryType="nt:unstructured"
+                                        description="Paragraph"
+                                        tag="p"/>
+                                    <default_h1
+                                        jcr:primaryType="nt:unstructured"
+                                        description="Heading 1"
+                                        tag="h1"/>
+                                    <default_h2
+                                        jcr:primaryType="nt:unstructured"
+                                        description="Heading 2"
+                                        tag="h2"/>
+                                    <default_h3
+                                        jcr:primaryType="nt:unstructured"
+                                        description="Heading 3"
+                                        tag="h3"/>
+                                    <default_h4
+                                        jcr:primaryType="nt:unstructured"
+                                        description="Heading 4"
+                                        tag="h4"/>
+                                    <default_h5
+                                        jcr:primaryType="nt:unstructured"
+                                        description="Heading 5"
+                                        tag="h5"/>
+                                    <default_h6
+                                        jcr:primaryType="nt:unstructured"
+                                        description="Heading 6"
+                                        tag="h6"/>
+                                </formats>
+                            </paraformat>
+	                        <links
+	                            jcr:primaryType="nt:unstructured"
+	                            features="*"/>
+	                        <findreplace
+	                            jcr:primaryType="nt:unstructured"
+	                            features="*"/>
+	                        <subsuperscript
+	                            jcr:primaryType="nt:unstructured"
+	                            features="*"/>
+	                        <misctools
+	                            jcr:primaryType="nt:unstructured"
+	                            features="*">
+	                            <specialCharsConfig jcr:primaryType="nt:unstructured">
+	                                <chars jcr:primaryType="nt:unstructured">
+	                                    <copyright
+	                                        jcr:primaryType="nt:unstructured"
+	                                        entity="&amp;#169;"/>
+	                                    <trademark
+	                                        jcr:primaryType="nt:unstructured"
+	                                        entity="&amp;#8482;"/>
+	                                    <registered
+	                                        jcr:primaryType="nt:unstructured"
+	                                        entity="&amp;#174;"/>
+	                                    <emDash
+	                                        jcr:primaryType="nt:unstructured"
+	                                        entity="&amp;#8212;"/>
+	                                    <pound
+	                                        jcr:primaryType="nt:unstructured"
+	                                        entity="&amp;#163;"/>
+	                                    <nbsp
+	                                        jcr:primaryType="nt:unstructured"
+	                                        entity="&amp;#160;"/>
+	                                </chars>
+	                            </specialCharsConfig>
+	                        </misctools>
+	                        <table
+	                            jcr:primaryType="nt:unstructured"
+	                            features="*"/>
+	                    </rtePlugins>
+                        <uiSettings jcr:primaryType="nt:unstructured">
+                            <cui jcr:primaryType="nt:unstructured">
+                                <inline
+                                    jcr:primaryType="nt:unstructured"
+                                    toolbar="[edit#copy,edit#paste-default,edit#paste-plaintext,edit#paste-wordhtml,format#bold,format#italic,format#underline,#justify,#lists,subsuperscript#subscript,subsuperscript#superscript,links#modifylink,links#unlink,links#anchor,findreplace#find,findreplace#replace,misctools#specialchars,misctools#sourceedit,#paraformat,table#table]">
+                                    <popovers jcr:primaryType="nt:unstructured">
+                                        <justify
+                                            jcr:primaryType="nt:unstructured"
+                                            items="[justify#justifyleft,justify#justifycenter,justify#justifyright]"
+                                            ref="justify"/>
+                                        <lists
+                                            jcr:primaryType="nt:unstructured"
+                                            items="[lists#unordered,lists#ordered,lists#outdent,lists#indent]"
+                                            ref="lists"/>
+                                        <paraformat
+                                            jcr:primaryType="nt:unstructured"
+                                            items="paraformat:getFormats:paraformat-pulldown"
+                                            ref="paraformat"/>
+                                        <styles
+                                            jcr:primaryType="nt:unstructured"
+                                            items="styles:getStyles:styles-pulldown"
+                                            ref="styles"/>
+                                    </popovers>
+                                </inline>
+                            </cui>
+                        </uiSettings>                        
+                    </richText>
+                    
+                </items>
+            </column>
+        </items>
+    </content>
+</jcr:root>

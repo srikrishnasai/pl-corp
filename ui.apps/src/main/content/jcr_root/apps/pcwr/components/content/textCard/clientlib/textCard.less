@@ -1,0 +1,73 @@
+//
+// variables
+//
+@bright-blue: #008ed7;
+@turquoise:#24c5cf;
+@light-grey-bg:#f2f2f2;
+
+//
+//text-card
+//
+.text-card{
+	max-width:525px;
+	margin-bottom:3rem;
+	&:first-child{margin-left:auto;}
+	&:last-child{margin-right:auto;}
+	h5, ul {
+		margin-bottom:1.4rem;
+	}
+	&:only-of-type{
+		max-width:750px;
+		//text-align:center !important;
+		margin-left:auto;
+		margin-right:auto;
+	}
+	&:nth-child(2) {
+		margin-left: 4rem;
+		&:not(:last-of-type){
+			max-width:330px;
+		}
+	}
+	&:nth-last-child(3), &:nth-child(3){
+		max-width:330px;
+	}
+	&:nth-child(3){margin-left: 4rem;}
+	ul{
+		list-style-image: url('/etc/designs/pcwr/default/images/icon-check-blue.svg');
+		//padding-left: 1.25rem !important;
+		//li{font-family: 'Open Sans', sans-serif;font-size: 18px;}
+	}
+	//ol{padding-left: 15px;li{font-family: 'Open Sans', sans-serif;font-size: 18px;}}
+	
+	.pcwr-richtext {
+		margin-bottom: 30px;
+	}
+}
+@media (max-width:768px){
+	.text-card, .text-card:only-of-type, .text-card:nth-child(2), .text-card:nth-child(3), .text-card:nth-last-child(3) {
+		max-width:90%; min-width:90%; margin-left:auto;margin-right:auto;
+	}
+	.text-card:only-of-type{padding-right:15px;}
+}
+@media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: none) {  
+   /* IE10+ specific styles go here */
+   .text-card{
+   		width:525px;
+   		max-width:none;
+		&:nth-child(2) {
+			&:not(:last-of-type){width:330px; max-width:none;}
+		}
+		&:nth-last-child(3), &:nth-child(3){width:330px; max-width:none;}
+		&:first-child{padding-left:50px;}
+   }  
+}
+@media (max-width: 575.98px) {
+	.text-card-wrapper{ margin-left:0; margin-right:0;}
+	.text-card, .text-card:only-of-type, .text-card:nth-child(2), .text-card:nth-child(3), .text-card:nth-last-child(3),.text-card:first-child,.text-card:last-child {
+		padding-left:0; padding-right:0;
+		margin-left:24px;margin-right:24px;
+		max-width:unset; min-width:unset;
+		//ul{li{font-size:16px;}}
+		//ol{li{font-size:16px;}}
+	}
+}

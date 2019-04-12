@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Text Hero"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
+        <items jcr:primaryType="nt:unstructured">
+		    <column
+		        jcr:primaryType="nt:unstructured"
+		        sling:resourceType="granite/ui/components/coral/foundation/container">
+		        <items jcr:primaryType="nt:unstructured">     
+                    <textHeroTitleEl
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                        fieldLabel="Text Hero Title Style"
+                        name="./textHeroTitleEl">
+                        <items jcr:primaryType="nt:unstructured">
+                            <h2
+                                jcr:primaryType="nt:unstructured"
+                                text="H2"
+                                value="h2"/>
+                            <h3
+                                jcr:primaryType="nt:unstructured"
+                                text="H3"
+                                value="h3"
+                                selected="{Boolean}true}"/>
+                            
+                        </items>
+                    </textHeroTitleEl>		           
+			        <textHeroTitle
+			            jcr:primaryType="nt:unstructured"
+			            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+			            fieldDescription="Please provide Title for the Component"
+			            fieldLabel="Title"
+			            name="./textHeroTitle"
+			            required="{Boolean}true"/>      
+                	 <textHeroBody
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/include"
+						path="pcwr/components/common/commonRTE/cq:dialog/content/items/column/items/richText"/>			            
+			        <textHeroDisplayBtn
+			            jcr:primaryType="nt:unstructured"
+			            sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+			            fieldDescription="Please enable checkbox to display Button on Text Hero"
+			            text="Display Button ?"
+			            value="true"
+			            name="./textHeroDisplayBtn"/>			            
+			        <textHeroBtnLabel
+			            jcr:primaryType="nt:unstructured"
+			            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+			            fieldDescription="Please provide Label for the Button"
+			            fieldLabel="Button Label"
+			            name="./textHeroBtnLabel"/>			            
+			        <textHeroBtnLink
+			            jcr:primaryType="nt:unstructured"
+			            sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+			            fieldDescription="Please provide Button Link"
+			            fieldLabel="Button Link"
+			            name="./textHeroBtnLink"
+			            rootPath="/content/pl-corp"/>			            
+				</items>
+			</column>        	
+        </items>
+    </content>    
+</jcr:root>

@@ -1,0 +1,17 @@
+<!-- Start Text Card Container-->
+<sly data-sly-use.template="core/wcm/components/commons/v1/templates.html"/>
+<sly data-sly-call="${template.placeholder @ isEmpty=(wcmmode.edit && !properties.containerTitle)}"/>
+
+<div data-component-name="Text Card Container" class="container container-fluid">
+	
+	<h3 class="text-center" data-sly-test="${properties.containerTitle}">${properties.containerTitle}</h3>
+	<div class="row w-100 text-card-wrapper">
+
+		<sly data-sly-use.itemCount="textCardContainer.js" data-sly-list="${ itemCount }" > 
+			<div data-sly-resource="${ itemList.index @ resourceType='pcwr/components/content/textCard'}"
+				 data-sly-unwrap="${!wcmmode.edit}">
+			</div>
+		</sly>
+	</div>
+</div>
+<!-- END Text Card Container-->

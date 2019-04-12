@@ -1,0 +1,55 @@
+<sly data-sly-use.template="core/wcm/components/commons/v1/templates.html"/>
+<sly data-sly-call="${template.placeholder @ isEmpty=(wcmmode.edit && !properties.heading)}"/>
+
+
+<!--/* Adding Text Hero Title & RichText markup to resolve https://slalom.atlassian.net/browse/PCWR-773 */-->
+<div class="text-hero text-center mx-auto mt-5">
+	<h3 data-sly-element="${properties.textHeroTitleEl}" class="mb-3">${properties.heading}</h3>
+	<p class="mb-4" data-sly-test="${properties.richText}">${properties.richText @ context='html'}</p>
+</div>
+	
+<sly data-sly-use.config="${'com.paclife.core.services.Configuration'}">
+	<script type="text/javascript" src="//maps.googleapis.com/maps/api/js?key=${config.googleMapsApiKey}"></script>
+	
+	<input type="hidden" id="fafp-webservice-url" value="${config.fafpWebserviceUrl}"/>
+	<input id="fafp-url-zip-code" type="hidden" value="${request.requestPathInfo.selectors[0]}"/>
+	<div data-component-name="Find A Professional Results" class="find-a-pro-results-page">
+		<div class="pt-md-4">
+			<form class="form-inline justify-content-center">
+			    <div class="form-group form-group-search-input mx-sm-3 mb-2">
+			        <label for="fafp-inputSearchValue" class="sr-only">${properties.placeHolderText || 'Enter ZIP code'}</label>
+			        <input type="text" class="form-control" id="fafp-inputSearchValue" placeholder="Enter ZIP code"
+                        value="${request.requestPathInfo.selectors[0]}" 
+                        onkeyup="$('button').prop('disabled', !this.value.match(/^\d{5}$/))">
+			    </div>
+			    <button id="fafp-zip-code-button" type="submit" class="btn btn-primary cta-text-btn mr-md-5 mb-2">GO</button>
+			</form>	    		
+		</div>
+		<div class="find-a-pro-page-wrapper mx-auto my-5">
+			<div id="fafp-error-msg" class="row d-none">
+				<div class="col-sm-4"></div> 
+				<div class="col"></div> 
+			</div>
+			<div class="row">
+				<div class="col-sm-4 pl-sm-0 order-md-first order-last">
+					<div id="resultlist" class="container-search-items">
+											
+					</div>	
+				</div>
+				<div class="col px-0 pl-sm-2 order-md-last order-first">
+					<!--/*Currently there is no fixed height on this container in case the map looks longer then it should*/-->
+					<div id="map-container"></div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-4 pl-sm-0 order-md-first order-last">	
+					<div class="search-result-pagination mt-5">
+						<div id="holder" class="pagination ml-sm-0"></div>
+					</div>
+				</div>
+				<div class="col text-center text-sm-left px-sm-0 pl-sm-2 order-md-last order-first"><div id="radius" class="mt-5"></div></div>
+			</div>
+		
+		</div>
+	</div>
+</sly>

@@ -1,0 +1,11 @@
+<div data-component-name="Link Card" class="col">
+	<sly data-sly-use.model="com.paclife.core.models.PCWRMultifieldItemsModel"></sly>
+		
+	<p class="footer-nav-link-group-title p-alt-14 mb-md-4">${properties.title ? properties.title : 'Menu'}</p>
+	
+	<a class="d-block footer-nav-link" 
+	   data-sly-repeat="${model.multiFieldItems.listChildren}"
+	   href="${item.linkPath}">
+	   ${item.linkLabel}
+	</a> 
+</div>

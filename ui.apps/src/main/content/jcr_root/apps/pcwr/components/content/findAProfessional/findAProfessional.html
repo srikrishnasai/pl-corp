@@ -1,0 +1,53 @@
+<sly data-sly-use.template="core/wcm/components/commons/v1/templates.html"/>
+<sly data-sly-call="${template.placeholder @ isEmpty=(wcmmode.edit && !properties.heading)}"/>
+
+<div data-component-name="Find A Professional" class="container-fluid my-5 fifty-fifty">
+<input id="fafp-results-url" type="hidden" value="${properties.target}"/>
+    <div data-sly-test="${properties.heading}" data-sly-unwrap>
+        <div data-sly-test="${properties.imagePos == 'left'}" class="row py-4">
+            <div class="col-md-6 d-flex justify-content-center align-items-center flex-column">
+                <img class="img-fluid" src="${properties.imagePath}">
+            </div>
+            <div class="col-md-6 d-flex justify-content-center align-items-center flex-column">
+                <div class="px-4 text-content-right">
+                    <h3>${properties.heading}</h3>
+                    <h6>${properties.subHeading}</h6>
+                    <div class="pcwr-richtext">${properties.richText @ context='html'}</div>
+                    <form class="form-inline needs-validation mt-4" novalidate>
+						<div class="form-group form-group-search-input mr-sm-3 mb-2">
+							<label for="fap-inputSearchValue" class="sr-only">${properties.inputFieldText}</label>
+							<input type="text" class="form-control" id="fap-inputSearchValue" placeholder="${properties.inputFieldText}" pattern="^\d{5}$" required>
+							<div class="invalid-feedback">${properties.invalidZipError || 'Please provide valid Zip code'} </div>
+						</div>
+						<button id="fap-button" type="submit" class="DTM-TAG-fap-button btn btn-primary cta-text-btn mb-2" >${properties.action}</button>
+					</form>
+                    
+                </div>
+            </div>
+        </div>
+
+        <div data-sly-test="${properties.imagePos == 'right'}" class="row py-4">
+            <div class="col-md-6 d-flex justify-content-center align-items-center flex-column order-2 order-md-1">
+                <div class="px-4 text-content-left">
+                    <h3>${properties.heading}</h3>
+                    <h6>${properties.subHeading}</h6>
+                    <div class="pcwr-richtext">${properties.richText @ context='html'}</div>
+                    <form class="form-inline needs-validation mt-4" novalidate>
+						<div class="form-group form-group-search-input mr-sm-3 mb-2">
+							<label for="fap-inputSearchValue" class="sr-only">${properties.inputFieldText}</label>
+							<input type="text" class="form-control" id="fap-inputSearchValue" placeholder="${properties.inputFieldText}" pattern="^\d{5}$" required>
+							<div class="invalid-feedback">${properties.invalidZipError || 'Please provide valid Zip code'} </div>
+						</div>
+						<button id="fap-button" type="submit" class="DTM-TAG-fap-button btn btn-primary cta-text-btn mb-2" >${properties.action}</button>
+					</form>
+                </div>
+            </div>
+            <div class="col-md-6 d-flex justify-content-center align-items-center flex-column order-1 order-md-2">
+                <img class="img-fluid" src="${properties.imagePath}">
+            </div>
+        </div>
+
+    </div>
+
+</div>
+

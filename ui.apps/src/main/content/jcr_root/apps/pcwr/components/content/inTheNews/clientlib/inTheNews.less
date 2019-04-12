@@ -1,0 +1,48 @@
+
+
+.in-the-news-container {
+	.headline{
+		letter-spacing: 0.5px;
+	}
+
+	a{
+		font-size: 16px;
+		font-weight: 700;
+		&:hover{text-decoration:none;}
+		i{font-size:23px;vertical-align:middle;padding-bottom:2.5px;}
+	}
+
+
+	.news-title{
+		font-family: 'Merriweather', serif;
+		font-weight: 300;
+		font-size: 18px;
+	}
+
+	.news-date{
+		font-family: Montserrat;
+		font-size: 13px;
+  		font-weight: 600;
+  		letter-spacing: 1.5px;
+	}
+	
+	a.clickable{
+	    position: absolute;
+	    width: 100%;
+	    height: 100%;
+	    top: 0;
+	    left: 0;
+	    text-decoration: none;
+	    /* Makes sure the link   doesn't get underlined */
+	    z-index: 10;
+	    /* raises anchor tag above everything else in div */
+	    background-color: white;
+	    /*workaround to make clickable in IE */
+	    opacity: 0;
+	    /*workaround to make clickable in IE */
+	    filter: alpha(opacity=1);
+	    /*workaround to make clickable in IE */
+	    &:hover{background-color:rgba(0, 0, 0, 0.02); opacity: 1;}
+	}
+
+}

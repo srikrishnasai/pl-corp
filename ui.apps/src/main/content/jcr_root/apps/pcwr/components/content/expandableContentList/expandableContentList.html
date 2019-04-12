@@ -1,0 +1,39 @@
+<sly data-sly-use.model="com.paclife.core.models.PCWRMultifieldItemsModel"></sly>
+
+<sly data-sly-use.template="core/wcm/components/commons/v1/templates.html"/>
+<sly data-sly-call="${template.placeholder @ isEmpty=(wcmmode.edit && !properties.headline)}"/>
+
+<div data-component-name="Expandable Content List" class="expand-collapse-list">
+	<div data-sly-test="${properties.headline}">
+		<h4 class="faq-headline">${properties.headline}</h4>
+		<div class="pcwr-richtext faq-description">${properties.richText @ context='html'}</div>
+		<!--/*<p>Count: ${model.countItems}</p>*/-->
+	</div>
+	<!--/*The first item should have the class 'show'*/-->
+	<div class="faq-items" id="accordion" data-sly-test="${model.multiFieldItems}" data-sly-list="${model.multiFieldItems.listChildren}">
+	    <div class="card">
+	        <div class="card-header" id="headingOne">
+	            <table>
+	            	<tr>
+	            		<td>
+		            		<button class="btn btn-link ${itemList.index > 0 ? ' collapsed' : ''}" data-toggle="collapse" data-target="#content-list-item-${itemList.index}" aria-expanded="true" aria-controls="collapseOne">
+			                  <i class="material-icons"></i>
+			                </button>
+	            		</td>
+	            		<td>
+		            		<h6 class="mb-0">          
+				                ${item.question}
+				            </h6>
+	            		</td>
+	            	</tr>
+	            </table>
+	        </div>
+	        <!--/*If you want to only have one open at a time add: data-parent="#accordion"*/-->
+	        <div id="content-list-item-${itemList.index}" class="collapse ${itemList.index < 1 ? ' show' : ''}" aria-labelledby="headingOne" >
+	            <div class="card-body">
+	                <div class="faq-answer">${item.richText @ context='html'}</div>
+	            </div>
+	        </div>		
+		</div>
+	</div>
+</div>

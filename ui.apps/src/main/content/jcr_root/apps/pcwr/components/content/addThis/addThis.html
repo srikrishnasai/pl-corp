@@ -1,0 +1,6 @@
+<sly data-sly-use.template="core/wcm/components/commons/v1/templates.html"/>
+<sly data-sly-call="${template.placeholder @ isEmpty=(wcmmode.edit)}"/>
+
+
+<sly  data-sly-use.addThis="pcwr/components/content/addThis/addThisTemplate.html">
+<sly data-sly-call="${addThis.addThis}" />

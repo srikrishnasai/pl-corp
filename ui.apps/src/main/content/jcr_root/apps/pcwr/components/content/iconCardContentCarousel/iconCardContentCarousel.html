@@ -1,0 +1,70 @@
+<!-- Icon Card Content Carousel PCWR-127 -->
+<sly data-sly-use.model="com.paclife.core.models.PCWRMultifieldItemsModel"></sly>
+<div data-component-name="Icon Card Content Carousel"
+    class="container-fluid  icon-card-content-carousel ${properties.colorClass}"
+    data-sly-use.template="core/wcm/components/commons/v1/templates.html">
+    <div data-sly-test="${model.multiFieldItems.listChildren}" class="icon-card-content-wrapper mx-auto">
+        <div class="mx-auto d-block" data-sly-test="${properties.cardContCarTitle}">
+            <h3 class="mx-auto text-center">${properties.cardContCarTitle}</h3>
+        </div>
+        <div id="iconCardContentCarousel" class="carousel slide row touch-enabled-carousel" data-ride="carousel" data-interval="false">
+            <div class="carousel-inner row w-100 mx-auto icon-card-carousel-inner" role="listbox">
+                <sly data-sly-list.cardItem="${model.multiFieldItems.listChildren}">
+                    <sly data-sly-use.fixedLink="${'com.paclife.core.util.LinkFixer' @ link = cardItem.cardItemBtnLink}"/>
+                    <div data-sly-test="${cardItemList.first}" class="carousel-item col-md-4 icon-card-carousel-item active">
+                        <div class="mx-auto icon-card">
+                            <img class="icon-img mx-auto d-block" src="${cardItem.cardItemIconPath}" alt=""
+                                data-sly-test="${cardItem.cardItemIconPath}"/>
+                            <div class="mx-auto mt-4 d-block">
+                                <h5 class="text-center my-3">${cardItem.cardItemTitle}</h5>
+                                <p class="text-center">${cardItem.cardItemDesc}</p>
+                                <h7 data-sly-test="${cardItem.cardItemActnBtnStatus}" class="cta-text all-text"> <a
+                                    href="${fixedLink.value}"
+                                    class="btn btn-link d-block text-center">
+                                    ${cardItem.cardItemBtnLabel}<i class="material-icons">keyboard_arrow_right</i>
+                                </a></h7>
+                            </div>
+                            <a href="${fixedLink.value}" class='clickable'></a>
+                        </div>
+                    </div>
+                    <div data-sly-test="${!cardItemList.first}" class="carousel-item col-md-4 icon-card-carousel-item">
+                        <div class="mx-auto icon-card">
+                            <img class="icon-img mx-auto d-block" src="${cardItem.cardItemIconPath}" alt=""
+                                data-sly-test="${cardItem.cardItemIconPath}"/>
+                            <div class="mx-auto mt-4 d-block">
+                                <h5 class="text-center my-3">${cardItem.cardItemTitle}</h5>
+                                <p class="text-center">${cardItem.cardItemDesc}</p>
+                                <h7 data-sly-test="${cardItem.cardItemActnBtnStatus}" class="cta-text all-text"> <a
+                                    href="${fixedLink.value}"
+                                    class="btn btn-link d-block text-center">
+                                    ${cardItem.cardItemBtnLabel}<i class="material-icons">keyboard_arrow_right</i>
+                                </a></h7>
+                            </div>
+                            <a href="${fixedLink.value}" class='clickable'></a>
+                        </div>
+                    </div>
+                </sly>
+            </div>
+            <a class="carousel-control-prev ${model.countItems > 3 ? '' : 'd-md-none'}" data-target="#iconCardContentCarousel" href="javascript:void(0)"
+                role="button" data-slide="prev">
+                <img src="/etc/designs/pcwr/default/images/carousel-arrow-left.svg" class="carousel-arrow-left">
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next ${model.countItems > 3 ? '' : 'd-md-none'}" data-target="#iconCardContentCarousel" href="javascript:void(0)"
+                role="button" data-slide="next">
+                <img src="/etc/designs/pcwr/default/images/carousel-arrow-right.svg" class="carousel-arrow-right">
+                <span class="sr-only">Next</span>
+            </a>
+            <div class="mx-auto">
+                <!-- mobile "dots" -->
+                <ul class="carousel-indicators list-inline mx-auto"
+                    data-sly-list.cardItem="${model.multiFieldItems.listChildren}">
+                    <li class="list-inline-item cta-text-btn ${cardItemList.first ? 'selected active' : ''}"
+                        id="carousel-selector-${cardItemList.index}" data-slide-to="${cardItemList.index}"
+                        data-target="#iconCardContentCarousel"></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<sly data-sly-call="${template.placeholder @ isEmpty=model.countItems == 0}" />

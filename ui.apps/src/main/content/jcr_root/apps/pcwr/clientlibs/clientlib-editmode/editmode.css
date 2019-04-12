@@ -1,0 +1,17 @@
+.unconfigured-custom-component {
+	text-align: center;
+	font-size: 0.875rem;
+	border: solid 0.125rem;
+    color: orange;
+    border-color: orange;
+    height: 3em;
+    font-weight: lighter;
+    font-style: normal;
+    display: table;
+    width: 100%;
+}
+
+.unconfigured-custom-component span {
+	display: table-cell;
+    vertical-align: middle;    
+}

@@ -1,0 +1,17 @@
+.product-disclosure{
+	max-width:1140px;
+	margin-left:auto;
+	margin-right:auto;
+	//background-color:green;
+	//p element made in RTE by hitting enter or pasting from rendered HTML
+	//body large: 18px is default for p 
+	//body: 16px add class .p-alt-16 to p
+	//body small: 14px add class .p-alt-14 to p
+	//body x-small: 10px add class .p-alt-10 to p
+	&.p-alt-16{.pcwr-richtext{font-size:16px;}p{font-size:16px;}}
+	&.p-alt-14{.pcwr-richtext{font-size:14px;}p{font-size:14px;}}
+	&.p-alt-10{.pcwr-richtext{font-size:10px;}p{font-size:10px;}}
+}
+@media (max-width: 575.98px) {
+	.product-disclosure{padding-right: 1.5rem;padding-left: 1.5rem;}
+}

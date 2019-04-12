@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Page"
+    sling:resourceType="cq/gui/components/authoring/dialog"
+    extraClientlibs="[cq.common.wcm,core.wcm.components.page.v1.editor,cq.wcm.msm.properties]"
+    helpPath="https://www.adobe.com/go/aem_cmp_page_v1"
+    mode="edit">
+    <content
+        granite:class="cq-dialog-content-page"
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                granite:class="cq-siteadmin-admin-properties-tabs"
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                size="L">
+                <items jcr:primaryType="nt:unstructured">
+                    <paclife
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Pacific Life"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <title
+                                        jcr:primaryType="nt:unstructured"
+                                        jcr:title="Custom Features"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/fieldset">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            
+                                            <breadcrumbOverlay
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                name="./breadcrumbOverlay"
+                                                cq:showOnCreate="{Boolean}true"
+                                                uncheckedValue="" value="breadcrumb-overlay"
+                                                text="Breadcrumb Overlay">
+                                                <granite:data
+                                                    jcr:primaryType="nt:unstructured"
+                                                    allowBulkEdit="{Boolean}true"
+                                                    cq-msm-lockable="hideInNav"/>
+                                            </breadcrumbOverlay>
+
+                                        </items>
+                                    </title>
+                                </items>
+                            </column>
+                        </items>
+                    </paclife>
+                    <plclientlibs
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Page Level Clientlibs"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">                                                     
+									<clientlib
+										jcr:primaryType="nt:unstructured"                                        
+										sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+										fieldDescription="Enter the Clientlibs Category to be added to a specific page. Create them under clientlib-apps for apps. This will add the js and css"
+										fieldLabel="Clientlibs Category"
+										renderReadOnly="{Boolean}true">
+										<granite:data jcr:primaryType="nt:unstructured"/>
+										<field
+											jcr:primaryType="nt:unstructured"
+											sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+											name="./clientlib"
+											required="{Boolean}true"/>
+									</clientlib>                                     
+                                </items>
+							</column>
+						</items>
+					</plclientlibs>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

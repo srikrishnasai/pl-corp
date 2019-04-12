@@ -1,0 +1,40 @@
+<sly data-sly-use.template="core/wcm/components/commons/v1/templates.html"/>
+
+<sly data-sly-test="${properties.section1Title && !wcmmode.edit}">
+
+<sly data-sly-use.model1="${'com.paclife.core.models.PCWRMultifieldHelperModel' @ nodeName='multiFieldItems1'}" ></sly>
+<sly data-sly-use.model2="${'com.paclife.core.models.PCWRMultifieldHelperModel' @ nodeName='multiFieldItems2'}" ></sly>
+<sly data-sly-use.model3="${'com.paclife.core.models.PCWRMultifieldHelperModel' @ nodeName='multiFieldItems3'}" ></sly>
+<sly data-sly-use.model4="${'com.paclife.core.models.PCWRMultifieldHelperModel' @ nodeName='multiFieldItems4'}" ></sly>
+
+	<span name="more-menu-toggle" class="more-menu-toggle d-lg-none"><span class="toggle-label"></span><i class="material-icons ml-auto">keyboard_arrow_right</i></span>
+	<div data-component-name="More Section" class="more-menu-content">
+		<span name="more-menu-toggle" class="more-menu-toggle text-white d-none d-lg-block"><i class="material-icons">close</i>Close</span>	
+		
+		<h6><a href="${properties.section1Link @ extension='html'}">${properties.section1Title}</a></h6>
+			<ul data-sly-test="${model1.childResource}" data-sly-list="${model1.childResource.listChildren}">
+				<li><a href="${item.subSectionLink @ extension='html'}" class="more-menu-nav-item">${item.subSectionTitle}</a></li>
+			</ul>	
+				
+		<h6 data-sly-test="${properties.section2Title}"><a href="${properties.section2Link @ extension='html'}">${properties.section2Title}</a></h6>
+			<ul data-sly-test="${model2.childResource}" data-sly-list="${model2.childResource.listChildren}">
+				<li><a href="${item.subSectionLink @ extension='html'}" class="more-menu-nav-item">${item.subSectionTitle}</a></li>
+			</ul>
+		
+		<h6 data-sly-test="${properties.section3Title}"><a href="${properties.section3Link @ extension='html'}">${properties.section3Title}</a></h6>
+			<ul data-sly-test="${model3.childResource}"  data-sly-list="${model3.childResource.listChildren}">
+				<li><a href="${item.subSectionLink @ extension='html'}" class="more-menu-nav-item">${item.subSectionTitle}</a></li>
+			</ul>
+		<h6 data-sly-test="${properties.section4Title}"><a href="${properties.section4Link @ extension='html'}">${properties.section4Title}</a></h6>
+			<ul data-sly-test="${model4.childResource}"  data-sly-list="${model4.childResource.listChildren}">
+				<li><a href="${item.subSectionLink @ extension='html'}" class="more-menu-nav-item">${item.subSectionTitle}</a></li>
+			</ul>
+		
+		<sly data-sly-test="${properties.displayAddThis}">
+			<sly  data-sly-use.addThis="pcwr/components/content/addThis/addThisTemplate.html">
+			<sly data-sly-call="${addThis.addThis}" />
+		</sly>
+	</div>
+</sly>
+
+<sly data-sly-call="${template.placeholder @ isEmpty=(wcmmode.edit)}"/>

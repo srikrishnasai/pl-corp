@@ -1,0 +1,38 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Cache-Control" content="no-cache" forua="true"  />
+<meta name="google-site-verification" content="gbtuQysyOXTLHiBR_Dh6tKYYIWUe0KwcqECf3E5NPCU" />
+<sly data-sly-use.clientLib="/libs/granite/sightly/templates/clientlib.html">
+     <sly data-sly-call="${clientlib.css @ categories='pcwr.base'}"/>
+
+<div data-sly-list="${properties.clientlib}" data-sly-unwrap>        
+        <sly data-sly-call="${clientlib.css @ categories=item}"/>
+</div>
+</sly>
+
+<!--/* polyfill provides support for old browsers (i.e. IE11). 
+       This should be ok to remove at some point in the future (post-2018). */-->
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<!--/*  reverted change: digitalData needs to be available in all modes in order to test Search and Nav events. */-->
+<script type="text/javascript" data-sly-use.dataLayer="datalayer.js">
+window.digitalData = window.digitalData || {
+	pageInstanceID: window.location.host + "${dataLayer.pagePath @ context='uri'}",
+	page: {
+	    pageName: "${dataLayer.pageName @ context='text'}",
+		pageTitle: "${dataLayer.pageTitle @ context='text'}",
+		pagePath: "${dataLayer.pagePath @ context='uri'}",
+		pageType: "${dataLayer.pageType @ context='text'}",
+		pageTemplate: "${dataLayer.pageTemplate @ context = 'text'}",
+		language: "${dataLayer.language @ context='text'}",
+	    sectionLvl1: "${dataLayer.hierarchy1 @ context='text'}",
+	    sectionLvl2: "${dataLayer.hierarchy2 @ context='text'}",
+	    sectionLvl3: "${dataLayer.hierarchy3 @ context='text'}",
+	    sectionLvl4: "${dataLayer.hierarchy4 @ context='text'}",
+	    sectionLvl5: "${dataLayer.hierarchy5 @ context='text'}",
+    	domain: window.location.host,
+    	environment: "${dataLayer.environment @ context='text'}",
+    	tags: "${dataLayer.tags @ context='text'}"
+	},
+	event: {}
+};
+</script>

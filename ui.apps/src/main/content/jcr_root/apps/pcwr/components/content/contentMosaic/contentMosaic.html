@@ -1,0 +1,126 @@
+<sly data-sly-use.template="core/wcm/components/commons/v1/templates.html"/>
+<sly data-sly-test.isConfigured="${(properties.card1BgImgFileRef && properties.card2BgImgFileRef && properties.card3BgImgFileRef && properties.card4BgImgFileRef)}"></sly>
+<sly data-sly-call="${template.placeholder @ isEmpty= !isConfigured}"/>
+
+<div data-sly-test="${isConfigured}" class="row content-mosaic-container" data-component-name="Content Mosaic">
+	<div class="col-md-5 ml-md-auto mosaic-col">
+		<div data-media-block-title="${properties.card1Headline}">
+			<div class="card mosaic-card" style="background-image:url('${properties.card1BgImgFileRef @ context = 'styleString' }');">
+			  <!-- <img class="card-img" src="http://placehold.it/555x600" alt="Card image"> -->
+			  <div class="card-img-overlay mosaic-copy" style="max-height: ${(properties.videoCTA1 && wcmmode.edit) ? 'inherit;' : '' @ context='attribute'}">
+			  	<table>
+			  		<tr>
+			  			<td data-sly-test="${properties.card1IconFileRef}" class="mosaic-icon-img"><img src="${properties.card1IconFileRef}" /></td>
+			  			<td class="mosaic-text">
+			  				<table>
+						  		<tr>
+						  			<td><h5 class="card-title mosaic-text-title">${properties.card1Headline}</h5></td>
+					  			</tr>
+					  			<tr>
+						  			<td><p class="card-text p-alt-16 mosaic-text-subtitle">${properties.card1Body}</p></td>
+					  			</tr>
+					  			<tr>
+						  			<td data-sly-test="${properties.card1DisplayCTA}" class="mosaic-text-cta"><h7 class="card-text cta-text all-text">${properties.card1CTALabel}<i class="material-icons" style="vertical-align: top;">keyboard_arrow_right</i></h7></td>
+                                    <td data-sly-test="${properties.videoCTA1}"><div data-sly-resource="${@path = 'video1', resourceType = 'pcwr/components/content/video'}"></div></td>
+						  		</tr>		  				
+			  				</table>
+			  			</td>
+			  		</tr>
+			  	</table>
+			  </div>
+			  <input data-sly-test="${properties.card1DisplayCTA}" type="hidden" class="mosaic-card-link-value" value="${properties.card1CTATarget @ extension='html'}">
+			</div>
+		</div>
+		<div data-media-block-title="${properties.card2Headline}">
+			<div class="card mosaic-card" style="background-image:url('${properties.card2BgImgFileRef @ context = 'styleString' }');">	  
+			  <div class="card-img-overlay mosaic-copy" style="max-height: ${(properties.videoCTA2 && wcmmode.edit) ? 'inherit;' : '' @ context='attribute'}">
+			  	<table>
+			  		<tr>
+			  			<td data-sly-test="${properties.card2IconFileRef}" class="mosaic-icon-img"><img src="${properties.card2IconFileRef}" /></td>
+			  			<td class="mosaic-text">
+			  				<table>
+						  		<tr>
+						  			<td><h5 class="card-title mosaic-text-title">${properties.card2Headline}</h5></td>
+					  			</tr>
+					  			<tr>
+						  			<td><p class="card-text p-alt-16 mosaic-text-subtitle">${properties.card2Body}</p></td>
+					  			</tr>
+					  			<tr>
+						  			<td data-sly-test="${properties.card2DisplayCTA}" class="mosaic-text-cta"><h7 class="card-text cta-text all-text">${properties.card2CTALabel}<i class="material-icons" style="vertical-align: top;">keyboard_arrow_right</i></h7></td>
+                                    <td data-sly-test="${properties.videoCTA2}"><div data-sly-resource="${@path = 'video2', resourceType = 'pcwr/components/content/video'}"></div></td>
+						  		</tr>		  				
+			  				</table>
+			  			</td>
+			  		</tr>
+			  	</table>
+			  </div>
+		  	<input data-sly-test="${properties.card2DisplayCTA}" type="hidden" class="mosaic-card-link-value" value="${properties.card2CTATarget @ extension='html'}">
+			</div>
+		</div>
+	</div>	
+	<div class="col-md-5 mr-md-auto mosaic-col">
+		<div data-media-block-title="${properties.card3Headline}">
+			<div class="card mosaic-card" style="background-image:url('${properties.card3BgImgFileRef @ context = 'styleString' }');">
+			  <div class="card-img-overlay mosaic-copy" style="max-height: ${(properties.videoCTA3 && wcmmode.edit) ? 'inherit;' : '' @ context='attribute'}">
+			  	<table>
+			  		<tr>
+			  			<td data-sly-test="${properties.card3IconFileRef}" class="mosaic-icon-img"><img src="${properties.card3IconFileRef}" /></td>
+			  			<td class="mosaic-text">
+			  				<table>
+						  		<tr>
+						  			<td><h5 class="card-title mosaic-text-title">${properties.card3Headline}</h5></td>
+					  			</tr>
+					  			<tr>
+						  			<td><p class="card-text p-alt-16 mosaic-text-subtitle">${properties.card3Body}</p></td>
+					  			</tr>
+					  			<tr>
+						  			<td data-sly-test="${properties.card3DisplayCTA}" class="mosaic-text-cta"><h7 class="card-text cta-text all-text">${properties.card3CTALabel}<i class="material-icons" style="vertical-align: top;">keyboard_arrow_right</i></h7></td>
+                                    <td data-sly-test="${properties.videoCTA3}"><div data-sly-resource="${@path = 'video3', resourceType = 'pcwr/components/content/video'}"></div></td>
+						  		</tr>		  				
+			  				</table>
+			  			</td>
+			  		</tr>
+			  	</table>
+			  </div>
+			  <input data-sly-test="${properties.card3DisplayCTA}" type="hidden" class="mosaic-card-link-value" value="${properties.card3CTATarget @ extension='html'}">
+			</div>
+		</div>
+		<div data-media-block-title="${properties.card4Headline}">
+			<div class="card mosaic-card" style="background-image:url('${properties.card4BgImgFileRef @ context = 'styleString' }');">
+			  <div class="card-img-overlay mosaic-copy" style="max-height: ${(properties.videoCTA4 && wcmmode.edit) ? 'inherit;' : '' @ context='attribute'}">
+			  	<table>
+			  		<tr>
+			  			<td data-sly-test="${properties.card4IconFileRef}" class="mosaic-icon-img">
+                            <a data-sly-unwrap="${!properties.videoCTA4}" href="#" 
+                               onclick="$(this).closest('tr').find('button').click()">
+                            <img src="${properties.card4IconFileRef}" />
+                            </a>
+                        </td>
+			  			<td class="mosaic-text">
+			  				<table>
+						  		<tr>
+						  			<td><h5 class="card-title mosaic-text-title">${properties.card4Headline}</h5></td>
+					  			</tr>
+					  			<tr>
+						  			<td><p class="card-text p-alt-16 mosaic-text-subtitle">${properties.card4Body}</p></td>
+					  			</tr>
+					  			<tr>
+						  			<td data-sly-test="${properties.card4DisplayCTA}" class="mosaic-text-cta">
+                                        <h7 class="card-text cta-text all-text">${properties.card4CTALabel}
+                                            <i class="material-icons" style="vertical-align: top;">keyboard_arrow_right</i></h7>
+                                    </td>
+                                    <td data-sly-test="${properties.videoCTA4}">
+                                        <div data-sly-resource="${@path = 'video4', resourceType = 'pcwr/components/content/video'}"></div>
+                                    </td>
+						  		</tr>		  				
+			  				</table>
+			  			</td>
+			  		</tr>
+			  	</table>
+			  </div>
+			  <input data-sly-test="${properties.card4DisplayCTA}" type="hidden" class="mosaic-card-link-value" value="${properties.card4CTATarget @ extension='html'}">
+			</div>
+		</div>
+	</div>	
+		
+</div>

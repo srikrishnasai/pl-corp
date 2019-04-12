@@ -1,0 +1,44 @@
+<sly data-sly-use.template="core/wcm/components/commons/v1/templates.html"/>
+
+<div data-component-name="Insights Card Gallery" class="${properties.colorClass ? properties.colorClass : 'bg-grey'} py-5">
+	<input id="url-insight-value" type="hidden" value="${request.requestPathInfo.selectors[0]}"/>
+	<sly data-sly-use.cards="insightsCardGallery.js"></sly>
+	<h3 class="text-center mb-2 mx-auto">${properties.headline}</h3>
+	
+	<div class="row" data-sly-resource="${@path ='tagCloud' , resourceType = 'pcwr/components/content/tagCloud', selectors='filtering' } "></div>
+	
+	<div class="insights-gallery-container-wrapper">
+	<div class="card-deck insights-gallery-container justify-content-center my-shuffled" id="insights-grid">
+		<!-- The mark-up for Product card will go under loop below -->
+		<sly data-sly-list="${cards.cards}">
+		
+        <sly data-sly-test.title='${item.properties["pageTitle"] || item.properties["jcr:title"]}'/>
+		<div data-media-block-title="${title}" 
+             class="card insights-card insights-card-filter-item" data-sly-use.model="${'com.paclife.core.models.PCWRTagHelperModel' @ tagString = item.properties['insightCategoryTag']}"
+			 data-groups="${model.tag.name}">
+		    <img class="card-img-top insights-img" src="${item.properties['insightCardThumbnail']}" alt="Card image cap">
+		    <div class="card-body insights-body">
+		    	
+		    	<!--/* Check if Tag has been associated with the page */-->
+		    	<sly data-sly-test="${item.properties['insightCategoryTag']}">
+			        <p class="insights-tag-text" data-sly-use.model="${'com.paclife.core.models.PCWRTagHelperModel' @ tagString = item.properties['insightCategoryTag']}">
+			        ${model.tag.title}
+		        	</p>
+	        	</sly>
+		        <h4 class="card-title insights-title">${title}</h4>
+		        <p class="p-alt-16 insights-body-text">${item.properties["insightCardDesc"]}</p>        
+		    </div>
+		    <div class="card-footer insights-card-footer">
+		    	<a href="${item.path @ extension='html'}" class="btn btn-primary cta-text-btn d-inline-block">${item.properties["insightCardBtnLabel"] }</a><i class="material-icons insights-icon">schedule</i>        <span class="insights-tag-text">${item.properties["insightCardReadTime"]}</span>
+		    </div>
+		    <!--/*TEST make the full card clickable*/-->
+	            <a href="${item.path @ extension='html'}" class='clickable'></a>
+		</div>
+		</sly>
+	</div>
+	
+	</div>
+	<div class="text-center cta-see-all"><span class="cta-text-btn insights-gallery-view-more-btn">View More <i class="material-icons">add_circle_outline</i></span></div>
+</div>
+
+<sly data-sly-call="${template.placeholder @ isEmpty=!properties.headline}"/>

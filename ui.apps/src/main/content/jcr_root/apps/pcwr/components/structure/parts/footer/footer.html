@@ -1,0 +1,15 @@
+<sly data-sly-use.model="com.paclife.core.models.PCWRMultifieldItemsModel"></sly>
+<footer data-component-name="Footer" class="footer-pac-life footer-text ${ wcmmode.edit ? '' : 'footer-publish'}" >	
+	<div class="d-flex justify-content-md-between flex-column align-items-center mx-auto px-5 flex-md-row" style="height:100%;">
+		
+		<span class="footer-copyright-text">Copyright &copy; Pacific Life Insurance Company</span>
+		
+		<span class="footer-links" data-sly-test="${model.multiFieldItems}" data-sly-list='${model.multiFieldItems.listChildren}'>						
+			<a href="${item.footerTarget @ extension='html'}">${item.footerTargetLabel} </a>
+            <span class="footer-link-separator" data-sly-test="${!itemList.last}"><br/><span>|</span></span>
+		</span>
+	  	
+	  	<span data-sly-resource="${ 'addThis' @ resourceType='pcwr/components/content/addThis', decoration=true}">
+	 	</span>
+	</div>
+</footer>

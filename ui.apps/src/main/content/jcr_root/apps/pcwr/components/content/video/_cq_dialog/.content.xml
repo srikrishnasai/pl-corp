@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root
+    xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+    xmlns:granite="http://www.adobe.com/jcr/granite/1.0"
+    xmlns:jcr="http://www.jcp.org/jcr/1.0"
+    xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Inline Video"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        granite:class="cmp-list--editor"
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <listSettings
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Video Settings"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <width
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                                        fieldLabel="Width"
+                                        min="100"
+                                        step="1"
+                                        value="640"
+                                        name="./width" />
+                                    <height
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                                        fieldLabel="Height"
+                                        min="100"
+                                        step="1"
+                                        value="400"
+                                        name="./height" />
+                                    <video
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                        fieldDescription="Select a path of a Video"
+                                        fieldLabel="Video Path (from AEM) or Youtube Embed Link"
+                                        name="./video"
+                                        rootPath="/content/dam/" />
+                                    <poster
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                        fieldDescription="This option is not available on YouTube videos"
+                                        fieldLabel="Poster (for AEM videos only)"
+                                        name="./poster"
+                                        rootPath="/content/dam/" />
+                                </items>
+                            </column>
+                        </items>
+                    </listSettings>
+                    <playbackSettings
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Playback Settings"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <preload
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                        emptyOption="{Boolean}true"
+                                        fieldDescription="If the video should automatically be downloaded on page load."
+                                        fieldLabel="Preload"
+                                        name="./preload"
+                                        type="editable">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <auto
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Preload video on page load (auto)"
+                                                value="auto" />
+                                            <metadata
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Preload only video metadata (metadata)"
+                                                value="metadata" />
+                                            <none
+                                                jcr:primaryType="nt:unstructured"
+                                                text="No preloading (none)"
+                                                value="none" />
+                                            <empty
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Skip preload setting (browser default behavior)"
+                                                value="" />
+                                        </items>
+                                    </preload>
+                                    <controls
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                        fieldDescription="Check if the browser should not show playback controls."
+                                        name="./hideControls"
+                                        text="Hide Controls"
+                                        uncheckedValue=""
+                                        value="true" />
+                                    <autoplay
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                        fieldDescription="Start playback automatically"
+                                        name="./autoplay"
+                                        text="Autoplay"
+                                        uncheckedValue=""
+                                        value="autoplay" />
+                                    <loop
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                        fieldDescription="Jump back to the start when the end of the video is reached."
+                                        name="./loop"
+                                        text="Loop"
+                                        uncheckedValue=""
+                                        value="true" />
+                                    <download
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                        fieldDescription="Allow for download."
+                                        name="./download"
+                                        text="Download"
+                                        uncheckedValue=""
+                                        value="true" />
+                                </items>
+                            </column>
+                        </items>
+                    </playbackSettings>
+                    <modalSettings
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Modal Window Settings"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <modal
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                        fieldDescription="Place the video inside a pop-up (modal) window"
+                                        name="./modal"
+                                        text="Modal"
+                                        uncheckedValue=""
+                                        value="true" />
+                                    <windowTitle
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Window Title"
+                                        name="./windowTitle"
+                                        fieldLabel="Window Title"/>
+                                    <actionType
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                        emptyOption="{Boolean}true"
+                                        fieldDescription="What user action causes the video to open?"
+                                        fieldLabel="Modal Action Type"
+                                        name="./modalActionType"
+                                        type="editable">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <button
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Button"
+                                                value="button" />
+                                        </items>
+                                    </actionType>
+                                    <actionLabel
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="How should the action be labeled?"
+                                        name="./action"
+                                        fieldLabel="Action Label"/>
+                                </items>
+                            </column>
+                        </items>
+                    </modalSettings>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

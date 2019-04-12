@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+		  xmlns:granite="http://www.adobe.com/jcr/granite/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Landing Hero"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
+        <items jcr:primaryType="nt:unstructured">
+            <column
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/container">
+                <items jcr:primaryType="nt:unstructured">
+                    <landingHeroHeading
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldLabel="Heading"
+                        name="./landingHeroHeading"/>
+                    <nonbreak
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldLabel="Non-Breaking Phrases"
+                        value="Life Goals,Pacific Life"
+                        name="./nonbreak"/>
+                    <landingHeroLgHeading
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/foundation/form/checkbox"
+                        name="./landingHeroLgHeading"
+                        text="Display Large Heading"
+                        value="true"/>                        
+                    <landingHeroContent
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                        fieldLabel="Content"
+                        name="./landingHeroContent"/>
+                    <lgBgStyle
+                        granite:class="cq-dialog-dropdown-showhide"
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                        fieldLabel="Desktop/Tablet Background Style"
+                        name="./lgBgStyle">
+                        <granite:data
+                            jcr:primaryType="nt:unstructured"
+                            cq-dialog-dropdown-showhide-target=".pl-bg-showhide-target"/>
+                        <items jcr:primaryType="nt:unstructured">
+                            <image
+                                jcr:primaryType="nt:unstructured"
+                                text="Image"
+                                value="image"/>
+                            <video
+                                jcr:primaryType="nt:unstructured"
+                                text="Video"
+                                value="video"/>
+                        </items>
+                    </lgBgStyle>                        
+
+					<setImage
+                        granite:class="hide pl-bg-showhide-target foundation-layout-util-vmargin"
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <granite:data
+                            jcr:primaryType="nt:unstructured"
+                            showhidetargetvalue="image"/>
+                        <items jcr:primaryType="nt:unstructured">
+                            <heading
+                                granite:class="coral-Heading coral-Heading--4"
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/heading"
+                                level="{Long}4"
+                                text=""/>
+                            <well
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/well">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <landingHeroBgImage
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="pcwr/cq/gui/components/authoring/dialog/fileupload"
+                                        allowUpload="{Boolean}false"
+                                        autoStart="{Boolean}false"
+                                        class="cq-droptarget"
+                                        fieldLabel="Background Image"
+                                        fileNameParameter="./landingHeroBgImageFileName"
+                                        fileReferenceParameter="./landingHeroBgImageFileRef"
+                                        mimeTypes="[image/jpeg,image/png]"
+                                        multiple="{Boolean}false"
+                                        name="./landingHeroBgImageFile"
+                                        title="Upload Image Asset"
+                                        uploadUrl="${suffix.path}"
+                                        useHTML5="{Boolean}true"/>
+                                </items>
+                            </well>
+                        </items>
+                    </setImage>
+
+					<setVideo
+						granite:class="hide pl-bg-showhide-target foundation-layout-util-vmargin"
+						jcr:primaryType="nt:unstructured"
+						sling:resourceType="granite/ui/components/coral/foundation/container">
+					     <granite:data
+					         jcr:primaryType="nt:unstructured"
+					         showhidetargetvalue="video"/>
+					     <items jcr:primaryType="nt:unstructured">
+					         <heading
+					             granite:class="coral-Heading coral-Heading--4"
+					             jcr:primaryType="nt:unstructured"
+					             sling:resourceType="granite/ui/components/coral/foundation/heading"
+					             level="{Long}4"
+					             text=""/>
+					         <well
+					             jcr:primaryType="nt:unstructured"
+					             sling:resourceType="granite/ui/components/coral/foundation/well">
+					             <items jcr:primaryType="nt:unstructured">
+					                 <videoPath
+					                     jcr:primaryType="nt:unstructured"
+					                     sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+					                     fieldLabel="Background Video Path"
+					                     fieldDescription="Video format must be MP4"
+					                     name="./videoPath"
+					                     rootPath="/content/dam/paclife"/>
+									<landingHeroVideoPoster
+									    jcr:primaryType="nt:unstructured"
+									    sling:resourceType="pcwr/cq/gui/components/authoring/dialog/fileupload"
+									    allowUpload="{Boolean}false"
+									    autoStart="{Boolean}false"
+									    class="cq-droptarget"
+									    fieldLabel="Video Poster"
+									    fieldDescription="Image to be shown while the video is downloading"
+									    fileNameParameter="./landingHeroVideoPosterFileName"
+									    fileReferenceParameter="./landingHeroVideoPosterFileRef"
+									    mimeTypes="[image/jpeg,image/png]"
+									    multiple="{Boolean}false"
+									    name="./landingHeroVideoPosterFile"
+									    title="Upload Image Asset"
+									    uploadUrl="${suffix.path}"
+									    useHTML5="{Boolean}true"/>					                     
+					             </items>
+					         </well>
+					     </items>
+					</setVideo>
+                                            	                        
+                    <landingHeroMobileBgImage
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="pcwr/cq/gui/components/authoring/dialog/fileupload"
+                        allowUpload="{Boolean}false"
+                        autoStart="{Boolean}false"
+                        class="cq-droptarget"
+                        fieldLabel="Mobile Background Image"
+                        fileNameParameter="./landingHeroMobileBgImageFileName"
+                        fileReferenceParameter="./landingHeroMobileBgImageFileRef"
+                        mimeTypes="[image/jpeg,image/png]"
+                        multiple="{Boolean}false"
+                        name="./landingHeroMobileBgImageFile"
+                        title="Upload Image Asset"
+                        uploadUrl="${suffix.path}"
+                        useHTML5="{Boolean}true"/>
+                    <landingHeroOverlay
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/foundation/form/checkbox"
+                        name="./landingHeroOverlay"
+                        text="Overlay Following Component"
+                        value="true"/>                        
+                    <landingHeroDisplayCTA
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/foundation/form/checkbox"
+                        name="./landingHeroDisplayCTA"
+                        text="Enable Call To Action"
+                        value="true"/>                        
+                    <landingHeroCTALabel
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldDescription="Enter a Call To Action such as Learn More or Get Started"
+                        fieldLabel="Action Label"
+                        name="./landingHeroCTALabel"/>                        
+                    <landingHeroCTATarget
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+                        fieldLabel="Target"
+                        name="./landingHeroCTATarget"
+                        rootPath="/content/pl-corp"/>                        
+                </items>
+            </column>
+        </items>
+    </content>
+</jcr:root>

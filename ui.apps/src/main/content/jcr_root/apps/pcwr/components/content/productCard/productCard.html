@@ -1,0 +1,40 @@
+<sly data-sly-use.query="${'com.paclife.core.util.ProductCardQuery'}"/>
+<sly data-sly-test.render="${request.requestPathInfo.selectors[0] == 'render'}"/>
+
+<div class="alert alert-info" data-sly-test="${wcmmode.edit && !render}">
+  <h1>To edit this card, click Open Properties in the Page Information menu above.</h1>
+</div>
+
+<sly data-sly-test.stateText="${properties.state ? ' The product information will not be visible unless you select a state in which the product is offered.' : ''}"/>
+<script data-sly-test="${!wcmmode.edit && !render}">
+window.alert('You will be redirected to the page that contains all products of this type. You may need to scroll down to see the information on specific products. ' + "${stateText @ context = 'unsafe'}");
+window.location = "${query.target @ context='uri'}";
+</script>
+
+<div class="row d-flex justify-content-center" data-sly-unwrap="${render}">
+
+	<div class="col-md-3 col-lg-3 col-xl-3 col-sm-12 product-card mx-3 d-flex align-items-start flex-column"
+         data-component-name="Product Card" data-media-block-title="${properties.name}"
+		 data-sly-attribute.data-groups="${properties.state}"
+		 data-sly-attribute.data-product-type="${properties.productType}" >
+		<h5 class="product-name-rte">${properties.name @ context = 'html'}</h5>
+		<p class="p-alt-10" data-sly-test="${properties.subtitle}">${properties.subtitle}</p>
+		<p class="pcwr-richtext p-alt-16">${properties.richText @ context = 'html'}</p>
+		<div class="mb-auto"></div>
+		<div class="product-resources align-self-stretch">
+			<p class="product-resources-title px-4 pt-4" >PRODUCT RESOURCES:</p>
+	
+	 		<sly data-sly-use.model="com.paclife.core.models.PCWRMultifieldItemsModel">
+	 			<sly data-sly-list.cardItem = "${model.multiFieldItems.listChildren}">
+                <!--/* DTM-TAG-* classes and [product-name] are used for analytics; do not remove */-->
+					<a class="DTM-TAG-product-resources-link product-resources-link d-block px-4 pb-2"
+	                   data-product-name="${properties.name}"  
+	                   data-sly-use.util="${'com.paclife.core.models.PCWRUtilModel'  @ resourceLink = cardItem.resourceLink}" 
+	                   target="_blank"
+					   href="${util.formattedLink}">${cardItem.resourceLabel}</a> 
+			   </sly>
+			</sly>
+		</div>
+	</div>
+
+</div>

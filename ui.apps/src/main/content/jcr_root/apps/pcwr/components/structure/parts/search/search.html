@@ -1,0 +1,53 @@
+<div class="search-results-page"  data-sly-use.searchResults="com.paclife.core.search.SearchResults">
+
+    <!--/* for analytics */-->
+    <script type="text/javascript">
+    window.digitalData.page.onsiteSearchResult = "${searchResults.resultTotal @ context = 'scriptString'}";
+    window.digitalData.page.onsiteSearchTerm = "${searchResults.searchTerm @ context = 'scriptString'}";
+    </script>
+
+	<div class="pt-4">
+		<form id="pl-search-form" class="form-inline justify-content-center" method="get">
+		    <div class="form-group form-group-search-input mx-sm-3 mb-2">
+		        <label for="inputSearchValue" class="sr-only">${searchResults.searchTerm}</label>
+		        <input name="q" type="text" class="form-control" id="inputSearchValue" value = "${searchResults.searchTerm}" placeholder="${properties.placeholder}">
+		    </div>
+		    <button type="submit" class="btn btn-primary cta-text-btn mr-md-5 mb-2">${properties.action}</button>
+		</form>	    		
+	</div>
+    <div class="search-page-wrapper mx-auto" data-sly-test="${!searchResults.results}">
+        Nothing found.
+    </div>
+	<div class="search-page-wrapper mx-auto" data-sly-test="${searchResults.results}">
+		<h3 class="search-results-page-title text-center mx-auto">${properties.resultsLabel || 'SEARCH RESULTS' }</h3>
+		<p class="search-results-page-subtitle text-center mt-3 mx-auto" data-sly-use.helper="${'com.paclife.core.models.PCWRSearchResultModel' @ searchResults = searchResults}">
+			Showing  ${helper.rangeStart} - ${helper.rangeEnd}  of ${searchResults.resultTotal} results found for "${searchResults.searchTerm}"
+		</p>
+		<div class="container-search-items" data-sly-list.result="${searchResults.results}">
+			<div class="search-result" data-sly-use.fixedLink="${'com.paclife.core.util.LinkFixer' @ link = result.path}">
+                <a href="${fixedLink.value}" class="DTM-TAG-search-result-link"
+                   data-search-page="${helper.pageNumber}" 
+                   data-search-position="${resultList.count}">
+				<h6>${result.title}</h6>
+				<p class="p-alt-16">${result.description @ context = 'html'}</p>
+				<span class="pl-search-result-link">${fixedLink.value}</span>
+                </a>
+			</div>	
+		</div>
+		<div class="search-result-pagination">
+			<ul class="pagination" data-sly-list.option="${searchResults.pagination}">
+				
+				<li class="page-item ${option.disabled ? 'disabled' : ''}"  >
+					<a class="page-link" href="#" data-offset-value="${option.offset}" data-sly-attribute.tabindex= "${option.active ? '-1' : false} ">
+						<i class="material-icons" data-sly-test="${option.label == 'Previous'}">keyboard_arrow_left</i>
+						${option.label}
+						<i class="material-icons" data-sly-test="${option.label == 'Next'}">keyboard_arrow_right</i>
+					
+					</a>
+				</li>
+				
+			</ul>
+		</div>
+	</div>
+
+</div>

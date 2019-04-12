@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root 
+    xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+    xmlns:jcr="http://www.jcp.org/jcr/1.0"
+    jcr:primaryType="cq:ClientLibraryFolder"
+    categories="[pcwr.base]"
+    embed="[pcwr.site,pcwr.component,wcm.foundation.components.page.responsive]"
+    allowProxy="{Boolean}true"  	
+	jsProcessor="[min:gcc;obfuscate=true]"
+	cssProcessor="[min:gcc]"/>

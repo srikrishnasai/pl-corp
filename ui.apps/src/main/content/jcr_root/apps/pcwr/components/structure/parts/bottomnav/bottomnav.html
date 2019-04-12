@@ -1,0 +1,17 @@
+<sly
+	data-sly-use.clientLib="/libs/granite/sightly/templates/clientlib.html"
+	data-sly-call="${clientlib.css @ categories='pcwr.base'}" />
+
+<div data-component-name="Bottom Navigation"
+	class="footer-nav d-flex align-items-center ${ wcmmode.edit ? '' : 'footer-nav-publish'}">
+	<div class="container-fluid mt-2 mt-md-0">
+		<div class="row mx-auto footer-nav-wrapper">
+			<sly data-sly-use.colCount = "${'bottomnavItemCount.js' @ value=properties.colCount}"/>
+			<div class="${colCount  > 0 ? 'col-md' : 'd-none'}" data-sly-resource="${ 'card0' @ resourceType='pcwr/components/content/linkCard'}"></div>
+			 <div class="${colCount > 1 ? 'col-md' : 'd-none'}" data-sly-resource="${ 'card1' @ resourceType='pcwr/components/content/linkCard'}"></div>
+			<div class="${colCount > 2 ? 'col-md' : 'd-none'}" data-sly-resource="${ 'card2' @ resourceType='pcwr/components/content/linkCard'}"></div>
+			<div class="${colCount > 3 ? 'col-md' : 'd-none'}" data-sly-resource="${ 'card3' @ resourceType='pcwr/components/content/linkCard'}"></div>
+			<div class="${colCount > 4 ? 'col-md' : 'd-none'}" data-sly-resource="${ 'card4' @ resourceType='pcwr/components/content/linkCard'}"></div> 
+		</div>
+	</div>
+</div>

@@ -1,0 +1,21 @@
+<sly data-sly-use.template="core/wcm/components/commons/v1/templates.html"/>
+<sly data-sly-call="${template.placeholder @ isEmpty=!(properties.heading || pageProperties.pageTitle || pageProperties.jcr:title)}"/>
+<div data-component-name="Insight Heading" class="container-fluid ">
+	<div class="insights-heading-wrapper my-5 mx-2 mx-md-auto">
+		<div class="insights-tag-text" data-sly-use.model="${'com.paclife.core.models.PCWRTagHelperModel' @ tagString = pageProperties.insightCategoryTag}">${model.tag.title}</div>
+		<div class="d-flex align-items-center py-3">
+			<div class="insights-title">${properties.heading || pageProperties.pageTitle || pageProperties.jcr:title}</div>
+			<sly data-sly-test="${properties.duration}">
+				<i class="material-icons insights-icon d-none d-md-block">schedule</i> 
+				<span class="insights-tag-text d-none d-md-block pl-1"> ${properties.duration}</span>	
+			</sly>
+		</div>
+		<p class="p-alt-16" data-sly-test="${properties.author && properties.date}">${properties.author}  |  ${properties.date}</p>
+		<p class="p-alt-16" data-sly-test="${properties.author && !properties.date}">${properties.author} </p>
+		<p class="p-alt-16" data-sly-test="${!properties.author && properties.date}">${properties.date} </p>
+		<!-- FOR MOBILE ONLY -->
+		<div class="insights-heading-mobile-tag-text d-block d-md-none" data-sly-test="${properties.duration}">
+			<i class="material-icons insights-icon">schedule</i> <span class="insights-tag-text pl-1"> ${properties.duration}</span>
+		</div>
+	</div>
+</div>

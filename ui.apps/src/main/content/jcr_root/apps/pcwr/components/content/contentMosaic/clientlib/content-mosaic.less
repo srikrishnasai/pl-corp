@@ -1,0 +1,98 @@
+//
+// variables
+//
+@bright-blue: #008ed7;
+@turquoise:#24c5cf;
+@light-grey-bg:#f2f2f2;
+@deep-blue:#004685;
+
+@grey-divider: #d5d5d5;
+
+.content-mosaic-container{
+	padding-top:50px; padding-bottom:50px;
+	.mosaic-card{
+		.mosaic-copy{
+			top:auto; 
+			//background-color:#ffffff;
+			max-width:500px;
+			max-height: 100px;
+			overflow:hidden;
+			transition: max-height 1.5s ease-out;
+			padding:0;
+			.mosaic-icon-img{
+				background-color:#ffffff;vertical-align:top;width:100px;
+				border-right: 1px solid @grey-divider;
+				padding-left:25px; padding-top:20px;
+				img{max-height:50px;}
+			}
+			.mosaic-text{
+				background-color:#ffffff;width:350px;
+				padding-left:25px;padding-right:25px; padding-top:20px;
+				transition: width 1s ease-out;
+				.mosaic-text-title{
+					color:#000000;
+					font-family: 'Merriweather', serif;
+					font-size:24px;
+					font-weight:300;
+					text-transform:none;
+					max-height: 56px;
+    				overflow: hidden;
+				}
+				.mosaic-text-subtitle{visibility:hidden;padding-bottom:15px; color:#000000;}
+				.mosaic-text-cta{color: @bright-blue; padding-bottom:20px;}
+				button{margin-bottom:10px;}
+			}
+		}
+		&:hover{
+			.mosaic-copy{
+				//max-width:500px; 
+				max-height:inherit;
+				transition: max-height 2s ease-out;
+				//.mosaic-icon-img{vertical-align:top;width:100px;}
+				.mosaic-text{
+					width:400px;
+					transition: width .3s ease-out;
+					.mosaic-text-subtitle{visibility:visible;}
+				}
+			}
+		}
+		background-repeat:no-repeat;
+		background-position:center center;
+		background-size:cover;
+		
+		width:100%;
+		min-height:372px;
+		max-height:604px; 
+		min-width:100%;
+		margin-bottom: 1.875rem;
+		
+		border:none;
+		border-radius:0;
+		box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+	}
+	.mosaic-col{
+		max-width:555px;
+		width:100%;
+		&div:first-child{
+			.mosaic-card{
+				&:last-child{min-height:604px;}
+			}
+		}
+		&div:last-child{.mosaic-card{&:first-child{min-height:604px;}}}
+		
+		&:first-child{div:last-child{.mosaic-card{min-height:604px;}}}
+		&:last-child{div:first-child{.mosaic-card{min-height:604px;}}}		
+	}
+	video {
+		max-width: 100%;
+	}
+}
+@media (max-width: 575.98px) {
+	.content-mosaic-container{
+		margin-left:.5625rem;margin-right:.5625rem;
+		>.mosaic-col{
+			&:not(:first-child){.mosaic-card{margin-top: 1.75rem;}}
+			&:first-child{>div:last-child{.mosaic-card{margin-top: 1.75rem;}}}
+		}
+	}
+}

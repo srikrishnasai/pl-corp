@@ -1,0 +1,20 @@
+<template data-sly-template.group="${@ items='The navigation items for the current level', parent='The Parent page', properties = 'Component properties'}" data-sly-use.itemTemplate="item.html">
+
+	<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+	
+		<span class="pl-md-4 position-absolute d-none d-lg-inline" style="right:10px;"><i class="material-icons nav-close-icon">close</i></span>
+		<ul class="cmp-navigation__group">
+			<li class="cmp-navigation__item cmp-navigation__item--level-1">
+				<a href="${parent.path @ extension = 'html'}" title="${parent.title}" class="cmp-navigation__item-link  ">${parent.title}</a>
+				<img data-sly-test="${properties.custDropDownThumbnailFileRef}" src="${properties.custDropDownThumbnailFileRef}"/>
+				<span class="d-lg-block d-none">${parent.page.properties['jcr:description']}</span>
+			   	<ul class="cmp-navigation__group g2 about-flex-continer" data-sly-list="${items}">    	
+       				<sly data-sly-call="${itemTemplate.item @ item=item}"></sly>
+    			</ul>
+			</li>
+	    </ul>
+  
+	</div>
+
+    
+</template>

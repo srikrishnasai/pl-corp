@@ -1,0 +1,11 @@
+<div data-sly-test.configMsg="${!properties.textCardTitle && wcmmode.edit}" class="col text-card d-block">
+	Click here to configure ${component.title} component
+</div>
+
+<div data-component-name="Text Card" data-sly-test="${! configMsg}" class="col text-card d-block">
+	<h5>${properties.textCardTitle}</h5>
+	<div class="pcwr-richtext">${properties.richText @ context='html'}</div>
+
+	<a data-sly-test='${properties.textCardDisplayBtn}' href="${properties.textCardBtnLink @ extension='html'}" class="btn btn-primary cta-text-btn">${properties.textCardBtnLabel || 'Learn More'}</a>
+			
+</div>

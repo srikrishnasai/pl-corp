@@ -1,0 +1,7 @@
+<sly data-sly-use.template="core/wcm/components/commons/v1/templates.html"/>
+<sly data-sly-call="${template.placeholder @ isEmpty=(wcmmode.edit && !properties.heading)}"/>
+
+<div data-component-name="Download This Page" data-sly-test="${properties.heading}" class="text-center download-this-page-wrapper">
+	<div class="download-this-page-title">${properties.heading}</div>
+	<a href="${properties.target @ extension='html'}" class="download-this-page-cta-link"><div class="download-this-page-cta h7 cta-text all-text">${properties.action}<i class="material-icons" style="vertical-align: top;"><i class="material-icons">file_download</i></i></div></a>
+</div>

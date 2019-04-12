@@ -1,0 +1,105 @@
+<sly data-sly-use.model="com.paclife.core.models.PCWRMultifieldItemsModel"></sly>
+<sly data-sly-test.displayConfigMsg="${wcmmode.edit && !model.multiFieldItems}" />
+<sly data-sly-use.template="core/wcm/components/commons/v1/templates.html" />
+<sly data-sly-call="${template.placeholder @ isEmpty=displayConfigMsg}" />
+
+<div class="container tab-content-switcher-container">
+    <div data-sly-test="${! displayConfigMsg}" class="tab-switcher-header-title">
+        <h3 class="text-center mb-5 mx-auto" style="max-width: 750px; padding-top: 4.5rem;">${properties.tabSwitcherTitle}</h3>
+    </div>
+    <div data-component-name="Tab Switcher" data-sly-test="${! displayConfigMsg}" class="tab-content-switcher mx-auto">
+        <div class="row">
+            <div class=" col-1 col-md-9 tab-content" id="v-pills-tabContent"
+                data-sly-list.tabItem="${model.multiFieldItems.listChildren}">
+                <sly data-sly-test.first="${tabItemList.first}">
+                <div class="tab-pane fade show active" id="v-pills-${tabItemList.index}" role="tabpanel"
+                    aria-labelledby="v-pills-${tabItemList.index}-tab">
+                    <img src="${tabItem.tabBgImgFileRef}" />
+                    <div class="tab-content-img-copy">
+                        <h4>${tabItem.tabTitle}</h4>
+                        <p>${tabItem.tabBody}</p>
+                        <a data-sly-test="${tabItem.tabShowBtn}" href="${tabItem.tabLink @ extension='html'}"
+                            class="btn btn-primary cta-text-btn">${tabItem.tabBtnLabel}</a>
+                    </div>
+                </div>
+                </sly>
+                <sly data-sly-test="${! first}">
+                <div class="tab-pane fade" id="v-pills-${tabItemList.index}" role="tabpanel"
+                    aria-labelledby="v-pills-${tabItemList.index}-tab">
+                    <img src="${tabItem.tabBgImgFileRef}" />
+                    <div class="tab-content-img-copy">
+                        <h4>${tabItem.tabTitle}</h4>
+                        <p>${tabItem.tabBody}</p>
+                        <a data-sly-test="${tabItem.tabShowBtn}" href="${tabItem.tabLink @ extension='html'}"
+                            class="btn btn-primary cta-text-btn">${tabItem.tabBtnLabel}</a>
+                    </div>
+                </div>
+                </sly>
+            </div>
+            <div class=" col-11 col-md-3 nav flex-column nav-pills" id="v-pills-tab" role="tablist"
+                aria-orientation="vertical" data-sly-list.tabItem="${model.multiFieldItems.listChildren}">
+                <sly data-sly-test.firstTab="${tabItemList.first}"> <a class="nav-link cta-text-btn zoom active"
+                    id="v-pills-${tabItemList.index}-tab" data-toggle="pill" href="#v-pills-${tabItemList.index}"
+                    role="tab" aria-controls="v-pills-${tabItemList.index}" aria-selected="true"
+                    data-link="${tabItem.tabLink @ extension='html'}">
+                    <i class='material-icons'>keyboard_arrow_left</i><span>${tabItem.tabLabel}</span>
+                </a> </sly>
+                <sly data-sly-test="${! firstTab}"> <a class="nav-link cta-text-btn zoom "
+                    id="v-pills-${tabItemList.index}-tab" data-toggle="pill" href="#v-pills-${tabItemList.index}"
+                    role="tab" aria-controls="v-pills-${tabItemList.index}" aria-selected="false"
+                    data-link="${tabItem.tabLink @ extension='html'}">
+                    <i class='material-icons'>keyboard_arrow_left</i><span>${tabItem.tabLabel}</span>
+                </a> </sly>
+            </div>
+        </div>
+    </div>
+    <!--/*MOBILE START*/-->
+    <div id="accordionMobileTabSwitcher" class="tab-switcher-mobile d-lg-none"
+        data-sly-list.tabItem="${model.multiFieldItems.listChildren}">
+        <sly data-sly-test.first="${tabItemList.first}">
+        <div class="card">
+            <div class="card-header" id="headingOne-tabItem-${tabItemList.index}" data-toggle="collapse"
+                data-target="#collapseOne-tabItem-${tabItemList.index}" aria-expanded="true"
+                aria-controls="collapseOne-tabItem-${tabItemList.index}">
+                <h5 class="mb-0">
+                    <i class='material-icons'>keyboard_arrow_down</i>
+                    <button class="btn btn-link cta-text-btn text-white">${tabItem.tabLabel}</button>
+                </h5>
+            </div>
+            <div id="collapseOne-tabItem-${tabItemList.index}" class="tab-switcher-item-mobile collapse show"
+                aria-labelledby="headingOne-tabItem-${tabItemList.index}" data-parent="#accordionMobileTabSwitcher"
+                style="background-image: url(${tabItem.tabBgImgFileRef  @ context='uri'});">
+                <div class="card-body d-flex align-items-end flex-column">
+                    <h4 class="mt-auto">${tabItem.tabTitle}</h4>
+                    <p>${tabItem.tabBody}</p>
+                    <a data-sly-test="${tabItem.tabShowBtn}" href="${tabItem.tabLink @ extension='html'}"
+                        class="btn btn-primary cta-text-btn">${tabItem.tabBtnLabel}</a>
+                </div>
+            </div>
+        </div>
+        </sly>
+        <sly data-sly-test.first="${!tabItemList.first}">
+        <div class="card">
+            <div class="card-header collapsed" id="headingTwo-tabItem-${tabItemList.index}" data-toggle="collapse"
+                data-target="#collapseTwo-tabItem-${tabItemList.index}" aria-expanded="false"
+                aria-controls="collapseTwo-tabItem-${tabItemList.index}">
+                <h5 class="mb-0">
+                    <i class='material-icons'>keyboard_arrow_down</i>
+                    <button class="btn btn-link cta-text-btn text-white">${tabItem.tabLabel}</button>
+                </h5>
+            </div>
+            <div id="collapseTwo-tabItem-${tabItemList.index}" class="tab-switcher-item-mobile collapse"
+                aria-labelledby="headingTwo-tabItem-${tabItemList.index}" data-parent="#accordionMobileTabSwitcher"
+                style="background-image: url(${tabItem.tabBgImgFileRef @ context='uri'});">
+                <div class="card-body d-flex align-items-end flex-column">
+                    <h4 class="mt-auto">${tabItem.tabTitle}</h4>
+                    <p>${tabItem.tabBody}</p>
+                    <a data-sly-test="${tabItem.tabShowBtn}" href="${tabItem.tabLink @ extension='html'}"
+                        class="btn btn-primary cta-text-btn">${tabItem.tabBtnLabel}</a>
+                </div>
+            </div>
+        </div>
+        </sly>
+    </div>
+    <!--/*MOBILE END*/-->
+</div>

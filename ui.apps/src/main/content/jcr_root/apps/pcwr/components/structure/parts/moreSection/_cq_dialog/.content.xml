@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="More Section"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <section1
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Section 1"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
+                        <items jcr:primaryType="nt:unstructured">
+                            <content
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                   <section1Title
+                                       jcr:primaryType="nt:unstructured"
+                                       sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                       fieldLabel="Title"
+                                       name="./section1Title"
+                                       required="{Boolean}true"/>
+                                   <section1Link
+                                       jcr:primaryType="nt:unstructured"
+                                       sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+                                       fieldLabel="Link"
+                                       name="./section1Link"
+                                       rootPath="/content/pl-corp"/>    
+                                   <links
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                        composite="{Boolean}true"
+                                        fieldDescription="Click 'Add field' to add a new Link"
+                                        fieldLabel="Link Items">
+                                        <field
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/container"
+                                            name="./multiFieldItems1">
+                                            <items jcr:primaryType="nt:unstructured">
+	                                     	<subSectionTitle
+	                                             jcr:primaryType="nt:unstructured"
+	                                             sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+	                                             fieldLabel="Action"
+	                                             name="./subSectionTitle"/>
+	                                         <subSectionLink
+	                                             jcr:primaryType="nt:unstructured"
+	                                             sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+	                                             fieldLabel="Target"
+	                                             name="./subSectionLink"
+	                                             rootPath="/content/pl-corp"/>
+	                                            
+                                            </items>
+                                        </field>
+                                    </links>
+                                </items>
+                            </content>
+                        </items>
+                    </section1>
+
+					<section2
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Section 2"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
+                        <items jcr:primaryType="nt:unstructured">
+                            <content
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                   <section2Title
+                                       jcr:primaryType="nt:unstructured"
+                                       sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                       fieldLabel="Title"
+                                       name="./section2Title"/>
+                                   <section2Link
+                                       jcr:primaryType="nt:unstructured"
+                                       sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+                                       fieldLabel="Link"
+                                       name="./section2Link"
+                                       rootPath="/content/pl-corp"/>    
+                                   <links
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                        composite="{Boolean}true"
+                                        fieldDescription="Click 'Add field' to add a new Link"
+                                        fieldLabel="Link Items">
+                                        <field
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/container"
+                                            name="./multiFieldItems2">
+                                            <items jcr:primaryType="nt:unstructured">
+	                                     	<subSectionTitle
+	                                             jcr:primaryType="nt:unstructured"
+	                                             sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+	                                             fieldLabel="Action"
+	                                             name="./subSectionTitle"/>
+	                                         <subSectionLink
+	                                             jcr:primaryType="nt:unstructured"
+	                                             sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+	                                             fieldLabel="Target"
+	                                             name="./subSectionLink"
+	                                             rootPath="/content/pl-corp"/>
+	                                            
+                                            </items>
+                                        </field>
+                                    </links>
+                                </items>
+                            </content>
+                        </items>
+                    </section2>
+					<section3
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Section 3"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
+                        <items jcr:primaryType="nt:unstructured">
+                            <content
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                   <section3Title
+                                       jcr:primaryType="nt:unstructured"
+                                       sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                       fieldLabel="Title"
+                                       name="./section3Title"/>
+                                   <section3Link
+                                       jcr:primaryType="nt:unstructured"
+                                       sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+                                       fieldDescription="Please provide Link for the Section "
+                                       fieldLabel="Link"
+                                       name="./section3Link"
+                                       rootPath="/content/pl-corp"/>    
+                                   <links
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                        composite="{Boolean}true"
+                                        fieldDescription="Click 'Add field' to add a new Link"
+                                        fieldLabel="Link Items">
+                                        <field
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/container"
+                                            name="./multiFieldItems3">
+                                            <items jcr:primaryType="nt:unstructured">
+	                                     	<subSectionTitle
+	                                             jcr:primaryType="nt:unstructured"
+	                                             sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+	                                             fieldLabel="Action"
+	                                             name="./subSectionTitle"/>
+	                                         <subSectionLink
+	                                             jcr:primaryType="nt:unstructured"
+	                                             sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+	                                             fieldLabel="Target"
+	                                             name="./subSectionLink"
+	                                             rootPath="/content/pl-corp"/>
+	                                            
+                                            </items>
+                                        </field>
+                                    </links>
+                                </items>
+                            </content>
+                        </items>
+                    </section3>                    
+					<section4
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Section 4"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
+                        <items jcr:primaryType="nt:unstructured">
+                            <content
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                   <section4Title
+                                       jcr:primaryType="nt:unstructured"
+                                       sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                       fieldLabel="Title"
+                                       name="./section4Title"/>
+                                   <section4Link
+                                       jcr:primaryType="nt:unstructured"
+                                       sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+                                       fieldDescription="Please provide Link for the Section "
+                                       fieldLabel="Link"
+                                       name="./section4Link"
+                                       rootPath="/content/pl-corp"/>    
+                                   <links
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                        composite="{Boolean}true"
+                                        fieldDescription="Click 'Add field' to add a new Link"
+                                        fieldLabel="Link Items">
+                                        <field
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/container"
+                                            name="./multiFieldItems4">
+                                            <items jcr:primaryType="nt:unstructured">
+	                                     	<subSectionTitle
+	                                             jcr:primaryType="nt:unstructured"
+	                                             sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+	                                             fieldLabel="Action"
+	                                             name="./subSectionTitle"/>
+	                                         <subSectionLink
+	                                             jcr:primaryType="nt:unstructured"
+	                                             sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+	                                             fieldLabel="Target"
+	                                             name="./subSectionLink"
+	                                             rootPath="/content/pl-corp"/>
+	                                            
+                                            </items>
+                                        </field>
+                                    </links>
+                                </items>
+                            </content>
+                        </items>
+                    </section4>                                                         
+					<addThis
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Add this Configuration"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
+                        <items jcr:primaryType="nt:unstructured">
+                            <content
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+               						
+               						<displayAddThis
+				                        jcr:primaryType="nt:unstructured"
+				                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+				                        text="Display Add this"
+				                        name="./displayAddThis"
+				                        value="{Boolean}true"/>
+				                    <function
+				                        jcr:primaryType="nt:unstructured"
+				                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+				                        fieldLabel="Function"
+				                        name="./function">
+				                        <items jcr:primaryType="nt:unstructured">
+				                            <follow
+				                                jcr:primaryType="nt:unstructured"
+				                                text="Follow"
+				                                value="addthis_inline_follow_toolbox"/>
+				                            <share
+				                                jcr:primaryType="nt:unstructured"
+				                                text="Share"
+				                                value="addthis_inline_share_toolbox"/>
+				                        </items>
+				                    </function>
+				                      
+				                    <pubid
+				                        jcr:primaryType="nt:unstructured"
+				                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+				                        fieldLabel="AddThis Pub ID"
+				                        fieldDescription="Go to www.addthis.com/dashboard to customize your tools"
+				                        required="{Boolean}true"
+				                        name="./pubid"/>
+				
+				                    <title
+				                        jcr:primaryType="nt:unstructured"
+				                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+				                        fieldLabel="Title"
+				                        name="./title"/>
+				
+				                    <target
+				                        jcr:primaryType="nt:unstructured"
+				                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+				                        fieldLabel="target"
+				                        name="./target"/>
+				
+				                    <media
+				                        jcr:primaryType="nt:unstructured"
+				                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+				                        fieldLabel="Media"
+				                        name="./media"/>                                   
+                                </items>
+                            </content>
+                        </items>
+                    </addThis>                                                         
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

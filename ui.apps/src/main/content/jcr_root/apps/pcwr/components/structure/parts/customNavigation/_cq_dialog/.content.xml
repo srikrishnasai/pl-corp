@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:sling="http://sling.apache.org/jcr/sling/1.0" 
+	jcr:primaryType="nt:unstructured">
+    <content jcr:primaryType="nt:unstructured">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured">
+                <items jcr:primaryType="nt:unstructured">
+                    <custProperties
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Custom Properties"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <pageWithCustDropDown
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                fieldDescription="Add suitable description"
+                                                fieldLabel="Page with Custom Dropdown"
+                                                forceSelection="{Boolean}true"
+                                                name="./pageWithCustDropDown"
+                                                rootPath="/content/pl-corp"/>
+				                            
+				                            <custDropDownThumbnail
+				                                jcr:primaryType="nt:unstructured"
+				                                sling:resourceType="pcwr/cq/gui/components/authoring/dialog/fileupload"
+				                                autoStart="{Boolean}false"
+				                                class="cq-droptarget"
+				                                fieldLabel="Background Image"
+				                                fileNameParameter="./custDropDownThumbnailFileName"
+				                                fileReferenceParameter="./custDropDownThumbnailFileRef"
+				                                mimeTypes="[image/jpeg,image/png]"
+				                                multiple="{Boolean}false"
+				                                name="./custDropDownThumbnailFile"
+				                                title="Upload Image Asset"
+				                                uploadUrl="${suffix.path}"
+				                                useHTML5="{Boolean}true"
+				                                allowUpload="{Boolean}false"/>
+                                        
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </custProperties>
+                   <search
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Search"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                        	<column
+                        		jcr:primaryType="nt:unstructured"
+                        		sling:resourceType="granite/ui/components/coral/foundation/container">
+                        		<items jcr:primaryType="nt:unstructured">
+		                        	<placeholder
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Enter Search text. For e.g. 'What are you looking for?'"
+                                        fieldLabel="Search Field Placeholder"
+                                        name="./placeholder"/>          
+				                    <action
+				                        jcr:primaryType="nt:unstructured"
+				                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+				                        fieldLabel="Action"
+				                        fieldDescription="Defaults to 'SEARCH'"
+				                        name="./action"/>  
+				                    <target
+				                        jcr:primaryType="nt:unstructured"
+				                        sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+				                        fieldLabel="Target"
+				                        name="./target"
+				                        rootPath="/content/pl-corp"/> 		                    		                                
+                                </items>
+                        	</column>                                
+                        </items>
+                    </search>                    
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

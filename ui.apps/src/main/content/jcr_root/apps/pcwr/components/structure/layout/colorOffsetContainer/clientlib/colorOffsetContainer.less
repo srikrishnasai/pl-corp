@@ -1,0 +1,28 @@
+//
+// variables
+//
+@bright-blue: #008ed7;
+@turquoise:#24c5cf;
+@light-grey-bg:#f2f2f2;
+@deep-blue:#004685;
+
+//
+//color offset container
+//
+.color-offset-container{
+	//insights hero spacing moved to insights hero less
+	//padding-top:50px;
+	//padding-bottom:25px;
+	&.bg-deep-blue{
+		background-color:@deep-blue;
+	}
+	&.bg-light-grey{
+		background-color:@light-grey-bg;
+		&.offset-btm{background: linear-gradient(360deg, #ffffff 23%, @light-grey-bg 10%);}
+		
+	}
+	&.white{
+		&.offset-btm{background: linear-gradient(360deg, #f2f2f2 29%, #ffffff 25%);}
+		&.offset-top{background: linear-gradient(0deg, #ffffff 50%, @light-grey-bg 50%);}
+	}	
+}

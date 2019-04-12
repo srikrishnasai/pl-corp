@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="AddThis"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
+        <items jcr:primaryType="nt:unstructured">
+		    <column
+		        jcr:primaryType="nt:unstructured"
+		        sling:resourceType="granite/ui/components/coral/foundation/container">
+		        <items jcr:primaryType="nt:unstructured">     
+
+                    <function
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                        fieldLabel="Function"
+                        name="./function">
+                        <items jcr:primaryType="nt:unstructured">
+                            <follow
+                                jcr:primaryType="nt:unstructured"
+                                text="Follow"
+                                value="addthis_inline_follow_toolbox"/>
+                            <share
+                                jcr:primaryType="nt:unstructured"
+                                text="Share"
+                                value="addthis_inline_share_toolbox"/>
+                        </items>
+                    </function>
+                      
+                    <pubid
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldLabel="AddThis Pub ID"
+                        fieldDescription="Go to www.addthis.com/dashboard to customize your tools"
+                        required="{Boolean}true"
+                        name="./pubid"/>
+
+                    <title
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldLabel="Title"
+                        name="./title"/>
+
+                    <target
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                        fieldLabel="Target"
+                        name="./target"/>
+
+                    <media
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                        fieldLabel="Media"
+                        name="./media"/>
+	            
+				</items>
+			</column>        	
+        </items>
+    </content>    
+</jcr:root>

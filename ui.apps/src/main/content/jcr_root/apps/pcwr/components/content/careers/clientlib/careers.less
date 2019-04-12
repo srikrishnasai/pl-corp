@@ -1,0 +1,61 @@
+//
+// variables
+//
+@turquoise:#24c5cf;
+@deep-blue:#004685;
+@medium-grey-border:#979797;
+@grey-divider:#d5d5d5;
+
+.careers-wrapper {
+	
+	background-color:@deep-blue;
+	.careers-padding {
+		    padding-bottom: 30px !important;
+		    padding-top: 30px !important;
+		    max-width:1000px;
+		    form {
+		    	
+		    }
+		    .form-group-careers-input {
+		    	width: 375px;
+		    	border-bottom:2px solid @turquoise; transition: border-bottom .1s linear;
+		    	  	input{
+		    	  		
+				  		border:none;
+				  		border-radius:0;
+				  		box-shadow: unset !important;
+				  		width:100% !important;
+				  		height: 45px;
+				  		padding-left:0px;
+				  		font-family: 'Montserrat', sans-serif;
+				  		font-size:16px;
+				  		color:@grey-divider;
+				  		&::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+						  color: @medium-grey-border;
+						}
+						&::-moz-placeholder { /* Firefox 19+ */
+						  color: @medium-grey-border;
+						}
+						&:-ms-input-placeholder { /* IE 10+ */
+						  color: @medium-grey-border;
+						}
+						&:-moz-placeholder { /* Firefox 18- */
+						  color: @medium-grey-border;
+						}
+						//&:placeholder-shown{color: red;}
+				  		border-bottom:2px solid @turquoise; transition: border-bottom .1s linear;
+				  		background-color:@deep-blue;
+				  		
+				  		&:focus{color:#FFF; }
+  					}
+		    }
+	}
+	
+}
+
+@media (max-width: 575.98px){
+
+.form-group-careers-input {
+ width:300px !important;
+}
+}

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured">
+    <content jcr:primaryType="nt:unstructured">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs jcr:primaryType="nt:unstructured">
+                <items jcr:primaryType="nt:unstructured">
+                   <newPageProperties
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="News Page"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <section
+                                        jcr:primaryType="nt:unstructured"
+                                        jcr:title="Properties for News Page"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/fieldset">
+                                        <items jcr:primaryType="nt:unstructured">
+                                        <!-- This has to be a Pathbrowser. Beacuse we cannot see Siderail in Page Properties dialog -->
+						                    <newsPageThumbnail
+						                        jcr:primaryType="nt:unstructured"
+						                        cq:showOnCreate="{Boolean}true"
+						                        sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+						                        fieldDescription="Image path for the News Page Thumbnail"
+						                        fieldLabel="Image Path"
+						                        name="./newsPageThumbnail"
+						                        rootPath="/content/dam/paclife"/>
+                                            <newsPagePublishDate
+                                                jcr:primaryType="nt:unstructured"
+                                                cq:showOnCreate="{Boolean}true"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/datepicker"
+                                                fieldLabel="News Page Publish Date"
+                                                name="./newsPagePublishDate"
+                                                required="{Boolean}true"
+                                                displayedFormat="MM/DD/YY">
+                                            </newsPagePublishDate>                                                                                     
+                                        </items>
+                                    </section>
+
+                                </items>
+                            </column>
+                        </items>
+                    </newPageProperties>                	
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

@@ -1,0 +1,267 @@
+<!--/*
+    Copyright 2015 Adobe Systems Incorporated
+  
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+  
+        http://www.apache.org/licenses/LICENSE-2.0
+  
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+*/-->
+<html data-sly-use.responseStatus="apps.sling.servlet.errorhandler.ResponseStatus">
+<head>
+
+<script>
+var docLoc = document.location.host.toLowerCase();
+var companyName = "Pacific Life Annuities";
+var logoImage = "corp_logo.gif";
+var corpDomain = "http://www.pacificlife.com";
+var helpLink = corpDomain + "/help/help.html";
+var contactUsLink = corpDomain + "/misc/service_links/contact_us.html";
+var strPhone = "";
+if (document.location.protocol.indexOf("http:") != -1 || docLoc.indexOf("myaccount") != -1)
+    strPhone = "(800) 722-4448";
+else strPhone = "(800) 722-2333";
+
+if (docLoc.indexOf('andannui') != -1) {
+    companyName = "Pacific Life & Annuity";
+    logoImage = "corp_pla_logo.gif";
+    corpDomain = "http://www.pacificlifeandannuity.com";    
+    strPhone = "(800) 748-6907";
+    helpLink = corpDomain + "/help/help.html";
+    contactUsLink = corpDomain + "/misc/service_links/contact_us.html";
+} else if (docLoc.indexOf('mutualfun') != -1 || docLoc.indexOf('collegesav') != -1) {
+    companyName = "Pacific Life Funds";
+    logoImage = "corp_pacific_life_funds_logo.gif";
+    strPhone = "(800) 722-2333";
+}
+
+function onPageLoad() {
+    document.title = companyName + " - 404 Not Found";
+    document.getElementById('logoLink').href = corpDomain;  
+    document.getElementById('logoImg').src = "/error/images/" + logoImage;
+    document.getElementById('aHelp').href = helpLink;
+    document.getElementById('aContact').href = contactUsLink;
+}
+</script>
+
+<style>
+body, div, span, li {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    color: #003366;
+}
+
+body {
+    background: #f7f3e7;
+}
+
+a:link, a:visited {
+  color:#01527C;
+}
+
+div#wrapper {
+    width: 100%;
+}
+
+div#page {
+    width: 80%;
+    background: #ffffff;
+    margin-left: 10%;
+    margin-top: 30px;   
+}
+
+div#top-frame {
+    width: 100%;
+    overflow: hidden;
+    background-image: url(/error/images/top_center.png);
+    background-repeat: repeat-x;
+}
+
+div#page .top-lt {
+    background-image: url(/error/images/top_left.png);
+    display: inline;
+    float: left;
+    clear: none;
+    width: 12px;
+    height: 27px;
+}
+
+div#page .top-ct {
+    display: inline;
+    position: relative;
+    float: left;
+    clear: none;
+    height: 27px;
+}
+
+div#page .top-rt {
+    background-image: url(/error/images/top_right.png);
+    display: inline;
+    float: right;
+    clear: right;
+    width: 12px;
+    height: 27px;
+}
+
+div#bot-frame {
+    width: 100%;
+    overflow: hidden;
+    background-image: url(/error/images/bot_center.png);
+    background-repeat: repeat-x;
+}
+
+div#page .bot-lt {
+    background-image: url(/error/images/bot_left.png);
+    display: inline;
+    float: left;
+    clear: none;
+    width: 12px;
+    height: 27px;
+}
+
+div#page .bot-ct {
+    display: inline;
+    float: left;
+    clear: none;
+    height: 27px;
+}
+
+div#page .bot-rt {
+    background-image: url(/error/images/bot_right.png);
+    display: inline;
+    float: right;
+    clear: right;
+    width: 12px;
+    height: 27px;
+}
+
+div#content {
+    display: block;
+    padding: 15px;
+    padding-bottom: 0;
+    border-right: 1px solid #efdfa5;
+    border-left: 1px solid #efdfa5;
+}
+div#logo {
+    margin-top: 15px;
+    margin-bottom: 20px;
+    clear: both;
+    width: 100%;
+    text-align: center;
+}
+
+hr {
+    border:0px solid #D2D3B1;
+    border-top-width:1px;
+    clear:both;
+    margin:0;
+}
+
+ div#links {
+    display: inline;
+    float: right;
+    clear: both;
+    width: 150px;
+
+ }
+
+ div.pg-title {
+    font-size: 20pt;
+    margin-bottom: 15px;
+    width: 100%;
+    text-align: center;
+    color: #336699;
+    clear: both;
+ }
+
+div#blue-shade {
+    background-color: #c6dbe7;
+    margin: 0 25px 15px 25px;
+    padding: 10px;
+    clear: both;
+}
+
+div#bg-shade {
+    background-color: #f7f3e7;
+    border: 1px solid #efdfa5;
+    margin-bottom: 15px;
+    padding: 10px;
+}
+
+div#copy-block {
+    margin: 0 25px 15px 25px;
+    padding: 10px;
+}
+
+div#disclaimer {
+    margin: 20px 25px 0px 25px;
+    padding: 10px;
+    font-size: 10px;
+}
+
+.bld {
+    font-weight: bold;
+}
+
+</style>
+
+</head>
+<body onload="onPageLoad();">
+
+<div id="wrapper">
+    <div id="page">
+    
+        <div id="top-frame">
+
+            <div class="top-lt"></div>
+            <div class="top-ct">&nbsp;</div>
+            <div class="top-rt"></div>
+            
+        </div>
+        
+        <div id="content">
+        
+            <div id="logo">
+                <A ID="logoLink" TARGET="_top" HREF=""><IMG ID="logoImg" BORDER="0" SRC=""></A>
+            </div>
+            <hr>
+
+            <div id="links">
+                <A ID="aHelp" HREF="http://www.pacificlife.com/help/help.html/">Help</A>&nbsp;&nbsp; 
+                <A ID="aContact" HREF="http://www.pacificlife.com/misc/service_links/contact_us.html">Contact Us</A> 
+            </div>
+            
+            <div class="pg-title">Page Not Found</div>
+            
+            <div id="blue-shade" class="bld">
+                The page you have requested was not found, or you may not have the required 
+                permissions to access the specified resource.
+            </div>
+            
+            <div id="copy-block">
+
+                Please check that you have typed its location correctly, or refer to your system administrator.
+            </div>
+            
+            <div id="disclaimer">Copyright <script>var d=new Date();document.write(d.getFullYear());</script> © <script>document.write(companyName);</script></div> 
+                        
+        </div>
+        
+        <div id="bot-frame">
+            <div class="bot-lt"></div>
+            <div class="bot-ct"></div>
+
+            <div class="bot-rt"></div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Insights Hero Carousel"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+               	<items jcr:primaryType="nt:unstructured">
+		            <generalItemsTab
+		                jcr:primaryType="nt:unstructured"
+		                jcr:title="Main"
+		                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
+		                <items jcr:primaryType="nt:unstructured">
+						    <content
+						        jcr:primaryType="nt:unstructured"
+						        sling:resourceType="granite/ui/components/coral/foundation/container">
+						        <items jcr:primaryType="nt:unstructured">
+                               		<title
+                                       jcr:primaryType="nt:unstructured"
+                                       sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                       fieldDescription="Please provide title for Insights Hero Container"
+                                       fieldLabel="Insights Hero Container Title"
+                                       name="./title"
+                                       required="{Boolean}true"/>
+				                    <displayCTA
+				                        jcr:primaryType="nt:unstructured"
+				                        sling:resourceType="granite/ui/components/foundation/form/checkbox"
+				                        name="./displayCTA"
+				                        text="Enable Call To Action"
+				                        value="true"/>                                       													        	
+                               		<linkLabel
+                                       jcr:primaryType="nt:unstructured"
+                                       sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                       fieldDescription="Enter a Call To Action such as SEE ALL INSIGHTS"
+                                       fieldLabel="Action Label"
+                                       name="./linkLabel"/>													        	
+                               		<link
+                                       jcr:primaryType="nt:unstructured"
+                                       sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+                                       fieldLabel="Target"
+                                       name="./link"
+                                       rootPath="/content/pl-corp"/>                                 											        	
+						        </items>
+							</content>		                	
+		                </items>
+		            </generalItemsTab>
+		            <insightHeroCardsTab
+		                jcr:primaryType="nt:unstructured"
+		                jcr:title="Hero Cards Tab"
+		                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
+		                <items jcr:primaryType="nt:unstructured">
+						    <content
+						        jcr:primaryType="nt:unstructured"
+						        sling:resourceType="granite/ui/components/coral/foundation/container">
+						        <items jcr:primaryType="nt:unstructured">
+									<cardItems
+				                        jcr:primaryType="nt:unstructured"
+				                        sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+				                        composite="{Boolean}true"
+				                        fieldLabel="Insights Hero Cards"
+                                        fieldDescription="Click 'Add field' to add a new Insights Hero Card">
+				                        <field
+				                            jcr:primaryType="nt:unstructured"
+				                            sling:resourceType="granite/ui/components/coral/foundation/container"
+				                            name="./multiFieldItems">
+				                            <items jcr:primaryType="nt:unstructured">
+		                               			<insightsHeroCarouselTitle
+		                                       		jcr:primaryType="nt:unstructured"
+			                                       	sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+			                                       	fieldDescription="Please provide title for Insights Hero Card Carousel Title"
+			                                       	fieldLabel="Hero Card Carousel Title"
+			                                       	name="./insightsHeroCarouselTitle"/>				                            
+												<insightsHeroImage
+													jcr:primaryType="nt:unstructured"
+													sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+													fieldDescription="Insights Hero Image Path"
+													fieldLabel="Insights Hero Image Path" 
+													name="./insightsHeroImage" 
+													required="{Boolean}true" 
+													rootPath="/content/dam/paclife" />	                                                    
+												<insightsHeroPagePath 
+													jcr:primaryType="nt:unstructured"
+													sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+													fieldDescription="Insights Articles Page Path"
+													fieldLabel="Insights Article Page  Path" 
+													name="./insightsHeroPagePath" 
+													required="{Boolean}true" 
+													rootPath="/content/pl-corp" />		                                    		                                            	                                            					                                       			                            	
+				                            </items>
+			                            </field>
+		                            </cardItems>	                                
+						        </items>
+							</content>		                
+		                </items>
+		        	</insightHeroCardsTab>		                               		
+               	</items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

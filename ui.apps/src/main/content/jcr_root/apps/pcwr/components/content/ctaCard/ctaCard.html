@@ -1,0 +1,15 @@
+<sly data-sly-use.template="core/wcm/components/commons/v1/templates.html" />
+<sly data-sly-call="${template.placeholder @ isEmpty=(wcmmode.edit && !properties.heading)}" />
+<sly data-sly-use.fixedLink="${'com.paclife.core.util.LinkFixer' @ link = properties.target}"/>
+
+<!--/*for blue bg use bg-blue*/-->
+<a data-component-name="CTA Card" data-sly-test="${properties.heading}" class="cta-card-link"
+    href="${fixedLink.value}">
+    <div class="cta-card-wrapper text-center ${properties.lightTheme ? '' : 'bg-blue'}">
+        <h4 class="cta-card-title">${properties.heading}</h4>
+        <div class="h7 cta-card-subtitle">${properties.subHeading}</div>
+        <p class="card-text cta-card-btn">
+            <span class="btn btn-primary cta-text-btn">${properties.action}</span>
+        </p>
+    </div>
+</a>

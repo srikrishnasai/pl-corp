@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Text Card"
+    sling:resourceType="cq/gui/components/authoring/dialog"
+    extraClientlibs="cq.authoring.dialog.rte.coralui2">
+	<content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
+        <items jcr:primaryType="nt:unstructured">
+		    <column
+		        jcr:primaryType="nt:unstructured"
+		        sling:resourceType="granite/ui/components/coral/foundation/container">
+		        <items jcr:primaryType="nt:unstructured">        
+			        <textCardTitle
+			            jcr:primaryType="nt:unstructured"
+			            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+			            fieldDescription="Please provide Title for the Component"
+			            fieldLabel="Title"
+			            name="./textCardTitle"
+			            required="{Boolean}true"/>
+                	<richText
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/include"
+						path="pcwr/components/common/commonRTE/cq:dialog/content/items/column/items/richText"/>
+			        <textCardDisplayBtn
+			            jcr:primaryType="nt:unstructured"
+			            sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+			            fieldDescription="Please enable checkbox to display Button on Text Card"
+			            text="Display Button ?"
+			            value="true"
+			            name="./textCardDisplayBtn"/>
+			        <textCardBtnLink
+			            jcr:primaryType="nt:unstructured"
+			            sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+			            fieldDescription="Please provide Button Link"
+			            fieldLabel="Button Link"
+			            rootPath="/content/pl-corp"
+			            name="./textCardBtnLink"/>			                                			                    				        		            
+			        <textCardBtnLabel
+			            jcr:primaryType="nt:unstructured"
+			            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+			            fieldDescription="Please provide Button Label"
+			            fieldLabel="Button Label"
+			            name="./textCardBtnLabel"/>			                                			                    				        		            
+				</items>
+			</column>        	
+        </items>
+    </content>    
+</jcr:root>

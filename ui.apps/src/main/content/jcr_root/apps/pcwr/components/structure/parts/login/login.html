@@ -1,0 +1,16 @@
+<sly data-sly-use.template="core/wcm/components/commons/v1/templates.html"/>
+<sly data-sly-use.model="com.paclife.core.models.PCWRMultifieldItemsModel"/>
+
+<div data-sly-test="${model.multiFieldItems}" class="login-menu dropdown order-0 order-lg-1">
+    <a class="login-dropdown-toggle d-flex" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+        aria-expanded="false"><i class="material-icons ${wcmmode.edit ? 'd-none' : ''}">account_circle</i><span class="d-flex justify-content-between w-100">${properties.loginLabel || 'Login'} <i class="material-icons ${wcmmode.edit ? 'd-none' : ''} d-lg-none">keyboard_arrow_right</i></span></a>		
+    <div data-component-name="Login" class="dropdown-menu" aria-labelledby="dropdownMenuLink" data-sly-list="${model.multiFieldItems.listChildren}">
+       	<div data-sly-test="${itemList.first}" class="mobile-nav-back-btn d-lg-none">
+	    	<div><i class="material-icons" style="vertical-align: bottom;font-size:20px">keyboard_arrow_left</i><span style="cursor:pointer;">BACK</span></div>
+    	</div>
+        <sly data-sly-use.fixedLink="${'com.paclife.core.util.LinkFixer' @ link = item.target}"/>        
+        <a class="dropdown-item" href="${fixedLink.value}" target="_blank">${item.actionLabel}</a>
+    </div>
+</div>
+
+<sly data-sly-call="${template.placeholder @ isEmpty=(wcmmode.edit && !model.multiFieldItems)}"/>

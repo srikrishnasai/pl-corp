@@ -1,0 +1,992 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Scenario Carousel"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <carouselItem1
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Carousel Item 1"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                        	<column
+                        		jcr:primaryType="nt:unstructured"
+                        		sling:resourceType="granite/ui/components/coral/foundation/container">
+                        		<items jcr:primaryType="nt:unstructured">
+		                            <carItem1Label
+		                                jcr:primaryType="nt:unstructured"
+		                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+		                                fieldDescription="Please provide label for the Carousel Item"
+		                                fieldLabel="Label"
+		                                name="./carItem1Label"/>
+		                            <carItem1BgImg
+		                                jcr:primaryType="nt:unstructured"
+		                                sling:resourceType="pcwr/cq/gui/components/authoring/dialog/fileupload"
+		                                autoStart="{Boolean}false"
+		                                class="cq-droptarget"
+		                                fieldLabel="Background Image"
+		                                fileNameParameter="./carItem1BgImgFileName"
+		                                fileReferenceParameter="./carItem1BgImgFileRef"
+		                                mimeTypes="[image/jpeg,image/png]"
+		                                multiple="{Boolean}false"
+		                                name="./carItem1BgImgFile"
+		                                title="Upload Image Asset"
+		                                uploadUrl="${suffix.path}"
+		                                useHTML5="{Boolean}true"
+		                                allowUpload="{Boolean}false"/>
+		                            <carItem1Icon
+		                                jcr:primaryType="nt:unstructured"
+		                                sling:resourceType="pcwr/cq/gui/components/authoring/dialog/fileupload"
+		                                autoStart="{Boolean}false"
+		                                class="cq-droptarget"
+		                                fieldLabel="Card Icon"
+		                                fileNameParameter="./carItem1IconFileName"
+		                                fileReferenceParameter="./carItem1IconFileRef"
+		                                mimeTypes="[image/jpeg,image/png,image/svg]"
+		                                multiple="{Boolean}false"
+		                                name="./carItem1IconFile"
+		                                title="Upload Image Asset"
+		                                uploadUrl="${suffix.path}"
+		                                useHTML5="{Boolean}true"
+		                                allowUpload="{Boolean}false"/>
+		                            <carItem1Title
+		                                jcr:primaryType="nt:unstructured"
+		                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+		                                fieldDescription="Please provide Title for the Carousel Item Card"
+		                                fieldLabel="Carousel Item Card Title"
+		                                name="./carItem1Title"
+		                                required="{Boolean}true"/>                                
+		                            <!-- <carItem1Body
+		                                jcr:primaryType="nt:unstructured"
+		                                sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+		                                fieldDescription="Please provide Text for the Carousel Item Card Body"
+		                                fieldLabel="Carousel Item Card Body"
+		                                name="./carItem1Body"
+		                                required="{Boolean}true"/> -->
+									<carItem1Body
+				                        jcr:primaryType="nt:unstructured"
+				                        sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+				                        fieldLabel="Carousel Item Card Body"
+				                        name="./carItem1Body"
+				                        useFixedInlineToolbar="{Boolean}true">
+										<rtePlugins jcr:primaryType="nt:unstructured">
+					                        <edit
+					                            jcr:primaryType="nt:unstructured"
+					                            features="*"/>
+					                        <format
+					                            jcr:primaryType="nt:unstructured"
+					                            features="*"/>
+					                        <justify
+					                            jcr:primaryType="nt:unstructured"
+					                            features="*"/>
+					                        <lists
+					                            jcr:primaryType="nt:unstructured"
+					                            features="*"/>
+											<paraformat 
+												jcr:primaryType="nt:unstructured"
+												features="*">
+				                                <formats jcr:primaryType="nt:unstructured">
+				                                    <default_p
+				                                        jcr:primaryType="nt:unstructured"
+				                                        description="Paragraph"
+				                                        tag="p"/>
+				                                    <default_h1
+				                                        jcr:primaryType="nt:unstructured"
+				                                        description="Heading 1"
+				                                        tag="h1"/>
+				                                    <default_h2
+				                                        jcr:primaryType="nt:unstructured"
+				                                        description="Heading 2"
+				                                        tag="h2"/>
+				                                    <default_h3
+				                                        jcr:primaryType="nt:unstructured"
+				                                        description="Heading 3"
+				                                        tag="h3"/>
+				                                    <default_h4
+				                                        jcr:primaryType="nt:unstructured"
+				                                        description="Heading 4"
+				                                        tag="h4"/>
+				                                    <default_h5
+				                                        jcr:primaryType="nt:unstructured"
+				                                        description="Heading 5"
+				                                        tag="h5"/>
+				                                    <default_h6
+				                                        jcr:primaryType="nt:unstructured"
+				                                        description="Heading 6"
+				                                        tag="h6"/>
+				                                </formats>
+				                            </paraformat>
+					                        <links
+					                            jcr:primaryType="nt:unstructured"
+					                            features="*"/>
+					                        <findreplace
+					                            jcr:primaryType="nt:unstructured"
+					                            features="*"/>
+					                        <subsuperscript
+					                            jcr:primaryType="nt:unstructured"
+					                            features="*"/>
+					                        <misctools
+					                            jcr:primaryType="nt:unstructured"
+					                            features="*">
+					                            <specialCharsConfig jcr:primaryType="nt:unstructured">
+					                                <chars jcr:primaryType="nt:unstructured">
+					                                    <copyright
+					                                        jcr:primaryType="nt:unstructured"
+					                                        entity="&amp;#169;"/>
+					                                    <trademark
+					                                        jcr:primaryType="nt:unstructured"
+					                                        entity="&amp;#8482;"/>
+					                                    <registered
+					                                        jcr:primaryType="nt:unstructured"
+					                                        entity="&amp;#174;"/>
+					                                    <emDash
+					                                        jcr:primaryType="nt:unstructured"
+					                                        entity="&amp;#8212;"/>
+					                                    <pound
+					                                        jcr:primaryType="nt:unstructured"
+					                                        entity="&amp;#163;"/>
+					                                    <nbsp
+					                                        jcr:primaryType="nt:unstructured"
+					                                        entity="&amp;#160;"/>
+					                                </chars>
+					                            </specialCharsConfig>
+					                        </misctools>
+					                        <table
+					                            jcr:primaryType="nt:unstructured"
+					                            features="*"/>
+					                    </rtePlugins>
+				                        <uiSettings jcr:primaryType="nt:unstructured">
+				                            <cui jcr:primaryType="nt:unstructured">
+				                                <inline
+				                                    jcr:primaryType="nt:unstructured"
+				                                    toolbar="[edit#copy,edit#paste-default,edit#paste-plaintext,edit#paste-wordhtml,format#bold,format#italic,format#underline,#justify,#lists,subsuperscript#subscript,subsuperscript#superscript,links#modifylink,links#unlink,links#anchor,findreplace#find,findreplace#replace,misctools#specialchars,misctools#sourceedit,#paraformat,table#table]">
+				                                    <popovers jcr:primaryType="nt:unstructured">
+				                                        <justify
+				                                            jcr:primaryType="nt:unstructured"
+				                                            items="[justify#justifyleft,justify#justifycenter,justify#justifyright]"
+				                                            ref="justify"/>
+				                                        <lists
+				                                            jcr:primaryType="nt:unstructured"
+				                                            items="[lists#unordered,lists#ordered,lists#outdent,lists#indent]"
+				                                            ref="lists"/>
+				                                        <paraformat
+				                                            jcr:primaryType="nt:unstructured"
+				                                            items="paraformat:getFormats:paraformat-pulldown"
+				                                            ref="paraformat"/>
+				                                        <styles
+				                                            jcr:primaryType="nt:unstructured"
+				                                            items="styles:getStyles:styles-pulldown"
+				                                            ref="styles"/>
+				                                    </popovers>
+				                                </inline>
+				                            </cui>
+			                       	 	</uiSettings>                        
+			                    	</carItem1Body>
+				                    <carItem1DisplayCTA
+				                        jcr:primaryType="nt:unstructured"
+				                        sling:resourceType="granite/ui/components/foundation/form/checkbox"
+				                        name="./carItem1DisplayCTA"
+				                        text="Enable Call To Action"
+				                        value="true"/>                        
+				                    <carItem1CTALabel
+				                        jcr:primaryType="nt:unstructured"
+				                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+				                        fieldDescription="Enter a Call To Action such as Learn More or Get Started"
+				                        fieldLabel="Action Label"
+				                        name="./carItem1CTALabel"/>                        
+				                    <carItem1CTATarget
+				                        jcr:primaryType="nt:unstructured"
+				                        sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+				                        fieldLabel="Target"
+				                        name="./carItem1CTATarget"
+				                        rootPath="/content/pl-corp"/>			                    		                                
+                                </items>
+                        	</column>                                
+                        </items>
+                    </carouselItem1>
+                    <carouselItem2
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Carousel Item 2"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                        	<column
+                        		jcr:primaryType="nt:unstructured"
+                        		sling:resourceType="granite/ui/components/coral/foundation/container">
+                        		<items jcr:primaryType="nt:unstructured">                        
+		                            <carItem2Label
+		                                jcr:primaryType="nt:unstructured"
+		                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+		                                fieldDescription="Please provide label for the Carousel Item"
+		                                fieldLabel="Label"
+		                                name="./carItem2Label"/>
+		                            <carItem2BgImg
+		                                jcr:primaryType="nt:unstructured"
+		                                sling:resourceType="pcwr/cq/gui/components/authoring/dialog/fileupload"
+		                                autoStart="{Boolean}false"
+		                                class="cq-droptarget"
+		                                fieldLabel="Background Image"
+		                                fileNameParameter="./carItem2BgImgFileName"
+		                                fileReferenceParameter="./carItem2BgImgFileRef"
+		                                mimeTypes="[image/jpeg,image/png]"
+		                                multiple="{Boolean}false"
+		                                name="./carItem2BgImgFile"
+		                                title="Upload Image Asset"
+		                                uploadUrl="${suffix.path}"
+		                                useHTML5="{Boolean}true"
+		                                allowUpload="{Boolean}false"/>
+		                            <carItem2Icon
+		                                jcr:primaryType="nt:unstructured"
+		                                sling:resourceType="pcwr/cq/gui/components/authoring/dialog/fileupload"
+		                                autoStart="{Boolean}false"
+		                                class="cq-droptarget"
+		                                fieldLabel="Card Icon"
+		                                fileNameParameter="./carItem2IconFileName"
+		                                fileReferenceParameter="./carItem2IconFileRef"
+		                                mimeTypes="[image/jpeg,image/png,image/svg]"
+		                                multiple="{Boolean}false"
+		                                name="./carItem2IconFile"
+		                                title="Upload Image Asset"
+		                                uploadUrl="${suffix.path}"
+		                                useHTML5="{Boolean}true"
+		                                allowUpload="{Boolean}false"/>
+		                            <carItem2Title
+		                                jcr:primaryType="nt:unstructured"
+		                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+		                                fieldDescription="Please provide Title for the Carousel Item Card"
+		                                fieldLabel="Carousel Item Card Title"
+		                                name="./carItem2Title"/>
+									<carItem2Body
+				                        jcr:primaryType="nt:unstructured"
+				                        sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+				                        fieldLabel="Carousel Item Card Body"
+				                        name="./carItem2Body"
+				                        useFixedInlineToolbar="{Boolean}true">
+										<rtePlugins jcr:primaryType="nt:unstructured">
+					                        <edit
+					                            jcr:primaryType="nt:unstructured"
+					                            features="*"/>
+					                        <format
+					                            jcr:primaryType="nt:unstructured"
+					                            features="*"/>
+					                        <justify
+					                            jcr:primaryType="nt:unstructured"
+					                            features="*"/>
+					                        <lists
+					                            jcr:primaryType="nt:unstructured"
+					                            features="*"/>
+											<paraformat 
+												jcr:primaryType="nt:unstructured"
+												features="*">
+				                                <formats jcr:primaryType="nt:unstructured">
+				                                    <default_p
+				                                        jcr:primaryType="nt:unstructured"
+				                                        description="Paragraph"
+				                                        tag="p"/>
+				                                    <default_h1
+				                                        jcr:primaryType="nt:unstructured"
+				                                        description="Heading 1"
+				                                        tag="h1"/>
+				                                    <default_h2
+				                                        jcr:primaryType="nt:unstructured"
+				                                        description="Heading 2"
+				                                        tag="h2"/>
+				                                    <default_h3
+				                                        jcr:primaryType="nt:unstructured"
+				                                        description="Heading 3"
+				                                        tag="h3"/>
+				                                    <default_h4
+				                                        jcr:primaryType="nt:unstructured"
+				                                        description="Heading 4"
+				                                        tag="h4"/>
+				                                    <default_h5
+				                                        jcr:primaryType="nt:unstructured"
+				                                        description="Heading 5"
+				                                        tag="h5"/>
+				                                    <default_h6
+				                                        jcr:primaryType="nt:unstructured"
+				                                        description="Heading 6"
+				                                        tag="h6"/>
+				                                </formats>
+				                            </paraformat>
+					                        <links
+					                            jcr:primaryType="nt:unstructured"
+					                            features="*"/>
+					                        <findreplace
+					                            jcr:primaryType="nt:unstructured"
+					                            features="*"/>
+					                        <subsuperscript
+					                            jcr:primaryType="nt:unstructured"
+					                            features="*"/>
+					                        <misctools
+					                            jcr:primaryType="nt:unstructured"
+					                            features="*">
+					                            <specialCharsConfig jcr:primaryType="nt:unstructured">
+					                                <chars jcr:primaryType="nt:unstructured">
+					                                    <copyright
+					                                        jcr:primaryType="nt:unstructured"
+					                                        entity="&amp;#169;"/>
+					                                    <trademark
+					                                        jcr:primaryType="nt:unstructured"
+					                                        entity="&amp;#8482;"/>
+					                                    <registered
+					                                        jcr:primaryType="nt:unstructured"
+					                                        entity="&amp;#174;"/>
+					                                    <emDash
+					                                        jcr:primaryType="nt:unstructured"
+					                                        entity="&amp;#8212;"/>
+					                                    <pound
+					                                        jcr:primaryType="nt:unstructured"
+					                                        entity="&amp;#163;"/>
+					                                    <nbsp
+					                                        jcr:primaryType="nt:unstructured"
+					                                        entity="&amp;#160;"/>
+					                                </chars>
+					                            </specialCharsConfig>
+					                        </misctools>
+					                        <table
+					                            jcr:primaryType="nt:unstructured"
+					                            features="*"/>
+					                    </rtePlugins>
+				                        <uiSettings jcr:primaryType="nt:unstructured">
+				                            <cui jcr:primaryType="nt:unstructured">
+				                                <inline
+				                                    jcr:primaryType="nt:unstructured"
+				                                    toolbar="[edit#copy,edit#paste-default,edit#paste-plaintext,edit#paste-wordhtml,format#bold,format#italic,format#underline,#justify,#lists,subsuperscript#subscript,subsuperscript#superscript,links#modifylink,links#unlink,links#anchor,findreplace#find,findreplace#replace,misctools#specialchars,misctools#sourceedit,#paraformat,table#table]">
+				                                    <popovers jcr:primaryType="nt:unstructured">
+				                                        <justify
+				                                            jcr:primaryType="nt:unstructured"
+				                                            items="[justify#justifyleft,justify#justifycenter,justify#justifyright]"
+				                                            ref="justify"/>
+				                                        <lists
+				                                            jcr:primaryType="nt:unstructured"
+				                                            items="[lists#unordered,lists#ordered,lists#outdent,lists#indent]"
+				                                            ref="lists"/>
+				                                        <paraformat
+				                                            jcr:primaryType="nt:unstructured"
+				                                            items="paraformat:getFormats:paraformat-pulldown"
+				                                            ref="paraformat"/>
+				                                        <styles
+				                                            jcr:primaryType="nt:unstructured"
+				                                            items="styles:getStyles:styles-pulldown"
+				                                            ref="styles"/>
+				                                    </popovers>
+				                                </inline>
+				                            </cui>
+			                       	 	</uiSettings>                        
+			                    	</carItem2Body>		        
+				                    <carItem2DisplayCTA
+				                        jcr:primaryType="nt:unstructured"
+				                        sling:resourceType="granite/ui/components/foundation/form/checkbox"
+				                        name="./carItem2DisplayCTA"
+				                        text="Enable Call To Action"
+				                        value="true"/>                        
+				                    <carItem2CTALabel
+				                        jcr:primaryType="nt:unstructured"
+				                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+				                        fieldDescription="Enter a Call To Action such as Learn More or Get Started"
+				                        fieldLabel="Action Label"
+				                        name="./carItem2CTALabel"/>                        
+				                    <carItem2CTATarget
+				                        jcr:primaryType="nt:unstructured"
+				                        sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+				                        fieldLabel="Target"
+				                        name="./carItem2CTATarget"
+				                        rootPath="/content/pl-corp"/>			                    	                                                        
+                        		</items>
+                        	</column>
+                        </items>
+                    </carouselItem2>
+                    <carouselItem3
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Carousel Item 3"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                        	<column
+                        		jcr:primaryType="nt:unstructured"
+                        		sling:resourceType="granite/ui/components/coral/foundation/container">
+                        			<items jcr:primaryType="nt:unstructured">                        
+		                            <carItem3Label
+		                                jcr:primaryType="nt:unstructured"
+		                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+		                                fieldDescription="Please provide label for the Carousel Item"
+		                                fieldLabel="Label"
+		                                name="./carItem3Label"/>
+		                            <carItem3BgImg
+		                                jcr:primaryType="nt:unstructured"
+		                                sling:resourceType="pcwr/cq/gui/components/authoring/dialog/fileupload"
+		                                autoStart="{Boolean}false"
+		                                class="cq-droptarget"
+		                                fieldLabel="Background Image"
+		                                fileNameParameter="./carItem3BgImgFileName"
+		                                fileReferenceParameter="./carItem3BgImgFileRef"
+		                                mimeTypes="[image/jpeg,image/png]"
+		                                multiple="{Boolean}false"
+		                                name="./carItem3BgImgFile"
+		                                title="Upload Image Asset"
+		                                uploadUrl="${suffix.path}"
+		                                useHTML5="{Boolean}true"
+		                                allowUpload="{Boolean}false"/>
+		                            <carItem3Icon
+		                                jcr:primaryType="nt:unstructured"
+		                                sling:resourceType="pcwr/cq/gui/components/authoring/dialog/fileupload"
+		                                autoStart="{Boolean}false"
+		                                class="cq-droptarget"
+		                                fieldLabel="Card Icon"
+		                                fileNameParameter="./carItem3IconFileName"
+		                                fileReferenceParameter="./carItem3IconFileRef"
+		                                mimeTypes="[image/jpeg,image/png,image/svg]"
+		                                multiple="{Boolean}false"
+		                                name="./carItem3IconFile"
+		                                title="Upload Image Asset"
+		                                uploadUrl="${suffix.path}"
+		                                useHTML5="{Boolean}true"
+		                                allowUpload="{Boolean}false"/>
+		                            <carItem3Title
+		                                jcr:primaryType="nt:unstructured"
+		                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+		                                fieldDescription="Please provide Title for the Carousel Item Card"
+		                                fieldLabel="Carousel Item Card Title"
+		                                name="./carItem3Title"/>
+									<carItem3Body
+				                        jcr:primaryType="nt:unstructured"
+				                        sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+				                        fieldLabel="Carousel Item Card Body"
+				                        name="./carItem3Body"
+				                        useFixedInlineToolbar="{Boolean}true">
+										<rtePlugins jcr:primaryType="nt:unstructured">
+					                        <edit
+					                            jcr:primaryType="nt:unstructured"
+					                            features="*"/>
+					                        <format
+					                            jcr:primaryType="nt:unstructured"
+					                            features="*"/>
+					                        <justify
+					                            jcr:primaryType="nt:unstructured"
+					                            features="*"/>
+					                        <lists
+					                            jcr:primaryType="nt:unstructured"
+					                            features="*"/>
+											<paraformat 
+												jcr:primaryType="nt:unstructured"
+												features="*">
+				                                <formats jcr:primaryType="nt:unstructured">
+				                                    <default_p
+				                                        jcr:primaryType="nt:unstructured"
+				                                        description="Paragraph"
+				                                        tag="p"/>
+				                                    <default_h1
+				                                        jcr:primaryType="nt:unstructured"
+				                                        description="Heading 1"
+				                                        tag="h1"/>
+				                                    <default_h2
+				                                        jcr:primaryType="nt:unstructured"
+				                                        description="Heading 2"
+				                                        tag="h2"/>
+				                                    <default_h3
+				                                        jcr:primaryType="nt:unstructured"
+				                                        description="Heading 3"
+				                                        tag="h3"/>
+				                                    <default_h4
+				                                        jcr:primaryType="nt:unstructured"
+				                                        description="Heading 4"
+				                                        tag="h4"/>
+				                                    <default_h5
+				                                        jcr:primaryType="nt:unstructured"
+				                                        description="Heading 5"
+				                                        tag="h5"/>
+				                                    <default_h6
+				                                        jcr:primaryType="nt:unstructured"
+				                                        description="Heading 6"
+				                                        tag="h6"/>
+				                                </formats>
+				                            </paraformat>
+					                        <links
+					                            jcr:primaryType="nt:unstructured"
+					                            features="*"/>
+					                        <findreplace
+					                            jcr:primaryType="nt:unstructured"
+					                            features="*"/>
+					                        <subsuperscript
+					                            jcr:primaryType="nt:unstructured"
+					                            features="*"/>
+					                        <misctools
+					                            jcr:primaryType="nt:unstructured"
+					                            features="*">
+					                            <specialCharsConfig jcr:primaryType="nt:unstructured">
+					                                <chars jcr:primaryType="nt:unstructured">
+					                                    <copyright
+					                                        jcr:primaryType="nt:unstructured"
+					                                        entity="&amp;#169;"/>
+					                                    <trademark
+					                                        jcr:primaryType="nt:unstructured"
+					                                        entity="&amp;#8482;"/>
+					                                    <registered
+					                                        jcr:primaryType="nt:unstructured"
+					                                        entity="&amp;#174;"/>
+					                                    <emDash
+					                                        jcr:primaryType="nt:unstructured"
+					                                        entity="&amp;#8212;"/>
+					                                    <pound
+					                                        jcr:primaryType="nt:unstructured"
+					                                        entity="&amp;#163;"/>
+					                                    <nbsp
+					                                        jcr:primaryType="nt:unstructured"
+					                                        entity="&amp;#160;"/>
+					                                </chars>
+					                            </specialCharsConfig>
+					                        </misctools>
+					                        <table
+					                            jcr:primaryType="nt:unstructured"
+					                            features="*"/>
+					                    </rtePlugins>
+				                        <uiSettings jcr:primaryType="nt:unstructured">
+				                            <cui jcr:primaryType="nt:unstructured">
+				                                <inline
+				                                    jcr:primaryType="nt:unstructured"
+				                                    toolbar="[edit#copy,edit#paste-default,edit#paste-plaintext,edit#paste-wordhtml,format#bold,format#italic,format#underline,#justify,#lists,subsuperscript#subscript,subsuperscript#superscript,links#modifylink,links#unlink,links#anchor,findreplace#find,findreplace#replace,misctools#specialchars,misctools#sourceedit,#paraformat,table#table]">
+				                                    <popovers jcr:primaryType="nt:unstructured">
+				                                        <justify
+				                                            jcr:primaryType="nt:unstructured"
+				                                            items="[justify#justifyleft,justify#justifycenter,justify#justifyright]"
+				                                            ref="justify"/>
+				                                        <lists
+				                                            jcr:primaryType="nt:unstructured"
+				                                            items="[lists#unordered,lists#ordered,lists#outdent,lists#indent]"
+				                                            ref="lists"/>
+				                                        <paraformat
+				                                            jcr:primaryType="nt:unstructured"
+				                                            items="paraformat:getFormats:paraformat-pulldown"
+				                                            ref="paraformat"/>
+				                                        <styles
+				                                            jcr:primaryType="nt:unstructured"
+				                                            items="styles:getStyles:styles-pulldown"
+				                                            ref="styles"/>
+				                                    </popovers>
+				                                </inline>
+				                            </cui>
+			                       	 	</uiSettings>                        
+			                    	</carItem3Body>
+				                    <carItem3DisplayCTA
+				                        jcr:primaryType="nt:unstructured"
+				                        sling:resourceType="granite/ui/components/foundation/form/checkbox"
+				                        name="./carItem3DisplayCTA"
+				                        text="Enable Call To Action"
+				                        value="true"/>                        
+				                    <carItem3CTALabel
+				                        jcr:primaryType="nt:unstructured"
+				                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+				                        fieldDescription="Enter a Call To Action such as Learn More or Get Started"
+				                        fieldLabel="Action Label"
+				                        name="./carItem3CTALabel"/>                        
+				                    <carItem3CTATarget
+				                        jcr:primaryType="nt:unstructured"
+				                        sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+				                        fieldLabel="Target"
+				                        name="./carItem3CTATarget"
+				                        rootPath="/content/pl-corp"/>			                    			                                
+			                	</items>
+			            	</column>                                
+                        </items>
+                    </carouselItem3>
+                    <carouselItem4
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Carousel Item 4"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                        	<column
+                        		jcr:primaryType="nt:unstructured"
+                        		sling:resourceType="granite/ui/components/coral/foundation/container">
+                        		<items jcr:primaryType="nt:unstructured">                        
+		                            <carItem4Label
+		                                jcr:primaryType="nt:unstructured"
+		                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+		                                fieldDescription="Please provide label for the Carousel Item"
+		                                fieldLabel="Label"
+		                                name="./carItem4Label"/>
+		                            <carItem4BgImg
+		                                jcr:primaryType="nt:unstructured"
+		                                sling:resourceType="pcwr/cq/gui/components/authoring/dialog/fileupload"
+		                                autoStart="{Boolean}false"
+		                                class="cq-droptarget"
+		                                fieldLabel="Background Image"
+		                                fileNameParameter="./carItem4BgImgFileName"
+		                                fileReferenceParameter="./carItem4BgImgFileRef"
+		                                mimeTypes="[image/jpeg,image/png]"
+		                                multiple="{Boolean}false"
+		                                name="./carItem4BgImgFile"
+		                                title="Upload Image Asset"
+		                                uploadUrl="${suffix.path}"
+		                                useHTML5="{Boolean}true"
+		                                allowUpload="{Boolean}false"/>
+		                            <carItem4Icon
+		                                jcr:primaryType="nt:unstructured"
+		                                sling:resourceType="pcwr/cq/gui/components/authoring/dialog/fileupload"
+		                                autoStart="{Boolean}false"
+		                                class="cq-droptarget"
+		                                fieldLabel="Card Icon"
+		                                fileNameParameter="./carItem4IconFileName"
+		                                fileReferenceParameter="./carItem4IconFileRef"
+		                                mimeTypes="[image/jpeg,image/png,image/svg]"
+		                                multiple="{Boolean}false"
+		                                name="./carItem4IconFile"
+		                                title="Upload Image Asset"
+		                                uploadUrl="${suffix.path}"
+		                                useHTML5="{Boolean}true"
+		                                allowUpload="{Boolean}false"/>
+		                            <carItem4Title
+		                                jcr:primaryType="nt:unstructured"
+		                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+		                                fieldDescription="Please provide Title for the Carousel Item Card"
+		                                fieldLabel="Carousel Item Card Title"
+		                                name="./carItem4Title"/>
+									<carItem4Body
+				                        jcr:primaryType="nt:unstructured"
+				                        sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+				                        fieldLabel="Carousel Item Card Body"
+				                        name="./carItem4Body"
+				                        useFixedInlineToolbar="{Boolean}true">
+										<rtePlugins jcr:primaryType="nt:unstructured">
+					                        <edit
+					                            jcr:primaryType="nt:unstructured"
+					                            features="*"/>
+					                        <format
+					                            jcr:primaryType="nt:unstructured"
+					                            features="*"/>
+					                        <justify
+					                            jcr:primaryType="nt:unstructured"
+					                            features="*"/>
+					                        <lists
+					                            jcr:primaryType="nt:unstructured"
+					                            features="*"/>
+											<paraformat 
+												jcr:primaryType="nt:unstructured"
+												features="*">
+				                                <formats jcr:primaryType="nt:unstructured">
+				                                    <default_p
+				                                        jcr:primaryType="nt:unstructured"
+				                                        description="Paragraph"
+				                                        tag="p"/>
+				                                    <default_h1
+				                                        jcr:primaryType="nt:unstructured"
+				                                        description="Heading 1"
+				                                        tag="h1"/>
+				                                    <default_h2
+				                                        jcr:primaryType="nt:unstructured"
+				                                        description="Heading 2"
+				                                        tag="h2"/>
+				                                    <default_h3
+				                                        jcr:primaryType="nt:unstructured"
+				                                        description="Heading 3"
+				                                        tag="h3"/>
+				                                    <default_h4
+				                                        jcr:primaryType="nt:unstructured"
+				                                        description="Heading 4"
+				                                        tag="h4"/>
+				                                    <default_h5
+				                                        jcr:primaryType="nt:unstructured"
+				                                        description="Heading 5"
+				                                        tag="h5"/>
+				                                    <default_h6
+				                                        jcr:primaryType="nt:unstructured"
+				                                        description="Heading 6"
+				                                        tag="h6"/>
+				                                </formats>
+				                            </paraformat>
+					                        <links
+					                            jcr:primaryType="nt:unstructured"
+					                            features="*"/>
+					                        <findreplace
+					                            jcr:primaryType="nt:unstructured"
+					                            features="*"/>
+					                        <subsuperscript
+					                            jcr:primaryType="nt:unstructured"
+					                            features="*"/>
+					                        <misctools
+					                            jcr:primaryType="nt:unstructured"
+					                            features="*">
+					                            <specialCharsConfig jcr:primaryType="nt:unstructured">
+					                                <chars jcr:primaryType="nt:unstructured">
+					                                    <copyright
+					                                        jcr:primaryType="nt:unstructured"
+					                                        entity="&amp;#169;"/>
+					                                    <trademark
+					                                        jcr:primaryType="nt:unstructured"
+					                                        entity="&amp;#8482;"/>
+					                                    <registered
+					                                        jcr:primaryType="nt:unstructured"
+					                                        entity="&amp;#174;"/>
+					                                    <emDash
+					                                        jcr:primaryType="nt:unstructured"
+					                                        entity="&amp;#8212;"/>
+					                                    <pound
+					                                        jcr:primaryType="nt:unstructured"
+					                                        entity="&amp;#163;"/>
+					                                    <nbsp
+					                                        jcr:primaryType="nt:unstructured"
+					                                        entity="&amp;#160;"/>
+					                                </chars>
+					                            </specialCharsConfig>
+					                        </misctools>
+					                        <table
+					                            jcr:primaryType="nt:unstructured"
+					                            features="*"/>
+					                    </rtePlugins>
+				                        <uiSettings jcr:primaryType="nt:unstructured">
+				                            <cui jcr:primaryType="nt:unstructured">
+				                                <inline
+				                                    jcr:primaryType="nt:unstructured"
+				                                    toolbar="[edit#copy,edit#paste-default,edit#paste-plaintext,edit#paste-wordhtml,format#bold,format#italic,format#underline,#justify,#lists,subsuperscript#subscript,subsuperscript#superscript,links#modifylink,links#unlink,links#anchor,findreplace#find,findreplace#replace,misctools#specialchars,misctools#sourceedit,#paraformat,table#table]">
+				                                    <popovers jcr:primaryType="nt:unstructured">
+				                                        <justify
+				                                            jcr:primaryType="nt:unstructured"
+				                                            items="[justify#justifyleft,justify#justifycenter,justify#justifyright]"
+				                                            ref="justify"/>
+				                                        <lists
+				                                            jcr:primaryType="nt:unstructured"
+				                                            items="[lists#unordered,lists#ordered,lists#outdent,lists#indent]"
+				                                            ref="lists"/>
+				                                        <paraformat
+				                                            jcr:primaryType="nt:unstructured"
+				                                            items="paraformat:getFormats:paraformat-pulldown"
+				                                            ref="paraformat"/>
+				                                        <styles
+				                                            jcr:primaryType="nt:unstructured"
+				                                            items="styles:getStyles:styles-pulldown"
+				                                            ref="styles"/>
+				                                    </popovers>
+				                                </inline>
+				                            </cui>
+			                       	 	</uiSettings>                        
+			                    	</carItem4Body>		                                
+				                    <carItem4DisplayCTA
+				                        jcr:primaryType="nt:unstructured"
+				                        sling:resourceType="granite/ui/components/foundation/form/checkbox"
+				                        name="./carItem4DisplayCTA"
+				                        text="Enable Call To Action"
+				                        value="true"/>                        
+				                    <carItem4CTALabel
+				                        jcr:primaryType="nt:unstructured"
+				                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+				                        fieldDescription="Enter a Call To Action such as Learn More or Get Started"
+				                        fieldLabel="Action Label"
+				                        name="./carItem4CTALabel"/>                        
+				                    <carItem4CTATarget
+				                        jcr:primaryType="nt:unstructured"
+				                        sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+				                        fieldLabel="Target"
+				                        name="./carItem4CTATarget"
+				                        rootPath="/content/pl-corp"/>			                    	
+			            		</items>
+			            	</column>	                                
+                        </items>
+                    </carouselItem4>
+                    <carouselItem5
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Carousel Item 5"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                        	<column
+                        		jcr:primaryType="nt:unstructured"
+                        		sling:resourceType="granite/ui/components/coral/foundation/container">
+                        		<items jcr:primaryType="nt:unstructured">                        
+		                            <carItem5Label
+		                                jcr:primaryType="nt:unstructured"
+		                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+		                                fieldDescription="Please provide label for the Carousel Item"
+		                                fieldLabel="Label"
+		                                name="./carItem5Label"/>
+		                            <carItem5BgImg
+		                                jcr:primaryType="nt:unstructured"
+		                                sling:resourceType="pcwr/cq/gui/components/authoring/dialog/fileupload"
+		                                autoStart="{Boolean}false"
+		                                class="cq-droptarget"
+		                                fieldLabel="Background Image"
+		                                fileNameParameter="./carItem5BgImgFileName"
+		                                fileReferenceParameter="./carItem5BgImgFileRef"
+		                                mimeTypes="[image/jpeg,image/png]"
+		                                multiple="{Boolean}false"
+		                                name="./carItem5BgImgFile"
+		                                title="Upload Image Asset"
+		                                uploadUrl="${suffix.path}"
+		                                useHTML5="{Boolean}true"
+		                                allowUpload="{Boolean}false"/>
+		                            <carItem5Icon
+		                                jcr:primaryType="nt:unstructured"
+		                                sling:resourceType="pcwr/cq/gui/components/authoring/dialog/fileupload"
+		                                autoStart="{Boolean}false"
+		                                class="cq-droptarget"
+		                                fieldLabel="Card Icon"
+		                                fileNameParameter="./carItem5IconFileName"
+		                                fileReferenceParameter="./carItem5IconFileRef"
+		                                mimeTypes="[image/jpeg,image/png,image/svg]"
+		                                multiple="{Boolean}false"
+		                                name="./carItem5IconFile"
+		                                title="Upload Image Asset"
+		                                uploadUrl="${suffix.path}"
+		                                useHTML5="{Boolean}true"
+		                                allowUpload="{Boolean}false"/>
+		                            <carItem5Title
+		                                jcr:primaryType="nt:unstructured"
+		                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+		                                fieldDescription="Please provide Title for the Carousel Item Card"
+		                                fieldLabel="Carousel Item Card Title"
+		                                name="./carItem5Title"/>
+									<carItem5Body
+				                        jcr:primaryType="nt:unstructured"
+				                        sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+				                        fieldLabel="Carousel Item Card Body"
+				                        name="./carItem5Body"
+				                        useFixedInlineToolbar="{Boolean}true">
+										<rtePlugins jcr:primaryType="nt:unstructured">
+					                        <edit
+					                            jcr:primaryType="nt:unstructured"
+					                            features="*"/>
+					                        <format
+					                            jcr:primaryType="nt:unstructured"
+					                            features="*"/>
+					                        <justify
+					                            jcr:primaryType="nt:unstructured"
+					                            features="*"/>
+					                        <lists
+					                            jcr:primaryType="nt:unstructured"
+					                            features="*"/>
+											<paraformat 
+												jcr:primaryType="nt:unstructured"
+												features="*">
+				                                <formats jcr:primaryType="nt:unstructured">
+				                                    <default_p
+				                                        jcr:primaryType="nt:unstructured"
+				                                        description="Paragraph"
+				                                        tag="p"/>
+				                                    <default_h1
+				                                        jcr:primaryType="nt:unstructured"
+				                                        description="Heading 1"
+				                                        tag="h1"/>
+				                                    <default_h2
+				                                        jcr:primaryType="nt:unstructured"
+				                                        description="Heading 2"
+				                                        tag="h2"/>
+				                                    <default_h3
+				                                        jcr:primaryType="nt:unstructured"
+				                                        description="Heading 3"
+				                                        tag="h3"/>
+				                                    <default_h4
+				                                        jcr:primaryType="nt:unstructured"
+				                                        description="Heading 4"
+				                                        tag="h4"/>
+				                                    <default_h5
+				                                        jcr:primaryType="nt:unstructured"
+				                                        description="Heading 5"
+				                                        tag="h5"/>
+				                                    <default_h6
+				                                        jcr:primaryType="nt:unstructured"
+				                                        description="Heading 6"
+				                                        tag="h6"/>
+				                                </formats>
+				                            </paraformat>
+					                        <links
+					                            jcr:primaryType="nt:unstructured"
+					                            features="*"/>
+					                        <findreplace
+					                            jcr:primaryType="nt:unstructured"
+					                            features="*"/>
+					                        <subsuperscript
+					                            jcr:primaryType="nt:unstructured"
+					                            features="*"/>
+					                        <misctools
+					                            jcr:primaryType="nt:unstructured"
+					                            features="*">
+					                            <specialCharsConfig jcr:primaryType="nt:unstructured">
+					                                <chars jcr:primaryType="nt:unstructured">
+					                                    <copyright
+					                                        jcr:primaryType="nt:unstructured"
+					                                        entity="&amp;#169;"/>
+					                                    <trademark
+					                                        jcr:primaryType="nt:unstructured"
+					                                        entity="&amp;#8482;"/>
+					                                    <registered
+					                                        jcr:primaryType="nt:unstructured"
+					                                        entity="&amp;#174;"/>
+					                                    <emDash
+					                                        jcr:primaryType="nt:unstructured"
+					                                        entity="&amp;#8212;"/>
+					                                    <pound
+					                                        jcr:primaryType="nt:unstructured"
+					                                        entity="&amp;#163;"/>
+					                                    <nbsp
+					                                        jcr:primaryType="nt:unstructured"
+					                                        entity="&amp;#160;"/>
+					                                </chars>
+					                            </specialCharsConfig>
+					                        </misctools>
+					                        <table
+					                            jcr:primaryType="nt:unstructured"
+					                            features="*"/>
+					                    </rtePlugins>
+				                        <uiSettings jcr:primaryType="nt:unstructured">
+				                            <cui jcr:primaryType="nt:unstructured">
+				                                <inline
+				                                    jcr:primaryType="nt:unstructured"
+				                                    toolbar="[edit#copy,edit#paste-default,edit#paste-plaintext,edit#paste-wordhtml,format#bold,format#italic,format#underline,#justify,#lists,subsuperscript#subscript,subsuperscript#superscript,links#modifylink,links#unlink,links#anchor,findreplace#find,findreplace#replace,misctools#specialchars,misctools#sourceedit,#paraformat,table#table]">
+				                                    <popovers jcr:primaryType="nt:unstructured">
+				                                        <justify
+				                                            jcr:primaryType="nt:unstructured"
+				                                            items="[justify#justifyleft,justify#justifycenter,justify#justifyright]"
+				                                            ref="justify"/>
+				                                        <lists
+				                                            jcr:primaryType="nt:unstructured"
+				                                            items="[lists#unordered,lists#ordered,lists#outdent,lists#indent]"
+				                                            ref="lists"/>
+				                                        <paraformat
+				                                            jcr:primaryType="nt:unstructured"
+				                                            items="paraformat:getFormats:paraformat-pulldown"
+				                                            ref="paraformat"/>
+				                                        <styles
+				                                            jcr:primaryType="nt:unstructured"
+				                                            items="styles:getStyles:styles-pulldown"
+				                                            ref="styles"/>
+				                                    </popovers>
+				                                </inline>
+				                            </cui>
+			                       	 	</uiSettings>                        
+			                    	</carItem5Body>		    
+				                    <carItem5DisplayCTA
+				                        jcr:primaryType="nt:unstructured"
+				                        sling:resourceType="granite/ui/components/foundation/form/checkbox"
+				                        name="./carItem5DisplayCTA"
+				                        text="Enable Call To Action"
+				                        value="true"/>                        
+				                    <carItem5CTALabel
+				                        jcr:primaryType="nt:unstructured"
+				                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+				                        fieldDescription="Enter a Call To Action such as Learn More or Get Started"
+				                        fieldLabel="Action Label"
+				                        name="./carItem5CTALabel"/>                        
+				                    <carItem5CTATarget
+				                        jcr:primaryType="nt:unstructured"
+				                        sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+				                        fieldLabel="Target"
+				                        name="./carItem5CTATarget"
+				                        rootPath="/content/pl-corp"/>			                    	                            
+		                		</items>
+		                	</column>                                
+                        </items>
+                    </carouselItem5>                                                            
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

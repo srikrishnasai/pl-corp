@@ -1,0 +1,18 @@
+<div data-component-name="Daily Unit Values" class="row" id="duvselbox" data-sly-use.config="${'com.paclife.core.services.Configuration'}">
+
+	<div class="col-sm-3"></div>
+	<div class="input-group col-sm-6 p-3 daily-unit-dropdown">
+	  <select class="custom-select" name="select-perfproducts" id="select-perfproducts">
+	    <option selected>(Select a product)</option>
+	  </select>
+	  <!--/*<div class="input-group-append">
+	    <button class="btn btn-outline-secondary" type="submit" name="button-getvalues" id="button-getvalues">Get Values</button>
+	  </div>*/-->
+	</div>
+	<div class="col-sm-3"></div>
+
+	<div class="col-sm-2"></div>
+	<div class="pcwr-table pcwr-daily-unit-values col-sm-8 text-center" id="table-div-product" data-list-url="${config.productListUrl}" data-info-url="${config.productInfoUrl}"></div>
+	<div class="col-sm-2"></div>
+
+</div>

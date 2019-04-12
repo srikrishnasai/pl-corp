@@ -1,0 +1,111 @@
+//
+//Insights Card Container
+//
+.insights-card-main-headline{margin-bottom:1.9rem !important;}
+.insights-card{
+	margin:1rem;
+	//min-width:360px;
+	//max-width:360px;
+	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+	border-radius:0px;
+	width:22.625rem;
+	max-width:22.625rem;
+	min-width: 22.625rem;
+	min-height: 32.625rem;
+	margin-bottom: 1rem !important;
+	&:hover {
+		background-color:rgba(0, 0, 0, 0.02);
+	}
+
+	.insights-body{
+	    padding:1.9rem 1.9rem 0 1.9rem;
+	}
+	.insights-title{
+		font-family: 'Merriweather', serif;
+		font-size:27px;
+		font-weight:300;
+		text-transform:none;		
+	}
+	.insights-body-text{
+		//margin-bottom: 2.5rem;
+		/*fix for run on paragraphs, elipsis only supported in chrome*/
+		max-height:115px;
+		overflow:hidden;
+		display: -webkit-box;
+    	-webkit-box-orient: vertical;
+    	-webkit-line-clamp: 3;
+	}
+	.insights-img{
+		border-radius:0px;
+		max-height:182px;
+		min-height:182px;
+		max-width:360px;
+		min-width:360px;
+	}
+	.insights-tag-text{
+		font-family: Montserrat, sans-serif;
+		font-size:13px !important;
+		font-weight:bold;
+		letter-spacing:1.5px;
+		text-transform:uppercase;
+	}
+	.insights-icon{
+		vertical-align:middle;
+		margin-left: 1rem;
+		font-size: 26px;
+	}
+	.insights-card-footer{
+		background-color: initial;
+		border-top: none;
+		padding-bottom:1.9rem;
+		padding-right:1.9rem;
+		padding-left:1.9rem;
+	}
+	a.clickable{
+	    position: absolute;
+	    width: 100%;
+	    height: 100%;
+	    top: 0;
+	    left: 0;
+	    text-decoration: none;
+	    /* Makes sure the link   doesn't get underlined */
+	    z-index: 10;
+	    /* raises anchor tag above everything else in div */
+	    background-color: white;
+	    /*workaround to make clickable in IE */
+	    opacity: 0;
+	    /*workaround to make clickable in IE */
+	    filter: alpha(opacity=1);
+	    /*workaround to make clickable in IE */
+	    &:hover{background-color:rgba(0, 0, 0, 0.02); opacity: 1;}
+	}
+}
+.insights-featured-container{.insights-card-footer,.insights-body{background-color:#ffffff;}}
+.cta-see-all{
+	margin-top:30px;
+	margin-bottom:50px;
+	a{
+		font-size:16px;
+		font-weight:700;
+		&:hover{text-decoration:none;}
+		i{font-size:23px;vertical-align:middle;padding-bottom:2.5px;}
+	}
+}
+@media screen and (min-width: 768px) {
+	.insights-featured-container{ 
+		.insights-card{
+			&:first-child{margin-left:auto !important;}
+			&:last-child{margin-right:auto !important;}
+		}	
+	}
+}
+@media (max-width: 575.98px) {
+	.insights-card-main-headline{padding-left:1.5rem; padding-right:1.5rem;}
+	.insights-featured-container{
+		.insights-card{
+			margin: auto 39px auto 39px; overflow: hidden; width:100%; min-width:unset;
+			.insights-body{padding-right: 1.5rem;padding-left: 1.5rem;}
+			.insights-card-footer{padding-right: 1.5rem;padding-left: 1.5rem;}
+		}	
+	}
+}

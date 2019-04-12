@@ -1,0 +1,13 @@
+<sly data-sly-use.template="core/wcm/components/commons/v1/templates.html"/>
+<sly data-sly-call="${template.placeholder @ isEmpty=(wcmmode.edit && !properties.richText)}"/>
+ 
+<div class="alert alert-light small" data-sly-test="${wcmmode.edit && properties.richText}">
+  [disclosure] ${properties.title} | ${properties.displayWhen} | ${properties.state ? properties.state : 'None Specified'}
+</div>
+
+<div data-component-name="Product Disclosure" class="product-disclosure ${properties.cssType}" 
+     hidden="${!wcmmode.edit && properties.displayWhen != 'always' && properties.displayWhen != 'default'}"
+     data-sly-attribute.data-display-when="${properties.displayWhen}"
+     data-sly-attribute.data-groups="${properties.state}">
+<span class="pcwr-richtext">${properties.richText @ context = 'html'}</span>
+</div>

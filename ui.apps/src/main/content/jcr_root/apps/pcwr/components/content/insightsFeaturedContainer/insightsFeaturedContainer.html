@@ -1,0 +1,34 @@
+<sly data-sly-use.template="core/wcm/components/commons/v1/templates.html"/>
+<sly data-sly-call="${template.placeholder @ isEmpty=(wcmmode.edit && !properties.headline)}"/>
+<div data-component-name="Insights Featured Container" class="container-fluid">
+	
+	<h3 class="text-center insights-card-main-headline" data-sly-test="${properties.headline}">${properties.headline}</h3>
+	
+	<div data-sly-test="${properties.enableTagCloud}" class="row" data-sly-resource="${@path ='tagCloud' , resourceType = 'pcwr/components/content/tagCloud' } "></div>
+	<div class="row insights-featured-container">
+
+		<sly data-sly-use.cards="insightsFeaturedContainer.js" data-sly-list="${cards.cards}" > 
+            <sly data-sly-test.title='${item.properties["pageTitle"] || item.properties["jcr:title"]}'/>
+			<div class="card insights-card" data-media-block-title="${title}">
+			    <img class="card-img-top insights-img" src="${item.properties['insightCardThumbnail']}" alt="Card image cap">
+			    <div class="card-body insights-body">
+			    	
+			    	<!--/* Check if Tag has been associated with the page */-->
+			    	<sly data-sly-test="${item.properties['insightCategoryTag']}">
+				        <p class="insights-tag-text" data-sly-use.model="${'com.paclife.core.models.PCWRTagHelperModel' @ tagString = item.properties['insightCategoryTag']}">
+				        ${model.tag.title}
+			        	</p>
+		        	</sly>
+			        <h4 class="card-title insights-title">${title}</h4>
+			        <p class="p-alt-16 insights-body-text">${item.properties["insightCardDesc"]}</p>        
+			    </div>
+			    <div class="card-footer insights-card-footer">
+			    	<a href="${item.path @ extension='html'}" class="btn btn-primary cta-text-btn d-inline-block">${item.properties["insightCardBtnLabel"] }</a><i class="material-icons insights-icon">schedule</i>        <span class="insights-tag-text">${item.properties["insightCardReadTime"]}</span>
+			    </div>
+			    <!--/*TEST make the full card clickable*/-->
+	            <a href="${item.path @ extension='html'}" class='clickable'></a>
+			</div>
+		</sly>
+	</div>
+	<div data-sly-test="${properties.seeAllInsightsLabel}" class="text-center cta-see-all"><a class="cta-text-btn" href="${properties.seeAllTarget @ extension='html'}" >${properties.seeAllInsightsLabel}<i class="material-icons">keyboard_arrow_right</i> </a></div>
+</div>

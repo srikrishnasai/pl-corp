@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="cq:EditConfig">
+    <cq:inplaceEditing
+        jcr:primaryType="cq:InplaceEditingConfig"
+        active="{Boolean}true"
+        editorType="text">
+        <config jcr:primaryType="nt:unstructured">
+            <rtePlugins jcr:primaryType="nt:unstructured">
+	                        <edit
+	                            jcr:primaryType="nt:unstructured"
+	                            features="*"/>
+	                        <format
+	                            jcr:primaryType="nt:unstructured"
+	                            features="*"/>
+	                        <justify
+	                            jcr:primaryType="nt:unstructured"
+	                            features="*"/>
+	                        <lists
+	                            jcr:primaryType="nt:unstructured"
+	                            features="*"/>
+							<paraformat 
+								jcr:primaryType="nt:unstructured"
+								features="*">
+                                <formats jcr:primaryType="nt:unstructured">
+                                    <default_p
+                                        jcr:primaryType="nt:unstructured"
+                                        description="Paragraph"
+                                        tag="p"/>
+                                    <default_h1
+                                        jcr:primaryType="nt:unstructured"
+                                        description="Heading 1"
+                                        tag="h1"/>
+                                    <default_h2
+                                        jcr:primaryType="nt:unstructured"
+                                        description="Heading 2"
+                                        tag="h2"/>
+                                    <default_h3
+                                        jcr:primaryType="nt:unstructured"
+                                        description="Heading 3"
+                                        tag="h3"/>
+                                    <default_h4
+                                        jcr:primaryType="nt:unstructured"
+                                        description="Heading 4"
+                                        tag="h4"/>
+                                    <default_h5
+                                        jcr:primaryType="nt:unstructured"
+                                        description="Heading 5"
+                                        tag="h5"/>
+                                    <default_h6
+                                        jcr:primaryType="nt:unstructured"
+                                        description="Heading 6"
+                                        tag="h6"/>
+                                </formats>
+                            </paraformat>
+	                        <links
+	                            jcr:primaryType="nt:unstructured"
+	                            features="*"/>
+	                        <findreplace
+	                            jcr:primaryType="nt:unstructured"
+	                            features="*"/>
+	                        <subsuperscript
+	                            jcr:primaryType="nt:unstructured"
+	                            features="*"/>
+	                        <misctools
+	                            jcr:primaryType="nt:unstructured"
+	                            features="*">
+	                            <specialCharsConfig jcr:primaryType="nt:unstructured">
+	                                <chars jcr:primaryType="nt:unstructured">
+	                                    <copyright
+	                                        jcr:primaryType="nt:unstructured"
+	                                        entity="&amp;#169;"/>
+	                                    <trademark
+	                                        jcr:primaryType="nt:unstructured"
+	                                        entity="&amp;#8482;"/>
+	                                    <registered
+	                                        jcr:primaryType="nt:unstructured"
+	                                        entity="&amp;#174;"/>
+	                                    <emDash
+	                                        jcr:primaryType="nt:unstructured"
+	                                        entity="&amp;#8212;"/>
+	                                    <pound
+	                                        jcr:primaryType="nt:unstructured"
+	                                        entity="&amp;#163;"/>
+	                                    <nbsp
+	                                        jcr:primaryType="nt:unstructured"
+	                                        entity="&amp;#160;"/>
+	                                </chars>
+	                            </specialCharsConfig>
+	                        </misctools>
+	                        <table
+	                            jcr:primaryType="nt:unstructured"
+	                            features="*"/>
+	                    </rtePlugins>
+	                    <htmlRules jcr:primaryType="nt:unstructured"> 
+	                    	<blockHandling 
+	                    		jcr:primaryType="nt:unstructured" 
+	                    		removeSingleParagraphContainer="{Boolean}true"/> 
+                   		</htmlRules>
+                        
+        </config>
+    </cq:inplaceEditing>
+</jcr:root>

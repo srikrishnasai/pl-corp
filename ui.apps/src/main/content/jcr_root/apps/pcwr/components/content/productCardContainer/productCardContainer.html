@@ -1,0 +1,31 @@
+<sly data-sly-test.unconfigured = "${wcmmode.edit && !properties.productType}" />
+<sly data-sly-use.template="core/wcm/components/commons/v1/templates.html"/>
+<sly data-sly-call="${template.placeholder @ isEmpty=unconfigured}"/>
+<div data-component-name="Product Card Container" data-product-type="${properties.productType}"
+     class="bg-grey py-5" data-sly-test="${!unconfigured}">
+
+	<sly data-sly-use.cards="productCardContainer.js"></sly>
+
+	<h3 class="text-center mb-2 mx-auto product-card-container-headline">${properties.headline}</h3>
+	<p class="text-center">${properties.caption}</p>
+	<div></div>
+	<div data-sly-test="${!properties.hideDropdown}"
+		class="row d-flex justify-content-center state-drop-down-container">
+		<ul class="state-drop-down-list mx-auto">
+			<li class="init">[SELECT]</li>
+			<li data-sly-repeat="${cards.states}"
+				class="state-dropdown-value"
+				data-value="pacific-life:product-states/${item.name}">${item.jcr:title}</li>
+		</ul>
+
+	</div>
+	<div id="grid" class="row d-flex justify-content-center"
+		style="overflow: hidden;">
+
+		<sly data-sly-list="${cards.filtered}"> 
+            <sly data-sly-resource="${@path = item.path, selectors = 'render'}" /> 
+        </sly>
+	</div>
+	
+	<div id="no-products-msg" class="text-center d-none">${properties.productsNotFoundMsg || 'There are no products currently available in your state'}</div>
+</div>

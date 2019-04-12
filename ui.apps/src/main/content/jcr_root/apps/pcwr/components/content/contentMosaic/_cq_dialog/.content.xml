@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Content Mosaic"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <main
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Main"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                        	<column
+                        		jcr:primaryType="nt:unstructured"
+                        		sling:resourceType="granite/ui/components/coral/foundation/container">
+                        		<items jcr:primaryType="nt:unstructured">
+	                                <reduceTopPadding
+	                                    jcr:primaryType="nt:unstructured"
+	                                    sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+	                                    name="./reduceTopPadding"
+	                                    text="Connect to Component Above?"
+	                                    value="true"/>		                                              
+                                </items>
+                                </column>                                
+                        </items>
+                    </main>
+                    <card1
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Card 1"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                        	<column
+                        		jcr:primaryType="nt:unstructured"
+                        		sling:resourceType="granite/ui/components/coral/foundation/container">
+                        		<items jcr:primaryType="nt:unstructured">
+		                            <card1Icon
+		                                jcr:primaryType="nt:unstructured"
+		                                sling:resourceType="pcwr/cq/gui/components/authoring/dialog/fileupload"
+		                                autoStart="{Boolean}false"
+		                                class="cq-droptarget"
+		                                fieldLabel="Card Icon"
+		                                fileNameParameter="./card1IconFileName"
+		                                fileReferenceParameter="./card1IconFileRef"
+		                                mimeTypes="[image/jpeg,image/png,image/svg]"
+		                                multiple="{Boolean}false"
+		                                name="./card1IconFile"
+		                                title="Upload Image Asset"
+		                                uploadUrl="${suffix.path}"
+		                                useHTML5="{Boolean}true"
+		                                allowUpload="{Boolean}false"/>                        		
+		                            <card1Headline
+		                                jcr:primaryType="nt:unstructured"
+		                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+		                                fieldDescription="Please provide Headline for the Card"
+		                                fieldLabel="Headline"
+		                                name="./card1Headline"
+		                                />
+		                            <card1Body
+		                                jcr:primaryType="nt:unstructured"
+		                                sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+		                                fieldDescription="Please provide Text for the Card Body"
+		                                fieldLabel="Card Body"
+		                                name="./card1Body"
+		                                />		                                
+		                            <card1BgImg
+		                                jcr:primaryType="nt:unstructured"
+		                                sling:resourceType="pcwr/cq/gui/components/authoring/dialog/fileupload"
+		                                autoStart="{Boolean}false"
+		                                class="cq-droptarget"
+		                                fieldLabel="Background Image"
+		                                fileNameParameter="./card1BgImgFileName"
+		                                fileReferenceParameter="./card1BgImgFileRef"
+		                                mimeTypes="[image/jpeg,image/png]"
+		                                multiple="{Boolean}false"
+		                                name="./card1BgImgFile"
+		                                title="Upload Image Asset"
+		                                uploadUrl="${suffix.path}"
+		                                useHTML5="{Boolean}true"
+		                                allowUpload="{Boolean}false"/>
+				                    <card1DisplayCTA
+				                        jcr:primaryType="nt:unstructured"
+				                        sling:resourceType="granite/ui/components/foundation/form/checkbox"
+				                        name="./card1DisplayCTA"
+				                        text="Enable Call To Action"
+				                        value="true"/>		                                
+				                    <card1CTALabel
+				                        jcr:primaryType="nt:unstructured"
+				                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+				                        fieldDescription="Enter a Call To Action such as Learn More or Get Started"
+				                        fieldLabel="Action Label"
+				                        name="./card1CTALabel"/>                        
+				                    <card1CTATarget
+				                        jcr:primaryType="nt:unstructured"
+				                        sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+				                        fieldLabel="Target"
+				                        name="./card1CTATarget"
+				                        rootPath="/content/pl-corp"/>		                                                  
+                                    <videoCTA1
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                        name="./videoCTA1"
+                                        text="Video Call To Action"
+                                        value="true"/>
+	                                </items>
+                                </column>                                
+                        </items>
+                    </card1>
+                    <card2
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Card 2"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                        	<column
+                        		jcr:primaryType="nt:unstructured"
+                        		sling:resourceType="granite/ui/components/coral/foundation/container">
+                        		<items jcr:primaryType="nt:unstructured">
+		                            <card2Icon
+		                                jcr:primaryType="nt:unstructured"
+		                                sling:resourceType="pcwr/cq/gui/components/authoring/dialog/fileupload"
+		                                autoStart="{Boolean}false"
+		                                class="cq-droptarget"
+		                                fieldLabel="Card Icon"
+		                                fileNameParameter="./card2IconFileName"
+		                                fileReferenceParameter="./card2IconFileRef"
+		                                mimeTypes="[image/jpeg,image/png,image/svg]"
+		                                multiple="{Boolean}false"
+		                                name="./card2IconFile"
+		                                title="Upload Image Asset"
+		                                uploadUrl="${suffix.path}"
+		                                useHTML5="{Boolean}true"
+		                                allowUpload="{Boolean}false"/>                        		
+		                            <card2Headline
+		                                jcr:primaryType="nt:unstructured"
+		                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+		                                fieldDescription="Please provide Headline for the Card"
+		                                fieldLabel="Headline"
+		                                name="./card2Headline"
+		                                />
+		                            <card2Body
+		                                jcr:primaryType="nt:unstructured"
+		                                sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+		                                fieldDescription="Please provide Text for the Card Body"
+		                                fieldLabel="Card Body"
+		                                name="./card2Body"
+		                                />		                                
+		                            <card2BgImg
+		                                jcr:primaryType="nt:unstructured"
+		                                sling:resourceType="pcwr/cq/gui/components/authoring/dialog/fileupload"
+		                                autoStart="{Boolean}false"
+		                                class="cq-droptarget"
+		                                fieldLabel="Background Image"
+		                                fileNameParameter="./card2BgImgFileName"
+		                                fileReferenceParameter="./card2BgImgFileRef"
+		                                mimeTypes="[image/jpeg,image/png]"
+		                                multiple="{Boolean}false"
+		                                name="./card2BgImgFile"
+		                                title="Upload Image Asset"
+		                                uploadUrl="${suffix.path}"
+		                                useHTML5="{Boolean}true"
+		                                allowUpload="{Boolean}false"/>
+				                    <card2DisplayCTA
+				                        jcr:primaryType="nt:unstructured"
+				                        sling:resourceType="granite/ui/components/foundation/form/checkbox"
+				                        name="./card2DisplayCTA"
+				                        text="Enable Call To Action"
+				                        value="true"/>		                                      
+				                    <card2CTALabel
+				                        jcr:primaryType="nt:unstructured"
+				                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+				                        fieldDescription="Enter a Call To Action such as Learn More or Get Started"
+				                        fieldLabel="Action Label"
+				                        name="./card2CTALabel"/>                        
+				                    <card2CTATarget
+				                        jcr:primaryType="nt:unstructured"
+				                        sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+				                        fieldLabel="Target"
+				                        name="./card2CTATarget"
+				                        rootPath="/content/pl-corp"/>		                                            
+                                    <videoCTA2
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                        name="./videoCTA2"
+                                        text="Video Call To Action"
+                                        value="true"/>
+	                                </items>
+                                </column>                                
+                        </items>
+                    </card2>
+                    <card3
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Card 3"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                        	<column
+                        		jcr:primaryType="nt:unstructured"
+                        		sling:resourceType="granite/ui/components/coral/foundation/container">
+                        		<items jcr:primaryType="nt:unstructured">
+		                            <card3Icon
+		                                jcr:primaryType="nt:unstructured"
+		                                sling:resourceType="pcwr/cq/gui/components/authoring/dialog/fileupload"
+		                                autoStart="{Boolean}false"
+		                                class="cq-droptarget"
+		                                fieldLabel="Card Icon"
+		                                fileNameParameter="./card3IconFileName"
+		                                fileReferenceParameter="./card3IconFileRef"
+		                                mimeTypes="[image/jpeg,image/png,image/svg]"
+		                                multiple="{Boolean}false"
+		                                name="./card3IconFile"
+		                                title="Upload Image Asset"
+		                                uploadUrl="${suffix.path}"
+		                                useHTML5="{Boolean}true"
+		                                allowUpload="{Boolean}false"/>                        		
+		                            <card3Headline
+		                                jcr:primaryType="nt:unstructured"
+		                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+		                                fieldDescription="Please provide Headline for the Card"
+		                                fieldLabel="Headline"
+		                                name="./card3Headline"
+		                                />
+		                            <card3Body
+		                                jcr:primaryType="nt:unstructured"
+		                                sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+		                                fieldDescription="Please provide Text for the Card Body"
+		                                fieldLabel="Card Body"
+		                                name="./card3Body"
+		                                />		                                
+		                            <card3BgImg
+		                                jcr:primaryType="nt:unstructured"
+		                                sling:resourceType="pcwr/cq/gui/components/authoring/dialog/fileupload"
+		                                autoStart="{Boolean}false"
+		                                class="cq-droptarget"
+		                                fieldLabel="Background Image"
+		                                fileNameParameter="./card3BgImgFileName"
+		                                fileReferenceParameter="./card3BgImgFileRef"
+		                                mimeTypes="[image/jpeg,image/png]"
+		                                multiple="{Boolean}false"
+		                                name="./card3BgImgFile"
+		                                title="Upload Image Asset"
+		                                uploadUrl="${suffix.path}"
+		                                useHTML5="{Boolean}true"
+		                                allowUpload="{Boolean}false"/>
+				                    <card3DisplayCTA
+				                        jcr:primaryType="nt:unstructured"
+				                        sling:resourceType="granite/ui/components/foundation/form/checkbox"
+				                        name="./card3DisplayCTA"
+				                        text="Enable Call To Action"
+				                        value="true"/>		                                
+				                    <card3CTALabel
+				                        jcr:primaryType="nt:unstructured"
+				                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+				                        fieldDescription="Enter a Call To Action such as Learn More or Get Started"
+				                        fieldLabel="Action Label"
+				                        name="./card3CTALabel"/>                        
+				                    <card3CTATarget
+				                        jcr:primaryType="nt:unstructured"
+				                        sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+				                        fieldLabel="Target"
+				                        name="./card3CTATarget"
+				                        rootPath="/content/pl-corp"/>		                                                  
+                                    <videoCTA3
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                        name="./videoCTA3"
+                                        text="Video Call To Action"
+                                        value="true"/>
+	                                </items>
+                                </column>                                
+                        </items>
+                    </card3>
+                    <card4
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Card 4"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                        	<column
+                        		jcr:primaryType="nt:unstructured"
+                        		sling:resourceType="granite/ui/components/coral/foundation/container">
+                        		<items jcr:primaryType="nt:unstructured">
+		                            <card4Icon
+		                                jcr:primaryType="nt:unstructured"
+		                                sling:resourceType="pcwr/cq/gui/components/authoring/dialog/fileupload"
+		                                autoStart="{Boolean}false"
+		                                class="cq-droptarget"
+		                                fieldLabel="Card Icon"
+		                                fileNameParameter="./card4IconFileName"
+		                                fileReferenceParameter="./card4IconFileRef"
+		                                mimeTypes="[image/jpeg,image/png,image/svg]"
+		                                multiple="{Boolean}false"
+		                                name="./card4IconFile"
+		                                title="Upload Image Asset"
+		                                uploadUrl="${suffix.path}"
+		                                useHTML5="{Boolean}true"
+		                                allowUpload="{Boolean}false"/>                        		
+		                            <card4Headline
+		                                jcr:primaryType="nt:unstructured"
+		                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+		                                fieldDescription="Please provide Headline for the Card"
+		                                fieldLabel="Headline"
+		                                name="./card4Headline"
+		                                />
+		                            <card4Body
+		                                jcr:primaryType="nt:unstructured"
+		                                sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+		                                fieldDescription="Please provide Text for the Card Body"
+		                                fieldLabel="Card Body"
+		                                name="./card4Body"
+		                                />		                                
+		                            <card4BgImg
+		                                jcr:primaryType="nt:unstructured"
+		                                sling:resourceType="pcwr/cq/gui/components/authoring/dialog/fileupload"
+		                                autoStart="{Boolean}false"
+		                                class="cq-droptarget"
+		                                fieldLabel="Background Image"
+		                                fileNameParameter="./card4BgImgFileName"
+		                                fileReferenceParameter="./card4BgImgFileRef"
+		                                mimeTypes="[image/jpeg,image/png]"
+		                                multiple="{Boolean}false"
+		                                name="./card4BgImgFile"
+		                                title="Upload Image Asset"
+		                                uploadUrl="${suffix.path}"
+		                                useHTML5="{Boolean}true"
+		                                allowUpload="{Boolean}false"/>
+				                    <card4DisplayCTA
+				                        jcr:primaryType="nt:unstructured"
+				                        sling:resourceType="granite/ui/components/foundation/form/checkbox"
+				                        name="./card4DisplayCTA"
+				                        text="Enable Call To Action"
+				                        value="true"/>		                                                  
+				                    <card4CTALabel
+				                        jcr:primaryType="nt:unstructured"
+				                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+				                        fieldDescription="Enter a Call To Action such as Learn More or Get Started"
+				                        fieldLabel="Action Label"
+				                        name="./card4CTALabel"/>                        
+				                    <card4CTATarget
+				                        jcr:primaryType="nt:unstructured"
+				                        sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+				                        fieldLabel="Target"
+				                        name="./card4CTATarget"
+				                        rootPath="/content/pl-corp"/>		                                
+                                    <videoCTA4
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                        name="./videoCTA4"
+                                        text="Video Call To Action"
+                                        value="true"/>
+	                                </items>
+                                </column>                                
+                        </items>
+                    </card4>                                                                                                                     
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

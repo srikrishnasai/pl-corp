@@ -1,0 +1,35 @@
+//
+// variables
+//
+@bright-blue: #008ed7;
+@turquoise:#24c5cf;
+@light-grey-bg:#f2f2f2;
+
+.cta-card-wrapper{
+	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+	background-color:#ffffff;
+	padding:30px;
+	margin-bottom:30px;
+	.cta-card-title{
+		font-family: 'Merriweather', serif;
+		text-transform:none;
+		font-weight: 300;
+		color:#000000;
+	}
+	.cta-card-subtitle{margin-top:15px;color:#000000;}
+	.cta-card-btn{margin-top:25px;}
+	&.bg-blue{
+		background-color:@bright-blue;
+		.cta-card-title, .cta-card-subtitle{color:#ffffff;}
+	}
+}
+a.cta-card-link{&:hover{text-decoration:none !important;}}
+
+@media (max-width: 575.98px) {
+    .cta-card-wrapper{
+    	//width: calc(100% - 18px);
+    	margin-left: .5625rem;
+    	margin-right: .5625rem;
+    	margin-top: 1.5rem;
+    }
+}

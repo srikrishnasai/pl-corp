@@ -1,0 +1,26 @@
+<sly data-sly-test.someFieldConfigured="${properties.detailHeroTitleLine1 || properties.detailHeroTitleLine2 
+                                         || properties.detailHeroDesc || properties.detailHeroBgImageFileRef}"></sly>
+                                             
+<sly data-sly-use.template="core/wcm/components/commons/v1/templates.html" />
+<sly data-sly-call="${template.placeholder @ isEmpty=(wcmmode.edit && ! someFieldConfigured)}" />
+
+<div data-component-name="Detail Hero" data-sly-test="${someFieldConfigured}">
+    <div class="detail-hero-wrapper mx-auto">
+        <div class="detail-hero mx-auto d-flex align-items-md-center flex-lg-row flex-column"
+            style="background-image: url('${properties.detailHeroBgImageFileRef @ context=' styleString '}');">
+            <input type="hidden" class="detail-lg-img" value="${properties.detailHeroBgImageFileRef}"> <input
+                type="hidden" class="detail-sm-img" value="${properties.detailHeroMobileBgImageFileRef}">
+            <div class="card text-white detail-hero-img-txt">
+                <div class="card-body">
+                    <p class="subhead">${properties.detailHeroTitleLine1}</p>
+                    <h2 class="card-title">${properties.detailHeroTitleLine2}</h2>
+                </div>
+            </div>
+            <div class="card text-white detail-hero-copy">
+                <div class="card-body">
+                    <p class="card-text">${properties.detailHeroDesc}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,23 @@
+<sly data-sly-template.addThis>
+
+<div class="${properties.function @ context='styleToken'}" data-title="${properties.title}" 
+	data-url="${properties.target @ context = 'uri'}" data-media="${properties.media}"
+    data-component-name="Add This" id="${currentNode.identifier}">
+</div>
+
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=${properties.pubid @ context = 'uri'}"></script>
+
+<script type="text/javascript">
+document.addEventListener("DOMContentLoaded", function(event) {    
+    onElementInserted("body", '.at-share-btn', function(element) {
+        $(element).one('click', function() {
+        	var network = $($(this).find('title')[0]).text();
+        	window.digitalData.event.socialNetwork = network;
+			_satellite.track('social-network');
+			return true;
+        });
+    });
+});
+</script>
+
+</sly>

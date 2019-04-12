@@ -1,0 +1,23 @@
+<div data-component-name="Careers"  class="careers-wrapper">
+
+	<div class="careers-padding mx-lg-auto mx-md-5 mx-2">
+		
+		<form>
+		    <div class="d-flex d-lg-inline-flex form-group-careers-input mr-md-3">
+		        <label for="keyword-field" class="sr-only">${properties.keywordPlaceholder || 'Search by Keyword'}</label>
+		        <input type="text" class="form-control" id="keyword-field" placeholder="${properties.keywordPlaceholder || 'Search by Keyword'}">
+		    </div>
+
+
+		    <div class="d-flex d-lg-inline-flex form-group-careers-input mr-md-3">
+		        <label for="location-field" class="sr-only">${properties.locationPlaceholder || 'Search by Location'}</label>
+		        <input type="text" class="form-control" id="location-field" placeholder="${properties.locationPlaceholder || 'Search by Location'}">
+		    </div>
+	    	<div class="d-flex d-lg-inline-flex mt-3 mt-lg-0">
+	    		<button id="careers-submit" type="submit" class="btn btn-primary cta-text-btn mb-2">${properties.action || 'SEARCH JOBS'}</button>
+	    		<!-- <input type="submit"  class="form-control" value="${properties.action || 'SEARCH JOBS'}"> -->
+			</div>
+
+		</form>
+	</div>	
+</div>

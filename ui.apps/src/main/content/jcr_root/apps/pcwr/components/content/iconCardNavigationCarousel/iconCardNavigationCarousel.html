@@ -1,0 +1,51 @@
+<!-- /* [1/2] CAROUSEL- Icon Card Nav Carousel PCWR-126- NOTE- use class: bgcolor-blue for blue version */ -->
+<sly data-sly-use.model="com.paclife.core.models.PCWRMultifieldItemsModel"></sly>
+<sly data-sly-use.template="core/wcm/components/commons/v1/templates.html"/>
+<sly data-sly-call="${template.placeholder @ isEmpty=(wcmmode.edit && !model.multiFieldItems)}"/>
+
+<div data-component-name="Icon Card Navigation Carousel" data-sly-test.isCarousel="${model.countItems > 5}" class="d-flex justify-content-center icon-nav-carousel">
+  <div class="my-auto pr-4 mr-1 control-prev">
+  	<span class="" id="goToPrevSlide" role="button"><img src="/etc/designs/pcwr/default/images/carousel-arrow-left.svg" class="carousel-arrow-left" /></span>
+  </div>
+
+  <div class="icon-nav-carousel-items ${properties.lightTheme ? '' : 'bgcolor-blue'}">
+	  <ul id="lightSlider" class="d-flex justify-content-center" data-sly-list.cardItem="${model.multiFieldItems.listChildren}">
+      <sly data-sly-use.fixedLink="${'com.paclife.core.util.LinkFixer' @ link = cardItem.cardItemLink}"/>
+	    <li class="d-flex justify-content-center align-items-center flex-column">
+		    <div class="icon-nav-item">
+		       <a href="${fixedLink.value}"><img class="d-block mx-auto mb-4 mt-3" src="${cardItem.cardItemIconPath}" alt="" /></a>
+		       <div>
+		       		<p class="cta-text-btn all-text text-center  px-1"><a href="${fixedLink.value}" class="">${cardItem.cardItemLinkTitle}</a></p>
+		       </div>
+		    </div>
+	    </li>	        
+	  </ul>
+  </div>
+
+  <div class="my-auto pl-4 ml-1 control-next">  	
+  	<span class=""  id="goToNextSlide" role="button"><img src="/etc/designs/pcwr/default/images/carousel-arrow-right.svg" class="carousel-arrow-right" /></span>
+  </div>  
+</div>
+
+<!-- /* [2/2] STATIC- Icon Card Nav Carousel PCWR-126- NOTE- use class *offset-top* to overlap with the above component NOTE- use class: bgcolor-blue for blue version- */ -->
+<div data-component-name="Icon Card Navigation Carousel" data-sly-test="${!isCarousel}" class="row d-flex justify-content-center my-5 icon-nav-carousel-static ${properties.lightTheme ? '' : 'bgcolor-blue'}" >
+	   <sly data-sly-list.cardItem="${model.multiFieldItems.listChildren}">	   
+       <sly data-sly-use.fixedLink="${'com.paclife.core.util.LinkFixer' @ link = cardItem.cardItemLink}"/>
+		   
+		   <!--  /* icon nav items add class *show-anchor-arrow* below to get anchor arrows */ -->
+		   <div class="col my-md-auto icon-nav-carousel-static-item ${properties.downArrows ? ' show-anchor-arrow' : ''}">
+				<a href="${fixedLink.value}"><img class="mx-auto d-block" src="${cardItem.cardItemIconPath}" alt="" /></a>
+			 	<div class="mx-auto mt-4 d-block">
+			 		<p class="cta-text-btn all-text text-center">
+			 			<a href="${fixedLink.value}" class="">${cardItem.cardItemLinkTitle}
+			 				
+			 				<!-- /* optional carrot icon */  -->			
+							<i class='material-icons'></i>
+			 			</a>
+			 		</p>	 		
+			 	</div>
+			 	<!--/*make the full card clickable*/-->
+            	<a href="${fixedLink.value}" class='clickable'></a>
+			</div>
+		</sly>	   
+</div>

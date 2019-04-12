@@ -1,0 +1,26 @@
+<sly data-sly-use.template="core/wcm/components/commons/v1/templates.html"/>
+<sly data-sly-test.isFilter="${request.requestPathInfo.selectors[0] == 'filtering'}"/>
+
+<div data-component-name="Tag Cloud" data-sly-test.isConfigured="${properties.tags}" class="mx-auto filter-switch">
+
+	<ul class="nav nav-pills d-flex justify-content-center" id="myTab" role="tablist" data-sly-list="${properties.tags}">
+
+		<li data-sly-test="${!isFilter}" data-sly-use.model="${'com.paclife.core.models.PCWRTagHelperModel' @ tagString = item}"   class="nav-item">
+	    	<a class="nav-link cta-text-btn all-text py-3" id="${model.tag.name}" 
+	    		href="${properties.insightsOverviewPagePath @ extension='html', selectors=model.tag.name}" 
+	    		aria-controls="${obj.nameWithSep}" aria-selected="true">${model.tag.title}</a>
+	  	</li>
+	  	
+	  	<li data-sly-test="${isFilter && itemList.first}" class="nav-item insights-gallery-filter">	    		
+	    	<span class="nav-link cta-text-btn all-text py-3" id="all" style="cursor:pointer;"
+	    		aria-controls="${obj.nameWithSep}" aria-selected="false" data-toggle="pill" name="shuffle-filter" value="">ALL</span>
+	  	</li>		 		 
+
+	  	<li data-sly-test="${isFilter}" data-sly-use.model="${'com.paclife.core.models.PCWRTagHelperModel' @ tagString = item}"   class="nav-item insights-gallery-filter">	    		
+	    	<span class="nav-link cta-text-btn all-text py-3" id="${model.tag.name}" style="cursor:pointer;"
+	    		aria-controls="${obj.nameWithSep}" aria-selected="false" data-toggle="pill" name="shuffle-filter" value="${model.tag.name}">${model.tag.title}</span>
+	  	</li>		 		 
+	</ul>
+</div>
+
+<sly data-sly-call="${template.placeholder @ isEmpty=!properties.tags}"/>

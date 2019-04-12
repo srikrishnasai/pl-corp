@@ -1,0 +1,28 @@
+//
+//Alternating fifty-fifty
+//
+.fifty-fifty{
+	max-width: 1140px;
+	padding-right: 0px;
+	padding-left: 0px;
+	h3{
+		margin:initial;
+		margin-bottom: 1rem;
+	}
+	h6{
+		margin-bottom:1rem;
+	}
+	/*fixes vertical spacing between RTE and CTA Button*/
+	div.pcwr-richtext + a.btn.btn-primary.cta-text-btn{margin-top:20px;}
+	div.pcwr-richtext ~ div{>button{margin-top:20px;}}
+	img.pointer {cursor: pointer;}
+}
+/*IE 11 text not wrapping fix*/
+.text-content-right, .text-content-left{width:100%}
+@media (max-width: 575.98px) {
+	.fifty-fifty{
+		padding-left:1.5rem!important; 
+		padding-right:1.5rem!important;
+		h3{margin-top: 1.75rem}
+	}
+}

@@ -1,0 +1,49 @@
+<sly data-sly-use.template="core/wcm/components/commons/v1/templates.html"/>
+<sly data-sly-call="${template.placeholder @ isEmpty=(wcmmode.edit && !properties.headline)}"/>
+
+<div data-component-name="In The News" class="container in-the-news-container my-5">
+
+	<div class="row justify-content-between mb-0">
+		<div class="col-md-4">
+			<h5 class="headline">${properties.headline}</h5>
+		</div>
+		<div class="col-md-4 text-md-right">
+			<a class="cta-text-btn" href="${properties.target @ extension='html'}" >${properties.action || 'SEE ALL NEWS'}<i class="material-icons">keyboard_arrow_right</i> </a>
+		</div>
+	</div>
+	<div class="row mb-4">
+		<div  class="col-sm-12">
+			<div style='border-bottom:1px solid #d5d5d5;'></div>
+		</div>
+	</div>
+	
+	<div class="row">
+		
+		<sly data-sly-use.cards="inTheNews.js" data-sly-list="${cards.cards}" > 
+			
+			<div data-sly-test.isFirst="${itemList.first}" class="col-md">
+				<div class="media">
+					<img class="mr-3" src="${item.properties['newsPageThumbnail']}" alt="">
+					<div class="media-body mt-md-1">
+			  	     	<span class="news-date">${'MM-dd-YY' @ format=item.properties["newsPagePublishDate"]}</span>
+				    	<p class="news-title mt-1">${item.properties["pageTitle"] || item.properties["jcr:title"]}</p> 
+					</div>
+					 <a href="${item.path @ extension='html'}" class='clickable'></a>
+				</div>	       
+			</div>
+			
+			<div data-sly-test="${! isFirst}" class="col-md mt-3 mt-md-0">
+				<div class="media">
+					<img class="mr-3" src="${item.properties['newsPageThumbnail']}" alt="">
+					
+					<div class="media-body mt-md-1">
+			  	     	<span class="news-date">${'MM-dd-YY' @ format=item.properties["newsPagePublishDate"]}</span>
+				    	<p class="news-title mt-1">${item.properties["pageTitle"] || item.properties["jcr:title"]}</p> 
+					</div>
+				</div>	
+				<a href="${item.path @ extension='html'}" class='clickable'></a> 
+			</div>						
+		</sly>
+	
+	</div>
+</div>

@@ -1,0 +1,58 @@
+# Pipleine Script for building Web AEM for AMS
+
+variables:
+  buildEnv: dev
+  
+
+trigger:
+- development
+- feature/*
+- release/*
+- master
+
+pr:
+- master
+- developemt
+- release/*
+
+pool:
+ name: Linux-AgentPool
+ demands:
+   - agent.os -equals Linux
+   - agent_name  -equals linux-survivor
+   - aws_env -equals Lab
+
+steps:
+- checkout: self
+  clean: true
+  persistCredentials: true
+
+- script: |
+    echo "Building docker container"
+    ls -al
+    pwd    
+    echo $(Agent.TempDirectory)
+- task: Maven@3
+  displayName: "Build and push AEM Corp to AMS"
+  inputs:
+    mavenPomFile: './core/pom.xml'
+    mavenOptions: '-Xmx3072m'
+    goals: 'clean package'
+    options: '--settings settings.xml'         
+- task: Maven@3
+  displayName: "Build and push AEM to AMS"
+  inputs:
+    mavenPomFile: './ui/pom.xml'
+    mavenOptions: '-Xmx3072m'
+    goals: 'clean package'
+    options: '--settings settings.xml'  	
+- task: CopyFiles@2
+  inputs:
+    contents: $(Build.Repository.LocalPath)/**
+    targetFolder: $(Build.ArtifactStagingDirectory)
+
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    pathtoPublish: $(Build.ArtifactStagingDirectory)
+    artifactName: MyBuildOutputs    

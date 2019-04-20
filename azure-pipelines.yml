@@ -42,7 +42,7 @@ steps:
 - task: Maven@3
   displayName: "Build and push AEM to AMS"
   inputs:
-    mavenPomFile: './ui/pom.xml'
+    mavenPomFile: './ui.apps/pom.xml'
     mavenOptions: '-Xmx3072m'
     goals: 'clean package'
     options: '--settings settings.xml'  	

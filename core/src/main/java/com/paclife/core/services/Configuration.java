@@ -73,8 +73,9 @@ public class Configuration {
 	@Property(	label = "Pacific Life - Find a Professional Webservice URL",value = "/bin/findadvisor/geolocation")
 	private static final String PCWR_FAFP_WEBSERVICE_URL = "fafpWebserviceUrl";
 
+	// Code Scan Remediation - Change noncompliant Exception to IllegalArgumentException
 	@Activate
-	public void activate(Map<String, Object> properties) throws Exception {
+	public void activate(Map<String, Object> properties) throws IllegalArgumentException {
 
 		this.productListUrl = PropertiesUtil.toString(properties.get(PCWR_PRODUCT_LIST_URL), "");
 

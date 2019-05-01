@@ -73,7 +73,7 @@ public class PCWRWebserviceProxyServlet extends SlingAllMethodsServlet {
 
 	private static final long serialVersionUID = 1L;
 
-	Logger logger = LoggerFactory.getLogger(PCWRWebserviceProxyServlet.class);
+	transient Logger logger = LoggerFactory.getLogger(PCWRWebserviceProxyServlet.class);
 
 	String keyword = "";
 	String location = "";

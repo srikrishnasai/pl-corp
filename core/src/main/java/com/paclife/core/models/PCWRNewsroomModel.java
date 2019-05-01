@@ -52,10 +52,14 @@ public class PCWRNewsroomModel {
 
 		ResourceResolver resourceResolver = resource.getResourceResolver();
 		PageManager pageManager = resourceResolver.adaptTo(PageManager.class);
-		Page page = pageManager.getPage(newsArticlesFolderPath);
+		
+		// Code Scan Remediation
+		if(pageManager != null) {
+			Page page = pageManager.getPage(newsArticlesFolderPath);
 
-		if (page != null) {
-			recursiveTraverse(page);
+			if (page != null) {
+				recursiveTraverse(page);
+			}
 		}
 		
 		logger.info("Final page count is " + newsPageList.size());;

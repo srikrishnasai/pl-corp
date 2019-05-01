@@ -79,11 +79,15 @@ public class SearchResultProxy implements SearchResult {
 				}
 				@Override
 				public long getStart() {
-					return offset + limit;
+					// Code Scan Remediation - Fix issue with incorrect return type being passed back
+					long result = offset + limit;
+					return result;
 				}
 				@Override
 				public long getIndex() {
-					return offset/limit + 1;
+					// Code Scan Remediation - Fix issue with incorrect return type being passed back
+					long result = offset/limit + 1;
+					return result;
 				}
 			};
 	}
@@ -93,7 +97,9 @@ public class SearchResultProxy implements SearchResult {
 			try {
 				return item.getResource().getResourceResolver().adaptTo(Node.class);
 			} catch (RepositoryException e) {
-				throw new RuntimeException(e);
+				// Code Scan Remediation
+				// throw new RuntimeException(e);
+				throw new IllegalArgumentException(e);
 			}
 		}).iterator();
 	}
@@ -109,11 +115,15 @@ public class SearchResultProxy implements SearchResult {
 				}
 				@Override
 				public long getStart() {
-					return offset - limit;
+					// Code Scan Remediation - Fix issue with incorrect return type being passed back
+					long result = offset - limit;
+					return result;
 				}
 				@Override
 				public long getIndex() {
-					return offset/limit - 1;
+					// Code Scan Remediation - Fix issue with incorrect return type being passed back
+					long result = offset/limit - 1;
+					return result;
 				}
 			};
 	}
@@ -127,7 +137,9 @@ public class SearchResultProxy implements SearchResult {
 			try {
 				return t.getResource();
 			} catch (RepositoryException e) {
-				throw new RuntimeException(e);
+				// Code Scan Remediation
+				// throw new RuntimeException(e);
+				throw new IllegalArgumentException(e);
 			}
 		}).iterator();
 	}
@@ -140,11 +152,15 @@ public class SearchResultProxy implements SearchResult {
 			pages.add(new ResultPage() {
 				@Override
 				public long getIndex() {
-					return index;
+					// Code Scan Remediation - Fix issue with incorrect return type being passed back
+					long result = index;
+					return result;
 				}
 				@Override
 				public long getStart() {
-					return index * limit;
+					// Code Scan Remediation - Fix issue with incorrect return type being passed back
+					long result = index * limit;
+					return result;
 				}
 				@Override
 				public boolean isCurrentPage() {

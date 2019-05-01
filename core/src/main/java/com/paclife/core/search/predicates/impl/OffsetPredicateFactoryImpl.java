@@ -53,7 +53,8 @@ public class OffsetPredicateFactoryImpl implements PredicateFactory {
         if (StringUtils.isNotBlank(offsetStr)) {
             try {
                 offset = Integer.parseInt(offsetStr);
-            } catch(Exception e) {
+            // Code Scan Remediation - Changing Exception catch to specific
+			} catch (NumberFormatException e) {
                 log.warn("Unable to parse valid integer from Request Param value [ {} ]", offsetStr);
 
             }

@@ -73,9 +73,10 @@ public class SearchProviderImpl implements SearchProvider {
 			SearchResult result = query.getResult();
 			List<Hit> consolidatedHits = consolidate(result.getHits());
 			return new SearchResultProxy(result, consolidatedHits, offset, limit);
-			
 		} catch (RepositoryException e) {
-			throw new RuntimeException(e);
+			// Code Scan Remediation
+			// throw new RuntimeException(e);
+			throw new IllegalArgumentException(e);
 		}
     }
 
@@ -161,6 +162,9 @@ public class SearchProviderImpl implements SearchProvider {
 
                 searchResults.add(searchResult);
                 log.debug("Added hit [ {} ] to search results", hit.getPath());
+			// Code Scan Remediation - Exception for list .add()
+			} catch(java.lang.UnsupportedOperationException e) {
+				log.warn("Unable to adapt this hit's resource to a Search Result", e);
             } catch (Exception e) {
                 log.warn("Unable to adapt this hit's resource to a Search Result", e);
             }

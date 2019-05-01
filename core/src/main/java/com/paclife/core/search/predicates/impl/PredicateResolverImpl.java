@@ -110,7 +110,7 @@ public class PredicateResolverImpl implements PredicateResolver, EventListener, 
     
     protected void activate(ComponentContext ctx) {
     	bundleContext = ctx.getBundleContext();
-        final String type = PropertiesUtil.toString(ctx.getProperties().get("service.pid"), null);
+        // final String type = PropertiesUtil.toString(ctx.getProperties().get("service.pid"), null);
         
     	
 	}

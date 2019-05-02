@@ -75,10 +75,13 @@ public class AssetSearchResultImpl implements SearchResult {
     public List<String> getTagIds() {
         final TagManager tagManager = resourceResolver.adaptTo(TagManager.class);
         final List<String> tagIds = new ArrayList<String>();
-
-        for (Tag tag : tagManager.getTags(resource)) {
-            tagIds.add(tag.getTagID());
-        }
+	
+		// Code Scan Remediation
+		if(tagManager != null) {
+			for (Tag tag : tagManager.getTags(resource)) {
+				tagIds.add(tag.getTagID());
+			}
+		}
 
         return tagIds;
     }

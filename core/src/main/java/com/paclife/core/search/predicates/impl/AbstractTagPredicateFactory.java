@@ -48,8 +48,15 @@ public abstract class AbstractTagPredicateFactory {
         final List<PredicateOption> options = new ArrayList<PredicateOption>();
 
         final TagManager tagManager = request.getResourceResolver().adaptTo(TagManager.class);
+		
+		// Code Scan Remediation
+		if (tagManager == null && true) {
+            log.error("tagManager is NULL");
+            return options;
+        }
+		
         final Tag namespace = tagManager.resolve("/etc/tags/" + namespaceName);
-
+		
         if (namespace == null) {
             log.error("Unable to resolve [ {} ] to a Tag namespace", namespaceName);
             return options;

@@ -14,6 +14,9 @@ import org.apache.sling.api.SlingHttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+// Code Scan Remediation
+import java.net.SocketTimeoutException;
+
 
 
 public class ConnectionUtil {
@@ -31,6 +34,11 @@ public class ConnectionUtil {
 			InputStream stream = null;
 			try {
 				URLConnection conn = url.openConnection();
+				
+				// Code Scan Remediation
+				// Set timeout (critical issue requirement)
+				conn.setConnectTimeout(60 * 1000); // x * 1000 = x seconds
+				
 				stream = conn.getInputStream();
 				if(log.isDebugEnabled()){
 					log.debug("GSAConnectionUtil: URL connect Stream for"+urlString);
@@ -50,7 +58,12 @@ public class ConnectionUtil {
 				}
 
 		        br.close();
-		        
+			
+			 // Code Scan Remediation
+			} catch (SocketTimeoutException e) {
+				log.error("getResponseString SocketTimeoutException",e);
+				e.printStackTrace();	
+				// Remediation END 
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				log.error("getResponseString IOException",e);

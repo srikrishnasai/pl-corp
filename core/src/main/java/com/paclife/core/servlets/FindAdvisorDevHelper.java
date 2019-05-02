@@ -46,6 +46,10 @@ import org.apache.sling.api.servlets.SlingAllMethodsServlet;
 
 import com.google.common.io.Files;
 
+
+// Code Scan Remediation
+import java.net.SocketTimeoutException;
+
 //OSGI Annotation Declaration R7 Format
 /*@Component(name = "Find an Advisor (DEV)", service={},
 				property = {"sling.servlet.methods= " + HttpConstants.METHOD_POST,
@@ -91,7 +95,9 @@ public class FindAdvisorDevHelper extends SlingAllMethodsServlet {
 		try {
 			Thread.sleep(3000); // simulate production performance levels, to allow testing the progress icon
 		} catch (InterruptedException e1) {
-			throw new RuntimeException(e1);
+			// Code Scan Remediation
+			Thread.currentThread().interrupt();  // set interrupt flag
+			logger.info("Interrupt Exception: " + e1);
 		}
 		
 		if(StringUtils.isEmpty(query))query = "DEFAULT";
@@ -113,25 +119,38 @@ public class FindAdvisorDevHelper extends SlingAllMethodsServlet {
 		logger.info("Requesting data from URL = " + url);
 		
 		unsecure();
-
-		URLConnection uc = new URL(url).openConnection();
 		
-		uc.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36");
-		uc.setRequestProperty("Cookie", "visid_incap_1215848=TBNbi008Sny51zJDWHpaSgJi6loAAAAAQkIPAAAAAACAa3uFAWNK2HMG4kWVntq9SJUonxBfq94m; incap_ses_340_1215848=EVe2OkzM7gr6OU7S3Oy3BAj7SFsAAAAAPVemsru68AAiUfyXezsmkQ==; incap_ses_415_1215848=yToqcZkE2HrEYH9Uv2HCBQP9SFsAAAAAydfOlAyqCqq2zTGE7U5KOw==");
-		uc.setDoOutput(true);
-		uc.setDoInput(true);
-
-		try(InputStream is = uc.getInputStream()) {
+		// Code Scan Remediation
+		// Nesting the openConnection within  a try catch
+		try {
+			URLConnection uc = new URL(url).openConnection();
 			
-			String json = IOUtils.toString(is);
-			org.apache.commons.io.IOUtils.write(json, out);
-			out.flush();			
+			// Code Scan Remediation
+			// Set timeout (critical issue requirement)
+			uc.setConnectTimeout(60 * 1000); // x * 1000 = x seconds
+			
+			uc.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36");
+			uc.setRequestProperty("Cookie", "visid_incap_1215848=TBNbi008Sny51zJDWHpaSgJi6loAAAAAQkIPAAAAAACAa3uFAWNK2HMG4kWVntq9SJUonxBfq94m; incap_ses_340_1215848=EVe2OkzM7gr6OU7S3Oy3BAj7SFsAAAAAPVemsru68AAiUfyXezsmkQ==; incap_ses_415_1215848=yToqcZkE2HrEYH9Uv2HCBQP9SFsAAAAAydfOlAyqCqq2zTGE7U5KOw==");
+			uc.setDoOutput(true);
+			uc.setDoInput(true);
 
-			if(!json.startsWith("[{")) {
-				throw new IllegalArgumentException();
+			try(InputStream is = uc.getInputStream()) {
+				
+				String json = IOUtils.toString(is);
+				org.apache.commons.io.IOUtils.write(json, out);
+				out.flush();			
+
+				if(!json.startsWith("[{")) {
+					throw new IllegalArgumentException();
+				}
+				Files.write(json, cacheFile, Charset.defaultCharset());
+
 			}
-			Files.write(json, cacheFile, Charset.defaultCharset());
-
+		// Code Scan Remediation
+		} catch (SocketTimeoutException e) {
+			logger.info("getResponseString SocketTimeoutException" + e);
+			e.printStackTrace();	
+		// Remediation END
 		}
 	}
 	

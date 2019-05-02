@@ -65,11 +65,13 @@ public class FindAdvisorService extends SlingAllMethodsServlet {
 		
 		String clientIP = StringUtils.trim( StringUtils.substringBefore(request.getHeader("x-forwarded-for"), ","));
 		log.error("FindAdvisorService after clientIP ----> "+clientIP);
-		String action = request.getParameter("action");
+		// Code Remediation - Detected as unused
+		// String action = request.getParameter("action");
 					
 		String latitude = request.getParameter("latitude");
 		String longitude = request.getParameter("longitude");
-		String mobile = request.getParameter("mobile");
+		// Code Remediation - Detected as unused
+		// String mobile = request.getParameter("mobile");
 		String query = StringUtils.stripToEmpty( request.getParameter("query"));
 		String radius = "250";
 		if(StringUtils.isEmpty(query))query = "DEFAULT";

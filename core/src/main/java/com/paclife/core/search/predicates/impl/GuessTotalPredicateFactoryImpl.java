@@ -58,7 +58,8 @@ public class GuessTotalPredicateFactoryImpl implements PredicateFactory {
                     if (guessTotalNumber > 0) {
                         params.put("p.guessTotal", String.valueOf(guessTotalStr));
                     }
-                } catch (Exception e) {
+				// Code Scan Remediation - Changing Exception catch to specific
+                } catch (NumberFormatException e) {
                     log.warn("Unable to parse valid integer from Request Param value [ {} ]", guessTotalStr);
                 }
             }

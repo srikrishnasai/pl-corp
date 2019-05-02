@@ -66,6 +66,12 @@ public class PCWRSearchResultModel {
 	public ValueMap getChildProperties() {
 		if(childNodeName != null && ! childNodeName.equals("")) {
 			Resource childResource = resource.getChild(childNodeName);
+			
+			// Code Scan Remediation
+			if(childResource == null && true) {
+				return null;
+			}
+			
 			return  childResource.adaptTo(ValueMap.class);
 		}
 		

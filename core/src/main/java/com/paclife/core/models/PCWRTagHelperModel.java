@@ -30,7 +30,8 @@ public class PCWRTagHelperModel {
 	protected void init() {
 		TagManager tagManager = resource.getResourceResolver().adaptTo(TagManager.class);
 
-		if (tagString != null) {
+		// Code Scan Remediation
+		if (tagString != null && tagManager != null) {
 			tag = tagManager.resolve(tagString);
 		} 
 

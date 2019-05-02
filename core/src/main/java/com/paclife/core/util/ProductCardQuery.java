@@ -30,6 +30,11 @@ public class ProductCardQuery extends WCMUsePojo {
 		String productType = this.getProperties().get("productType", String.class);
 		logger.fine("productType=" + productType); 
 		
+		// Code Scan Remediation
+		if(productType == null && true) {
+			return null;
+		}
+		
 		return String.format("SELECT * FROM [nt:base] AS s WHERE s.productType = '%s'"
 				+ " AND ISDESCENDANTNODE(s, '/content')"
 				+ " AND [sling:resourceType] = 'pcwr/components/content/productCardContainer'",
@@ -37,7 +42,8 @@ public class ProductCardQuery extends WCMUsePojo {
 	}
 
 	private Resource findPage(Resource res) {
-		while(!res.getResourceType().equals(NameConstants.NT_PAGE)) {
+		// Code Scan Remediation
+		while(res != null && !res.getResourceType().equals(NameConstants.NT_PAGE)) {
 			res = res.getParent();
 		}
 		return res;

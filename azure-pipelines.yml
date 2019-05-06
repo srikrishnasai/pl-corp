@@ -59,9 +59,9 @@ steps:
     cliSources: '$(Agent.TempDirectory)'
     extraProperties: |
      sonarRunner.aemVersion=6.4
-     sonar.sources=$(Agent.TempDirectory)/core/src/main
+     sonar.sources=core/src/main
      #sonar.tests=$(Agent.TempDirectory)/src/test/java
-     sonar.java.binaries=$(Agent.TempDirectory)/core/target/classes
+     sonar.java.binaries=core/target/classes
      #sonar.modules=core,ui.apps
      
 - task: SonarSource.sonarqube.6D01813A-9589-4B15-8491-8164AEB38055.SonarQubeAnalyze@4

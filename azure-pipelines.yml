@@ -33,15 +33,6 @@ steps:
     pwd    
     echo $(Agent.TempDirectory)
 
-- task: DownloadSecureFile@1
-  displayName: '.git-credentials-corp'
-  inputs:
-    secureFile: 'bc6435c3-8a96-475a-96c1-fe05db947b44'
-
-- task: DownloadSecureFile@1
-  displayName: .gitconfig
-  inputs:
-    secureFile: 'e06b4493-1473-41a8-874e-f72960e3845b'	
 - task: Maven@3
   displayName: 'Maven pom.xml'
   inputs:
@@ -66,40 +57,3 @@ steps:
      
 - task: SonarSource.sonarqube.6D01813A-9589-4B15-8491-8164AEB38055.SonarQubeAnalyze@4
   displayName: 'Run Code Analysis'     		
-- bash: |
-   cp $(Agent.TempDirectory)/.gitconfig ~/
-   cp $(Agent.TempDirectory)/.git-credentials-corp ~/.git-credentials
-   
-   cat ~/.git-credentials
-   
-   mkdir -p ~/azurerepo
-   cd ~/azurerepo
-   
-   git clone --mirror https://dev.azure.com/plrsd/WEB-AMS/_git/paclife-corp-ui
-   
-   echo clone done
-   
-   ls -ltra
-   
-   cd paclife-corp-ui.git/
-   
-   
-   git remote add --mirror=fetch secondary https://git.cloudmanager.adobe.com/pacificlifersd/pacificlifersd
-   
-   git fetch origin development
-   
-   git push secondary development:paclife-corp-ui-development
-   
-   rm ~/.git-credentials
-   
-   cd $(Agent.TempDirectory)
-   
-   pwd
-   
-   ls -ltra
-   
-  displayName: 'Bash Script'	
-
-
-
-

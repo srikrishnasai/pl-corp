@@ -1,95 +1,99 @@
---- 
-pool: 
-  demands: 
-    - "agent.os -equals Linux"
-    - "agent_name  -equals linux-survivor"
-    - "aws_env -equals Development"
-  name: Linux-AgentPool
-pr: 
-  - master
-  - developemt
-  - release/*
-steps: 
-  - 
-    checkout: self
-    clean: true
-    persistCredentials: true
-  - 
-    script: |
-        echo "Building AMS paclife-corp-ui"
-        ls -al
-        pwd    
-        echo $(Agent.TempDirectory)
-  - 
-    displayName: "Maven $(Agent.TempDirectory)/pom.xml"
-    inputs: 
-      mavenPomFile: pom.xml
-      options: "clean compile "
-      publishJUnitResults: false
-    task: Maven@3
-  - 
-    displayName: .git-credentials-corp
-    inputs: 
-      secureFile: bc6435c3-8a96-475a-96c1-fe05db947b44
-    task: DownloadSecureFile@1
-  - 
-    displayName: .gitconfig
-    inputs: 
-      secureFile: e06b4493-1473-41a8-874e-f72960e3845b
-    task: DownloadSecureFile@1
-  - 
-    bash: |
-        cp $(Agent.TempDirectory)/.gitconfig ~/
-        cp $(Agent.TempDirectory)/.git-credentials-corp ~/.git-credentials
-        
-        cat ~/.git-credentials
-        
-        mkdir -p ~/azurerepo
-        cd ~/azurerepo
-        
-        git clone --mirror https://dev.azure.com/plrsd/WEB-AMS/_git/paclife-corp-ui
-        
-        echo clone done
-        
-        ls -ltra
-        
-        cd paclife-corp-ui.git/
-        
-        
-        git remote add --mirror=fetch secondary https://git.cloudmanager.adobe.com/pacificlifersd/pacificlifersd
-        
-        git fetch origin development
-        
-        git push secondary development:paclife-corp-ui-development
-        
-        rm ~/.git-credentials
-        
-        pwd
-        ls -ltra
-    displayName: "Bash Script"
-  - 
-    displayName: "Prepare analysis on SonarQube"
-    inputs: 
-      SonarQube: SonarQube-WEB-paclife-corp-ui
-      cliProjectKey: Web-AMS-paclife-corp-ui
-      cliProjectName: "Web:AMS-paclife-corp-ui"
-      cliSources: $(Agent.TempDirectory)/
-      configMode: manual
-      extraProperties: |
-          sonarRunner.aemVersion=6.4
-          sonar.sources=$(Agent.TempDirectory)/core/src/main
-          #sonar.tests=$(Agent.TempDirectory)/src/test/java
-          sonar.java.binaries=$(Agent.TempDirectory)/core/target/classes
-          #sonar.modules=core,ui.apps
-      scannerMode: CLI
-    task: SonarSource.sonarqube.15B84CA1-B62F-4A2A-A403-89B77A063157.SonarQubePrepare@4
-  - 
-    displayName: "Run Code Analysis"
-    task: SonarSource.sonarqube.6D01813A-9589-4B15-8491-8164AEB38055.SonarQubeAnalyze@4
-trigger: 
-  - development
-  - feature/*
-  - release/*
-  - master
-variables: 
+# Pipleine Script for building Web AEM for AMS Corp
+
+variables:
   buildEnv: dev
+  
+
+trigger:
+- development
+- feature/*
+- release/*
+- master
+
+pr:
+- master
+- developemt
+- release/*
+
+pool:
+ name: Linux-AgentPool
+ demands:
+   - agent.os -equals Linux
+   - agent_name  -equals linux-survivor
+   - aws_env -equals Development
+
+steps:
+- checkout: self
+  clean: true
+  persistCredentials: true
+
+- script: |
+    echo "Building docker paclife-corp-ui"
+    ls -al
+    pwd    
+    echo $(Agent.TempDirectory)
+
+- task: DownloadSecureFile@1
+  displayName: '.git-credentials-corp'
+  inputs:
+    secureFile: 'bc6435c3-8a96-475a-96c1-fe05db947b44'
+
+- task: DownloadSecureFile@1
+  displayName: .gitconfig
+  inputs:
+    secureFile: 'e06b4493-1473-41a8-874e-f72960e3845b'	
+
+- bash: |
+   cp $(Agent.TempDirectory)/.gitconfig ~/
+   cp $(Agent.TempDirectory)/.git-credentials-corp ~/.git-credentials
+   
+   cat ~/.git-credentials
+   
+   mkdir -p ~/azurerepo
+   cd ~/azurerepo
+   
+   git clone --mirror https://dev.azure.com/plrsd/WEB-AMS/_git/paclife-corp-ui
+   
+   echo clone done
+   
+   ls -ltra
+   
+   cd paclife-corp-ui.git/
+   
+   
+   git remote add --mirror=fetch secondary https://git.cloudmanager.adobe.com/pacificlifersd/pacificlifersd
+   
+   git fetch origin development
+   
+   git push secondary development:paclife-corp-ui-development
+   
+   rm ~/.git-credentials
+   
+  displayName: 'Bash Script'	
+
+- task: Maven@3
+  displayName: 'Maven $(Agent.TempDirectory)/_paclife-corp-ui/pom.xml'
+  inputs:
+    mavenPomFile: '$(Agent.TempDirectory)/_paclife-corp-ui/pom.xml'
+    options: 'clean compile '
+    publishJUnitResults: false
+
+
+- task: SonarSource.sonarqube.15B84CA1-B62F-4A2A-A403-89B77A063157.SonarQubePrepare@4
+  displayName: 'Prepare analysis on SonarQube'
+  inputs:
+    SonarQube: 'SonarQube-WEB-paclife-corp-ui'
+    scannerMode: CLI
+    configMode: manual
+    cliProjectKey: 'Web-AMS-paclife-corp-ui'
+    cliProjectName: 'Web:AMS-paclife-corp-ui'
+    cliSources: '$(System.DefaultWorkingDirectory)/_paclife-corp-ui'
+    extraProperties: |
+     sonarRunner.aemVersion=6.4
+     sonar.sources=$(Agent.TempDirectory)/_paclife-corp-ui/core/src/main
+     #sonar.tests=$(Agent.TempDirectory)/_paclife-corp-ui/src/test/java
+     sonar.java.binaries=$(Agent.TempDirectory)/_paclife-corp-ui/core/target/classes
+     #sonar.modules=core,ui.apps
+     
+- task: SonarSource.sonarqube.6D01813A-9589-4B15-8491-8164AEB38055.SonarQubeAnalyze@4
+  displayName: 'Run Code Analysis'     	

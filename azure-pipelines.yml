@@ -43,9 +43,9 @@ steps:
   inputs:
     secureFile: 'e06b4493-1473-41a8-874e-f72960e3845b'	
 - task: Maven@3
-  displayName: 'Maven $(Agent.TempDirectory)/_paclife-corp-ui/pom.xml'
+  displayName: 'Maven pom.xml'
   inputs:
-    mavenPomFile: '$(Agent.TempDirectory)/_paclife-corp-ui/pom.xml'
+    mavenPomFile: 'pom.xml'
     options: 'clean compile '
     publishJUnitResults: false
 - bash: |

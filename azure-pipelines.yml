@@ -74,6 +74,12 @@ steps:
    
    rm ~/.git-credentials
    
+   cd ../..
+   
+   pwd
+   
+   ls -ltra
+   
   displayName: 'Bash Script'	
 
 

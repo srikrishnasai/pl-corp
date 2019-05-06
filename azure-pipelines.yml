@@ -42,7 +42,12 @@ steps:
   displayName: .gitconfig
   inputs:
     secureFile: 'e06b4493-1473-41a8-874e-f72960e3845b'	
-
+- task: Maven@3
+  displayName: 'Maven $(Agent.TempDirectory)/_paclife-corp-ui/pom.xml'
+  inputs:
+    mavenPomFile: '$(Agent.TempDirectory)/_paclife-corp-ui/pom.xml'
+    options: 'clean compile '
+    publishJUnitResults: false
 - bash: |
    cp $(Agent.TempDirectory)/.gitconfig ~/
    cp $(Agent.TempDirectory)/.git-credentials-corp ~/.git-credentials
@@ -71,12 +76,7 @@ steps:
    
   displayName: 'Bash Script'	
 
-- task: Maven@3
-  displayName: 'Maven $(Agent.TempDirectory)/_paclife-corp-ui/pom.xml'
-  inputs:
-    mavenPomFile: '$(Agent.TempDirectory)/_paclife-corp-ui/pom.xml'
-    options: 'clean compile '
-    publishJUnitResults: false
+
 
 
 - task: SonarSource.sonarqube.15B84CA1-B62F-4A2A-A403-89B77A063157.SonarQubePrepare@4

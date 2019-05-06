@@ -1,4 +1,4 @@
-# Pipleine Script for building Web AEM for AMS
+# Pipleine Script for building Web AEM for AMS Corp
 
 variables:
   buildEnv: dev
@@ -69,12 +69,15 @@ steps:
    
    rm ~/.git-credentials
    
+   pwd
+   ls -ltra
+   
   displayName: 'Bash Script'	
 
 - task: Maven@3
-  displayName: 'Maven $(System.DefaultWorkingDirectory)/_paclife-corp-ui/pom.xml'
+  displayName: 'Maven $(Agent.TempDirectory)/pom.xml'
   inputs:
-    mavenPomFile: '$(System.DefaultWorkingDirectory)/_paclife-corp-ui/pom.xml'
+    mavenPomFile: '$(Agent.TempDirectory)/pom.xml'
     options: 'clean compile '
     publishJUnitResults: false
 
@@ -87,12 +90,12 @@ steps:
     configMode: manual
     cliProjectKey: 'Web-AMS-paclife-corp-ui'
     cliProjectName: 'Web:AMS-paclife-corp-ui'
-    cliSources: '$(System.DefaultWorkingDirectory)/_paclife-corp-ui'
+    cliSources: '$(Agent.TempDirectory)/'
     extraProperties: |
      sonarRunner.aemVersion=6.4
-     sonar.sources=$(System.DefaultWorkingDirectory)/_paclife-corp-ui/core/src/main
-     #sonar.tests=$(System.DefaultWorkingDirectory)/_paclife-corp-ui/src/test/java
-     sonar.java.binaries=$(System.DefaultWorkingDirectory)/_paclife-corp-ui/core/target/classes
+     sonar.sources=$(Agent.TempDirectory)/core/src/main
+     #sonar.tests=$(Agent.TempDirectory)/src/test/java
+     sonar.java.binaries=$(Agent.TempDirectory)/core/target/classes
      #sonar.modules=core,ui.apps
      
 - task: SonarSource.sonarqube.6D01813A-9589-4B15-8491-8164AEB38055.SonarQubeAnalyze@4

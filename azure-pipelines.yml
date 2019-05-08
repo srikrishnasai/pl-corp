@@ -28,7 +28,7 @@ steps:
   persistCredentials: true
 
 - script: |
-    echo "Building docker paclife-corp-ui"
+    echo "Building AMS paclife-corp-ui"
     ls -al
     pwd    
     echo $(Agent.TempDirectory)

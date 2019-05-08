@@ -32,7 +32,9 @@ public class ConnectionUtil {
 		try {
 			url = new URL(urlString);
 			InputStream stream = null;
-			try {
+			
+			// SonarQube - try with a resource
+			try(BufferedReader br = new BufferedReader(new InputStreamReader(stream))) {
 				URLConnection conn = url.openConnection();
 				
 				// Code Scan Remediation
@@ -44,7 +46,7 @@ public class ConnectionUtil {
 					log.debug("GSAConnectionUtil: URL connect Stream for"+urlString);
 				}
 				//put output stream into a string
-				BufferedReader br = new BufferedReader(new InputStreamReader(stream));
+				// BufferedReader br = new BufferedReader(new InputStreamReader(stream));
 				//,Charset.forName("ISO-8859-1")));
 				
 				String line;
@@ -57,7 +59,7 @@ public class ConnectionUtil {
 					log.debug("GSAConnectionUtil: Payload size: "+response.length());
 				}
 
-		        br.close();
+		        // br.close();
 			
 			 // Code Scan Remediation
 			} catch (SocketTimeoutException e) {
@@ -86,17 +88,22 @@ public class ConnectionUtil {
 	}
 	public static String getOSBUrl(SlingHttpServletRequest slingRequest){
 		String requestHost = getRequestHost(slingRequest);
-		log.debug("SiteUtils","getOSBUrl", "---->getOSBUrl ::" + requestHost);
+		
+		// SonarQube duplicate critical issue
+		String siteUtilsDup = "SiteUtils";
+		String getOSBUrlDup = "getOSBUrl";
+		
+		log.debug(siteUtilsDup,getOSBUrlDup, "---->getOSBUrl ::" + requestHost);
 		if(StringUtils.contains(requestHost, "test") || StringUtils.contains(requestHost, "dev")
 			 || StringUtils.contains(requestHost, "dcorp")){
-			log.debug("SiteUtils","getOSBUrl","---->getOSBUrl 1" );
+			log.debug(siteUtilsDup,getOSBUrlDup,"---->getOSBUrl 1" );
 			return OSB_DEV_URL;
 		}else if(StringUtils.contains(requestHost, "modeloffice") 
 				|| StringUtils.contains(requestHost, "mo") ||  StringUtils.contains(requestHost, "prdauthor")){
-			log.debug("SiteUtils","getOSBUrl","---->getOSBUrl 2" );
+			log.debug(siteUtilsDup,getOSBUrlDup,"---->getOSBUrl 2" );
 			return OSB_QA_URL;
 		} 
-		log.debug("SiteUtils","getOSBUrl","---->getOSBUrl 3" );
+		log.debug(siteUtilsDup,getOSBUrlDup,"---->getOSBUrl 3" );
 		return OSB_PROD_URL;
 	}
 	public static String getRequestHost(SlingHttpServletRequest slingRequest){

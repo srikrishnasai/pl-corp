@@ -29,7 +29,9 @@ public class PredicateOption {
 
     public boolean isActive() { return active; }
 
-    public static final class AlphabeticalByLabel implements Comparator<PredicateOption> {
+    public static final class AlphabeticalByLabel implements Comparator<PredicateOption>, Serializable {
+        private static final long serialVersionUID = 1;
+        
         @Override
         public int compare(PredicateOption o1, PredicateOption o2) {
             return o1.getLabel().compareToIgnoreCase(o2.getLabel());

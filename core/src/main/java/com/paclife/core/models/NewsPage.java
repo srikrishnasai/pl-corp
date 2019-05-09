@@ -1,3 +1,10 @@
+/*
+ * Java File
+ * https://www.pacificlife.com/
+ *
+ * Copyright (c) 2019 Pacific Life
+ */
+
 package com.paclife.core.models;
 
 import java.util.Date;

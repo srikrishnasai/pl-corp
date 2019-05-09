@@ -8,7 +8,6 @@ import org.slf4j.LoggerFactory;
 import java.util.List;
 
 public class PredicateGroupImpl implements PredicateGroup {
-    private final Logger log = LoggerFactory.getLogger(PredicateGroupImpl.class);
 
     private final String title;
     private final String name;

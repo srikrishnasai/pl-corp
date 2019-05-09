@@ -105,19 +105,23 @@ public class PCWRWebserviceProxyServlet extends SlingAllMethodsServlet {
 	 */
 	private String  prepareQuestionString() {
 		String questionStr = "";
+		
+		// SonarQube complaint (Critical) of duplicate texts
+		String questionDup = "]]></Value></Question>";
+		
 		if (StringUtils.isEmpty(keyword) && StringUtils.isEmpty(location)) {
 			questionStr = "<Question Sortorder=\"ASC\" Sort=\"No\"> <Id>7644</Id>  <Value> <![CDATA[TG_SEARCH_ALL]]></Value></Question>"+
 							"<Question Sortorder=\"ASC\" Sort=\"No\"> <Id>22607</Id>  <Value> <![CDATA[TG_SEARCH_ALL]]></Value></Question>";
 		}
 		else if (!StringUtils.isEmpty(keyword) && StringUtils.isEmpty(location)) {
-			questionStr = "<Question Sortorder=\"ASC\" Sort=\"No\"> <Id>7644</Id>  <Value> <![CDATA["+ keyword + "]]></Value></Question>";
+			questionStr = "<Question Sortorder=\"ASC\" Sort=\"No\"> <Id>7644</Id>  <Value> <![CDATA["+ keyword + questionDup;
 		}
 		else if (StringUtils.isEmpty(keyword) && !StringUtils.isEmpty(location)) {
-			questionStr = "<Question Sortorder=\"ASC\" Sort=\"No\"> <Id>22607</Id>  <Value> <![CDATA["+ location + "]]></Value></Question>";
+			questionStr = "<Question Sortorder=\"ASC\" Sort=\"No\"> <Id>22607</Id>  <Value> <![CDATA["+ location + questionDup;
 		}
 		else {
-			questionStr = "<Question Sortorder=\"ASC\" Sort=\"No\"> <Id>7644</Id>  <Value> <![CDATA["+ keyword + "]]></Value></Question>"   + 
-					"<Question Sortorder=\"ASC\" Sort=\"No\"> <Id>22607</Id>  <Value> <![CDATA["+ location + "]]></Value></Question>";
+			questionStr = "<Question Sortorder=\"ASC\" Sort=\"No\"> <Id>7644</Id>  <Value> <![CDATA["+ keyword + questionDup  + 
+					"<Question Sortorder=\"ASC\" Sort=\"No\"> <Id>22607</Id>  <Value> <![CDATA["+ location + questionDup;
 		}
 		
 		logger.debug("Question string " + questionStr);

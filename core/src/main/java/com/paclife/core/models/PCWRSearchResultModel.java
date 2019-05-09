@@ -68,7 +68,7 @@ public class PCWRSearchResultModel {
 			Resource childResource = resource.getChild(childNodeName);
 			
 			// Code Scan Remediation
-			if(childResource == null && true) {
+			if(childResource == null) {
 				return null;
 			}
 			

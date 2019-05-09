@@ -80,14 +80,14 @@ public class SearchResultProxy implements SearchResult {
 				@Override
 				public long getStart() {
 					// Code Scan Remediation - Fix issue with incorrect return type being passed back
-					long result = offset + limit;
-					return result;
+					long lResult = new Long(offset + limit);
+					return lResult;
 				}
 				@Override
 				public long getIndex() {
 					// Code Scan Remediation - Fix issue with incorrect return type being passed back
-					long result = offset/limit + 1;
-					return result;
+					long lResult = new Long(offset/limit + 1);
+					return lResult;
 				}
 			};
 	}
@@ -116,14 +116,14 @@ public class SearchResultProxy implements SearchResult {
 				@Override
 				public long getStart() {
 					// Code Scan Remediation - Fix issue with incorrect return type being passed back
-					long result = offset - limit;
-					return result;
+					long lResult = new Long(offset - limit);
+					return lResult;
 				}
 				@Override
 				public long getIndex() {
 					// Code Scan Remediation - Fix issue with incorrect return type being passed back
-					long result = offset/limit - 1;
-					return result;
+					long lResult = new Long(offset/limit - 1);
+					return lResult;
 				}
 			};
 	}
@@ -153,14 +153,14 @@ public class SearchResultProxy implements SearchResult {
 				@Override
 				public long getIndex() {
 					// Code Scan Remediation - Fix issue with incorrect return type being passed back
-					long result = index;
-					return result;
+					long lResult = index;
+					return lResult;
 				}
 				@Override
 				public long getStart() {
 					// Code Scan Remediation - Fix issue with incorrect return type being passed back
-					long result = index * limit;
-					return result;
+					long lResult = new Long(index * limit);
+					return lResult;
 				}
 				@Override
 				public boolean isCurrentPage() {

@@ -31,7 +31,7 @@ public class ProductCardQuery extends WCMUsePojo {
 		logger.fine("productType=" + productType); 
 		
 		// Code Scan Remediation
-		if(productType == null && true) {
+		if(productType == null) {
 			return null;
 		}
 		

@@ -50,7 +50,7 @@ public abstract class AbstractTagPredicateFactory {
         final TagManager tagManager = request.getResourceResolver().adaptTo(TagManager.class);
 		
 		// Code Scan Remediation
-		if (tagManager == null && true) {
+		if (tagManager == null) {
             log.error("tagManager is NULL");
             return options;
         }

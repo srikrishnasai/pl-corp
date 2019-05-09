@@ -27,7 +27,6 @@ import java.util.Map;
 @Component
 @Service
 public class LimitPredicateFactoryImpl implements PredicateFactory {
-    private static final Logger log = LoggerFactory.getLogger(LimitPredicateFactoryImpl.class);
 
     public static final String PN_LIMIT = "limit";
     public static final int DEFAULT_LIMIT = 10;

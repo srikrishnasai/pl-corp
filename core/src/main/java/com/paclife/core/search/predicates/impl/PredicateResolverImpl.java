@@ -116,13 +116,14 @@ public class PredicateResolverImpl implements PredicateResolver, EventListener, 
 	}
 
     protected void deactivate(ComponentContext componentContext) throws RepositoryException {
-		
-	
+		// Empty Method - SonarQube Remediation
 	}
+	
     public void onEvent(EventIterator it) {
-    	
+    	// Empty Method - SonarQube Remediation
     }
+	
     public void run() {
-    	
+    	// Empty Method - SonarQube Remediation
 	}
 }

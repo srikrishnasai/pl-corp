@@ -7,11 +7,9 @@ import java.util.List;
 
 @ProviderType
 public interface SearchResult {
-    
-    public final class SearchResult {      
-       public static final int DESCRIPTION_MAX_LENGTH = 320;
-       public static final  String DESCRIPTION_ELLIPSIS = " ... ";
-    }
+       
+   public static final int DESCRIPTION_MAX_LENGTH = 320;
+   public static final  String DESCRIPTION_ELLIPSIS = " ... ";
 
     enum ContentType {
         PAGE,

@@ -98,20 +98,22 @@ public class ConnectionUtil {
 			 || StringUtils.contains(requestHost, "dcorp")){
 			log.debug(siteUtilsDup,getOSBUrlDup,"---->getOSBUrl 1" );
 			return OSB_DEV_URL;
-		}else if(StringUtils.contains(requestHost, "modeloffice") 
+		} else if(StringUtils.contains(requestHost, "modeloffice") 
 				|| StringUtils.contains(requestHost, "mo") ||  StringUtils.contains(requestHost, "prdauthor")){
 			log.debug(siteUtilsDup,getOSBUrlDup,"---->getOSBUrl 2" );
 			return OSB_QA_URL;
-		} 
-		log.debug(siteUtilsDup,getOSBUrlDup,"---->getOSBUrl 3" );
-		return OSB_PROD_URL;
+		} else {
+            log.debug(siteUtilsDup,getOSBUrlDup,"---->getOSBUrl 3" );
+            return OSB_PROD_URL;
+        }
 	}
 	public static String getRequestHost(SlingHttpServletRequest slingRequest){
 	    String reqHost = null;
 	    if (slingRequest != null) {
 	      reqHost = slingRequest.getHeader("Referer");
-	      if (reqHost == null || reqHost.length() <= 0) 
+	      if (reqHost == null || reqHost.length() <= 0) {
 	        reqHost = slingRequest.getHeader("Host");
+          }
 	    }
 	    return reqHost;
 	}

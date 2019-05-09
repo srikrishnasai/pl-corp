@@ -74,8 +74,10 @@ public class FindAdvisorService extends SlingAllMethodsServlet {
 		// String mobile = request.getParameter("mobile");
 		String query = StringUtils.stripToEmpty( request.getParameter("query"));
 		String radius = "250";
-		if(StringUtils.isEmpty(query))query = "DEFAULT";
-		query = query.replaceAll("[^A-Za-z0-9\\,]", ""); 
+		if(StringUtils.isEmpty(query)) {
+            query = "DEFAULT";
+        }
+        query = query.replaceAll("[^A-Za-z0-9\\,]", ""); 
 		query = URLEncoder.encode(query,"UTF-8");
 		
 		int 	APP_LOG_CORP_SITE = 15;

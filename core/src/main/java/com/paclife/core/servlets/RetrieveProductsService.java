@@ -57,9 +57,10 @@ public class RetrieveProductsService extends SlingAllMethodsServlet {
     protected void doGet(SlingHttpServletRequest request, SlingHttpServletResponse response) throws ServletException, IOException {
 		String jsonObject =  ConnectionUtil.getResponseString(ConnectionUtil.getOSBUrl(request)+"External/Life/DailyUnitValues/V1/RetrieveProductsProxy");
 		
-		if(log.isDebugEnabled())
+		if(log.isDebugEnabled()) {
 			log.debug("RetrieveProductsService User ---->  :url:"+ ConnectionUtil.getOSBUrl(request)+"External/Life/DailyUnitValues/V1/RetrieveProductsProxy" + " display products jsonObject:"+ jsonObject );
-		
+        }
+        
 		response.setContentType("application/json");
 		PrintWriter out = response.getWriter();
 		out.print(jsonObject);

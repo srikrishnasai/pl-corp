@@ -69,9 +69,9 @@ public class SearchResultProxy implements SearchResult {
 	}
 
 	public ResultPage getNextPage() {
-		if(offset + limit >= hits.size())
+		if(offset + limit >= hits.size()) {
 			return null;
-		else
+        } else {
 			return new ResultPage() {
 				@Override
 				public boolean isCurrentPage() {
@@ -90,6 +90,7 @@ public class SearchResultProxy implements SearchResult {
 					return new Long(lResult);
 				}
 			};
+        }
 	}
 
 	public Iterator<Node> getNodes() {
@@ -105,9 +106,9 @@ public class SearchResultProxy implements SearchResult {
 	}
 
 	public ResultPage getPreviousPage() {
-		if(offset == 0)
+		if(offset == 0) {
 			return null;
-		else
+        } else {
 			return new ResultPage() {
 				@Override
 				public boolean isCurrentPage() {
@@ -126,6 +127,7 @@ public class SearchResultProxy implements SearchResult {
 					return new Long(lResult);
 				}
 			};
+        }
 	}
 
 	public String getQueryStatement() {

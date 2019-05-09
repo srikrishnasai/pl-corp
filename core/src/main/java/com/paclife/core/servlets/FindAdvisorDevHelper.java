@@ -101,7 +101,9 @@ public class FindAdvisorDevHelper extends SlingAllMethodsServlet {
 			logger.info("Interrupt Exception: " + e1);
 		}
 		
-		if(StringUtils.isEmpty(query))query = "DEFAULT";
+		if(StringUtils.isEmpty(query)) {
+            query = "DEFAULT";
+        }
 		
 		query = query.replaceAll("[^A-Za-z0-9\\,]", ""); 
 		query = URLEncoder.encode(query,"UTF-8");

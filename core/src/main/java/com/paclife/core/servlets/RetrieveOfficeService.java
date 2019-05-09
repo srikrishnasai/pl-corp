@@ -63,8 +63,9 @@ public class RetrieveOfficeService extends SlingAllMethodsServlet {
 		String zipcode = request.getParameter("zipcode");		
 		String jsonObject =  ConnectionUtil.getResponseString(ConnectionUtil.getOSBUrl(request)+"External/Life/RLOService/RetrieveOffice/V1/RetrieveOfficeProxy/"+zipcode);
 		
-		if(log.isDebugEnabled())
+		if(log.isDebugEnabled()) {
 			log.debug("RetrieveOfficeService User :URL:"+ConnectionUtil.getOSBUrl(request)+"External/Life/RLOService/RetrieveOffice/V1/RetrieveOfficeProxy/"+zipcode + " requested for zipcode "+ zipcode + ":jsonObject:"+ jsonObject );
+        }
 		
 		response.setContentType("application/json");
 		PrintWriter out = response.getWriter();

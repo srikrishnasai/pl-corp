@@ -2,6 +2,7 @@ package com.paclife.core.search.predicates;
 
 import javax.annotation.Nonnull;
 import java.util.Comparator;
+import java.io.Serializable;
 
 public class PredicateOption {
 

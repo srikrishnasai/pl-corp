@@ -84,7 +84,9 @@ public class PCWRNewsroomModel {
 				Page childPage = (Page) children.next();
 				recursiveTraverse(childPage);
 			}
-		}
+		} else {
+            // Do nothing
+        }
 
 	}
 

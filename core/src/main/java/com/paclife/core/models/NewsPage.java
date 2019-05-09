@@ -1,8 +1,7 @@
 /*
- * Java File
- * https://www.pacificlife.com/
- *
- * Copyright (c) 2019 Pacific Life
+ * Pacific Life Java
+ * Copyright (C) 2008-2013 Pacific Life Insurance Company
+ * mailto:contact AT pacificlife DOT com
  */
 
 package com.paclife.core.models;

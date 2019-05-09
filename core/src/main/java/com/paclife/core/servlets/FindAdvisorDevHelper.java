@@ -155,10 +155,19 @@ public class FindAdvisorDevHelper extends SlingAllMethodsServlet {
 		}
 	}
 	
-	public static void main(String[] args) throws UnsupportedEncodingException, MalformedURLException, IOException {
+	public static void main(String[] args) {
 		try(PrintWriter out = new PrintWriter(System.out)) {
 			doQuery(out, 33.6297, -117.872, "", 250);
-		}
+		} catch (UnsupportedEncodingException e) {
+            logger.info("main UnsupportedEncodingException" + e);
+			e.printStackTrace();	
+        } catch (MalformedURLException e) {
+            logger.info("main MalformedURLException" + e);
+			e.printStackTrace();	
+        } catch (IOException e) {
+            logger.info("main IOException" + e);
+			e.printStackTrace();	
+        }
 	}
 
 	private static void unsecure() {

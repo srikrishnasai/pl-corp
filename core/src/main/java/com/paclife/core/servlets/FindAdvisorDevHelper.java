@@ -12,6 +12,7 @@ import java.net.URLEncoder;
 import java.nio.charset.Charset;
 import java.security.GeneralSecurityException;
 import java.security.cert.X509Certificate;
+import java.security.cert.CertificateException;
 import java.util.Optional;
 import java.util.logging.Logger;
 

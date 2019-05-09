@@ -166,11 +166,11 @@ public class FindAdvisorDevHelper extends SlingAllMethodsServlet {
 				return new X509Certificate[0];
 			}
 
-			public void checkClientTrusted(java.security.cert.X509Certificate[] certs, String authType) throws IllegalArgumentException {
+			public void checkClientTrusted(java.security.cert.X509Certificate[] certs, String authType) throws CertificateException  {
 				// Empty Method - SonarQube Remediation
 			}
 
-			public void checkServerTrusted(java.security.cert.X509Certificate[] certs, String authType) throws IllegalArgumentException {
+			public void checkServerTrusted(java.security.cert.X509Certificate[] certs, String authType) throws CertificateException  {
 				// Empty Method - SonarQube Remediation
 			}
 		} };

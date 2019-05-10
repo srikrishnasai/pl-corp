@@ -50,7 +50,7 @@ public class GuessTotalPredicateFactoryImpl implements PredicateFactory {
 
         if (StringUtils.isNotBlank(guessTotalStr) && guessTotalStr.equals("true")) {
             params.put("p.guessTotal", guessTotalStr);
-        } else if (StringUtils.isNotBlank(guessTotalStr) {
+        } else if (StringUtils.isNotBlank(guessTotalStr)) {
             try {
                 int guessTotalNumber = Integer.parseInt(guessTotalStr);
 

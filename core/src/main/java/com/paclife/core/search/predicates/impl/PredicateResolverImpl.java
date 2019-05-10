@@ -20,6 +20,7 @@ import org.apache.felix.scr.annotations.Reference;
 import org.apache.felix.scr.annotations.References;
 import org.apache.felix.scr.annotations.Service;
 import org.apache.felix.scr.annotations.ReferenceCardinality;
+import org.apache.felix.scr.annotations.ReferencePolicy;
 
 //OSGI Annotations
 /*import org.osgi.service.component.annotations.Activate;

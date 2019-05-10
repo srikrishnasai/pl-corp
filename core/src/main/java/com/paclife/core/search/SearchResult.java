@@ -6,7 +6,7 @@ import java.util.Collection;
 import java.util.List;
 
 @ProviderType
-public interface SearchResult {
+public class SearchResult {
        
    public static final int DESCRIPTION_MAX_LENGTH = 320;
    public static final  String DESCRIPTION_ELLIPSIS = " ... ";

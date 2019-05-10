@@ -48,21 +48,21 @@ public class GuessTotalPredicateFactoryImpl implements PredicateFactory {
 
         final String guessTotalStr = new ComponentInheritanceValueMap(request.getResource()).getInherited(PN_GUESS_TOTAL, String.class);
 
-        if (StringUtils.isNotBlank(guessTotalStr)) {
-            if (guessTotalStr.equals("true")) {
-                params.put("p.guessTotal", guessTotalStr);
-            } else {
-                try {
-                    int guessTotalNumber = Integer.parseInt(guessTotalStr);
+        if (StringUtils.isNotBlank(guessTotalStr) && guessTotalStr.equals("true")) {
+            params.put("p.guessTotal", guessTotalStr);
+        } else if (StringUtils.isNotBlank(guessTotalStr) {
+            try {
+                int guessTotalNumber = Integer.parseInt(guessTotalStr);
 
-                    if (guessTotalNumber > 0) {
-                        params.put("p.guessTotal", String.valueOf(guessTotalStr));
-                    }
-				// Code Scan Remediation - Changing Exception catch to specific
-                } catch (NumberFormatException e) {
-                    log.warn("Unable to parse valid integer from Request Param value [ {} ]", guessTotalStr);
+                if (guessTotalNumber > 0) {
+                    params.put("p.guessTotal", String.valueOf(guessTotalStr));
                 }
+            // Code Scan Remediation - Changing Exception catch to specific
+            } catch (NumberFormatException e) {
+                log.warn("Unable to parse valid integer from Request Param value [ {} ]", guessTotalStr);
             }
+        } else {
+            // Do nothing
         }
 
         return params;

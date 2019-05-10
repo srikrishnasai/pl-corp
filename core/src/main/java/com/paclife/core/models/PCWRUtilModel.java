@@ -18,10 +18,10 @@ public class PCWRUtilModel {
 	
 	@Inject
 	@Optional
-	private String resourceLink;
+	private String resourceLink = null;
 	
 	@Inject
-	private Page currentPage;
+	private Page currentPage = null;
 	
 	public String getFormattedLink() {
 		

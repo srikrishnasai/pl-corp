@@ -15,7 +15,7 @@ public class PCWRMultifieldHelperModel {
 	Logger logger = LoggerFactory.getLogger(PCWRMultifieldHelperModel.class);
 	
 	@Inject
-	private String nodeName;
+	private String nodeName = null;
 	
 	@Inject
 	public Resource resource;

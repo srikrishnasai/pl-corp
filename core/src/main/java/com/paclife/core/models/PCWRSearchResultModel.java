@@ -31,11 +31,11 @@ public class PCWRSearchResultModel {
 	
 	@Inject
 	@Optional
-	private SearchResults searchResults;
+	private SearchResults searchResults = null;
 	
 	@Inject
 	@Optional
-	private String childNodeName;
+	private String childNodeName = null;
 	
 	@PostConstruct
 	protected void init() {

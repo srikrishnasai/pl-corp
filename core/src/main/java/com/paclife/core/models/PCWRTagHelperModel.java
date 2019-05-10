@@ -19,12 +19,12 @@ public class PCWRTagHelperModel {
 	Logger logger = LoggerFactory.getLogger(PCWRTagHelperModel.class);
 	@Inject
 	@Optional
-	private String tagString;
+	private String tagString = null;
 
 	@Inject
 	public Resource resource;
 
-	private Tag tag;
+	private Tag tag = null;
 
 	@PostConstruct
 	protected void init() {

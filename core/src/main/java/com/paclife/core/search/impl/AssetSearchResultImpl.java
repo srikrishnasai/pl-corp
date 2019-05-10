@@ -29,17 +29,17 @@ import com.paclife.core.search.SearchResult;
 public class AssetSearchResultImpl implements SearchResult {
 
     @Self
-    private Resource resource;
+    private Resource resource = null;
 
     @Inject
-    private ResourceResolver resourceResolver;
+    private ResourceResolver resourceResolver = null;
 
     @PostConstruct
     protected void initModel() {
         this.asset = Optional.ofNullable(DamUtil.resolveToAsset(resource));
     }
 
-    private Optional<Asset> asset;
+    private Optional<Asset> asset = null;
 
     private List<String> excerpts = new ArrayList<String>();
 

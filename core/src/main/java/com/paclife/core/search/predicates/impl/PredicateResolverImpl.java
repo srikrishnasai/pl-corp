@@ -15,7 +15,9 @@ import org.osgi.framework.BundleContext;
 import org.osgi.service.component.ComponentContext;
 
 // Felix Imports
-import static org.apache.felix.scr.annotations.*;
+import org.apache.felix.scr.annotations.Component;
+import org.apache.felix.scr.annotations.Reference;
+import org.apache.felix.scr.annotations.Service;
 
 //OSGI Annotations
 /*import org.osgi.service.component.annotations.Activate;

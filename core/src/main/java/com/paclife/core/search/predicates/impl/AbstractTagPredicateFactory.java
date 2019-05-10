@@ -9,7 +9,12 @@ import org.apache.sling.api.SlingHttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import static java.util.*;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Collections;
+import java.util.Map;
+import java.util.HashMap;
 
 public abstract class AbstractTagPredicateFactory {
     private static final Logger log = LoggerFactory.getLogger(AbstractTagPredicateFactory.class);

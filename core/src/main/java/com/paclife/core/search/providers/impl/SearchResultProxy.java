@@ -69,9 +69,9 @@ public class SearchResultProxy implements SearchResult {
 	}
 
 	public ResultPage getNextPage() {
-		if(offset + limit >= hits.size())
+		if(offset + limit >= hits.size()) {
 			return null;
-		else
+        } else {
 			return new ResultPage() {
 				@Override
 				public boolean isCurrentPage() {
@@ -80,16 +80,17 @@ public class SearchResultProxy implements SearchResult {
 				@Override
 				public long getStart() {
 					// Code Scan Remediation - Fix issue with incorrect return type being passed back
-					long result = offset + limit;
-					return result;
+					int lResult = offset + limit;
+					return new Long(lResult);
 				}
 				@Override
 				public long getIndex() {
 					// Code Scan Remediation - Fix issue with incorrect return type being passed back
-					long result = offset/limit + 1;
-					return result;
+					int lResult = offset/limit + 1;
+					return new Long(lResult);
 				}
 			};
+        }
 	}
 
 	public Iterator<Node> getNodes() {
@@ -105,9 +106,9 @@ public class SearchResultProxy implements SearchResult {
 	}
 
 	public ResultPage getPreviousPage() {
-		if(offset == 0)
+		if(offset == 0) {
 			return null;
-		else
+        } else {
 			return new ResultPage() {
 				@Override
 				public boolean isCurrentPage() {
@@ -116,16 +117,17 @@ public class SearchResultProxy implements SearchResult {
 				@Override
 				public long getStart() {
 					// Code Scan Remediation - Fix issue with incorrect return type being passed back
-					long result = offset - limit;
-					return result;
+					int lResult = offset - limit;
+					return new Long(lResult);
 				}
 				@Override
 				public long getIndex() {
 					// Code Scan Remediation - Fix issue with incorrect return type being passed back
-					long result = offset/limit - 1;
-					return result;
+					int lResult = offset/limit - 1;
+					return new Long(lResult);
 				}
 			};
+        }
 	}
 
 	public String getQueryStatement() {
@@ -153,14 +155,13 @@ public class SearchResultProxy implements SearchResult {
 				@Override
 				public long getIndex() {
 					// Code Scan Remediation - Fix issue with incorrect return type being passed back
-					long result = index;
-					return result;
+					return new Long(index);
 				}
 				@Override
 				public long getStart() {
 					// Code Scan Remediation - Fix issue with incorrect return type being passed back
-					long result = index * limit;
-					return result;
+					int lResult = index * limit;
+					return new Long(lResult);
 				}
 				@Override
 				public boolean isCurrentPage() {

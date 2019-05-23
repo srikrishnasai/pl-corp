@@ -83,13 +83,13 @@ public class SearchResultsImpl implements SearchResults {
     }
 
     private String computeTotalMatches(com.day.cq.search.result.SearchResult result) {
-    	String totalResults = String.valueOf(result.getTotalMatches());
+    	String totalResult = String.valueOf(result.getTotalMatches());
 
     	//Returning a String with '+' character in the case guessTotal is being used
     	if(result.hasMore()) {
-    		totalResults += "+";
+    		totalResult += "+";
     	}
-    	return totalResults;
+    	return totalResult;
     }
 
     @Override

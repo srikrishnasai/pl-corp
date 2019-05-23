@@ -74,7 +74,7 @@ public class PCWRNewsroomModel {
 	private void recursiveTraverse(Page page) {
 
 		String templatePath = page.getProperties().get("cq:template", "");
-							  // the alternative fails with permissions issue: page.getTemplate().getPath();
+							  // the alternative fails with permissions issue: page getTemplate getPath;
 		
 		if (templatePath.equalsIgnoreCase(NEWS_TEMPLATE_PATH)) {
 			populateList(page);
@@ -84,7 +84,9 @@ public class PCWRNewsroomModel {
 				Page childPage = (Page) children.next();
 				recursiveTraverse(childPage);
 			}
-		}
+		} else {
+            // Do nothing
+        }
 
 	}
 

@@ -17,8 +17,6 @@ import java.util.List;
         adapters = SearchFacets.class
 )
 public class SearchFacetsImpl implements SearchFacets {
-    private static final Logger log = LoggerFactory.getLogger(SearchFacetsImpl.class);
-
     @Self
     private SlingHttpServletRequest request;
 

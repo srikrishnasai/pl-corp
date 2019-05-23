@@ -63,9 +63,10 @@ public class RetrieveValuesService extends SlingAllMethodsServlet {
 		String productid = request.getParameter("productid");
 		String jsonObject =  ConnectionUtil.getResponseString(ConnectionUtil.getOSBUrl(request)+"External/Life/DailyUnitValues/V1/RetrieveValuesProxy/"+productid);
 		
-		if(log.isDebugEnabled())
+		if(log.isDebugEnabled()) {
 			log.debug("RetrieveOfficeService  requested for productid "+ ConnectionUtil.getOSBUrl(request)+"External/Life/DailyUnitValues/V1/RetrieveValuesProxy/"+productid + ":jsonObject:"+ jsonObject );
-		
+        }
+        
 		response.setContentType("application/json");
 		PrintWriter out = response.getWriter();
 		out.print(jsonObject);

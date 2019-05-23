@@ -31,11 +31,11 @@ public class PCWRSearchResultModel {
 	
 	@Inject
 	@Optional
-	private SearchResults searchResults;
+	private SearchResults searchResults = null;
 	
 	@Inject
 	@Optional
-	private String childNodeName;
+	private String childNodeName = null;
 	
 	@PostConstruct
 	protected void init() {
@@ -68,7 +68,7 @@ public class PCWRSearchResultModel {
 			Resource childResource = resource.getChild(childNodeName);
 			
 			// Code Scan Remediation
-			if(childResource == null && true) {
+			if(childResource == null) {
 				return null;
 			}
 			

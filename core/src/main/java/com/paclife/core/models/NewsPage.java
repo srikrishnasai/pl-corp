@@ -1,13 +1,19 @@
+/*
+ * Pacific Life Java
+ * Copyright (C) 2012-2019 Pacific Life Insurance Company
+ * mailto:info AT pacificlife DOT com
+ */
+
 package com.paclife.core.models;
 
 import java.util.Date;
 
 public class NewsPage {
 
-	private String title;
-	private Date date;
-	private String description;
-	private String path;
+	private String title = null;
+	private Date date = null;
+	private String description = null;
+	private String path = null;
 
 	public String getTitle() {
 		return title;

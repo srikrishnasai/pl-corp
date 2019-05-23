@@ -27,8 +27,6 @@ import java.util.Map;
 @Component
 @Service
 public class ExcerptPredicateFactoryImpl implements PredicateFactory {
-    private static final Logger log = LoggerFactory.getLogger(ExcerptPredicateFactoryImpl.class);
-
     public static final String PN_USE_EXCERPT = "useExcerpt";
     public static final boolean DEFAULT_USE_EXCERPT = false;
 

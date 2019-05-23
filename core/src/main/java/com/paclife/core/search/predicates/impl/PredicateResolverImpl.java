@@ -15,7 +15,12 @@ import org.osgi.framework.BundleContext;
 import org.osgi.service.component.ComponentContext;
 
 // Felix Imports
-import org.apache.felix.scr.annotations.*;
+import org.apache.felix.scr.annotations.Component;
+import org.apache.felix.scr.annotations.Reference;
+import org.apache.felix.scr.annotations.References;
+import org.apache.felix.scr.annotations.Service;
+import org.apache.felix.scr.annotations.ReferenceCardinality;
+import org.apache.felix.scr.annotations.ReferencePolicy;
 
 //OSGI Annotations
 /*import org.osgi.service.component.annotations.Activate;
@@ -116,13 +121,14 @@ public class PredicateResolverImpl implements PredicateResolver, EventListener, 
 	}
 
     protected void deactivate(ComponentContext componentContext) throws RepositoryException {
-		
-	
+		// Empty Method - SonarQube Remediation
 	}
+	
     public void onEvent(EventIterator it) {
-    	
+    	// Empty Method - SonarQube Remediation
     }
+	
     public void run() {
-    	
+    	// Empty Method - SonarQube Remediation
 	}
 }

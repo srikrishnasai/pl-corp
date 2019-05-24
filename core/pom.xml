@@ -3,6 +3,16 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd ">
 	<modelVersion>4.0.0</modelVersion>
 
+	<!-- ====================================================================== -->
+    <!-- P A R E N T  P R O J E C T  D E S C R I P T I O N                      -->
+    <!-- ====================================================================== -->
+    <parent>
+        <groupId>com.paclife.wcm</groupId>
+    	<artifactId>paclife-corp</artifactId>
+    	
+    	<version>0.0.1-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
 	<artifactId>pcwr-core</artifactId>
 	<groupId>com.paclife</groupId>
 	<version>1.35</version>

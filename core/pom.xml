@@ -15,7 +15,7 @@
     </parent>
 	<artifactId>pcwr-core</artifactId>
 	<groupId>com.paclife</groupId>
-	<version>1.35</version>
+	<version>0.0.1-SNAPSHOT</version>
 	<packaging>bundle</packaging>
 	<name>PacLife Corp Website Redesign - Core</name>
 	<description>Core bundle for PacLife Corp Website Redesign</description>

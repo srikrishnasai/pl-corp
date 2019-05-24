@@ -20,7 +20,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.paclife</groupId>
 	<artifactId>pcwr-ui</artifactId>
-	<version>1.35</version>
+	<version>0.0.1-SNAPSHOT</version>
 	<name>PacLife Corp Website Redesign - UI apps</name>
 	<description>UI apps package for PacLife Corp Website Redesign</description>
 	<build>

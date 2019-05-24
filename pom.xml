@@ -18,8 +18,8 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-	
-    <groupId>com.paclife.wcm</groupId>
+
+    <groupId>com.paclife.pcwr-core</groupId>
     <artifactId>paclife-corp</artifactId>
     <packaging>pom</packaging>
     <version>0.0.1-SNAPSHOT</version>
@@ -233,7 +233,7 @@
                     <artifactId>build-helper-maven-plugin</artifactId>
                     <version>3.0.0</version>
                 </plugin>
-                <!--This plugin's configuration is used to store Eclipse 
+                <!--This plugin's configuration is used to store Eclipse
                     m2e settings only. It has no influence on the Maven build itself. -->
                 <plugin>
                     <groupId>org.eclipse.m2e</groupId>
@@ -355,14 +355,14 @@
         <!-- Development profile: install only the bundle -->
         <profile>
             <id>autoInstallBundle</id>
-            <!-- 
-                To enable this feature for a bundle, the maven-sling-plugin 
+            <!--
+                To enable this feature for a bundle, the maven-sling-plugin
                 (without configuration) needs to be included:
-                 
-                <plugin> 
-                    <groupId>org.apache.sling</groupId> 
-                    <artifactId>maven-sling-plugin</artifactId> 
-                 </plugin> 
+
+                <plugin>
+                    <groupId>org.apache.sling</groupId>
+                    <artifactId>maven-sling-plugin</artifactId>
+                 </plugin>
             -->
             <activation>
                 <activeByDefault>false</activeByDefault>

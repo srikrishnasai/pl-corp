@@ -245,7 +245,7 @@
                 <extensions>true</extensions>
                 <configuration>
                     <instructions>
-                        <Bundle-SymbolicName>com.paclife.wcm</Bundle-SymbolicName>
+                        <Bundle-SymbolicName>com.paclife.pcwr-core</Bundle-SymbolicName>
                     </instructions>
                     <buildDirectory>${basedir}/../ui.apps/src/main/content/jcr_root/apps/pcwr/install</buildDirectory>
                 </configuration>

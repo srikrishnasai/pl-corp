@@ -19,7 +19,7 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.paclife.pcwr-core</groupId>
+    <groupId>com.paclife.pcwr</groupId>
     <artifactId>paclife-corp</artifactId>
     <packaging>pom</packaging>
     <version>0.0.1-SNAPSHOT</version>

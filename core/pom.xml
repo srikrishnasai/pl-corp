@@ -7,9 +7,9 @@
     <!-- P A R E N T  P R O J E C T  D E S C R I P T I O N                      -->
     <!-- ====================================================================== -->
     <parent>
-        <groupId>com.paclife.wcm</groupId>
+        <groupId>com.paclife.pcwr-core</groupId>
     	<artifactId>paclife-corp</artifactId>
-    	
+
     	<version>0.0.1-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
@@ -40,26 +40,26 @@
 			<version>6.0.1</version>
 			<scope>provided</scope>
 		</dependency>
-		
+
 		<!-- OSGi R7 Annotations for AEM 6.4 -->
 	    <dependency>
 		  <groupId>org.osgi</groupId>
 		  <artifactId>org.osgi.service.component.annotations</artifactId>
 		  <version>1.4.0</version>
 		</dependency>
-		
+
 		<dependency>
 		  <groupId>org.osgi</groupId>
 		  <artifactId>org.osgi.annotation</artifactId>
 		  <version>6.0.0</version>
 		</dependency>
-		
+
 		<dependency>
 		  <groupId>org.osgi</groupId>
 		  <artifactId>org.osgi.service.metatype.annotations</artifactId>
 		  <version>1.4.0</version>
 		</dependency>
-		
+
 		<dependency>
 		  <groupId>org.osgi</groupId>
 		  <artifactId>org.osgi.service.component</artifactId>
@@ -240,14 +240,14 @@
 			</plugin>
 			<plugin>
                 <groupId>org.apache.felix</groupId>
-                <artifactId>maven-bundle-plugin</artifactId>                 
+                <artifactId>maven-bundle-plugin</artifactId>
                 <version>2.5.3</version>
                 <extensions>true</extensions>
                 <configuration>
                     <instructions>
-                        <Bundle-SymbolicName>com.paclife.wcm</Bundle-SymbolicName>                       
-                    </instructions> 
-                    <buildDirectory>${basedir}/../ui.apps/src/main/content/jcr_root/apps/pcwr/install</buildDirectory>                     
+                        <Bundle-SymbolicName>com.paclife.wcm</Bundle-SymbolicName>
+                    </instructions>
+                    <buildDirectory>${basedir}/../ui.apps/src/main/content/jcr_root/apps/pcwr/install</buildDirectory>
                 </configuration>
             </plugin>
              <plugin>
@@ -267,7 +267,7 @@
                         <version>1.0.0</version>
                     </dependency>
                 </dependencies>
-            </plugin>   
+            </plugin>
 			<!-- Maven Compiler Plugin -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -327,5 +327,5 @@
                 </pluginRepository>
             </pluginRepositories>
         </profile>
-	 </profiles>	
+	 </profiles>
 </project>

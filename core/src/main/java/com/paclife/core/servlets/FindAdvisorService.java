@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URLEncoder;
 
+import com.paclife.core.services.Configuration;
 import javax.servlet.ServletException;
 
 import org.apache.commons.lang.StringUtils;
@@ -32,9 +33,9 @@ import org.apache.sling.api.servlets.SlingAllMethodsServlet;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
+import javax.inject.Inject;
 import com.paclife.core.util.ConnectionUtil;
-
+import org.apache.felix.scr.annotations.Reference;
 //OSGI Annotation Declaration R7 Format
 /*@Component(name = "Find an Advisor", service={},
 				property = {"sling.servlet.methods= " + HttpConstants.METHOD_POST,
@@ -49,6 +50,10 @@ import com.paclife.core.util.ConnectionUtil;
     @Property(name = "sling.servlet.extensions", value = "json", propertyPrivate = true)
 })
 public class FindAdvisorService extends SlingAllMethodsServlet {
+	
+	@Reference 
+	private Configuration configuration;
+	
 	private static final Logger log = LoggerFactory.getLogger(FindAdvisorService.class);
 	/**
 	 *  
@@ -81,13 +86,25 @@ public class FindAdvisorService extends SlingAllMethodsServlet {
 		query = URLEncoder.encode(query,"UTF-8");
 		
 		int 	APP_LOG_CORP_SITE = 15;
-		String jsonObject =  ConnectionUtil.getResponseString(ConnectionUtil.getOSBUrl(request)+"Advisor/V1/AdvisorGeolocationInquiryProxyService/"+latitude+"/"+longitude+"/"+radius+"/"+query+"/"+APP_LOG_CORP_SITE+"/"+clientIP);
 		
-		
-		response.setContentType("application/json");
-		PrintWriter out = response.getWriter();
-		out.print(jsonObject);
-		out.flush();
+		String serviceUrl = configuration.getMulesoftWebserviceUrl() + "find-an-advisor/search/"+longitude+"/"+latitude+"/"+radius+"/"+query;
+		if(StringUtils.isBlank(configuration.getFafpClientId())){
+			log.error("------------------------------");
+			log.error("Configuration not done.");
+			log.error("------------------------------");
+			throw new ServletException();
+		} else {
+			System.out.println(serviceUrl);
+			String jsonObject =  ConnectionUtil.getResponseString(request,serviceUrl, configuration.getFafpClientId(), configuration.getFafpClientSecret());
+			
+		//	String jsonObject =  ConnectionUtil.getResponseString(ConnectionUtil.getOSBUrl(request)+"Advisor/V1/AdvisorGeolocationInquiryProxyService/"+latitude+"/"+longitude+"/"+radius+"/"+query+"/"+APP_LOG_CORP_SITE+"/"+clientIP);
+			
+			log.error(jsonObject);
+			response.setContentType("application/json");
+			PrintWriter out = response.getWriter();
+			out.print(jsonObject);
+			out.flush();
+		}
 		
 	}
 	

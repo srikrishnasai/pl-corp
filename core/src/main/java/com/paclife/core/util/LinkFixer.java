@@ -30,7 +30,13 @@ public class LinkFixer extends WCMUsePojo {
 		}
 		else if(page.getResourceType().equals(NameConstants.NT_PAGE)) {
 			// page link
-			fixedLink = resourceResolver.map(getRequest(), originalLink) + ".html";
+			String newLink = resourceResolver.map(getRequest(), originalLink);
+			
+			if(newLink.contains(".html")) {
+				fixedLink = newLink;
+			} else {
+				fixedLink = newLink + ".html";
+			}
 		}
 		else {
 			// DAM asset

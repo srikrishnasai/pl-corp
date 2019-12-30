@@ -40,6 +40,13 @@ public class Configuration {
 	private String googleMapsApiKey;
 	
 	private String fafpWebserviceUrl;
+	
+	private String mulesoftWebserviceUrl;
+	
+	private String fafpClientId;
+	
+	private String fafpClientSecret;
+	
 
 	public String getProductListUrl() {
 		return productListUrl;
@@ -57,6 +64,19 @@ public class Configuration {
 	public String getFafpWebserviceUrl() {
 		return fafpWebserviceUrl;
 	}
+	
+	public String getMulesoftWebserviceUrl() {
+		return mulesoftWebserviceUrl;
+	}
+	
+	
+	public String getFafpClientId() {
+		return fafpClientId;
+	}
+	
+	public String getFafpClientSecret() {
+		return fafpClientSecret;
+	}
 
 
 	@Property(	label = "Pacific Life - Daily Unit Values - Product List URL",
@@ -73,6 +93,15 @@ public class Configuration {
 	@Property(	label = "Pacific Life - Find a Professional Webservice URL",value = "/bin/findadvisor/geolocation")
 	private static final String PCWR_FAFP_WEBSERVICE_URL = "fafpWebserviceUrl";
 
+	/** SF implementation **/
+	@Property(	label = "Pacific Life - Mulesoft URL",value = "https://rsd.api.pacificlife.net/")
+	private static final String PCWR_MULESOFT_URL = "mulesoftWebserviceUrl";
+	
+	@Property(	label = "Pacific Life - Find a Professional Client ID",value = "")
+	private static final String PCWR_FAFP_CLIENT_ID = "fafpClientId";
+	
+	@Property(	label = "Pacific Life - Find a Professional Client Secret",value = "")
+	private static final String PCWR_FAFP_CLIENT_SECRET = "fafpClientSecret";
 	// Code Scan Remediation - Change noncompliant Exception to IllegalArgumentException
 	@Activate
 	public void activate(Map<String, Object> properties) throws IllegalArgumentException {
@@ -84,6 +113,12 @@ public class Configuration {
 		this.googleMapsApiKey = PropertiesUtil.toString(properties.get(PCWR_GOOGLE_MAPS_API_KEY), "");
 
 		this.fafpWebserviceUrl = PropertiesUtil.toString(properties.get(PCWR_FAFP_WEBSERVICE_URL), "");
+		/** Salesforce implementation **/
+		this.mulesoftWebserviceUrl = PropertiesUtil.toString(properties.get(PCWR_MULESOFT_URL), "");
+		
+		this.fafpClientId = PropertiesUtil.toString(properties.get(PCWR_FAFP_CLIENT_ID), "");
+		
+		this.fafpClientSecret = PropertiesUtil.toString(properties.get(PCWR_FAFP_CLIENT_SECRET), "");
 	}
 
 }

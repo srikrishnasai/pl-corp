@@ -13,13 +13,14 @@
                     <h3>${properties.heading}</h3>
                     <h6>${properties.subHeading}</h6>
                     <div class="pcwr-richtext">${properties.richText @ context='html'}</div>
-                    <form class="form-inline needs-validation mt-4" novalidate>
+                    <form class="form-inline mt-4">
 						<div class="form-group form-group-search-input mr-sm-3 mb-2">
 							<label for="fap-inputSearchValue" class="sr-only">${properties.inputFieldText}</label>
-							<input type="text" class="form-control" id="fap-inputSearchValue" placeholder="${properties.inputFieldText}" pattern="^\d{5}$" required>
-							<div class="invalid-feedback">${properties.invalidZipError || 'Please provide valid Zip code'} </div>
+							<input type="text" class="form-control" 
+                                   id="fap-inputSearchValue" placeholder="${properties.inputFieldText}"
+                                   onkeyup="$('button').prop('disabled', !this.value.match(/^\d{5}$/))">
 						</div>
-						<button id="fap-button" type="submit" class="DTM-TAG-fap-button btn btn-primary cta-text-btn mb-2" >${properties.action}</button>
+						<button id="fap-button" class="DTM-TAG-fap-button btn btn-primary cta-text-btn mb-2" >${properties.action}</button>
 					</form>
                     
                 </div>
@@ -32,13 +33,12 @@
                     <h3>${properties.heading}</h3>
                     <h6>${properties.subHeading}</h6>
                     <div class="pcwr-richtext">${properties.richText @ context='html'}</div>
-                    <form class="form-inline needs-validation mt-4" novalidate>
+                                        <form class="form-inline mt-4">
 						<div class="form-group form-group-search-input mr-sm-3 mb-2">
 							<label for="fap-inputSearchValue" class="sr-only">${properties.inputFieldText}</label>
-							<input type="text" class="form-control" id="fap-inputSearchValue" placeholder="${properties.inputFieldText}" pattern="^\d{5}$" required>
-							<div class="invalid-feedback">${properties.invalidZipError || 'Please provide valid Zip code'} </div>
+							<input type="text" class="form-control" id="fap-inputSearchValue" placeholder="${properties.inputFieldText}">
 						</div>
-						<button id="fap-button" type="submit" class="DTM-TAG-fap-button btn btn-primary cta-text-btn mb-2" >${properties.action}</button>
+						<button id="fap-button" class="DTM-TAG-fap-button btn btn-primary cta-text-btn mb-2" >${properties.action}</button>
 					</form>
                 </div>
             </div>

@@ -2,7 +2,7 @@
 <sly data-sly-test.isConfigured="${properties.textHeroTitle}"/>
 
 <div data-component-name="Text Hero" data-sly-test="${isConfigured}" class="text-hero text-center mx-auto my-5 py-3">
-	<h3 data-sly-element="${properties.textHeroTitleEl}" class="mb-3">${properties.textHeroTitle}</h3>
+	<h3 data-sly-element="${properties.textHeroTitleEl}" class="mb-3 ${properties.textHeroTitleAlignment}" style="color:${properties.textHeroTitleColor || 'inherit' @ context='styleToken'};">${properties.textHeroTitle}</h3>
 	<p class="mb-4" data-sly-test="${properties.richText}">${properties.richText @ context='html'}</p>
 	<a data-sly-test='${properties.textHeroDisplayBtn}' href="${properties.textHeroBtnLink @ extension='html'}" class="btn btn-primary cta-text-btn">${properties.textHeroBtnLabel || "Learn More"}</a>
 </div>

@@ -43,8 +43,8 @@
 	                        </sly>
 
 					        <h4 class="card-title insights-title">${title}</h4>
-					        <p class="p-alt-16 insights-body-text">${pageObj.properties["insightCardDesc"]}</p>
-					        <div><a href="${pageObj.path @ extension='html'}" class="btn btn-primary cta-text-btn d-inline-block">${pageObj.properties["insightCardBtnLabel"]}</a><i class="material-icons insights-icon">schedule</i>        
+					        <p class="p-alt-16 insights-body-text">${pageObj.properties["insightCardDesc"] || pageObj.properties["description"]}</p>
+					        <div class="insights-card-controls"><a href="${pageObj.path @ extension='html'}" class="btn btn-primary cta-text-btn d-inline-block">${pageObj.properties["insightCardBtnLabel"]}</a><i class="material-icons insights-icon">schedule</i>        
 					        <span class="insights-tag-text">${pageObj.properties["insightCardReadTime"]}</span></div>
 					    </div>
 					</div>	

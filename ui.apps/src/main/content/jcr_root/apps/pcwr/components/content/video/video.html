@@ -6,7 +6,7 @@
 <sly data-sly-test.videoName="${properties.windowTitle != null ? properties.windowTitle : properties.video}"></sly>
 
 <!--/* 1. SIMPLEST CASE FIRST: INLINE VIDEO FROM DAM */-->
-<div class="text-center" data-sly-test="${configured && properties.modal != 'true' && !youtube.isConfigured}">
+<div id="${properties.videoId}" class="text-center" data-sly-test="${configured && properties.modal != 'true' && !youtube.isConfigured}">
 	
 	<video id="${currentNode.identifier}"
 	       data-video-name="${videoName}" data-component-name="Video" data-video-is-modal="no"
@@ -23,7 +23,7 @@
 </div>
 
 <!--/* 2. SIMPLE TOO: YOUTUBE EMBEDDED */-->
-<div class="youtube-iframe-div container-fluid" data-sly-test="${configured && properties.modal != 'true' && youtube.isConfigured}" 
+<div id="${properties.videoId}" class="youtube-iframe-div container-fluid" data-sly-test="${configured && properties.modal != 'true' && youtube.isConfigured}" 
 	 style="max-width:${properties.width @ context='attribute'}px">
 <iframe class="mx-auto d-block" 
     id="iframe-${currentNode.identifier}"
@@ -36,12 +36,12 @@
     data-sly-attribute.allowfullscreen="${!properties.hideControls}"></iframe>
 </div>
 <!--/* 3. GETTING COMPLICATED: MODAL VIDEO */-->
-<button
+<button id="${properties.videoId}"
 	data-sly-test="${properties.modalActionType == 'button'}" 
 	type="button" class="btn btn-primary cta-text-btn" data-toggle="modal" data-target="#${currentNode.identifier}">
   ${properties.action}
 </button>
-<div data-sly-test="${properties.modal == 'true' && configured}"      
+<div id="${properties.videoId}" data-sly-test="${properties.modal == 'true' && configured}"      
 	 class="modal fade pcwr-modal-video" id="${currentNode.identifier}" tabindex="-1" role="dialog" 
 	 aria-labelledby="${properties.windowTitle}" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: ${properties.width @ context='attribute'}px">

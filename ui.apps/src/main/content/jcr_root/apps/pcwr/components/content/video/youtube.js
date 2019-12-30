@@ -1,7 +1,7 @@
 "use strict";
 use(function() {
 	var path = properties.get("video");	
-	var matches = /https?:\/\/(?:www\.)?youtu(?:\.be|be\.com)\/(?:watch\?v=|embed\/)(\w+)(.*)/.exec(path);
+	var matches = /https?:\/\/(?:www\.)?youtu(?:\.be|be\.com)\/(?:watch\?v=|embed\/)(\w+-*\w+)(.*)/.exec(path); // Adding -* as an option (\w+)
 	if(matches == null) {
 		return {
 			isConfigured: false

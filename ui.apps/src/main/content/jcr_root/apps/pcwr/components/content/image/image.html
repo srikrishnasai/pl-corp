@@ -9,7 +9,7 @@
         title="${image.title}"
         width="${image.width}"
         height="${image.height}"
-        class="${image.cssClass} img-fluid ${properties.centerHorizontally ? 'mx-auto d-block': ''}"
+        class="${image.cssClass} img-fluid ${properties.centerHorizontally ? 'mx-auto d-block': ''} ${properties.fullWidth ? 'w-100': ''}"
         data-emptytext="Image"
         usemap="${image.imageMaps.hash}"
         data-sly-test="${image.src}"/>

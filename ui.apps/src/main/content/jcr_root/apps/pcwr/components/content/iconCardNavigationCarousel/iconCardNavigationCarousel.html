@@ -3,7 +3,7 @@
 <sly data-sly-use.template="core/wcm/components/commons/v1/templates.html"/>
 <sly data-sly-call="${template.placeholder @ isEmpty=(wcmmode.edit && !model.multiFieldItems)}"/>
 
-<div data-component-name="Icon Card Navigation Carousel" data-sly-test.isCarousel="${model.countItems > 5}" class="d-flex justify-content-center icon-nav-carousel">
+<div data-component-name="Icon Card Navigation Carousel" data-sly-test.isCarousel="${model.countItems > 5}" id="${properties.cardId}" class="d-flex justify-content-center icon-nav-carousel">
   <div class="my-auto pr-4 mr-1 control-prev">
   	<span class="" id="goToPrevSlide" role="button"><img src="/etc/designs/pcwr/default/images/carousel-arrow-left.svg" class="carousel-arrow-left" /></span>
   </div>
@@ -28,7 +28,7 @@
 </div>
 
 <!-- /* [2/2] STATIC- Icon Card Nav Carousel PCWR-126- NOTE- use class *offset-top* to overlap with the above component NOTE- use class: bgcolor-blue for blue version- */ -->
-<div data-component-name="Icon Card Navigation Carousel" data-sly-test="${!isCarousel}" class="row d-flex justify-content-center my-5 icon-nav-carousel-static ${properties.lightTheme ? '' : 'bgcolor-blue'}" >
+<div data-component-name="Icon Card Navigation Carousel" data-sly-test="${!isCarousel}" id="${properties.cardId}" class="row d-flex justify-content-center my-5 icon-nav-carousel-static ${properties.lightTheme ? '' : 'bgcolor-blue'}" >
 	   <sly data-sly-list.cardItem="${model.multiFieldItems.listChildren}">	   
        <sly data-sly-use.fixedLink="${'com.paclife.core.util.LinkFixer' @ link = cardItem.cardItemLink}"/>
 		   

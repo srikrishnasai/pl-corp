@@ -11,29 +11,45 @@
 	<div class="card-deck insights-gallery-container justify-content-center my-shuffled" id="insights-grid">
 		<!-- The mark-up for Product card will go under loop below -->
 		<sly data-sly-list="${cards.cards}">
+			
+			<sly data-sly-test.cardTopics=""></sly>
+			<sly data-sly-test.cardGroups=""></sly>
+					
+			<div class="d-none" data-sly-list="${item.properties['insightCategoryTag']}">
+				<div data-sly-use.model="${'com.paclife.core.models.PCWRTagHelperModel' @ tagString = item}">
+					<sly data-sly-test.div="${cardTopics || cardGroups}">
+						<sly data-sly-test.cardTopics="${cardTopics} / "></sly>
+						<sly data-sly-test.cardGroups="${cardGroups},"></sly>
+					</sly>
+					
+					<sly data-sly-test.cardTopics="${cardTopics}${model.tag.title}"></sly>
+					<sly data-sly-test.cardGroups="${cardGroups}${model.tag.name}"></sly>
+				</div>
+			</div>
 		
-        <sly data-sly-test.title='${item.properties["pageTitle"] || item.properties["jcr:title"]}'/>
-		<div data-media-block-title="${title}" 
-             class="card insights-card insights-card-filter-item" data-sly-use.model="${'com.paclife.core.models.PCWRTagHelperModel' @ tagString = item.properties['insightCategoryTag']}"
-			 data-groups="${model.tag.name}">
-		    <img class="card-img-top insights-img" src="${item.properties['insightCardThumbnail']}" alt="Card image cap">
-		    <div class="card-body insights-body">
-		    	
-		    	<!--/* Check if Tag has been associated with the page */-->
-		    	<sly data-sly-test="${item.properties['insightCategoryTag']}">
-			        <p class="insights-tag-text" data-sly-use.model="${'com.paclife.core.models.PCWRTagHelperModel' @ tagString = item.properties['insightCategoryTag']}">
-			        ${model.tag.title}
-		        	</p>
-	        	</sly>
-		        <h4 class="card-title insights-title">${title}</h4>
-		        <p class="p-alt-16 insights-body-text">${item.properties["insightCardDesc"]}</p>        
-		    </div>
-		    <div class="card-footer insights-card-footer">
-		    	<a href="${item.path @ extension='html'}" class="btn btn-primary cta-text-btn d-inline-block">${item.properties["insightCardBtnLabel"] }</a><i class="material-icons insights-icon">schedule</i>        <span class="insights-tag-text">${item.properties["insightCardReadTime"]}</span>
-		    </div>
-		    <!--/*TEST make the full card clickable*/-->
-	            <a href="${item.path @ extension='html'}" class='clickable'></a>
-		</div>
+			<sly data-sly-test.title='${item.properties["pageTitle"] || item.properties["jcr:title"]}'/>
+			<div data-media-block-title="${title}" 
+				 class="card insights-card insights-card-filter-item" data-sly-use.model="${'com.paclife.core.models.PCWRTagHelperModel' @ tagString = item.properties['insightCategoryTag']}"
+				 data-groups="${cardGroups}">
+				<img class="card-img-top insights-img" src="${item.properties['insightCardThumbnail'] || item.properties['imagelink']}" alt="Card image cap">
+				<div class="card-body insights-body">
+					
+					<!--/* Check if Tag has been associated with the page */-->
+					<sly data-sly-test="${item.properties['insightCategoryTag']}">
+						<p class="insights-tag-text">
+							${cardTopics}
+						</p>
+					</sly>
+					
+					<h4 class="card-title insights-title">${title}</h4>
+					<p class="p-alt-16 insights-body-text">${item.properties["insightCardDesc"] || item.properties["jcr:description"]}</p>        
+				</div>
+				<div class="card-footer insights-card-footer">
+					<a href="${item.path @ extension='html'}" class="btn btn-primary cta-text-btn d-inline-block">${item.properties["insightCardBtnLabel"] }</a><i class="material-icons insights-icon">schedule</i>        <span class="insights-tag-text">${item.properties["insightCardReadTime"]}</span>
+				</div>
+				<!--/*TEST make the full card clickable*/-->
+					<a href="${item.path @ extension='html'}" class='clickable'></a>
+			</div>
 		</sly>
 	</div>
 	

@@ -30,6 +30,12 @@
                                         name="./centerHorizontally"
                                         text="Center The Image Horizontally"
                                         value="true"/>
+									<fullWidth
+										jcr:primaryType="nt:unstructured"
+										sling:resourceType="granite/ui/components/foundation/form/checkbox"
+										name="./fullWidth"
+										text="Full Width Image"
+										value="true"/>  
                                 </items>
                             </column>
                         </items>

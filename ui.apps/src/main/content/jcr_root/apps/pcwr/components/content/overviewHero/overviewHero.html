@@ -14,52 +14,27 @@
 	.overview-img-overlay {
 		background-image: url('${properties.overviewHeroMobileBgImageFileRef @ context='styleString'}');
 	}
-	.overview-img-overlay2 {
-		background-image: url('${properties.overviewHeroMobileBgImageFileRef @ context='styleString'}');
-	}
 }
 
 </style>
 
 <div data-component-name="Overview Hero" data-sly-test="${someFieldConfigured}">
 
-	<div data-sly-test="${properties.lgBgStyle == 'image'}"  class="overview-hero-wrapper mx-auto">
-		<div class="overview-hero mx-auto d-flex align-items-md-center flex-column" >
-		
-			<div class="card overview-img-overlay">
-			    <div class="card-img-overlay">
-			    </div>
-			</div>
-	        <div class="card mx-auto text-white overview-hero-copy">
-	            <div class="card-body">
-	            	<h3 class="card-title">${properties.overviewHeroTitle}</h3>
-	                <p class="card-text text-center">${properties.overviewHeroDesc}</p>
-	            </div>
-	        </div>
-	            
-		</div>
-	</div>
+	<div class="overview-hero-wrapper mx-auto">
+	<div class="overview-hero mx-auto d-flex align-items-md-center flex-column" >
 	
-	
-	<div data-sly-test="${properties.lgBgStyle == 'video'}" class="overview-hero-vd-wrapper mx-auto">
-		<div class="overview-hero mx-auto d-flex align-items-md-center flex-column" >
-		
-			<div class="card overview-vd-container d-sm-flex d-none">
-				<video data-object-fit loop muted autoplay poster="${properties.overviewHeroVideoPosterFileRef}">
-			    	<source src="${properties.videoPath}" type="video/mp4">
-				</video>
-			</div>
-			<div class="card overview-img-overlay2 d-sm-none d-flex">
-			    <div class="card-img-overlay">
-			    </div>
-			</div>		
-	        <div class="card mx-auto text-white overview-hero-copy">
-	            <div class="card-body">
-	            	<h3 class="card-title">${properties.overviewHeroTitle}</h3>
-	                <p class="card-text text-center">${properties.overviewHeroDesc}</p>
-	            </div>
-	        </div>
-	            
+		<div class="card overview-img-overlay">
+		    <div class="card-img-overlay">
+		    </div>
 		</div>
+        <div class="card mx-auto text-white overview-hero-copy">
+            <div class="card-body">
+            	<h3 class="card-title">${properties.overviewHeroTitle}</h3>
+                <p class="card-text text-center">${properties.overviewHeroDesc}</p>
+            </div>
+        </div>
+            
 	</div>
+	</div>
+
 </div>

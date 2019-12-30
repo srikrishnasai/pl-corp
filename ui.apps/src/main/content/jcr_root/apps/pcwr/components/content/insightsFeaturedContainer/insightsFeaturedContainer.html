@@ -8,6 +8,19 @@
 	<div class="row insights-featured-container">
 
 		<sly data-sly-use.cards="insightsFeaturedContainer.js" data-sly-list="${cards.cards}" > 
+		
+			<sly data-sly-test.cardTopics=""></sly>
+					
+			<div class="d-none" data-sly-list="${item.properties['insightCategoryTag']}">
+				<div data-sly-use.model="${'com.paclife.core.models.PCWRTagHelperModel' @ tagString = item}">
+					<sly data-sly-test.div="${cardTopics}">
+						<sly data-sly-test.cardTopics="${cardTopics} / "></sly>
+					</sly>
+					
+					<sly data-sly-test.cardTopics="${cardTopics}${model.tag.title}"></sly>
+				</div>
+			</div>
+			
             <sly data-sly-test.title='${item.properties["pageTitle"] || item.properties["jcr:title"]}'/>
 			<div class="card insights-card" data-media-block-title="${title}">
 			    <img class="card-img-top insights-img" src="${item.properties['insightCardThumbnail']}" alt="Card image cap">
@@ -16,7 +29,7 @@
 			    	<!--/* Check if Tag has been associated with the page */-->
 			    	<sly data-sly-test="${item.properties['insightCategoryTag']}">
 				        <p class="insights-tag-text" data-sly-use.model="${'com.paclife.core.models.PCWRTagHelperModel' @ tagString = item.properties['insightCategoryTag']}">
-				        ${model.tag.title}
+							${cardTopics}
 			        	</p>
 		        	</sly>
 			        <h4 class="card-title insights-title">${title}</h4>

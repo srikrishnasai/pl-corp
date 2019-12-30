@@ -11,9 +11,6 @@ if($("ul.state-drop-down-list").length) {
 	$("ul.state-drop-down-list").on("click", "li:not(.init)", function () {
 	  allOptions.removeClass('selected');
 	  $(this).addClass('selected');
-	  
-	  PacLife.Storage.setSessionData('productState', $(this).text());
-	  
 	  $("ul.state-drop-down-list").children('.init').html($(this).html());
 	  allOptions.toggle();
 	});
@@ -71,24 +68,9 @@ if($("ul.state-drop-down-list").length) {
 			$noProductsMsg.addClass('d-none');
 		}
 	}
-	
-	// PLCOM-362: Check if state selection is present in browser session.
-        function checkSessionData() {
-            var productStateFromSession = PacLife.Storage.getSessionData('productState');
-        	if (productStateFromSession) {
-        	    var listEl = $('li.state-dropdown-value:contains('+ productStateFromSession + ')')[0];
-        	    if (listEl) {
-        		$(listEl).trigger('click');
-        		allOptions.toggle();
-        	    }
-        	}
-	}
-        
 	$(document).ready(function () {
 	  //shuffleInstance.filter('pacific-life:product-states/national');
 	  //console.log(shuffleInstance);console.log('cotestbest: ' + ie11Test());
 		shuffleInstance;
-		
-		checkSessionData();
 	});
 }

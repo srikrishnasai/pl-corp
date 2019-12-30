@@ -128,6 +128,7 @@ a { color: @bright-blue;}
 }
 .img-fluid{flex-shrink: 0;}/*IE 11 fixes streteched images*/
 
+
 //
 //Main Navigation
 //
@@ -162,7 +163,7 @@ a { color: @bright-blue;}
  				font-size: 14px !important;
  				line-height:1.29;
  				margin-top: .5rem;
-    			margin-bottom: .8rem;		
+    			margin-bottom: .7rem;		
  			}
  			>a{
   				font-family: 'Montserrat', sans-serif;
@@ -334,8 +335,21 @@ a { color: @bright-blue;}
 
 @media screen and (min-width: 768px) {
 	.right-nav-items{ margin-right:50px;}
+
 }
-@media screen and (max-width:992px){
+
+@media screen and (max-width: 768px) {
+	.right-nav-items{ margin-right:50px;}
+    
+    // PLCOM-311
+    .search-results-page .search-result-pagination .pagination {
+        flex-wrap: wrap;
+        line-height: 1.75em;
+    }
+}
+
+
+@media screen and (max-width: 1139px){
  	.plcorp-main-nav{
  		>.navbar-toggler{padding-top:1rem;padding-bottom:1.4rem;}
  		.left-nav-items{>img{width:168px;}}
@@ -398,7 +412,6 @@ a { color: @bright-blue;}
  			}
  			&.show{
  				max-height:unset;
- 				height: 100vh;
  				.mobile-nav-back-btn{}
  				/*removes column height restriction for About on mobile*/
  				>ul{>li{&:only-child{>ul{max-height:unset;}}}}
@@ -426,7 +439,8 @@ a { color: @bright-blue;}
  				&.show{
  					margin-top:0px;
  					padding-top:0px;
- 					>.cmp-navigation__group{
+ 					>.cmp-navigation__group {
+                        //margin-left: 25px;
  						margin-top: 0;
  						>li{
  							padding-top: 1rem;
@@ -465,7 +479,7 @@ a { color: @bright-blue;}
 }
 
 /* breakpoint and up - mega dropdown styles */
-@media screen and (min-width: 992px) {
+@media screen and (min-width: 1140px) {
   
   /* remove the padding from the navbar so the dropdown hover state is not broken */
 	.plcorp-main-nav {
@@ -490,7 +504,22 @@ a { color: @bright-blue;}
       		.nav-search-icon{font-size:19px;}
 	  	}	  	
 	  }
-
+	// Meganave updates - "Other Solutions" under "Mutual Funds" 
+	#navbarSupportedContent {
+ 		> ul {
+			> li:nth-child(2) {
+				> .dropdown-menu.show {
+					> ul {
+						display: flex;
+						-webkit-flex-flow: wrap column;
+						flex-flow: column wrap;
+						max-height: 500px;
+						align-content: center;
+						}
+					}	 
+	 			}
+	 		}	    
+	 	}        
 	}
 	
 	/* remove the padding from the nav-item and add some margin to give some breathing room on hovers */
@@ -524,6 +553,18 @@ a { color: @bright-blue;}
 @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: none) {  
    .plcorp-main-nav {
    	height: 80px;
+   	// Meganave updates - "Other Solutions" under "Mutual Funds" 
+	#navbarSupportedContent {
+ 		> ul {
+			> li:nth-child(2) {
+				> .dropdown-menu.show {
+					> ul {
+						height: 500px;
+						}
+					}	 
+	 			}
+	 		}	    
+	 	}       
    }
 
 }
@@ -606,16 +647,8 @@ a { color: @bright-blue;}
     	}
 	}
 }
-@media (max-width: 767.98px) {
-	.login-menu{
-		position: inherit;
-		.dropdown-menu{
-			width:100%; top:100%;margin-left:0;margin-right:0;
-			box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
-		}
-	}
-}
-@media (max-width: 992px) {
+
+@media (max-width: 1140px) {
 	.login-menu{
 		margin-right:auto;
 		height:3rem;
@@ -649,6 +682,18 @@ a { color: @bright-blue;}
 		}
 	}
 }
+
+
+@media (max-width: 1667px) {
+	.login-menu{
+		position: inherit;
+		.dropdown-menu{
+			width:100%; top:100%;margin-left:0;margin-right:0;
+			box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+		}
+	}
+}
+
 //
 //Tables Global
 //
@@ -771,3 +816,9 @@ a { color: @bright-blue;}
 	}
 }
 
+// External Component iFrame remove border globally
+div.external {
+	iframe {
+		border: 0;
+	}
+}

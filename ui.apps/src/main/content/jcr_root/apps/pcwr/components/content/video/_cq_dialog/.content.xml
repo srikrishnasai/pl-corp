@@ -56,6 +56,12 @@
                                         fieldLabel="Poster (for AEM videos only)"
                                         name="./poster"
                                         rootPath="/content/dam/" />
+									<videoId
+										jcr:primaryType="nt:unstructured"
+										sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+										fieldDescription="Use this to enter an ID for this component"
+										fieldLabel="Unique Id"
+										name="./videoId"/>
                                 </items>
                             </column>
                         </items>

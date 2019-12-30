@@ -432,7 +432,7 @@ if($('.find-a-pro-results-page').length > 0) {
 	
 	function formatBusinessName(firmName) {
 		 var businessName = '';
-		if(firmName=='NULL' || firmName==' ' || firmName.length<=0){
+		if(firmName== null || firmName=='NULL' || firmName==' ' || firmName.length<=0 ){
 			businessName = '';
 		} else {
 			businessName = '<i>' + firmName + '</i><br>';

@@ -18,7 +18,5 @@ js/bootstrap.bundle.min.js
 js/lightslider.min.js
 js/shuffle.js
 js/jquery.matchHeight-min.js
-js/objectFitPolyfill.min.js
 js/global.js
-js/paclife-storage.js
 #

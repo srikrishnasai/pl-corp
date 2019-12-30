@@ -28,7 +28,9 @@ if (document.location.protocol.indexOf("http:") != -1 || docLoc.indexOf("myaccou
     strPhone = "(800) 722-4448";
 else strPhone = "(800) 722-2333";
 
-if (docLoc.indexOf('andannui') != -1) {
+if(docLoc.indexOf('www.pacificlife.com') != -1 || docLoc.indexOf('mo.pacificlife.com') != -1 || docLoc.indexOf('dev.pacificlife.com') != -1) {
+	window.location.href = '/home/404-error-page-not-found.html';
+} else if (docLoc.indexOf('andannui') != -1) {
     companyName = "Pacific Life & Annuity";
     logoImage = "corp_pla_logo.gif";
     corpDomain = "http://www.pacificlifeandannuity.com";    

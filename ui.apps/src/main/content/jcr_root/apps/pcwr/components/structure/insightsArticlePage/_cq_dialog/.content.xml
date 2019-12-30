@@ -24,6 +24,7 @@
 						                        sling:resourceType="cq/gui/components/coral/common/form/tagfield"
 						                        emptyText="Select an Insight Category Tag"
 						                        name="./insightCategoryTag"
+												multiple="{Boolean}true"
 						                        forceSelection="{Boolean}true"
 						                        required="{Boolean}true"
 						                        rootPath="/etc/tags/pacific-life/insights/categories"/>                                                                                       

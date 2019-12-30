@@ -1,12 +1,9 @@
 $(document).ready(function() {
 
-    $('#fap-button').click(function(event) {
-
-	if (this.form.checkValidity()) {
-	    fapButtonClicked();
-	}
-
-    });
+	$('#fap-button').click(function(event){
+		event.preventDefault();
+		fapButtonClicked();
+	});
 });
 
 

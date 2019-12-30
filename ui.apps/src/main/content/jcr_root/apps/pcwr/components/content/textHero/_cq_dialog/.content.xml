@@ -35,7 +35,46 @@
 			            fieldDescription="Please provide Title for the Component"
 			            fieldLabel="Title"
 			            name="./textHeroTitle"
-			            required="{Boolean}true"/>      
+			            required="{Boolean}true"/> 
+					<textHeroTitleColor
+						jcr:primaryType="nt:unstructured"
+						sling:resourceType="granite/ui/components/foundation/form/select"
+						fieldDescription="Select Title Color"
+						fieldLabel="Title Color"
+						name="./textHeroTitleColor">
+							<items jcr:primaryType="nt:unstructured">
+								<one jcr:primaryType="nt:unstructured"
+								text="None"
+								value=""/>
+								<two jcr:primaryType="nt:unstructured"
+								text="Blue"
+								value="#005EAD"/>
+								<three jcr:primaryType="nt:unstructured"
+								text="Bright Blue"
+								value="#008ed7"/>
+							</items>
+					</textHeroTitleColor>
+					<textHeroTitleAlignment
+						jcr:primaryType="nt:unstructured"
+						sling:resourceType="granite/ui/components/foundation/form/select"
+						fieldDescription="Title Position"
+						fieldLabel="Title Position"
+						name="./textHeroTitleAlignment">
+						<items jcr:primaryType="nt:unstructured">
+							<one jcr:primaryType="nt:unstructured"
+							text="None"
+							value=""/>
+							<two jcr:primaryType="nt:unstructured"
+							text="Left"
+							value="text-left"/>
+							<three jcr:primaryType="nt:unstructured"
+							text="Center"
+							value="d-block mx-auto"/>
+							<four jcr:primaryType="nt:unstructured"
+							text="Right"
+							value="text-right"/>
+						</items>
+					</textHeroTitleAlignment>
                 	 <textHeroBody
                         jcr:primaryType="nt:unstructured"
                         sling:resourceType="granite/ui/components/coral/foundation/include"

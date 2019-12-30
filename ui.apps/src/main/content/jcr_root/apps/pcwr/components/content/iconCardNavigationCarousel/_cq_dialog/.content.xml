@@ -42,6 +42,12 @@
                                         name="./downArrows"
                                         text="Add down arrow targets"
                                         value="true"/>
+									<cardId
+										jcr:primaryType="nt:unstructured"
+										sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+										fieldDescription="Use this to enter an ID for this component"
+										fieldLabel="Unique Id"
+										name="./cardId"/>
                                 </items>
                             </tab>
                         </items>

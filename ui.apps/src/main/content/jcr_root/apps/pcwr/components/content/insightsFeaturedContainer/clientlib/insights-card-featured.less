@@ -1,9 +1,17 @@
 //
 //Insights Card Container
 //
-.insights-card-main-headline{margin-bottom:1.9rem !important;}
-.insights-card{
-	margin:1rem;
+.insights-card-main-headline{
+    margin-bottom:1.9rem !important;
+}
+
+.insightsFeaturedContainer {
+    max-width: 1250px;
+    margin: auto;
+}
+
+.insights-card {
+	margin: 1rem;
 	//min-width:360px;
 	//max-width:360px;
 	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
@@ -13,14 +21,20 @@
 	min-width: 22.625rem;
 	min-height: 32.625rem;
 	margin-bottom: 1rem !important;
+    
+    &:first-child{
+        margin-left: auto;
+    }
+    &:last-child{
+        margin-right: auto;
+    }
 	&:hover {
 		background-color:rgba(0, 0, 0, 0.02);
 	}
-
-	.insights-body{
+    .insights-body{
 	    padding:1.9rem 1.9rem 0 1.9rem;
 	}
-	.insights-title{
+	.insights-title {
 		font-family: 'Merriweather', serif;
 		font-size:27px;
 		font-weight:300;
@@ -80,7 +94,13 @@
 	    &:hover{background-color:rgba(0, 0, 0, 0.02); opacity: 1;}
 	}
 }
-.insights-featured-container{.insights-card-footer,.insights-body{background-color:#ffffff;}}
+
+.insights-featured-container{       
+    .insights-card-footer,.insights-body{
+        background-color:#ffffff;
+    }
+}
+
 .cta-see-all{
 	margin-top:30px;
 	margin-bottom:50px;
@@ -91,21 +111,40 @@
 		i{font-size:23px;vertical-align:middle;padding-bottom:2.5px;}
 	}
 }
-@media screen and (min-width: 768px) {
-	.insights-featured-container{ 
-		.insights-card{
-			&:first-child{margin-left:auto !important;}
-			&:last-child{margin-right:auto !important;}
+ 
+@media screen and (max-width: 1140px) {
+    
+    // PLCOM-264
+    .insightsFeaturedContainer {
+        max-width: 750px;
+        margin: auto;
+    }
+    
+    .insights-card {
+        margin-left: auto;
+        margin-right: auto;
+        
+        &:first-child {
+            margin-right: 1em;
+        }
+        &:second-child {
+            margin-left: 1em;
+        }  
+    }
+}
+
+@media screen and  (max-width: 725px) {
+    
+    // PLCOM-264
+	.insights-featured-container {
+        flex: 1 0 0%;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        
+		.insights-card {
+            margin-left: auto;
+            margin-right: auto;
 		}	
 	}
 }
-@media (max-width: 575.98px) {
-	.insights-card-main-headline{padding-left:1.5rem; padding-right:1.5rem;}
-	.insights-featured-container{
-		.insights-card{
-			margin: auto 39px auto 39px; overflow: hidden; width:100%; min-width:unset;
-			.insights-body{padding-right: 1.5rem;padding-left: 1.5rem;}
-			.insights-card-footer{padding-right: 1.5rem;padding-left: 1.5rem;}
-		}	
-	}
-}
+

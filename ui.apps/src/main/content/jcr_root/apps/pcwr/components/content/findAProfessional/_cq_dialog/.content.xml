@@ -63,12 +63,6 @@
                         fieldLabel="Placeholder Text"
                         fieldDescription="For example, 'Enter Zip Code'"
                         name="./inputFieldText"/>   
-                    <invalidZipError
-                        jcr:primaryType="nt:unstructured"
-                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                        fieldLabel="Invalid Zip Code Error Message"
-                        fieldDescription="Defaults to 'Please provide valid Zip code'"
-                        name="./invalidZipError"/>   
 					<action
 				    	jcr:primaryType="nt:unstructured"
                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"

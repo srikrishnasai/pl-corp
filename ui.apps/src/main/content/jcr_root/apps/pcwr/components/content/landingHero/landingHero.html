@@ -2,47 +2,26 @@
 
 <!--/*NOTE: Add class 'overlay-item-below' to overlay an icon card nav component place below*/-->
 <div class="landing-flex-container-wrapper">
-	<div data-component-name="Landing Hero" data-sly-test="${properties.landingHeroBgImageFileRef && properties.lgBgStyle == 'image'}" 
-		class="card detail-hero-img-overlay ${properties.landingHeroOverlay ? 'overlay-item-below' : '' }" 
-		style="background-image:url('${properties.landingHeroBgImageFileRef @ context = 'styleString'}')">
-		
-		<input type="hidden" class="landing-lg-img" value="${properties.landingHeroBgImageFileRef}">
-		<input type="hidden" class="landing-sm-img" value="${properties.landingHeroMobileBgImageFileRef}">
-		
-	    <div class="card-img-overlay text-center position-relative my-auto">
-	    <!--/*NOTE: Add class 'large-hero-title' to get the larger title text seen in the visual design*/-->
-		    <h1 class="card-title mx-auto text-white 
-	                   ${properties.landingHeroLgHeading ? 'large-hero-title' : '' }">
-	                   <sly data-sly-use.text="${'nonbreak.js'}"/>
-	                   ${text @ context = 'html'}
-	        </h1>
-		    <p class="card-text mx-auto text-white detail-hero-subtitle">${properties.landingHeroContent}</p>
-		    <p data-sly-test="${properties.landingHeroDisplayCTA}" class="card-text detail-hero-btn">
-	            <sly data-sly-use.fixedLink="${'com.paclife.core.util.LinkFixer' @ link = properties.landingHeroCTATarget}"/> 
-	            <a href="${fixedLink.value}" class="btn btn-primary cta-text-btn">${properties.landingHeroCTALabel}</a>
-	        </p>
-	    </div>
-	</div>
+<div data-component-name="Landing Hero" data-sly-test="${properties.landingHeroBgImageFileRef}" 
+	class="card detail-hero-img-overlay ${properties.landingHeroOverlay ? 'overlay-item-below' : '' }" 
+	style="background-image:url('${properties.landingHeroBgImageFileRef @ context = 'styleString'}')">
 	
-	<div data-sly-test="${properties.lgBgStyle == 'video'}" data-component-name="Landing Hero"	class="card detail-hero-video ${properties.landingHeroOverlay ? 'overlay-item-below' : '' }" >
-		
-		<video data-object-fit loop muted autoplay poster="${properties.landingHeroVideoPosterFileRef}">
-		    <source src="${properties.videoPath}" type="video/mp4">
-		</video>
-		<img src="${properties.landingHeroMobileBgImageFileRef}" class="img-fluid" id="videosubstitute" alt="">
-	    <div class="card-img-overlay text-center" style="top:150px;">
-	    <!--/*NOTE: Add class 'large-hero-title' to get the larger title text seen in the visual design*/-->
-		    <h1 class="card-title mx-auto text-white 
-	                   ${properties.landingHeroLgHeading ? 'large-hero-title' : '' }">
-	                   <sly data-sly-use.text="${'nonbreak.js'}"/>
-	                   ${text @ context = 'html'}
-	        </h1>
-		    <p class="card-text mx-auto text-white detail-hero-subtitle">${properties.landingHeroContent}</p>
-		    <p data-sly-test="${properties.landingHeroDisplayCTA}" class="card-text detail-hero-btn">
-	            <sly data-sly-use.fixedLink="${'com.paclife.core.util.LinkFixer' @ link = properties.landingHeroCTATarget}"/> 
-	            <a href="${fixedLink.value}" class="btn btn-primary cta-text-btn">${properties.landingHeroCTALabel}</a>
-	        </p>
-	    </div>
-	</div>
+	<input type="hidden" class="landing-lg-img" value="${properties.landingHeroBgImageFileRef}">
+	<input type="hidden" class="landing-sm-img" value="${properties.landingHeroMobileBgImageFileRef}">
+	
+    <div class="card-img-overlay text-center position-relative my-auto">
+    <!--/*NOTE: Add class 'large-hero-title' to get the larger title text seen in the visual design*/-->
+	    <h1 class="card-title mx-auto text-white 
+                   ${properties.landingHeroLgHeading ? 'large-hero-title' : '' }">
+                   <sly data-sly-use.text="${'nonbreak.js'}"/>
+                   ${text @ context = 'html'}
+        </h1>
+	    <p class="card-text mx-auto text-white detail-hero-subtitle">${properties.landingHeroContent}</p>
+	    <p data-sly-test="${properties.landingHeroDisplayCTA}" class="card-text detail-hero-btn">
+            <sly data-sly-use.fixedLink="${'com.paclife.core.util.LinkFixer' @ link = properties.landingHeroCTATarget}"/> 
+            <a href="${fixedLink.value}" class="btn btn-primary cta-text-btn">${properties.landingHeroCTALabel}</a>
+        </p>
+    </div>
+</div>
 </div>
 <sly data-sly-call="${template.placeholder @ isEmpty=(wcmmode.edit && !properties.landingHeroBgImageFileRef)}"/>

@@ -6,7 +6,7 @@
     <!-- main slider carousel -->
     <div class="row">
         <div  class="scenario-carousel  mx-auto" id="slider">
-                <div id="scenarioCarousel" class="carousel slide touch-enabled-carousel" data-ride="false">
+                <div id="${properties.overrideId || 'scenarioCarousel'}" class="carousel slide touch-enabled-carousel" data-ride="false">
                     <!-- main slider carousel items -->
                     <div class="carousel-inner">
                         <div class="active item carousel-item" data-slide-number="0">
@@ -68,17 +68,17 @@
 					
 					<!--/* Display following only when Multiple tabs configured */-->
 					<sly data-sly-test.multipleScenario="${properties.carItem1Title && (card2Exists || card3Exists || card4Exists || card5Exists)}"> 
-	                    <a class="carousel-control-left" href="#scenarioCarousel" role="button" data-slide="prev"><img src="/etc/designs/pcwr/default/images/carousel-arrow-left.svg" class=""></a>
-	                    <a class="carousel-control-right" href="#scenarioCarousel" role="button"  data-slide="next"><img src="/etc/designs/pcwr/default/images/carousel-arrow-right.svg" class=""></a>
+	                    <a class="carousel-control-left" href="#${properties.overrideId || 'scenarioCarousel'}" role="button" data-slide="prev"><img src="/etc/designs/pcwr/default/images/carousel-arrow-left.svg" class=""></a>
+	                    <a class="carousel-control-right" href="#${properties.overrideId || 'scenarioCarousel'}" role="button"  data-slide="next"><img src="/etc/designs/pcwr/default/images/carousel-arrow-right.svg" class=""></a>
                     
 	                    <!-- main slider carousel nav controls -->
 						<div class="mx-auto">
 		                    <ul class="carousel-indicators list-inline mx-auto">
-		                        <li class="list-inline-item cta-text-btn selected active" id="carousel-selector-0" data-slide-to="0" data-target="#scenarioCarousel">${properties.carItem1Label}</li>
-		                        <li data-sly-test="${card2Exists}" class="list-inline-item cta-text-btn" id="carousel-selector-1" data-slide-to="1" data-target="#scenarioCarousel">${properties.carItem2Label}</li>
-		                        <li data-sly-test="${card3Exists}" class="list-inline-item cta-text-btn" id="carousel-selector-2" data-slide-to="2" data-target="#scenarioCarousel">${properties.carItem3Label}</li>
-		                        <li data-sly-test="${card4Exists}" class="list-inline-item cta-text-btn" id="carousel-selector-3" data-slide-to="3" data-target="#scenarioCarousel">${properties.carItem4Label} </li>
-		                        <li data-sly-test="${card5Exists}" class="list-inline-item cta-text-btn" id="carousel-selector-4" data-slide-to="4" data-target="#scenarioCarousel">${properties.carItem5Label}</li>
+		                        <li class="list-inline-item cta-text-btn selected active" id="carousel-selector-0" data-slide-to="0" data-target="#${properties.overrideId || 'scenarioCarousel'}">${properties.carItem1Label}</li>
+		                        <li data-sly-test="${card2Exists}" class="list-inline-item cta-text-btn" id="carousel-selector-1" data-slide-to="1" data-target="#${properties.overrideId || 'scenarioCarousel'}">${properties.carItem2Label}</li>
+		                        <li data-sly-test="${card3Exists}" class="list-inline-item cta-text-btn" id="carousel-selector-2" data-slide-to="2" data-target="#${properties.overrideId || 'scenarioCarousel'}">${properties.carItem3Label}</li>
+		                        <li data-sly-test="${card4Exists}" class="list-inline-item cta-text-btn" id="carousel-selector-3" data-slide-to="3" data-target="#${properties.overrideId || 'scenarioCarousel'}">${properties.carItem4Label} </li>
+		                        <li data-sly-test="${card5Exists}" class="list-inline-item cta-text-btn" id="carousel-selector-4" data-slide-to="4" data-target="#${properties.overrideId || 'scenarioCarousel'}">${properties.carItem5Label}</li>
 		                    </ul>
 	                    </div>
                     </sly>

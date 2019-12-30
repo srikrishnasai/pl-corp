@@ -22,6 +22,7 @@
 	<artifactId>pcwr-ui</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>PacLife Corp Website Redesign - UI apps</name>
+	<packaging>content-package</packaging>
 	<description>UI apps package for PacLife Corp Website Redesign</description>
 	<build>
 		<resources>

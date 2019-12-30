@@ -21,17 +21,17 @@ import java.net.SocketTimeoutException;
 
 public class ConnectionUtil {
 	public static final String OSB_DEV_URL = "http://soa.amf.pacificlife.net:6101/soaqa/Services/";
-	   
+
 	public static final String OSB_QA_URL = "http://anmvbus1:9103/Services/";
 	public static final String OSB_PROD_URL = "http://esb.amfsoa.pacificlife.com/Services/";
 	public static final Logger log = LoggerFactory.getLogger(ConnectionUtil.class);
 
 	public static String getResponseString(String urlString){
 		return getResponseString(null,  urlString, null, null);
-		
+
 	}
 	/**
-	 * 
+	 *
 	 * @param slingRequest
 	 * @param urlString
 	 * @return
@@ -42,15 +42,15 @@ public class ConnectionUtil {
 		try {
 			url = new URL(urlString);
 			InputStream stream = null;
-			
+
 			// SonarQube - try with a resource
 			try(BufferedReader br = new BufferedReader(new InputStreamReader(stream))) {
 				URLConnection conn = url.openConnection();
-				
+
 				// Code Scan Remediation
 				// Set timeout (critical issue requirement)
 				conn.setConnectTimeout(60 * 1000); // x * 1000 = x seconds
-				
+
 				if(slingRequest != null){
 					conn.setRequestProperty ("client_id", clientId);
 					conn.setRequestProperty ("client_secret", clientSecret);
@@ -61,9 +61,9 @@ public class ConnectionUtil {
 					log.debug("GSAConnectionUtil: URL connect Stream for"+urlString);
 				}
 				//put output stream into a string
-				BufferedReader br = new BufferedReader(new InputStreamReader(stream));
+				//BufferedReader br = new BufferedReader(new InputStreamReader(stream));
 				//,Charset.forName("ISO-8859-1")));
-				
+
 				String line;
 		        while ((line = br.readLine()) != null) {
 		        	response.append(line);
@@ -74,15 +74,15 @@ public class ConnectionUtil {
 					log.debug("GSAConnectionUtil: Payload size: "+response.length());
 				}
 
-		        br.close();
-		        
+		        //br.close();
+
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				log.error("getResponseString IOException",e);
 				e.printStackTrace();
 			} finally {
-				if(stream != null) { 
-					try{ 
+				if(stream != null) {
+					try{
 						stream.close();
 					} catch(Exception e){
 						log.error( "Stream Close Exception",e);
@@ -98,17 +98,17 @@ public class ConnectionUtil {
 	}
 	public static String getServiceUrl(SlingHttpServletRequest slingRequest){
 		String requestHost = getRequestHost(slingRequest);
-		
+
 		// SonarQube duplicate critical issue
 		String siteUtilsDup = "SiteUtils";
 		String getOSBUrlDup = "getServiceUrl";
-		
+
 		log.debug(siteUtilsDup,getOSBUrlDup, "---->getOSBUrl ::" + requestHost);
 		if(StringUtils.contains(requestHost, "test") || StringUtils.contains(requestHost, "dev")
 			 || StringUtils.contains(requestHost, "dcorp")){
 			log.debug(siteUtilsDup,getOSBUrlDup,"---->getOSBUrl 1" );
 			return OSB_DEV_URL;
-		} else if(StringUtils.contains(requestHost, "modeloffice") 
+		} else if(StringUtils.contains(requestHost, "modeloffice")
 				|| StringUtils.contains(requestHost, "mo") ||  StringUtils.contains(requestHost, "prdauthor")){
 			log.debug(siteUtilsDup,getOSBUrlDup,"---->getOSBUrl 2" );
 			return OSB_QA_URL;
@@ -117,7 +117,7 @@ public class ConnectionUtil {
             return OSB_PROD_URL;
         }
 	}
-	
+
 	public static String getOSBUrl(SlingHttpServletRequest slingRequest){
 		String requestHost = getRequestHost(slingRequest);
 		log.debug("SiteUtils","getOSBUrl", "---->getOSBUrl ::" + requestHost);
@@ -125,11 +125,11 @@ public class ConnectionUtil {
 			 || StringUtils.contains(requestHost, "dcorp")){
 			log.debug("SiteUtils","getOSBUrl","---->getOSBUrl 1" );
 			return OSB_DEV_URL;
-		}else if(StringUtils.contains(requestHost, "modeloffice") 
+		}else if(StringUtils.contains(requestHost, "modeloffice")
 				|| StringUtils.contains(requestHost, "mo") ||  StringUtils.contains(requestHost, "prdauthor")){
 			log.debug("SiteUtils","getOSBUrl","---->getOSBUrl 2" );
 			return OSB_QA_URL;
-		} 
+		}
 		log.debug("SiteUtils","getOSBUrl","---->getOSBUrl 3" );
 		return OSB_PROD_URL;
 	}

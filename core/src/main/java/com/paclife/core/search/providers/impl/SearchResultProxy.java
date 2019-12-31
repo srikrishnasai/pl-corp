@@ -22,7 +22,7 @@ import com.google.common.collect.Lists;
  * @author alex.ramos
  *
  */
-public class SearchResultProxy { // implements SearchResult {
+public class SearchResultProxy implements SearchResult {
 
 	final private SearchResult result;
 

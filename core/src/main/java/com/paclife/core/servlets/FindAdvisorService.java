@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package com.paclife.core.servlets;
 
@@ -50,16 +50,16 @@ import org.apache.felix.scr.annotations.Reference;
     @Property(name = "sling.servlet.extensions", value = "json", propertyPrivate = true)
 })
 public class FindAdvisorService extends SlingAllMethodsServlet {
-	
-	@Reference 
-	private Configuration configuration;
-	
+
+	@Reference
+	private transient Configuration configuration;
+
 	private static final Logger log = LoggerFactory.getLogger(FindAdvisorService.class);
 	/**
-	 *  
+	 *
 	 */
 	private static final long serialVersionUID = -1028827313231568464L;
-	
+
 	@Override
 	protected void doGet(SlingHttpServletRequest request, SlingHttpServletResponse response) throws ServletException, IOException {
 		doPost(request,response);
@@ -67,12 +67,12 @@ public class FindAdvisorService extends SlingAllMethodsServlet {
 	@Override
     protected void doPost(SlingHttpServletRequest request, SlingHttpServletResponse response) throws ServletException, IOException {
 		//PI 160628
-		
+
 		String clientIP = StringUtils.trim( StringUtils.substringBefore(request.getHeader("x-forwarded-for"), ","));
 		log.error("FindAdvisorService after clientIP ----> "+clientIP);
 		// Code Remediation - Detected as unused
 		// String action = request.getParameter("action");
-					
+
 		String latitude = request.getParameter("latitude");
 		String longitude = request.getParameter("longitude");
 		// Code Remediation - Detected as unused
@@ -82,11 +82,11 @@ public class FindAdvisorService extends SlingAllMethodsServlet {
 		if(StringUtils.isEmpty(query)) {
             query = "DEFAULT";
         }
-        query = query.replaceAll("[^A-Za-z0-9\\,]", ""); 
+        query = query.replaceAll("[^A-Za-z0-9\\,]", "");
 		query = URLEncoder.encode(query,"UTF-8");
-		
+
 		int 	APP_LOG_CORP_SITE = 15;
-		
+
 		String serviceUrl = configuration.getMulesoftWebserviceUrl() + "find-an-advisor/search/"+longitude+"/"+latitude+"/"+radius+"/"+query;
 		if(StringUtils.isBlank(configuration.getFafpClientId())){
 			log.error("------------------------------");
@@ -96,18 +96,18 @@ public class FindAdvisorService extends SlingAllMethodsServlet {
 		} else {
 			System.out.println(serviceUrl);
 			String jsonObject =  ConnectionUtil.getResponseString(request,serviceUrl, configuration.getFafpClientId(), configuration.getFafpClientSecret());
-			
+
 		//	String jsonObject =  ConnectionUtil.getResponseString(ConnectionUtil.getOSBUrl(request)+"Advisor/V1/AdvisorGeolocationInquiryProxyService/"+latitude+"/"+longitude+"/"+radius+"/"+query+"/"+APP_LOG_CORP_SITE+"/"+clientIP);
-			
+
 			log.error(jsonObject);
 			response.setContentType("application/json");
 			PrintWriter out = response.getWriter();
 			out.print(jsonObject);
 			out.flush();
 		}
-		
+
 	}
-	
+
 
 
 }

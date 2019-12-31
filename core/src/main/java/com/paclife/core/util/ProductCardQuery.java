@@ -11,9 +11,9 @@ import com.adobe.cq.sightly.WCMUsePojo;
 import com.day.cq.wcm.api.NameConstants;
 
 public class ProductCardQuery extends WCMUsePojo {
-	
+
 	private final Logger logger = Logger.getLogger(getClass().getName());
-	
+
 	private Resource target;
 
 	@Override
@@ -23,18 +23,18 @@ public class ProductCardQuery extends WCMUsePojo {
 			target = findPage(result.next());
 			break;
 		}
-		logger.fine("target=" + target.getPath());
+		logger.fine("target=" + (target!=null?target.getPath():"null"));
 	}
 
 	private String createQuery() {
 		String productType = this.getProperties().get("productType", String.class);
-		logger.fine("productType=" + productType); 
-		
+		logger.fine("productType=" + productType);
+
 		// Code Scan Remediation
 		if(productType == null) {
 			return null;
 		}
-		
+
 		return String.format("SELECT * FROM [nt:base] AS s WHERE s.productType = '%s'"
 				+ " AND ISDESCENDANTNODE(s, '/content')"
 				+ " AND [sling:resourceType] = 'pcwr/components/content/productCardContainer'",

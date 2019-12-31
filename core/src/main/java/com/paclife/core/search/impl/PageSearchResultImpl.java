@@ -42,11 +42,10 @@ public class PageSearchResultImpl implements SearchResult {
     @PostConstruct
     protected void intialize() {
 		// Code Scan Remediation
-		if(resourceResolver.adaptTo(PageManager.class) != null) {
-			this.page = resourceResolver.adaptTo(PageManager.class).getContainingPage(resource);
-			
-		}
-        
+  		if(resourceResolver.adaptTo(PageManager.class) != null) {
+  			this.page = resourceResolver.adaptTo(PageManager.class).getContainingPage(resource);
+  		}
+
         log.info("here");
     }
 

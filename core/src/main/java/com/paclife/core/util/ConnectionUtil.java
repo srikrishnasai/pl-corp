@@ -50,6 +50,7 @@ public class ConnectionUtil {
 				// Code Scan Remediation
 				// Set timeout (critical issue requirement)
 				conn.setConnectTimeout(60 * 1000); // x * 1000 = x seconds
+				conn.setReadTimeout(60 * 1000);
 
 				if(slingRequest != null){
 					conn.setRequestProperty ("client_id", clientId);

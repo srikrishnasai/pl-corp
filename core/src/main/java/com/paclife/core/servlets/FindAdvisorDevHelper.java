@@ -131,6 +131,7 @@ public class FindAdvisorDevHelper extends SlingAllMethodsServlet {
 			// Code Scan Remediation
 			// Set timeout (critical issue requirement)
 			uc.setConnectTimeout(60 * 1000); // x * 1000 = x seconds
+			uc.setReadTimeout(60 * 1000);
 			
 			uc.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36");
 			uc.setRequestProperty("Cookie", "visid_incap_1215848=TBNbi008Sny51zJDWHpaSgJi6loAAAAAQkIPAAAAAACAa3uFAWNK2HMG4kWVntq9SJUonxBfq94m; incap_ses_340_1215848=EVe2OkzM7gr6OU7S3Oy3BAj7SFsAAAAAPVemsru68AAiUfyXezsmkQ==; incap_ses_415_1215848=yToqcZkE2HrEYH9Uv2HCBQP9SFsAAAAAydfOlAyqCqq2zTGE7U5KOw==");

@@ -25,7 +25,7 @@ import java.util.List;
         adapters = SearchResult.class,
         resourceType = "cq:Page"
 )
-public class PageSearchResultImpl implements SearchResult {
+public class PageSearchResultImpl implements com.paclife.core.search.SearchResult {
 
 	private static final Logger log = LoggerFactory.getLogger(PageSearchResultImpl.class);
 

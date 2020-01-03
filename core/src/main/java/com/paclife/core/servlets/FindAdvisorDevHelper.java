@@ -70,7 +70,7 @@ import java.net.SocketTimeoutException;
 public class FindAdvisorDevHelper extends SlingAllMethodsServlet {
 
 	private static final Logger logger = Logger.getLogger(FindAdvisorDevHelper.class.getName());
-	
+
 	@Override
 	protected void doGet(SlingHttpServletRequest request, SlingHttpServletResponse response) throws ServletException, IOException {
 		doPost(request,response);
@@ -85,29 +85,29 @@ public class FindAdvisorDevHelper extends SlingAllMethodsServlet {
 		Double longitude = Double.parseDouble(request.getParameter("longitude"));
 		String query = StringUtils.stripToEmpty( request.getParameter("query"));
 		Integer radius = Optional.ofNullable(request.getParameter("radius")).map(Integer::parseInt).orElse(250);
-		
+
 		doQuery(out, latitude, longitude, query, radius);
 	}
-	
+
 	private static void doQuery(PrintWriter out, Double latitude, Double longitude, String query, Integer radius)
 			throws UnsupportedEncodingException, IOException, MalformedURLException {
 
-		
+
 		try {
 			Thread.sleep(3000); // simulate production performance levels, to allow testing the progress icon
 		} catch (InterruptedException e1) {
 			// Code Scan Remediation
-			Thread.currentThread().interrupt();  // set interrupt flag
+		//	Thread.currentThread().interrupt();  // set interrupt flag
 			logger.info("Interrupt Exception: " + e1);
 		}
-		
+
 		if(StringUtils.isEmpty(query)) {
             query = "DEFAULT";
         }
-		
-		query = query.replaceAll("[^A-Za-z0-9\\,]", ""); 
+
+		query = query.replaceAll("[^A-Za-z0-9\\,]", "");
 		query = URLEncoder.encode(query,"UTF-8");
-		
+
 		File cacheFile = new File(new File(System.getProperty("java.io.tmpdir")), latitude + "-" + longitude + "-" + radius + ".cache.json");
 		if(cacheFile.exists()) {
 			out.write(Files.toString(cacheFile, Charset.defaultCharset()));
@@ -115,34 +115,34 @@ public class FindAdvisorDevHelper extends SlingAllMethodsServlet {
 			logger.info("Using data from cache: " + cacheFile);
 			return;
 		}
-		
+
 		String url = String.format("https://www.pacificlife.com/bin/findadvisor/geolocation?latitude=%f&longitude=%f&query=%s&time=%d&radius=%d",
 				latitude, longitude, query, System.currentTimeMillis(), radius);
 
 		logger.info("Requesting data from URL = " + url);
-		
+
 		unsecure();
-		
+
 		// Code Scan Remediation
 		// Nesting the openConnection within  a try catch
 		try {
 			URLConnection uc = new URL(url).openConnection();
-			
+
 			// Code Scan Remediation
 			// Set timeout (critical issue requirement)
 			uc.setConnectTimeout(60 * 1000); // x * 1000 = x seconds
 			uc.setReadTimeout(60 * 1000);
-			
+
 			uc.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36");
 			uc.setRequestProperty("Cookie", "visid_incap_1215848=TBNbi008Sny51zJDWHpaSgJi6loAAAAAQkIPAAAAAACAa3uFAWNK2HMG4kWVntq9SJUonxBfq94m; incap_ses_340_1215848=EVe2OkzM7gr6OU7S3Oy3BAj7SFsAAAAAPVemsru68AAiUfyXezsmkQ==; incap_ses_415_1215848=yToqcZkE2HrEYH9Uv2HCBQP9SFsAAAAAydfOlAyqCqq2zTGE7U5KOw==");
 			uc.setDoOutput(true);
 			uc.setDoInput(true);
 
 			try(InputStream is = uc.getInputStream()) {
-				
+
 				String json = IOUtils.toString(is);
 				org.apache.commons.io.IOUtils.write(json, out);
-				out.flush();			
+				out.flush();
 
 				if(!json.startsWith("[{")) {
 					throw new IllegalArgumentException();
@@ -153,23 +153,23 @@ public class FindAdvisorDevHelper extends SlingAllMethodsServlet {
 		// Code Scan Remediation
 		} catch (SocketTimeoutException e) {
 			logger.info("getResponseString SocketTimeoutException" + e);
-			e.printStackTrace();	
+			e.printStackTrace();
 		// Remediation END
 		}
 	}
-	
+
 	public static void main(String[] args) {
 		try(PrintWriter out = new PrintWriter(System.out)) {
 			doQuery(out, 33.6297, -117.872, "", 250);
 		} catch (UnsupportedEncodingException e) {
             logger.info("main UnsupportedEncodingException" + e);
-			e.printStackTrace();	
+			e.printStackTrace();
         } catch (MalformedURLException e) {
             logger.info("main MalformedURLException" + e);
-			e.printStackTrace();	
+			e.printStackTrace();
         } catch (IOException e) {
             logger.info("main IOException" + e);
-			e.printStackTrace();	
+			e.printStackTrace();
         }
 	}
 
@@ -195,7 +195,7 @@ public class FindAdvisorDevHelper extends SlingAllMethodsServlet {
 			HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
 		} catch (GeneralSecurityException e) {
 			logger.info("unsecure GeneralSecurityException" + e);
-			e.printStackTrace();	
+			e.printStackTrace();
 		}
 	}
 

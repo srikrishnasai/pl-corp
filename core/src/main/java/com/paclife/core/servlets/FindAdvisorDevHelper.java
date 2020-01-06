@@ -155,7 +155,7 @@ public class FindAdvisorDevHelper extends SlingAllMethodsServlet {
 		// Code Scan Remediation
 		} catch (SocketTimeoutException e) {
 			logger.info("getResponseString SocketTimeoutException" + e);
-			e.printStackTrace();
+			// e.printStackTrace();
 		// Remediation END
 		}
 	}
@@ -165,13 +165,13 @@ public class FindAdvisorDevHelper extends SlingAllMethodsServlet {
 			doQuery(out, 33.6297, -117.872, "", 250);
 		} catch (UnsupportedEncodingException e) {
             logger.info("main UnsupportedEncodingException" + e);
-			e.printStackTrace();
+			// e.printStackTrace();
         } catch (MalformedURLException e) {
             logger.info("main MalformedURLException" + e);
-			e.printStackTrace();
+			// e.printStackTrace();
         } catch (IOException e) {
             logger.info("main IOException" + e);
-			e.printStackTrace();
+			// e.printStackTrace();
         }
 	}
 
@@ -197,7 +197,7 @@ public class FindAdvisorDevHelper extends SlingAllMethodsServlet {
 			HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
 		} catch (GeneralSecurityException e) {
 			logger.info("unsecure GeneralSecurityException" + e);
-			e.printStackTrace();
+			// e.printStackTrace();
 		}
 	}
 

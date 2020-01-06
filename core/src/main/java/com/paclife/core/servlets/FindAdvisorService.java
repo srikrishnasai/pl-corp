@@ -85,7 +85,7 @@ public class FindAdvisorService extends SlingAllMethodsServlet {
         query = query.replaceAll("[^A-Za-z0-9\\,]", "");
 		query = URLEncoder.encode(query,"UTF-8");
 
-		int 	APP_LOG_CORP_SITE = 15;
+		// int 	APP_LOG_CORP_SITE = 15;
 
 		String serviceUrl = configuration.getMulesoftWebserviceUrl() + "find-an-advisor/search/"+longitude+"/"+latitude+"/"+radius+"/"+query;
 		if(StringUtils.isBlank(configuration.getFafpClientId())){

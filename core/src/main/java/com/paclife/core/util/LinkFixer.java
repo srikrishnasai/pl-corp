@@ -24,7 +24,7 @@ public class LinkFixer extends WCMUsePojo {
 		Resource page = resourceResolver.resolve(originalLink);
 
 		// Code Scan Remediation
-		if(page == null || page.length() < 1) {
+		if(page == null || page.length < 1) {
 			// this will be the case for external links
 			fixedLink = originalLink;
 		} else if(page.getResourceType().equals(NameConstants.NT_PAGE)) {

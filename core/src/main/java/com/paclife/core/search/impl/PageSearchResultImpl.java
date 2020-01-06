@@ -42,8 +42,8 @@ public class PageSearchResultImpl implements com.paclife.core.search.SearchResul
     @PostConstruct
     protected void intialize() {
 		// Code Scan Remediation
-  		if(resourceResolver.adaptTo(PageManager.class) != null) {
-  			this.page = resourceResolver.adaptTo(PageManager.class).getContainingPage(resource);
+  		if(resourceResolver.adaptTo(PageManager.class) != null && resourceResolver.adaptTo(PageManager.class).getContainingPage(resource) != null) {
+			this.page = resourceResolver.adaptTo(PageManager.class).getContainingPage(resource);
   		}
 
         log.info("here");

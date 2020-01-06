@@ -92,14 +92,15 @@ public class FindAdvisorDevHelper extends SlingAllMethodsServlet {
 	private static void doQuery(PrintWriter out, Double latitude, Double longitude, String query, Integer radius)
 			throws UnsupportedEncodingException, IOException, MalformedURLException {
 
-		while(!Thread.currentThread().isInterrupted()){  
-			try {
-				Thread.sleep(3000); // simulate production performance levels, to allow testing the progress icon
-			} catch (InterruptedException e1) {
-				// Code Scan Remediation
-				Thread.currentThread().interrupt();  // set interrupt flag
-				logger.info("Interrupt Exception: " + e1);
-			}
+
+		try {
+			Thread.sleep(3000); // simulate production performance levels, to allow testing the progress icon
+		} catch (InterruptedException e1) {
+			// Code Scan Remediation
+		//	Thread.currentThread().interrupt();  // set interrupt flag
+			logger.info("Interrupt Exception: " + e1);
+			
+			throw new RuntimeException(e);
 		}
 
 		if(StringUtils.isEmpty(query)) {

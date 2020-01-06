@@ -100,7 +100,7 @@ public class FindAdvisorDevHelper extends SlingAllMethodsServlet {
 		//	Thread.currentThread().interrupt();  // set interrupt flag
 			logger.info("Interrupt Exception: " + e1);
 			
-			throw new RuntimeException(e);
+			throw new RuntimeException(e1);
 		}
 
 		if(StringUtils.isEmpty(query)) {

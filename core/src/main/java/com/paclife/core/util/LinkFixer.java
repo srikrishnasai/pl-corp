@@ -24,23 +24,25 @@ public class LinkFixer extends WCMUsePojo {
 		Resource page = resourceResolver.resolve(originalLink);
 
 		// Code Scan Remediation
-		if(page == null || page.length < 1) {
-			// this will be the case for external links
-			fixedLink = originalLink;
-		} else if(page.getResourceType().equals(NameConstants.NT_PAGE)) {
-			// page link
-			String newLink = resourceResolver.map(getRequest(), originalLink);
-			if(newLink!=null) {
-				if(newLink.contains(".html")) {
-					fixedLink = newLink;
-				} else {
-					fixedLink = newLink + ".html";
+		if(page != null) {
+			if(page.getResourceType().equals(NameConstants.NT_PAGE)) {
+				// page link
+				String newLink = resourceResolver.map(getRequest(), originalLink);
+				if(newLink!=null) {
+					if(newLink.contains(".html")) {
+						fixedLink = newLink;
+					} else {
+						fixedLink = newLink + ".html";
+					}
 				}
 			}
-		}
-		else {
-			// DAM asset
-			fixedLink = resourceResolver.map(getRequest(), originalLink);
+			else {
+				// DAM asset
+				fixedLink = resourceResolver.map(getRequest(), originalLink);
+			}
+		} else {
+			// this will be the case for external links
+			fixedLink = originalLink;
 		}
 	}
 

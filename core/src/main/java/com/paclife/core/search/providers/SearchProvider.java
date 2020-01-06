@@ -11,7 +11,7 @@ import java.util.Map;
 
 @ProviderType
 public interface SearchProvider {
-	SearchResultProxy search(ResourceResolver resourceResolver, Map<String, String> predicates);
+	SearchResult search(ResourceResolver resourceResolver, Map<String, String> predicates);
 
 	List<SearchResultsPagination> buildPagination(SearchResult result, String previousLabel, String nextLabel);
 

@@ -89,12 +89,12 @@ public class FindAdvisorService extends SlingAllMethodsServlet {
 
 		String serviceUrl = configuration.getMulesoftWebserviceUrl() + "find-an-advisor/search/"+longitude+"/"+latitude+"/"+radius+"/"+query;
 		if(StringUtils.isBlank(configuration.getFafpClientId())){
-			log.error("------------------------------");
+			/*log.error("------------------------------");
 			log.error("Configuration not done.");
-			log.error("------------------------------");
+			log.error("------------------------------");*/
 			throw new ServletException();
 		} else {
-			System.out.println(serviceUrl);
+			log.info(serviceUrl); // System.out.println(serviceUrl);
 			String jsonObject =  ConnectionUtil.getResponseString(request,serviceUrl, configuration.getFafpClientId(), configuration.getFafpClientSecret());
 
 		//	String jsonObject =  ConnectionUtil.getResponseString(ConnectionUtil.getOSBUrl(request)+"Advisor/V1/AdvisorGeolocationInquiryProxyService/"+latitude+"/"+longitude+"/"+radius+"/"+query+"/"+APP_LOG_CORP_SITE+"/"+clientIP);

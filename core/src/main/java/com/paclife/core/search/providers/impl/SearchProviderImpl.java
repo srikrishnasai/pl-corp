@@ -72,10 +72,8 @@ public class SearchProviderImpl implements SearchProvider {
 			
 			SearchResult result = query.getResult();
 			List<Hit> consolidatedHits = consolidate(result.getHits());
-			
-			SearchResultProxy searchResultProxy = new SearchResultProxy(result, consolidatedHits, offset, limit);
-			
-			result = (SearchResult)searchResultProxy;
+
+			result = new SearchResultProxy(result, consolidatedHits, offset, limit);
 			
 			return result;
 		} catch (RepositoryException e) {

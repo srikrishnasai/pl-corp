@@ -56,7 +56,7 @@ public class SearchProviderImpl implements SearchProvider {
     @Reference
     private ModelFactory modelFactory;
 
-    public SearchResult search(ResourceResolver resourceResolver, Map<String, String> predicates) {
+    public SearchResultProxy search(ResourceResolver resourceResolver, Map<String, String> predicates) {
     	try {
 			// limit and offset have to be handled here, because of component results collapsing onto pages throws it off
 			int limit = Integer.parseInt(predicates.remove("p.limit"));
@@ -75,7 +75,7 @@ public class SearchProviderImpl implements SearchProvider {
 			
 			SearchResultProxy resultTest = new SearchResultProxy(result, consolidatedHits, offset, limit);
 			
-			return result;
+			return resultTest;
 		} catch (RepositoryException e) {
 			// Code Scan Remediation
 			// throw new RuntimeException(e);

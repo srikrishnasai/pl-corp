@@ -19,8 +19,7 @@ pool:
  name: Linux-AgentPool
  demands:
    - agent.os -equals Linux
-   - agent_name  -equals linux-survivor
-   - aws_env -equals Development
+   - agent_name  -equals linux-survivor   
 
 steps:
 - checkout: self

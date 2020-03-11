@@ -15,7 +15,21 @@
                         jcr:primaryType="nt:unstructured"
                         sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
                         fieldLabel="Company Logo"
-                        name="./paclifeLogoPath"/> 
+                        name="./paclifeLogoPath"/>
+                    <hideLogin
+	                    jcr:primaryType="nt:unstructured"
+	                    sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+	                    name="./hideLogin"
+	                    text="Hide Login"
+                        fieldDescription="Check to hide Login"          
+	                    value="true"/>
+                    <hideMore
+	                    jcr:primaryType="nt:unstructured"
+	                    sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+	                    name="./hideMore"
+	                    text="Hide More"
+                        fieldDescription="Check to hide More menu"          
+	                    value="true"/>
                 </items>
             </column>
         </items>

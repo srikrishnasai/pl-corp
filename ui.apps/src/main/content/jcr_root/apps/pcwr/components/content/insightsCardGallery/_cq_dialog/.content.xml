@@ -44,7 +44,50 @@
                                 value="bg-white"/>
                         </items>
                     </color>
-                                           
+                                       
+                    <number
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                        fieldLabel="Initial number of rows"
+                        fieldDescription="Refresh the page to see the selected number of rows displayed"    
+                        name="./rowNumber">
+                        <items jcr:primaryType="nt:unstructured">
+                            <one
+                                jcr:primaryType="nt:unstructured"
+                                text="1"
+                                value="1"/>
+                            <two
+                                jcr:primaryType="nt:unstructured"
+                                text="2"
+                                value="2"
+                                selected="{Boolean}true"/>
+                            <three
+                                jcr:primaryType="nt:unstructured"
+                                text="3"
+                                value="3"/>
+                            <four
+                                jcr:primaryType="nt:unstructured"
+                                text="4"
+                                value="4"/>
+                            <five
+                                jcr:primaryType="nt:unstructured"
+                                text="5"
+                                value="5"/>
+                            <all
+                                jcr:primaryType="nt:unstructured"
+                                text="All"
+                                value="99"/>
+                        </items>
+                    </number>
+                    
+                    <randomize
+	                    jcr:primaryType="nt:unstructured"
+	                    sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+	                    name="./randomize"
+	                    text="Randomize"
+                        fieldDescription="Refresh the page to see a random order displayed"          
+	                    value="true"/>
+                    
 				</items>
 			</column>
 		</items>

@@ -2,12 +2,14 @@
 
 <div data-component-name="Insights Card Gallery" class="${properties.colorClass ? properties.colorClass : 'bg-grey'} py-5">
 	<input id="url-insight-value" type="hidden" value="${request.requestPathInfo.selectors[0]}"/>
+    <input id="randomize-cards" type="hidden" value="${properties.randomize ? 'Yes' : 'No'}"/>
+
 	<sly data-sly-use.cards="insightsCardGallery.js"></sly>
 	<h3 class="text-center mb-2 mx-auto">${properties.headline}</h3>
 	
 	<div class="row" data-sly-resource="${@path ='tagCloud' , resourceType = 'pcwr/components/content/tagCloud', selectors='filtering' } "></div>
 	
-	<div class="insights-gallery-container-wrapper">
+	<div class="insights-gallery-container-wrapper" data-row="${properties.rowNumber ? properties.rowNumber : 2}">
 	<div class="card-deck insights-gallery-container justify-content-center my-shuffled" id="insights-grid">
 		<!-- The mark-up for Product card will go under loop below -->
 		<sly data-sly-list="${cards.cards}">

@@ -8,6 +8,11 @@ var myShuffle2 = new Shuffle(document.querySelector('.my-shuffled'), {
   ,buffer: 1
   ,isCentered: true
 });
+/*
+myShuffle2.on(Shuffle.EventType.LAYOUT, function (data) {
+    console.log('finished moving');
+});
+*/
 
 window.jQuery('span[name="shuffle-filter"]').on('click', function (evt) {
 	var input = evt.currentTarget;
@@ -17,7 +22,24 @@ window.jQuery('span[name="shuffle-filter"]').on('click', function (evt) {
 	}
 });
 $(document).ready(function () {
-	
+    
+    if( $('#randomize-cards').val() == "Yes" ){
+        console.log('Randomize')
+        
+        function sortByBlockTitle(element){
+            return element.getAttribute('data-media-block-title').toLowerCase();
+        }
+        
+        var options = {
+          randomize: true,
+          by: sortByBlockTitle,
+        };
+
+        //console.log('My shuffle2: ', myShuffle2);
+        myShuffle2.sort(options);
+        
+    }
+    
 	$('span[name="shuffle-filter"]').click(function () {
 		
 		setTimeout(function() {
@@ -38,13 +60,20 @@ $(document).ready(function () {
 	var incHeight;
 	findIncHeight();
 	var initialInsightsGridHeight = $('#insights-grid').height();
-	
-	if(initialInsightsGridHeight > incHeight){
-		$('.insights-gallery-container-wrapper').css('height', incHeight*2);
-		
+    var rowNum = $('.insights-gallery-container-wrapper').attr('data-row');
+    //var cardsNum = $('.card.insights-card').length;
+    //console.log('cardsNum='+cardsNum);
+    
+    if(rowNum == 99){
+      $('.insights-gallery-container-wrapper').css('height', initialInsightsGridHeight)
+      viewMoreBtnDisplayCond(initialInsightsGridHeight, $('.insights-gallery-container-wrapper').height());
+    }
+	else if(initialInsightsGridHeight > incHeight){
+		$('.insights-gallery-container-wrapper').css('height', incHeight*rowNum); //sets height to number of rows
 		viewMoreBtnDisplayCond(initialInsightsGridHeight, $('.insights-gallery-container-wrapper').height());
 	}
-	
+   
+    
 	$('.insights-gallery-view-more-btn').click(function () {
 		
 		var insightsGridHeight = $('#insights-grid').height();

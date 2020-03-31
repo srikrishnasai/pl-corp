@@ -185,6 +185,9 @@ if($('.find-a-pro-results-page').length > 0) {
 		
 		if (typeof _satellite != "undefined") {
 			_satellite.track('find-a-pro-results');
+			console.log("_satellite exists.");
+		} else {
+			console.log("_satellite not exists.");
 		}
 		
 		if(data != null && data.length == 0 ){

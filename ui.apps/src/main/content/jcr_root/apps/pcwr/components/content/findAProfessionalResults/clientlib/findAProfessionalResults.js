@@ -182,7 +182,10 @@ if($('.find-a-pro-results-page').length > 0) {
 		// analytics
 		window.digitalData.page.onsiteSearchResult = data.length;
 		window.digitalData.page.onsiteSearchTerm = $("#fafp-inputSearchValue").val() || $("#fafp-url-zip-code").val() || 'Current Location';
-		_satellite.track('find-a-pro-results');
+		
+		if (typeof _satellite != "undefined") {
+			_satellite.track('find-a-pro-results');
+		}
 		
 		if(data != null && data.length == 0 ){
 			displayMessage(noAdvisorsFoundMsg);

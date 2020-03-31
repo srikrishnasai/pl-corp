@@ -13,7 +13,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
         $(element).one('click', function() {
         	var network = $($(this).find('title')[0]).text();
         	window.digitalData.event.socialNetwork = network;
-			_satellite.track('social-network');
+			
+			if (typeof _satellite != "undefined") {
+				_satellite.track('social-network');
+			}
+			
 			return true;
         });
     });

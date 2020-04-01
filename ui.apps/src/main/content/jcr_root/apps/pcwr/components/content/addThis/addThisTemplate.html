@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         	var network = $($(this).find('title')[0]).text();
         	window.digitalData.event.socialNetwork = network;
 			
-			if (typeof _satellite != "undefined") {
+			if (typeof _satellite !== "undefined") {
 				_satellite.track('social-network');
 				
 				console.log("_satellite exists.");

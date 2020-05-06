@@ -12,6 +12,7 @@ var onCorpPerfPageLoad = function(){
 	$.ajax({ 
 	    type: 'GET', 
 	    url: tableDiv.getAttribute('data-list-url'),
+		dataType: "json",
 	    success: function (data) { 
 	       $.each(data, function(index, element) {        
 	            $('#select-perfproducts').append($("<option></option>").attr("value",element.Id).text(element.Name));             

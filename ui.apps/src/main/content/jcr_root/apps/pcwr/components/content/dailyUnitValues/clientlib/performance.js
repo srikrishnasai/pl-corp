@@ -14,13 +14,13 @@ var onCorpPerfPageLoad = function(){
 	    url: tableDiv.getAttribute('data-list-url'),
 		dataType: "json",
 	    success: function (data) { 
-			boolean isJson = false;
+			var isJson = new Boolean(false);;
 			
 			// Not ideal but a form of catching and checking if the response is JSON or not.
 			try {
 				JSON.parse(data);
 			} catch (e) {
-				isJson = true;
+				isJson = new Boolean(true);
 			}
 			
 			if(!isJson) 

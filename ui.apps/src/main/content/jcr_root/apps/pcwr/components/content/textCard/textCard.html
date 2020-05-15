@@ -6,6 +6,6 @@
 	<h5>${properties.textCardTitle}</h5>
 	<div class="pcwr-richtext">${properties.richText @ context='html'}</div>
 
-	<a data-sly-test='${properties.textCardDisplayBtn}' href="${properties.textCardBtnLink @ extension='html'}" class="btn btn-primary cta-text-btn">${properties.textCardBtnLabel || 'Learn More'}</a>
+	<a data-sly-test='${properties.textCardDisplayBtn}' target="${properties.target}" href="${properties.textCardBtnLink @ extension='html'}" class="btn btn-primary cta-text-btn">${properties.textCardBtnLabel || 'Learn More'}</a>
 			
 </div>

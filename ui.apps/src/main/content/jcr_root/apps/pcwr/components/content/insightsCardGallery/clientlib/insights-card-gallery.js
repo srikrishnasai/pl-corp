@@ -8,11 +8,18 @@ var myShuffle2 = new Shuffle(document.querySelector('.my-shuffled'), {
   ,buffer: 1
   ,isCentered: true
 });
+
+//$('#insights-grid').css("display", "none");
+
 /*
+var mvmnt = 0;
 myShuffle2.on(Shuffle.EventType.LAYOUT, function (data) {
     console.log('finished moving');
+    mvmnt++;
+    console.log('movement='+mvmnt);
 });
 */
+
 
 window.jQuery('span[name="shuffle-filter"]').on('click', function (evt) {
 	var input = evt.currentTarget;
@@ -22,8 +29,8 @@ window.jQuery('span[name="shuffle-filter"]').on('click', function (evt) {
 	}
 });
 $(document).ready(function () {
-    
     if( $('#randomize-cards').val() == "Yes" ){
+
         console.log('Randomize')
         
         function sortByBlockTitle(element){
@@ -37,18 +44,24 @@ $(document).ready(function () {
 
         //console.log('My shuffle2: ', myShuffle2);
         myShuffle2.sort(options);
-        
+   
+    } else {
+        console.log("not randomized");
+        myShuffle2;
     }
     
+    setTimeout(function() {
+        $('#insights-grid').css('left','0');
+	}, 2000);
+    
+    
 	$('span[name="shuffle-filter"]').click(function () {
-		
 		setTimeout(function() {
 			$(".insights-gallery-container-wrapper").animate( { height: $('#insights-grid').height() }, { queue:false, duration:500 });
 			$('.insights-gallery-view-more-btn').hide();
 		}, 250); 
 	});
 
-	myShuffle2;
 	
 	/* Start: If URL has filter, trigger click*/
 	var selectInsight = $('#url-insight-value').val();
@@ -69,6 +82,7 @@ $(document).ready(function () {
       viewMoreBtnDisplayCond(initialInsightsGridHeight, $('.insights-gallery-container-wrapper').height());
     }
 	else if(initialInsightsGridHeight > incHeight){
+        
 		$('.insights-gallery-container-wrapper').css('height', incHeight*rowNum); //sets height to number of rows
 		viewMoreBtnDisplayCond(initialInsightsGridHeight, $('.insights-gallery-container-wrapper').height());
 	}

@@ -16,7 +16,7 @@
 	            <table>
 	            	<tr>
 	            		<td>
-		            		<button class="btn btn-link ${itemList.index > 0 ? ' collapsed' : ''}" data-toggle="collapse" data-target="#content-list-item-${itemList.index}" aria-expanded="true" aria-controls="collapseOne">
+		            		<button class="btn btn-link ${itemList.index > 0 ? ' collapsed' : ''}" data-toggle="collapse" data-target="#content-list-item-${properties.class}-${itemList.index}" aria-expanded="true" aria-controls="collapseOne">
 			                  <i class="material-icons"></i>
 			                </button>
 	            		</td>
@@ -29,7 +29,7 @@
 	            </table>
 	        </div>
 	        <!--/*If you want to only have one open at a time add: data-parent="#accordion"*/-->
-	        <div id="content-list-item-${itemList.index}" class="collapse ${itemList.index < 1 ? ' show' : ''}" aria-labelledby="headingOne" >
+	        <div id="content-list-item-${properties.class}-${itemList.index}" class="collapse ${itemList.index < 1 ? ' show' : ''}" aria-labelledby="headingOne" >
 	            <div class="card-body">
 	                <div class="faq-answer">${item.richText @ context='html'}</div>
 	            </div>

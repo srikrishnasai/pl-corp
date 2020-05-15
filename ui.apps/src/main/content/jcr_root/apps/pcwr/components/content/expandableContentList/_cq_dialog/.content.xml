@@ -28,10 +28,17 @@
                                         fieldLabel="Headline"
                                         name="./headline"
                                         required="{Boolean}true"/>
-				                	 <description
+				                	<description
 				                        jcr:primaryType="nt:unstructured"
 				                        sling:resourceType="granite/ui/components/coral/foundation/include"
-										path="pcwr/components/common/commonRTE/cq:dialog/content/items/column/items/richText"/>	                                        
+										path="pcwr/components/common/commonRTE/cq:dialog/content/items/column/items/richText"/>	 
+									<class
+				                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="ID field must be defined when utilizing multiple lists on the same page"
+                                        fieldLabel="Unique ID"
+                                        name="./class"
+                                        required="{Boolean}true"/>
                                 </items>
                             </content>
                         </items>

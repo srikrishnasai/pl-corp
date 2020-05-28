@@ -27,6 +27,6 @@ use(function() {
 	}
 	return {
 		filtered: filtered,
-		states: resource.getResourceResolver().resolve("/etc/tags/pacific-life/product-states").listChildren()
+		states: resource.getResourceResolver().resolve("/content/cq:tags/pacific-life/product-states").listChildren()
 	};
 });

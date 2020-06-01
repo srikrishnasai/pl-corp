@@ -28,7 +28,8 @@ import com.day.cq.wcm.api.PageManager;
  * @author pravin.bathija
  *
  */
-@Model(adaptables = Resource.class)
+//@Model(adaptables = Resource.class)
+@Model(adaptables = SlingHttpServletRequest.class)
 public class PCWRNewsroomModel {
 
 	Logger logger = LoggerFactory.getLogger(PCWRNewsroomModel.class);

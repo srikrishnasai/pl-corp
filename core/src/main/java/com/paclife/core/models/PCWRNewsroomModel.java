@@ -11,6 +11,7 @@ import java.util.Set;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
+import javax.inject.Optional;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.sling.api.resource.Resource;
@@ -36,6 +37,7 @@ public class PCWRNewsroomModel {
 	public String newsArticlesFolderPath;
 
 	@Inject
+	@Optional
 	public Resource resource;
 
 	public static final String NEWS_TEMPLATE_PATH = "/conf/pcwr/settings/wcm/templates/news-page-template";

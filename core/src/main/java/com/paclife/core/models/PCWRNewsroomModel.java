@@ -11,7 +11,8 @@ import java.util.Set;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
-
+import org.apache.sling.models.annotations.Optional;
+import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.commons.lang.StringUtils;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
@@ -27,15 +28,17 @@ import com.day.cq.wcm.api.PageManager;
  * @author pravin.bathija
  *
  */
-@Model(adaptables = Resource.class)
+//@Model(adaptables = Resource.class)
+@Model(adaptables = SlingHttpServletRequest.class)
 public class PCWRNewsroomModel {
 
 	Logger logger = LoggerFactory.getLogger(PCWRNewsroomModel.class);
 
-	@Inject
+	//@Inject
 	public String newsArticlesFolderPath;
 
 	@Inject
+	@Optional
 	public Resource resource;
 
 	public static final String NEWS_TEMPLATE_PATH = "/conf/pcwr/settings/wcm/templates/news-page-template";
@@ -52,7 +55,7 @@ public class PCWRNewsroomModel {
 
 		ResourceResolver resourceResolver = resource.getResourceResolver();
 		PageManager pageManager = resourceResolver.adaptTo(PageManager.class);
-		
+		newsArticlesFolderPath = "/content/pl-corp/press-releases";
 		// Code Scan Remediation
 		if(pageManager != null) {
 			Page page = pageManager.getPage(newsArticlesFolderPath);

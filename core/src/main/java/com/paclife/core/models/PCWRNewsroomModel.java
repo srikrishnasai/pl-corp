@@ -32,7 +32,7 @@ public class PCWRNewsroomModel {
 
 	Logger logger = LoggerFactory.getLogger(PCWRNewsroomModel.class);
 
-	@Inject
+	//@Inject
 	public String newsArticlesFolderPath;
 
 	@Inject
@@ -52,7 +52,7 @@ public class PCWRNewsroomModel {
 
 		ResourceResolver resourceResolver = resource.getResourceResolver();
 		PageManager pageManager = resourceResolver.adaptTo(PageManager.class);
-		
+		newsArticlesFolderPath = "/content/pl-corp/press-releases";
 		// Code Scan Remediation
 		if(pageManager != null) {
 			Page page = pageManager.getPage(newsArticlesFolderPath);

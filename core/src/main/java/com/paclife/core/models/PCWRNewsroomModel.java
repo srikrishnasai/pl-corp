@@ -11,7 +11,7 @@ import java.util.Set;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
-import javax.inject.Optional;
+import org.apache.sling.models.annotations.Optional;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.sling.api.resource.Resource;

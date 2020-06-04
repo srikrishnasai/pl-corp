@@ -52,7 +52,7 @@ $(document).ready(function () {
     
     setTimeout(function() {
         $('#insights-grid').css('left','0');
-	}, 2000);
+	}, 1200);
     
     
 	$('span[name="shuffle-filter"]').click(function () {

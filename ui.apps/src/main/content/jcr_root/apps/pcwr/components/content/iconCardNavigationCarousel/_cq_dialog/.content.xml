@@ -74,6 +74,7 @@
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/foundation/form/multifield"
                                         class="full-width"
+										composite="{Boolean}true"
                                         fieldDescription="Click 'Add field' to add a new Navigation Card Item"
                                         fieldLabel="Navigation Card Items">
                                         <field
@@ -115,12 +116,11 @@
                                             </items>
                                         </field>
                                     </navCardItemDetails>
-									
 									<navCardItemDetail
 										jcr:primaryType="nt:unstructured"
 										sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
-                                        fieldDescription="Click 'Add field' to add a new Navigation Card Item"
-                                        fieldLabel="Navigation Card Items">
+										composite="{Boolean}true"
+										fieldDescription="Click '+' to add a new link">
 										<field
 											jcr:primaryType="nt:unstructured"
 											sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
@@ -130,18 +130,27 @@
 													jcr:primaryType="nt:unstructured"
 													sling:resourceType="granite/ui/components/coral/foundation/container">
 													<items jcr:primaryType="nt:unstructured">
-														<title
-															jcr:primaryType="nt:unstructured"
-															sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-															fieldLabel="Title"
-															name="./title"/>
-														<linkURL
-															jcr:primaryType="nt:unstructured"
-															sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
-															fieldLabel="Link to"
-															name="./linkURL"
-															rootPath="/content"/>
-													</items>
+                                                        <cardItemIconPath
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+                                                            fieldDescription="Please provide Icon path for the Card Item"
+                                                            fieldLabel="Card Item Icon Path"
+                                                            name="./cardItemIconPath"
+                                                            rootPath="/content/dam/paclife"/>
+                                                        <cardItemLinkTitle
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                            fieldDescription="Please provide title for the Card Item Link"
+                                                            fieldLabel="Card Item Link Title"
+                                                            name="./cardItemLinkTitle"/>
+                                                        <cardItemLink
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+                                                            fieldDescription="Please provide link for the Card Item"
+                                                            fieldLabel="Card Item Link"
+                                                            name="./cardItemLink"
+                                                            rootPath="/content/pl-corp"/>
+                                                    </items>
 												</column>
 											</items>
 										</field>

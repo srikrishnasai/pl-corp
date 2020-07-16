@@ -9,17 +9,18 @@ var myShuffle2 = new Shuffle(document.querySelector('.my-shuffled'), {
   ,isCentered: true
 });
 
-//$('#insights-grid').css("display", "none");
-
-/*
 var mvmnt = 0;
 myShuffle2.on(Shuffle.EventType.LAYOUT, function (data) {
     console.log('finished moving');
+    
     mvmnt++;
     console.log('movement='+mvmnt);
-});
-*/
 
+    if(mvmnt>1){
+       console.log('Movement > 1');    
+       $('#insights-grid').css('left','0');
+     }
+});
 
 window.jQuery('span[name="shuffle-filter"]').on('click', function (evt) {
 	var input = evt.currentTarget;
@@ -28,10 +29,12 @@ window.jQuery('span[name="shuffle-filter"]').on('click', function (evt) {
 		adjustInsightsCardHeight;
 	}
 });
+
 $(document).ready(function () {
     if( $('#randomize-cards').val() == "Yes" ){
 
-        console.log('Randomize')
+        //mvmnt++;
+        console.log('Randomize '+mvmnt);
         
         function sortByBlockTitle(element){
             return element.getAttribute('data-media-block-title').toLowerCase();
@@ -42,18 +45,19 @@ $(document).ready(function () {
           by: sortByBlockTitle,
         };
 
-        //console.log('My shuffle2: ', myShuffle2);
         myShuffle2.sort(options);
    
     } else {
         console.log("not randomized");
         myShuffle2;
+        $('#insights-grid').css('left','0');
     }
     
+    /*
     setTimeout(function() {
         $('#insights-grid').css('left','0');
 	}, 1200);
-    
+    */
     
 	$('span[name="shuffle-filter"]').click(function () {
 		setTimeout(function() {

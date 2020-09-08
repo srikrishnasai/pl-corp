@@ -91,7 +91,7 @@ if($("ul.state-drop-down-list").length) {
 	  //shuffleInstance.filter('pacific-life:product-states/national');
 	  //console.log(shuffleInstance);console.log('cotestbest: ' + ie11Test());
 		shuffleInstance;
-		
+		adjustHeight;
 		checkSessionData();
 	});
 }

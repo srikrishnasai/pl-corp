@@ -215,7 +215,58 @@
                                 </items>
                             </content>
                         </items>
-                    </section4>                                                         
+                    </section4>
+                    <section5
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Section 5"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
+                        <items jcr:primaryType="nt:unstructured">
+                            <content
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                   <section5Title
+                                       jcr:primaryType="nt:unstructured"
+                                       sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                       fieldLabel="Title"
+                                       name="./section5Title"/>
+                                   <section5Link
+                                       jcr:primaryType="nt:unstructured"
+                                       sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+                                       fieldDescription="Please provide Link for the Section "
+                                       fieldLabel="Link"
+                                       name="./section5Link"
+                                       rootPath="/content/pl-corp"/>    
+                                   <links
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                        composite="{Boolean}true"
+                                        fieldDescription="Click 'Add field' to add a new Link"
+                                        fieldLabel="Link Items">
+                                        <field
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/container"
+                                            name="./multiFieldItems5">
+                                            <items jcr:primaryType="nt:unstructured">
+	                                     	<subSectionTitle
+	                                             jcr:primaryType="nt:unstructured"
+	                                             sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+	                                             fieldLabel="Action"
+	                                             name="./subSectionTitle"/>
+	                                         <subSectionLink
+	                                             jcr:primaryType="nt:unstructured"
+	                                             sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+	                                             fieldLabel="Target"
+	                                             name="./subSectionLink"
+	                                             rootPath="/content/pl-corp"/>
+	                                            
+                                            </items>
+                                        </field>
+                                    </links>
+                                </items>
+                            </content>
+                        </items>
+                    </section5>                                                          
 					<addThis
                         jcr:primaryType="nt:unstructured"
                         jcr:title="Add this Configuration"

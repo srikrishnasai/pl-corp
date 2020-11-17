@@ -29,7 +29,10 @@
 			<ul data-sly-test="${model4.childResource}"  data-sly-list="${model4.childResource.listChildren}">
 				<li><a href="${item.subSectionLink @ extension='html'}" class="more-menu-nav-item">${item.subSectionTitle}</a></li>
 			</ul>
-		
+		<h6 data-sly-test="${properties.section5Title}"><a href="${properties.section5Link @ extension='html'}">${properties.section5Title}</a></h6>
+			<ul data-sly-test="${model5.childResource}"  data-sly-list="${model5.childResource.listChildren}">
+				<li><a href="${item.subSectionLink @ extension='html'}" class="more-menu-nav-item">${item.subSectionTitle}</a></li>
+			</ul>
 		<sly data-sly-test="${properties.displayAddThis}">
 			<sly  data-sly-use.addThis="pcwr/components/content/addThis/addThisTemplate.html">
 			<sly data-sly-call="${addThis.addThis}" />

@@ -1,7 +1,8 @@
 var adjustIconCardHeight = $('.icon-card').matchHeight({ property: 'height' });
 adjustIconCardHeight;
 $(document).ready(function () { 
-    $('#iconCardContentCarousel').on('slide.bs.carousel', function (e) {
+	var compID = $('.carousel.slide').attr('id')
+    $('#' + compID).on('slide.bs.carousel', function (e) {
        
 		var isMobile = $('#iconCardContentCarousel .carousel-indicators').is(':visible');
 		

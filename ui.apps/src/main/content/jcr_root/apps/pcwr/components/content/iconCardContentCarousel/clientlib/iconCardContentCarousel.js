@@ -18,10 +18,10 @@ $(document).ready(function () {
 		        for (var i=0; i<it; i++) {
 		            // append slides to end
 		            if (e.direction=="left") {
-		                $('.icon-card-carousel-item').eq(i).appendTo('.icon-card-carousel-inner');
+		                $('#iconCardContentCarousel .icon-card-carousel-item').eq(i).appendTo('.icon-card-carousel-inner');
 		            }
 		            else {
-		                $('.icon-card-carousel-item').eq(0).appendTo('.icon-card-carousel-inner');
+		                $('#iconCardContentCarousel .icon-card-carousel-item').eq(0).appendTo('.icon-card-carousel-inner');
 		            }
 		        }
 		    }

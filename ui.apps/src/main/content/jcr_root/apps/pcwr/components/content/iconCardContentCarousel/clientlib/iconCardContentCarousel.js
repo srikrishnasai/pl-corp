@@ -1,8 +1,7 @@
-var adjustIconCardHeight = $('.icon-card').matchHeight({ property: 'height' });
+var adjustIconCardHeight = $('#iconCardContentCarousel .icon-card').matchHeight({ property: 'height' });
 adjustIconCardHeight;
 $(document).ready(function () { 
-	var compID = $('.carousel.slide').attr('id')
-    $('#' + compID).on('slide.bs.carousel', function (e) {
+    $('#iconCardContentCarousel').on('slide.bs.carousel', function (e) {
        
 		var isMobile = $('#iconCardContentCarousel .carousel-indicators').is(':visible');
 		
@@ -11,17 +10,17 @@ $(document).ready(function () {
 		    var $e = $(e.relatedTarget);
 		    var idx = $e.index();
 		    var itemsPerSlide = 3;
-		    var totalItems = $('.icon-card-carousel-item').length;
+		    var totalItems = $('#iconCardContentCarousel .icon-card-carousel-item').length;
 		        
 		    if (idx >= totalItems-(itemsPerSlide-1)) {
 		        var it = itemsPerSlide - (totalItems - idx);
 		        for (var i=0; i<it; i++) {
 		            // append slides to end
 		            if (e.direction=="left") {
-		                $('#iconCardContentCarousel .icon-card-carousel-item').eq(i).appendTo('.icon-card-carousel-inner');
+		                $('#iconCardContentCarousel .icon-card-carousel-item').eq(i).appendTo('#iconCardContentCarousel .icon-card-carousel-inner');
 		            }
 		            else {
-		                $('#iconCardContentCarousel .icon-card-carousel-item').eq(0).appendTo('.icon-card-carousel-inner');
+		                $('#iconCardContentCarousel .icon-card-carousel-item').eq(0).appendTo('#iconCardContentCarousel .icon-card-carousel-inner');
 		            }
 		        }
 		    }
@@ -39,4 +38,5 @@ $(document).ready(function () {
     });
 
 });
+
 

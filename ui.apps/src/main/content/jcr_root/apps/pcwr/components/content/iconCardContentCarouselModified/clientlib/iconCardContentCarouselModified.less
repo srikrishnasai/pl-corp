@@ -1,0 +1,230 @@
+//
+// variables
+//
+@bright-blue: #008ed7;
+@turquoise:#24c5cf;
+@light-grey-bg:#f2f2f2;
+
+//
+//icon card content carousel
+//
+.icon-card-content-carousel{
+	.carousel-indicators {
+		display: none; // overridden in mobile breakpoint
+	    position: static;
+        margin-bottom: 3rem;
+	    >li {
+	    	width:100%;
+	    	height: 100%;
+	    	text-indent: 0;
+	    	opacity:0.35;
+	    	margin-right: 0px;
+    		margin-left: 0px;
+    		padding-top:.4rem;
+    		text-align:center;
+    		background-color:inherit;
+	    	
+	    	&.active {
+	    		opacity:1;
+	    		&:before { content:""; float:left; background:black; width:100%; height:5px; border-radius: 4px;}
+	    		img {opacity: 0.7;} 		
+		 	}
+		 	&:not(.active) {&:before { content:""; float:left; background:#000000; width:100%; height:1px; margin-top:2px;}}
+		 	&:hover{
+	 			cursor: pointer;
+	 		}	
+		}
+	}
+	.icon-card-content-wrapper{
+		max-width: 1140px;
+		padding-top: 5rem;
+		padding-bottom: 0rem; // PLCOM-171, 160
+		i{vertical-align: bottom;}
+		.icon-img{ min-height:91px; max-height:91px;}
+		.carousel{
+			&.slide{
+				// PLCOM-171 // min-height: 300px;
+			}
+		}
+		//
+		//Carousel  *Icon-cards
+		//
+		@media (min-width: 768px) {
+
+		    /* show 3 items */
+		    .carousel-inner .active,
+		    .carousel-inner .active + .carousel-item,
+		    .carousel-inner .active + .carousel-item + .carousel-item {
+		        display: block;
+		    }
+		    
+		    .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left),
+		    .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item,
+		    .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item + .carousel-item {
+		        transition: none;
+		    }
+		    
+		    .carousel-inner .carousel-item-next,
+		    .carousel-inner .carousel-item-prev {
+		      position: relative;
+		      transform: translate3d(0, 0, 0);
+		    }
+		    
+		    .carousel-inner .active.carousel-item + .carousel-item + .carousel-item + .carousel-item {
+		        position: absolute;
+		        top: 0;
+		        right: -33.3333%;
+		        z-index: -1;
+		        display: block;
+		        visibility: visible;
+		    }
+		    
+		    /* left or forward direction */
+		    .active.carousel-item-left + .carousel-item-next.carousel-item-left,
+		    .carousel-item-next.carousel-item-left + .carousel-item,
+		    .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item,
+		    .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item + .carousel-item {
+		        position: relative;
+		        transform: translate3d(-100%, 0, 0);
+		        visibility: visible;
+		    }
+		    
+		    /* farthest right hidden item must be abso position for animations */
+		    .carousel-inner .carousel-item-prev.carousel-item-right {
+		        position: absolute;
+		        top: 0;
+		        left: 0;
+		        z-index: -1;
+		        display: block;
+		        visibility: visible;
+		    }
+		    
+		    /* right or prev direction */
+		    .active.carousel-item-right + .carousel-item-prev.carousel-item-right,
+		    .carousel-item-prev.carousel-item-right + .carousel-item,
+		    .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item,
+		    .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item + .carousel-item {
+		        position: relative;
+		        transform: translate3d(100%, 0, 0);
+		        visibility: visible;
+		        display: block;
+		        visibility: visible;
+		    }
+		
+		}
+	}
+	
+	&.bgcolor-blue{
+		background-color: @bright-blue;
+		h3, h5, p, h7, a {
+			color: #FFFFFF;
+		}
+		.icon-card-content-wrapper{padding-bottom: 2rem;}
+	}
+	&.bgcolor-grey{
+		background-color:@light-grey-bg;
+		.cta-text {
+			color: @bright-blue;
+		}
+		.icon-card-content-wrapper{padding-bottom: 2rem;}
+	}
+	&.bgcolor-white {
+		.cta-text {
+			color: @bright-blue;
+		}
+		.icon-card-content-wrapper{padding-top: 0 !important;}
+	}
+	h3 {
+		max-width:750px;
+		//padding-top: 4rem;
+		padding-bottom: 2rem;
+	}
+	.icon-card{
+		max-width: 325px;
+		a.clickable{
+		    position: absolute;
+		    width: 100%;
+		    height: 100%;
+		    top: 0;
+		    left: 0;
+		    text-decoration: none;
+		    /* Makes sure the link   doesn't get underlined */
+		    z-index: 10;
+		    /* raises anchor tag above everything else in div */
+		    background-color: white;
+		    /*workaround to make clickable in IE */
+		    opacity: 0;
+		    /*workaround to make clickable in IE */
+		    filter: alpha(opacity=1);
+		    /*workaround to make clickable in IE */
+		    //&:hover{background-color:rgba(0, 0, 0, 0.02); opacity: 0;}
+		}
+		
+		.btn{
+			padding-right: 0.75rem;
+		}		
+	}
+	.carousel-control-next, .carousel-control-prev{
+		opacity: .75;
+		&:hover{ opacity: 1; }
+		.carousel-arrow-right, .carousel-arrow-left{
+			object-fit: contain;
+		  	filter: drop-shadow(0px 0px 2px rgba(0,0,0,0.3));  
+		}
+	}
+ 	 .carousel-control-next{ 
+ 	 	right: -8em;
+ 	 }
+ 	 .carousel-control-prev{ 
+ 	 	left: -8em;
+	  	//box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2);
+ 	 }
+ 	 @media (max-width: 1200px) {
+ 	 	 	 .carousel-control-next{ 
+ 	 	 	 	right: 0em;
+ 	 	 	 	width:inherit;
+		 	 }
+		 	 .carousel-control-prev{ 
+		 	 	left: 0em;
+		 	 	width:inherit;
+			  	//box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2);
+		 	 }
+ 	 }
+
+	/*IE11*/
+	@media all and (-ms-high-contrast:none), (-ms-high-contrast:active) {  
+	  .carousel {
+	    .carousel-item {
+	      transition: none;
+	      &.active {
+	        opacity: 1;
+	      }
+	    }
+	  }
+	 }
+ }
+
+/*MOBILE*/
+@media (max-width: 575.98px) {
+	.icon-card-content-carousel {
+		.carousel-control-next{ 
+	 	 	display: none;
+	 	 }
+	 	 .carousel-control-prev{
+	 	 	display: none; 
+	 	 }
+	 	 .carousel-indicators {
+	 	 	display: block;
+			margin-bottom: 1rem !important;margin-top: 4rem !important;
+			>li {
+				/*Initial values*/
+				width:10px !important; height:10px !important; text-indent: -999px !important; margin-right: 3px !important; margin-left:3px !important;
+		    	&.active {
+		    		&:before {height:10px !important; border-radius: 5px !important;}
+			 	}
+			 	&:not(.active){&:before {height:10px !important; border-radius: 5px !important; margin-top:unset !important; border: 1px solid black !important; background:unset !important;}}				
+			}
+		}
+    }	
+}
+

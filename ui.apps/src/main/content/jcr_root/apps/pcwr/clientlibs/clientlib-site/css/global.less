@@ -304,6 +304,7 @@ ul{
       	font-size:13px;
       	text-transform:uppercase;	
       	color:#000;
+		outline: none;
       	&:hover{
       		color:@bright-blue;
       	}
@@ -401,6 +402,7 @@ ul{
 		 				.nav-menu-dropdown-title{display:none !important;}
 		 				.mobile-nav-back-btn{
 		 					display:block !important;
+							margin-left: 1rem; 
 		 					>div{color:black; padding-left:10px; padding-bottom:12px; padding-top:6px;}
 		 					
 		 					&:after{ content:""; position:absolute; left:0; background:@grey-divider; width:100%; height:1px; clear:both;}
@@ -411,7 +413,7 @@ ul{
  		}
  		.dropdown-menu{
  			>ul{
- 				padding-left:16px;
+ 				//padding-left:16px;
  				>li{display:block;}
  			}
  			&:not(.show){

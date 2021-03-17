@@ -3,7 +3,7 @@
     jcr:primaryType="nt:unstructured"
     jcr:title="Text Card"
     sling:resourceType="cq/gui/components/authoring/dialog"
-    extraClientlibs="cq.authoring.dialog.rte.coralui2">
+    extraClientlibs="cq.authoring.dialog.rte.coralui3">
 	<content
         jcr:primaryType="nt:unstructured"
         sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">

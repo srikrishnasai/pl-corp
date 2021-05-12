@@ -14,7 +14,7 @@
   ~ limitations under the License.
   ~
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-<template data-sly-template.itemContent="${@ item='The navigation item'}">
+<template data-sly-template.itemContent="${@ item='The navigation item', parent='The Parent page'}">
 
     <!--/* If Page Level is 0 and Has Children, behave as Dropdown */-->   
 	<a data-sly-test.isDropdown="${item.children.size > 0  && item.level == 0}" href title="${item.title}"
@@ -31,5 +31,6 @@
        class="cmp-navigation__item-link ${item.level < 1 ? ' nav-link' : ''} ">${item.title}</a>
     <a data-sly-test="${! isDropdown && wcmDisabledPresent }" href="${item.URL}?wcmmode=disabled" title="${item.title}"
        class="cmp-navigation__item-link ${item.level < 1 ? ' nav-link' : ''} ">${item.title}</a>
+      <span class="d-lg-block d-none">${parent.page.properties['jcr:description']}</span>
        
 </template>

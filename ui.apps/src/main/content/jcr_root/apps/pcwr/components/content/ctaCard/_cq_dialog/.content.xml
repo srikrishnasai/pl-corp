@@ -36,9 +36,26 @@
                     <target
                         jcr:primaryType="nt:unstructured"
                         sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
-                        fieldLabel="Target"
+                        fieldLabel="Target path"
                         name="./target"
                         rootPath="/content/pl-corp"/>
+                    <tabWindow
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                        fieldLabel="Opens in same tab or new tab"
+                        name="./tabWindow">
+                        <items jcr:primaryType="nt:unstructured">
+                            <self
+                                jcr:primaryType="nt:unstructured"
+                                selected="{Boolean}true"
+                                text="Same"
+                                value="_self"/>
+                            <new
+                                jcr:primaryType="nt:unstructured"
+                                text="New"
+                                value="_blank"/>
+                        </items>
+                    </tabWindow>
                 </items>
             </column>
         </items>

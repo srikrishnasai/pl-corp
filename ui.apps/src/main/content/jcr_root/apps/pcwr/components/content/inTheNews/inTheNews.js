@@ -10,7 +10,7 @@ use(function() {
 	
 	//For each path, if adaptable to Page --> add page object to filtered array
 	
-	for(i=0; i < pathsArr.length; i++) {
+	for(var i=0; i < pathsArr.length; i++) {
 		
 		var path = pathsArr[i];
 		

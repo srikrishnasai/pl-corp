@@ -33,3 +33,18 @@ a.cta-card-link{&:hover{text-decoration:none !important;}}
     	margin-top: 1.5rem;
     }
 }
+
+@media (max-width: 767px) { 
+	.cta-card-mobile-animations-disabled .animatedParent {
+		.fadeInDownShort,
+		.fadeInUpShort,
+		.fadeInRightShort, 
+		.fadeInLeftShort {
+			animation: none;
+			-webkit-animation: none;
+			transform: none;
+			-ms-animation: none;
+			opacity: 1;
+		}
+	}
+}

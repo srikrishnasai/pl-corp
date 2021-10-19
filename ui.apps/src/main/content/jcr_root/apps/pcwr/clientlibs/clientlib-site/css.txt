@@ -5,3 +5,6 @@ lightslider.min.css
 global.less
 card-carousel.less
 bottom.less
+animations.css
+animations-ie-fix.css
+animate.css

@@ -1,66 +1,144 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
     jcr:primaryType="nt:unstructured"
     jcr:title="Detail Hero"
+    extraClientlibs="[checkbox-show-hide]"
     sling:resourceType="cq/gui/components/authoring/dialog">
     <content
         jcr:primaryType="nt:unstructured"
-        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
+        sling:resourceType="granite/ui/components/coral/foundation/container">
         <items jcr:primaryType="nt:unstructured">
-            <column
+            <tabs
                 jcr:primaryType="nt:unstructured"
-                sling:resourceType="granite/ui/components/coral/foundation/container">
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
                 <items jcr:primaryType="nt:unstructured">
-                    <detailHeroTitleLine1
+                    <general
                         jcr:primaryType="nt:unstructured"
-                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                        fieldDescription="Please provide title for the component"
-                        fieldLabel="Title Line 1"
-                        name="./detailHeroTitleLine1"/>
-                    <detailHeroTitleLine2
+                        jcr:title="General"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
+                        <items jcr:primaryType="nt:unstructured">
+                            <content
+                                jcr:primaryType="nt:unstructured"
+                                margin="{Boolean}true"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                   <detailHeroTitleLine1
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please provide title for the component"
+                                        fieldLabel="Title Line 1"
+                                        name="./detailHeroTitleLine1"/>
+                                    <detailHeroTitleLine2
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please provide title for the component"
+                                        fieldLabel="Title Line 2"
+                                        name="./detailHeroTitleLine2"/>
+                                    <detailHeroDesc
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                        fieldDescription="Please provide Description for the component"
+                                        fieldLabel="Description"
+                                        name="./detailHeroDesc"/>
+                                    <detailHeroBgImage
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="pcwr/cq/gui/components/authoring/dialog/fileupload"
+                                        allowUpload="{Boolean}false"
+                                        autoStart="{Boolean}false"
+                                        class="cq-droptarget"
+                                        fieldLabel="Background Image"
+                                        fileNameParameter="./detailHeroBgImageFileName"
+                                        fileReferenceParameter="./detailHeroBgImageFileRef"
+                                        mimeTypes="[image/jpeg,image/png]"
+                                        multiple="{Boolean}false"
+                                        name="./detailHeroBgImageFile"
+                                        title="Upload Image Asset"
+                                        uploadUrl="${suffix.path}"
+                                        useHTML5="{Boolean}true"/>
+                                    <detailHeroMobileBgImage
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="pcwr/cq/gui/components/authoring/dialog/fileupload"
+                                        allowUpload="{Boolean}false"
+                                        autoStart="{Boolean}false"
+                                        class="cq-droptarget"
+                                        fieldLabel="Mobile Background Image"
+                                        fileNameParameter="./detailHeroMobileBgImageFileName"
+                                        fileReferenceParameter="./detailHeroMobileBgImageFileRef"
+                                        mimeTypes="[image/jpeg,image/png]"
+                                        multiple="{Boolean}false"
+                                        name="./detailHeroMobileBgImageFile"
+                                        title="Upload Image Asset"
+                                        uploadUrl="${suffix.path}"
+                                        useHTML5="{Boolean}true"/>
+                                </items>
+                            </content>
+                        </items>
+                    </general>
+                    <animations
                         jcr:primaryType="nt:unstructured"
-                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                        fieldDescription="Please provide title for the component"
-                        fieldLabel="Title Line 2"
-                        name="./detailHeroTitleLine2"/>
-                    <detailHeroDesc
-                        jcr:primaryType="nt:unstructured"
-                        sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
-                        fieldDescription="Please provide Description for the component"
-                        fieldLabel="Description"
-                        name="./detailHeroDesc"/>
-                    <detailHeroBgImage
-                        jcr:primaryType="nt:unstructured"
-                        sling:resourceType="pcwr/cq/gui/components/authoring/dialog/fileupload"
-                        allowUpload="{Boolean}false"
-                        autoStart="{Boolean}false"
-                        class="cq-droptarget"
-                        fieldLabel="Background Image"
-                        fileNameParameter="./detailHeroBgImageFileName"
-                        fileReferenceParameter="./detailHeroBgImageFileRef"
-                        mimeTypes="[image/jpeg,image/png]"
-                        multiple="{Boolean}false"
-                        name="./detailHeroBgImageFile"
-                        title="Upload Image Asset"
-                        uploadUrl="${suffix.path}"
-                        useHTML5="{Boolean}true"/>
-                    <detailHeroMobileBgImage
-                        jcr:primaryType="nt:unstructured"
-                        sling:resourceType="pcwr/cq/gui/components/authoring/dialog/fileupload"
-                        allowUpload="{Boolean}false"
-                        autoStart="{Boolean}false"
-                        class="cq-droptarget"
-                        fieldLabel="Mobile Background Image"
-                        fileNameParameter="./detailHeroMobileBgImageFileName"
-                        fileReferenceParameter="./detailHeroMobileBgImageFileRef"
-                        mimeTypes="[image/jpeg,image/png]"
-                        multiple="{Boolean}false"
-                        name="./detailHeroMobileBgImageFile"
-                        title="Upload Image Asset"
-                        uploadUrl="${suffix.path}"
-                        useHTML5="{Boolean}true"/>
+                        jcr:title="Animations"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
+                        <items jcr:primaryType="nt:unstructured">
+                            <content
+                                jcr:primaryType="nt:unstructured"
+                                margin="{Boolean}true"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <disableAnimations
+                                        jcr:primaryType="nt:unstructured"
+                                        granite:class="cq-dialog-checkbox-showhide"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                        name="./disableAnimations"
+                                        text="Disable Animations"
+                                        fieldDescription="Click the checkbox to disable the animations"
+                                        value="true">
+                                        <granite:data
+                                            jcr:primaryType="nt:unstructured"
+                                            cq-dialog-checkbox-showhide-target=".disable-animation-showhide-target"/>
+                                    </disableAnimations>
+                                    <animationSettings
+                                        jcr:primaryType="nt:unstructured"
+                                        granite:class="disable-animation-showhide-target"
+                                        showhidetargetvalue="true"        
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <enableMobileAnimations
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                name="./enableMobileAnimations"
+                                                text="Enable Animations on Mobile"
+                                                fieldDescription="Click the checkbox to enable the animations on mobile"
+                                                value="true"/>
+                                            <backgroundAnimation
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/foundation/form/select"
+                                                fieldDescription="Select the Repetition of ZoomIn and ZoomOut of Background Image"
+                                                fieldLabel="Background Animation of Image"
+                                                name="./backgroundAnimation">
+                                                    <items jcr:primaryType="nt:unstructured">
+                                                        <repeat 
+                                                            jcr:primaryType="nt:unstructured"
+                                                            text="Repeat"
+                                                            value="repeat"/>
+                                                        <once 
+                                                            jcr:primaryType="nt:unstructured"
+                                                            text="Once"
+                                                            value="once"/>
+                                                        <off 
+                                                            jcr:primaryType="nt:unstructured"
+                                                            text="None"
+                                                            value="none"/>
+                                                    </items>
+                                            </backgroundAnimation>
+                                        </items>
+                                    </animationSettings>
+                                </items>
+                            </content>
+                        </items>
+                    </animations>
                 </items>
-            </column>
+            </tabs>
         </items>
     </content>
 </jcr:root>

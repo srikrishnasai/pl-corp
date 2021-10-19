@@ -2,6 +2,77 @@
 @turquoise: #24c5cf;
 @light-grey-bg: #f2f2f2;
 
+//Keyframes
+
+@keyframes fade_out_parent{
+	0%{
+		width: 0%;
+	}
+	100%{
+		width: 100%;
+	}
+}
+
+@keyframes fade_out_background{
+	0%{
+		width: 100%;
+	}
+	25%{
+		width: 75%;
+	}
+	50%{
+		width: 50%;
+	}
+	100%{
+		width: 0%;
+	}
+}
+@keyframes Scale_width{
+	0%{
+		width: 0px;
+	}
+	100%{
+		width: 504px;
+	}
+}
+@keyframes  zoom_detailhero {
+	
+	0%{
+		transform: scale(1.1);
+	}
+	25%{
+		transform: scale(1.05);
+	}
+	50% {
+		transform: scale(1);
+	}
+	75%{
+		transform: scale(1.05);
+	}
+   100%{
+		transform: scale(1.1);
+   }
+}
+	
+
+@-webkit-keyframes zoom_detailhero{
+	0%{
+		transform: scale(1.1);
+	}
+	25%{
+		transform: scale(1.05);
+	}
+	50% {
+		transform: scale(1);
+	}
+	75%{
+		transform: scale(1.05);
+	}
+   100%{
+		transform: scale(1.1);
+   }
+}
+
 .detail-hero-wrapper {
 
 	width: 100%;
@@ -47,10 +118,84 @@
 
 		max-width: 1140px;
 		min-height: 550px;
-		background-repeat: no-repeat;
-		background-position: left center;
 		.card-img {
 			max-width: 1090px;
+		}
+	}
+}
+
+.detail-hero-component {
+	.zoom-detail-hero {	
+		.detail-hero-copy--animate {
+			animation-delay: 1s;
+		}
+		&.zoom-detail-hero-repeat-repeat {
+			.detail-hero-background-img {
+				-webkit-animation-iteration-count: infinite;
+				animation-iteration-count: infinite;		
+			}
+		}
+		
+		&.zoom-detail-hero-repeat-once {
+			.detail-hero-background-img {
+				-webkit-animation-iteration-count: 1;
+				animation-iteration-count: 1;	
+			}
+		}
+	
+		&.zoom-detail-hero-repeat-none {
+			.detail-hero-background-img {
+				animation: none;
+				-webkit-animation: none;
+				transform: none;
+				transition: none;
+			}
+		}
+
+		.detail-hero-background-img{
+			width: 100%;
+			height: 100%;
+			min-height: 550px;
+			position: absolute;
+			background-size: cover;
+			background-repeat: no-repeat;
+			background-position: left center;
+			transform: scale(1.1);
+			animation: zoom_detailhero 25s linear 4s  forwards; 
+			-webkit-animation: zoom_detailhero 25s linear 4s  forwards; 
+
+			&.animations-disabled {
+				animation: none;
+				-webkit-animation: none;
+				transform: none;
+				transition: none;
+			}
+		}
+	
+		.gray-overlay {
+			background-color: #F8F8F8;
+			position: absolute;
+			left:auto;
+			right: 0;
+			width: 100%;
+			margin: 0 auto;
+			height: 550px;
+			animation: fade_out_background 0.5s linear 0.5s forwards;
+			transition: all 0.5s ease-in-out;
+		}
+	}
+}
+
+//styles for disabling animations on mobile
+@media screen and (max-width: 767px) {
+	.detail-hero-component.detail-hero-mobile-animations-disabled {
+		.detail-hero-content-wrapper, .detail-hero-background-img {
+			animation: none;
+			-webkit-animation: none;
+			animation-duration: 0.01s;
+		}
+		.gray-overlay {
+			display: none;
 		}
 	}
 }
@@ -58,10 +203,10 @@
 @media screen and (max-width: 992px) {
 	.detail-hero-wrapper {
 		.detail-hero {
+			position: relative;
 			.detail-hero-img-txt , .detail-hero-copy {
 				max-width: 100%;
 			}
-
 			.detail-hero-img-txt {
 				margin-top: 30%;
 				margin-left: unset;
@@ -69,16 +214,19 @@
 					font-size: 40px;
 				}
 			}
-
 			.detail-hero-copy {
 				margin-top: auto;
 				.card-body {
 					padding: 1rem;
 				}
 			}
-
-			background-size: cover;
-			background-position: top center;
+			.detail-hero-copy-duplicate {
+				display: none;
+			}
+			.detail-hero-background-img{
+				background-size: cover;
+				background-position: top center;
+			}
 		}
 	}
 }
@@ -88,4 +236,132 @@
 		display: flex;
 	}
 }
+
+@media screen and (max-width : 1200px) {
+	.detail-hero-wrapper {
+		.detail-hero {
+			position: relative;
+		}
+	}
+	
+}
+
+@media screen and (min-width : 992px) {
+	.detail-hero-wrapper {
+		.detail-hero-copy-duplicate {
+			position: absolute; 
+			right: -50px; 
+			padding: 3.5rem; 
+			z-index: -1; 
+			opacity: 0; 
+			width: 504px;
+		}
+	}
+}
+
+@media screen and (min-width: 1200px) {
+	
+	.detail-hero-component {
+		&.detail-hero-animations-disabled {
+			.detail-hero-background{ 
+				width: 1140px;
+				height: 550px;
+				animation: none;
+				-webkit-animation: none;
+				transform: none;
+				-ms-animation: none;
+			}	
+			.detail-hero-content-wrapper {
+				position: absolute;
+			}
+		}
+		.detail-hero-background{
+			position: relative;
+			width: 0px;
+			height: 550px;
+			left : 0px;
+			right: auto;
+			animation:fade_out_parent 0.5s linear forwards;
+		}
+		.parent-wraper{
+			max-width: 1140px;
+			margin: 0 auto;
+		}
+		
+		.detail-hero-wrapper {
+			.detail-hero {
+				// background-size: 110%;
+				.detail-hero-copy {
+					right: -50px;
+				}
+				
+				.detail-hero-copy--animate {
+					position: absolute;
+					right: -50px;
+					width: 0px;
+					max-height: 100%;
+					animation: Scale_width 0.5s 1s forwards;
+					transition: all 0.5s ease-in-out;
+				}
+			}
+		}
+	}
+}
+@media screen and (-ms-high-contrast: active) , screen and (-ms-high-contrast: none) {
+	.detail-hero-component {
+		.detail-hero-background-img {
+			animation: none; 
+			-webkit-animation: none;
+			transition: none;
+		}
+		.detail-hero-background{
+			width: 1140px;
+			height: 550px;
+			animation: none;
+			-webkit-animation: none;
+			transform: none;
+			-ms-animation: none;
+		}
+		.gray-overlay{
+			display: none;
+			animation: none;
+			-webkit-animation: none;
+			transform: none;
+			-ms-animation: none;
+		}
+		
+		.detail-hero-wrapper {
+			.detail-hero {
+				.detail-hero-copy--animate {
+					width: 504px;
+					height: 288px;
+					animation: none;
+					transition: none;
+					margin-top: -6%;
+					.card-body{
+						.animate__fadeInRightSmall{
+							animation: none;
+							-webkit-animation: none;
+							transform: none;
+							-ms-animation: none;
+							opacity: 1;
+						}
+					}
+				}
+			}
+		}
+		.detail-hero-img-txt {
+			margin-top: 12%;
+			.animate__fadeInLeftSmall{
+				animation: none;
+				-webkit-animation: none;
+				transform: none;
+				-ms-animation: none;
+				opacity: 1;
+			}
+		}
+	}	
+}
+
+
 

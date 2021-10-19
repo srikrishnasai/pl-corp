@@ -2,10 +2,15 @@
 	Click here to configure ${component.title} component
 </div>
 
-<div data-component-name="Text Card" data-sly-test="${! configMsg}" class="col text-card d-block">
-	<h5>${properties.textCardTitle}</h5>
-	<div class="pcwr-richtext">${properties.richText @ context='html'}</div>
-
-	<a data-sly-test='${properties.textCardDisplayBtn}' target="${properties.target}" href="${properties.textCardBtnLink @ extension='html'}" class="btn btn-primary cta-text-btn">${properties.textCardBtnLabel || 'Learn More'}</a>
+<div data-component-name="Text Card" data-sly-test="${! configMsg}" class="col text-card d-block animatedParent animateOnce" data-appear-top-offset='-150'>
+	<div class="animated fadeIn display-wrapper-alt">
+		<h5>${properties.textCardTitle}</h5>
+		<div class="loading-bar">
+			<div class="animated progress-bar"></div>
+		</div>
+		<div class="pcwr-richtext">${properties.richText @ context='html'}</div>
+		<a data-sly-test='${properties.textCardDisplayBtn}' target="${properties.target}" href="${properties.textCardBtnLink @ extension='html'}" class="btn btn-primary cta-text-btn">${properties.textCardBtnLabel || 'Learn More'}</a>
+	
+	</div>
 			
 </div>

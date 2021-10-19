@@ -1,0 +1,20 @@
+<sly data-sly-use.fixedLink="${'com.paclife.core.util.LinkFixer' @ link = properties.altFiftyBtnLink}"/>
+<!-- Content Markup when the asset is on left -->
+<div class="alt-fifty-content-wrapper col-md-6 d-flex justify-content-center align-items-center flex-column
+            ${!properties.disableAnimations ? ' animatedParent animateOnce' : ''}" 
+        data-sly-attribute.data-appear-top-offset="${!properties.disableAnimations ? '-200' : ''}">
+    <div class="px--sm4 text-content-right">
+        <!-- Content Animation wrapper -->
+        <div class="${!properties.disableAnimations ? 'animated delay-250 display-wrapper-alt' : ''}
+                    ${!properties.disableAnimations && properties.animationDirection != 'side' ? ' fadeInDownHalfShort' : ''}
+                    ${!properties.disableAnimations && properties.animationDirection == 'side' ? ' fadeInRightHalfShort' : ''}">
+                <h3 style="color:${properties.altFiftyTitleColor || 'inherit' @ context='styleToken'};">${properties.altFiftyTitle}</h3>
+                <h6>${properties.altFiftySubTitle}</h6>
+                <div class="pcwr-richtext">${properties.richText @ context='html'}</div>
+                <a data-sly-test="${properties.altFiftyActnReqd}" href="${fixedLink.value}" target="${properties.newTab ? '_blank' : '_self'}"
+                class="btn btn-primary cta-text-btn alt-fifty-link">${properties.altFiftyBtnLabel}</a>
+        </div>
+        <!-- Added condition/property if modal video alignment is set to a right value -->
+        <div class="alt-fifty-modal-wrapper" data-sly-resource="${@path = 'video', resourceType = 'pcwr/components/content/video'}" data-sly-test="${properties.altFiftyVideo && properties.altFiftyVideoAlignment == 'right'}"></div>
+    </div>
+</div>

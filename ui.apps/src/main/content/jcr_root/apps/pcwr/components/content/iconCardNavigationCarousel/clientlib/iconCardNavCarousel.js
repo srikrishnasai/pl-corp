@@ -43,4 +43,19 @@ $(document).ready(function () {
         slider.getCurrentSlideCount();
     });
     
+    var disableIconCardNavMobileAnimations = function() {
+        var windowWidth = window.innerWidth;
+        if(windowWidth <= 767) {
+            var $iconCardNavCarousel = $('.icon-card-nav-carousel');
+            $iconCardNavCarousel.each(function() {
+                var disableMobileAnimations = $(this).hasClass('icon-card-nav-car-mobile-animations-disabled');
+                if(disableMobileAnimations) {
+                    PacLife.JSUtils.removeAnimationClassNames($(this), "animate");
+                    $(this).removeClass('icon-card-nav-car-hover-animations-enabled');
+                }
+            });
+        }
+    }
+    
+    disableIconCardNavMobileAnimations();
 });

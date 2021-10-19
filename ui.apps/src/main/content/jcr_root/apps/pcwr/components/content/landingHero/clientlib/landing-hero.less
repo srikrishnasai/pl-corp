@@ -6,12 +6,14 @@
 @light-grey-bg:#f2f2f2;
 
 .detail-hero-img-overlay{
-	background-repeat:no-repeat;
-	background-position:center center;
-	background-size:cover;
 	width:100%;
 	min-height:550px; 
 	min-width:100%;
+	.landing-hero-background-img {
+		background-repeat:no-repeat;
+		background-position:center center;
+		background-size:cover;
+	}
 	&.overlay-item-below{margin-bottom: -150px !important;}
 	h1,.detail-hero-subtitle{color:#ffffff; max-width:750px;}
 	h1{
@@ -29,8 +31,89 @@
 	}
 	.detail-hero-subtitle + .detail-hero-btn {margin-top: 1.75rem;}
 }
+
+.landing-hero-component { 
+	.landing-overlay{
+		background: rgba(0,0,0, 0.2);
+		position: absolute;
+		width: 100%;
+		height: 100%;
+	}
+	.landing-hero-background{
+		position: relative;
+		width: 100%;
+		z-index: -1;	
+		animation: update_zindex 0.5s linear 2s forwards;
+
+	}
+
+	.white-overlay-landing-hero {
+		background-color: rgba(255,255,255,1);
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		bottom: -2px;
+		left: 0;
+		transform: scaleY(1);
+		transform-origin: bottom;
+		animation: Scale_Background_landing_hero 0.4s linear forwards;
+	}
+	
+	.zoom.detail-hero-img-overlay {
+		&.zoom-repeat-repeat {
+			.landing-hero-background-img {
+				-webkit-animation-iteration-count: infinite;
+				animation-iteration-count: infinite;	
+			}
+		}
+		
+		&.zoom-repeat-once {
+			.landing-hero-background-img {
+				-webkit-animation-iteration-count: 1;
+				animation-iteration-count: 1;
+			}
+		}
+	
+		&.zoom-repeat-none {
+			.landing-hero-background-img {
+				animation: none;
+				-webkit-animation: none;
+				transform: none;
+				transition: none; 
+			}
+		}
+	}	
+}
+
 @media (max-width: 575.98px) {
 	h1{&.large-hero-title{font-size:45px;}}
+}
+
+@media (max-width: 767px) {
+	
+	.landing-hero-component.landing-hero-mobile-animations-disabled {
+		.zoom {
+			animation: none; 
+			transition: none;
+		}
+		.detail-hero-img-overlay {
+			.landing-hero-background-img {
+				animation: none;
+				-webkit-animation: none;
+				transform: none;
+				transition: none;
+			}
+		}
+		.white-overlay-landing-hero {
+			animation: none;
+			-webkit-animation: none;
+			transform: none;
+			background-color: transparent;
+		}
+		.landing-overlay {
+			display: none;
+		}
+	}	
 }
 
 @media screen and (-ms-high-contrast: active) , screen and (-ms-high-contrast: none) {
@@ -38,5 +121,106 @@
 		display: flex;
 		flex-direction: column;
 	}
+
+	// Disabling animations on IE
+	.landing-hero-component{
+		.zoom.detail-hero-img-overlay{
+			animation: none;
+			-webkit-animation: none;
+			transform: none;
+			-ms-animation: none;
+			.hero-background-img-wrapper{
+				.landing-hero-background-img{
+					animation: none;
+					-webkit-animation: none;
+					transform: none;
+					-ms-animation: none;
+
+				}
+			}
+		}	
+		.white-overlay-landing-hero,.landing-overlay{
+			display: none;
+			animation: none;
+			-webkit-animation: none;
+			transform: none;
+			-ms-animation: none;
+		}
+		.animate__fadeInDownHalfBig,.animate__fadeInDownSmall{
+
+			animation: none;
+			-webkit-animation: none;
+			transform: none;
+			-ms-animation: none;
+			opacity: 1;
+
+		}
+		.card-img-overlay{
+			position: absolute !important;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%,-50%);
+		}
+	}
 }
 
+@keyframes scale {
+	0%{
+		transform: scale(1.1);
+	}
+	50% {
+		transform: scale(1);
+	}
+	100%{
+		transform: scale(1.1);
+	}
+}
+
+@keyframes background_uncover{
+	0%{
+		height: 0%;
+	}
+	100%{
+		height: 100%;
+	}
+}
+@keyframes Scale_Background_landing_hero {
+	0%{
+		transform: scaleY(1);
+	}
+	100%{
+		transform: scaleY(0);
+	}
+}	
+
+@keyframes update_zindex {
+	0%{
+		z-index: -1;
+	}
+	
+	100%{
+		z-index: auto;
+	}
+}
+
+
+.landing-hero-background-img{
+	width: 100%;
+    height: 100%;
+    position: absolute;
+    background-size: cover;
+	transform: scale(1.1);
+	animation: scale 25s linear 3s forwards; 
+	-webkit-animation: scale 25s linear 3s forwards; 
+
+	&.animations-disabled {
+		animation: none;
+		-webkit-animation: none;
+		transform: none;
+		transition: none;
+	}
+}
+
+.hero-background-img-wrapper{
+	overflow: hidden; position: absolute; width: 100%; height: 100%; top: 0; left: 0;
+}

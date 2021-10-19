@@ -7,10 +7,11 @@ if ($('.detail-hero-img-overlay').length > 0) {
 			var largeImg = $(this).find('.landing-lg-img').val();
 
 			if($(window).width() < 576) {
-				$(this).css("background-image","url(" + smallImg +")");
+				$(this).find('.landing-hero-background-img').css("background-image","url(" + smallImg +")");
 			}
 			else {
-				$(this).css("background-image","url(" + largeImg +")");
+				$(this).find('.landing-hero-background-img').css("background-image","url(" + largeImg +")");
+
 			}
 
 		});
@@ -18,3 +19,27 @@ if ($('.detail-hero-img-overlay').length > 0) {
 	});
 
 }
+
+/* Removes the Animate Style Library classes when the mobile animations are not enabled*/
+var disableLandingHeroMobileAnimations = function() {
+	var windowWidth = window.innerWidth;
+	if(windowWidth <= 767) {
+		var $landingHeroComponent = $('.landing-hero-component');
+		$landingHeroComponent.each(function() {
+			var mobileAnimationsDisabled = $(this).hasClass('landing-hero-mobile-animations-disabled');
+			if(mobileAnimationsDisabled) {
+				$(this).find('.detail-hero-img-overlay').removeClass('zoom');
+			
+				var $landingOverlay = $(this).find('.landing-overlay');
+				PacLife.JSUtils.removeAnimationClassNames($landingOverlay, "animate");
+
+				var $landingHeroContent = $(this).find('.landing-component-content-wrapper');
+				PacLife.JSUtils.removeAnimationClassNames($landingHeroContent, "animate");
+			}
+		});
+	}
+}
+
+$(document).ready(function() {
+	disableLandingHeroMobileAnimations();
+});

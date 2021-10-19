@@ -3,34 +3,45 @@
 <sly data-sly-use.template="core/wcm/components/commons/v1/templates.html"/>
 <sly data-sly-call="${template.placeholder @ isEmpty=(wcmmode.edit && ! someFieldConfigured)}"/>
 
-<style>
+ <style>
 
-.overview-img-overlay {
+.overview-hero-background-img {
 	background-image: url('${properties.overviewHeroBgImageFileRef @ context='styleString'}');
-}
+} 
 
 @media screen and (max-width:575.98px){
 
-	.overview-img-overlay {
+	.overview-hero-background-img {
 		background-image: url('${properties.overviewHeroMobileBgImageFileRef @ context='styleString'}');
 	}
 }
 
-</style>
+</style> 
 
-<div data-component-name="Overview Hero" data-sly-test="${someFieldConfigured}">
+<div class="overview-hero-component ${!properties.disableAnimations && properties.enableMobileAnimations ? '' : 'overview-hero-mobile-animations-disabled'}"
+	 data-component-name="Overview Hero" 
+	 data-sly-test="${someFieldConfigured}">
 
 	<div class="overview-hero-wrapper mx-auto">
 	<div class="overview-hero mx-auto d-flex align-items-md-center flex-column" >
-	
-		<div class="card overview-img-overlay">
-		    <div class="card-img-overlay">
-		    </div>
+		 <div class="fade-parent">
+				<div class="card overview-img-overlay ${!properties.disableAnimations ? 'zoom-overview-hero' : ''} zoom-overview-hero-repeat-${properties.backgroundAnimation ? properties.backgroundAnimation : 'repeat'}">
+					
+					<div class="hero-background-img-wrapper">
+						<div class="overview-hero-background-img ${properties.disableAnimations ? 'animations-disabled' : ''}">   </div>
+					</div>
+					
+					<div class="card-img-overlay">
+					</div>
+					<div data-sly-test="${!properties.disableAnimations}" class="white-overlay-overview-hero"></div>
+				</div>		
 		</div>
-        <div class="card mx-auto text-white overview-hero-copy">
-            <div class="card-body">
-            	<h3 class="card-title">${properties.overviewHeroTitle}</h3>
-                <p class="card-text text-center">${properties.overviewHeroDesc}</p>
+        <div class="card mx-auto text-white overview-hero-copy ${!properties.disableAnimations ? 'overview-hero-copy--animated' : ''}">
+            <div class="card-body">  
+				<div class="overview-hero-content-wrapper ${!properties.disableAnimations ? 'animate__animated animate__fadeInDownSmall animate__faster animate__delay-half_s' : ''}">
+					<h3 class=" card-title">${properties.overviewHeroTitle}</h3>
+					<p class="card-text text-center">${properties.overviewHeroDesc}</p>
+				</div>
             </div>
         </div>
             

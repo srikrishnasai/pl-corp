@@ -1,24 +1,43 @@
 <sly data-sly-test.someFieldConfigured="${properties.detailHeroTitleLine1 || properties.detailHeroTitleLine2 
                                          || properties.detailHeroDesc || properties.detailHeroBgImageFileRef}"></sly>
-                                             
+
 <sly data-sly-use.template="core/wcm/components/commons/v1/templates.html" />
 <sly data-sly-call="${template.placeholder @ isEmpty=(wcmmode.edit && ! someFieldConfigured)}" />
 
-<div data-component-name="Detail Hero" data-sly-test="${someFieldConfigured}">
-    <div class="detail-hero-wrapper mx-auto">
-        <div class="detail-hero mx-auto d-flex align-items-md-center flex-lg-row flex-column"
-            style="background-image: url('${properties.detailHeroBgImageFileRef @ context=' styleString '}');">
-            <input type="hidden" class="detail-lg-img" value="${properties.detailHeroBgImageFileRef}"> <input
-                type="hidden" class="detail-sm-img" value="${properties.detailHeroMobileBgImageFileRef}">
-            <div class="card text-white detail-hero-img-txt">
-                <div class="card-body">
-                    <p class="subhead">${properties.detailHeroTitleLine1}</p>
-                    <h2 class="card-title">${properties.detailHeroTitleLine2}</h2>
-                </div>
-            </div>
-            <div class="card text-white detail-hero-copy">
-                <div class="card-body">
-                    <p class="card-text">${properties.detailHeroDesc}</p>
+<div class="detail-hero-component ${properties.disableAnimations ? 'detail-hero-animations-disabled' : ''} ${!properties.disableAnimations && properties.enableMobileAnimations ? '' : 'detail-hero-mobile-animations-disabled'}"
+     data-component-name="Detail Hero" 
+     data-sly-test="${someFieldConfigured}">
+    <div class="detail-hero-wrapper mx-auto" >
+        <div class="parent-wraper">
+            
+            <div class="detail-hero-background">
+                <div class="zoom-detail-hero zoom-detail-hero-repeat-${properties.backgroundAnimation ? properties.backgroundAnimation : 'repeat'} detail-hero mx-auto d-flex align-items-md-center flex-lg-row flex-column" 
+                     style="overflow: hidden;"> 
+                    <div class="hero-background-img-wrapper">
+                    <div class="detail-hero-background-img ${properties.disableAnimations ? 'animations-disabled' : ''}" style="background-image: url('${properties.detailHeroBgImageFileRef @ context=' styleString '}');">   </div>
+                    </div>
+                    <input type="hidden" class="detail-lg-img" value="${properties.detailHeroBgImageFileRef}">
+                    <input type="hidden" class="detail-sm-img" value="${properties.detailHeroMobileBgImageFileRef}">
+                    <div class="${!properties.disableAnimations ? 'gray-overlay' : ''}"></div>
+                    <div class="card text-white detail-hero-img-txt ">
+                        <div class="detail-hero-title-wrapper card-body ${!properties.disableAnimations ? 'animate__animated animate__fadeInLeftSmall animate__faster animate__delay-1s' : ''}">
+                            <p class="subhead">${properties.detailHeroTitleLine1}</p>
+                            <h2 class="card-title">${properties.detailHeroTitleLine2}</h2>
+                        </div>
+                    </div> 
+                    <div data-sly-test="${!properties.disableAnimations}" class="detail-hero-copy-duplicate">
+                        <p  
+                            class="detail-hero-desc-duplicate">
+                            ${properties.detailHeroDesc}</p>
+                        
+                    </div>
+                    <div class="detail-hero-content-wrapper card text-white detail-hero-copy ${!properties.disableAnimations ? 'detail-hero-copy--animate animate__animated animate__fadeInRight animate__faster' : ''}">
+                        <div class="card-body">
+                            <p
+                                class="detail-hero-desc card-text ${!properties.disableAnimations ? 'animate__animated animate__fadeInRightSmall animate__faster animate__delay-2s' : ''}">
+                                ${properties.detailHeroDesc}</p>
+                        </div>
+                    </div>           
                 </div>
             </div>
         </div>

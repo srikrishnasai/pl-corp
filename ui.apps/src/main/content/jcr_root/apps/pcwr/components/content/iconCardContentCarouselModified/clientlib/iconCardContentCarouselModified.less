@@ -228,3 +228,73 @@
     }	
 }
 
+.icon-card-carousel-component.animations-enabled {
+	.icon-card-content-carousel {
+		.carousel-inner {
+			opacity: 0;
+		}
+
+		.mobile-dots {
+			opacity: 0;
+		}
+	}
+}
+
+@media (min-width: 768px) {
+
+	.icon-card-carousel-component {
+		position: relative;
+
+		.icon-card-carousel-white-background {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			top: auto;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background-color: #fff;
+			z-index: 99;
+
+			&.go {
+				animation: animate-from-top 0.5s linear forwards;
+			}
+		}
+
+		.icon-card-content-carousel {
+			h3 {
+				padding-bottom: 0;
+			}
+			.carousel-inner {
+				padding-top: 3rem;
+
+				.icon-card-carousel-item.icon-card-carousel-item-has-link{
+					&:hover{
+						img{
+							transform: scale3d(1.2, 1.2, 1);
+							transition: 0.5s transform ease-in-out;
+						}
+					}
+				}
+			}	
+		}	
+	}
+}
+
+@keyframes animate-from-top {
+    0%   {
+        height: 100%;
+    }
+    25%   {
+        height: 75%;
+    }
+    50%   {
+        height: 50%;
+    }
+    75%   {
+        height: 25%;
+    }
+    100% { 
+        height: 0%;
+    }
+}

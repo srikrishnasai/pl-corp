@@ -1,59 +1,26 @@
 <sly data-sly-use.template="core/wcm/components/commons/v1/templates.html"/>
 <sly data-sly-call="${template.placeholder @ isEmpty=(wcmmode.edit && !properties.altFiftyTitle)}"/>
-<sly data-sly-use.fixedLink="${'com.paclife.core.util.LinkFixer' @ link = properties.altFiftyBtnLink}"/>
 
 <!-- Alternating fifty-fifty PCWR-21 -->
 
-<div id="${properties.altFiftyId}" class="container-fluid my-5 fifty-fifty ${properties.altFiftyClass}" 
+<div id="${properties.altFiftyId}" 
+     class="alt-fifty-component container-fluid my-5 fifty-fifty ${properties.altFiftyClass} 
+            ${!properties.disableAnimations && properties.disableMobileAnimations ? 'alt-fifty-mobile-animations-disabled' : ''}" 
      data-media-block-title="${properties.altFiftyTitle}"
      data-component-name="Alternating Fifty Fifty">
 
     <div data-sly-test="${properties.altFiftyTitle}" data-sly-unwrap>
+        <!-- Asset is positioned on the left -->
         <div data-sly-test="${properties.altFiftyImgPos == 'left'}" class="row py-4">
-            <div class="col-md-6 d-flex justify-content-center align-items-center flex-column image-block">
-                <img data-sly-test.isVideo="${fixedLink.value}" class="img-fluid pointer" src="${properties.altFiftyImgPath}" onclick="openVideoModal(this)"/>
-                <img data-sly-test="${! isVideo}" class="img-fluid" src="${properties.altFiftyImgPath}"/>
-				
-				<!-- Added resource and condition if video alignment is set to a non right value -->
-				<div data-sly-resource="${@path = 'video', resourceType = 'pcwr/components/content/video'}" data-sly-test="${properties.altFiftyVideo && properties.altFiftyVideoAlignment != 'right'}"></div>
-            </div>
-            <div class="col-md-6 d-flex justify-content-center align-items-center flex-column">
-                <div class="px--sm4 text-content-right">
-                    <h3 style="color:${properties.altFiftyTitleColor || 'inherit' @ context='styleToken'};">${properties.altFiftyTitle}</h3>
-                    <h6>${properties.altFiftySubTitle}</h6>
-                    <div class="pcwr-richtext">${properties.richText @ context='html'}</div>
-                    <a data-sly-test="${properties.altFiftyActnReqd}" href="${fixedLink.value}" target="${properties.newTab ? '_blank' : '_self'}"
-                    	class="btn btn-primary cta-text-btn alt-fifty-link">${properties.altFiftyBtnLabel}</a>
-						
-					<!-- Added condition/property if video alignment is set to a right value -->
-                    <div data-sly-resource="${@path = 'video', resourceType = 'pcwr/components/content/video'}" data-sly-test="${properties.altFiftyVideo && properties.altFiftyVideoAlignment == 'right'}"></div>
-                </div>
-            </div>
+            <sly data-sly-include="asset-on-left.html"/>
+            <sly data-sly-include="content-on-right.html"/>
         </div>
 
+        <!-- Asset is positioned on the right -->
         <div data-sly-test="${properties.altFiftyImgPos == 'right'}" class="row py-4">
-            <div class="col-md-6 d-flex justify-content-center align-items-center flex-column order-2 order-md-1">
-                <div class="px-sm-4 text-content-left">
-                    <h3 style="color:${properties.altFiftyTitleColor || 'inherit' @ context='styleToken'};">${properties.altFiftyTitle}</h3>
-                    <h6>${properties.altFiftySubTitle}</h6>
-                    <div class="pcwr-richtext">${properties.richText @ context='html'}</div>
-                    <a data-sly-test="${properties.altFiftyActnReqd}" href="${fixedLink.value}" target="${properties.newTab ? '_blank' : '_self'}" 
-                    	class="btn btn-primary cta-text-btn alt-fifty-link">${properties.altFiftyBtnLabel}</a>
-						
-					<!-- Added condition if video alignment is set to a non right value -->
-					<div data-sly-resource="${@path = 'video', resourceType = 'pcwr/components/content/video'}" data-sly-test="${properties.altFiftyVideo && properties.altFiftyVideoAlignment != 'right'}"></div>
-                </div>
-            </div>
-            <div class="col-md-6 d-flex justify-content-center align-items-center flex-column order-1 order-md-2 image-block">
-                <img data-sly-test.isVideo="${properties.altFiftyVideo}" class="img-fluid pointer" src="${properties.altFiftyImgPath}" onclick="openVideoModal(this)"/>
-                <img data-sly-test="${! isVideo}" class="img-fluid" src="${properties.altFiftyImgPath}"/>
-				
-				<!-- Added resource and condition if video alignment is set to a right value -->
-				<div data-sly-resource="${@path = 'video', resourceType = 'pcwr/components/content/video'}" data-sly-test="${properties.altFiftyVideo && properties.altFiftyVideoAlignment == 'right'}"></div>
-            </div>
+            <sly data-sly-include="content-on-left.html"/>
+            <sly data-sly-include="asset-on-right.html"/>
         </div>
-
     </div>
-
 </div>
 

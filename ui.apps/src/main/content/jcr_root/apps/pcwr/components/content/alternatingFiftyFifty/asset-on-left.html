@@ -1,0 +1,76 @@
+<!-- Asset Markup when Asset is on left -->
+<div class="col-md-6 d-flex justify-content-center align-items-center flex-column image-block
+            ${!properties.disableAnimations ? ' position-relative animatedParent animateOnce overflow-hidden' : ''}" 
+     data-sly-attribute.data-appear-top-offset="${!properties.disableAnimations ? '-200' : ''}">
+    
+    <!-- Animation wrapper for the assets -->
+    <div class="d-flex justify-content-center align-items-center
+                ${!properties.disableAnimations ? ' animated' : ''}
+                ${!properties.disableAnimations && properties.animationDirection != 'side' ? ' animate-uncover-with-offset-parent-from-top animateOnce' : ''} 
+                ${!properties.disableAnimations && properties.animationDirection == 'side' ? ' animate-uncover-with-offset-parent' : ''}">
+        <!-- Image wrapper -->
+        <sly data-sly-test="${!properties.altFiftyBgType || properties.altFiftyBgType == 'image'}">
+            <img data-sly-test.isVideo="${properties.altFiftyVideo}" 
+                    class="img-fluid pointer
+                        ${!properties.disableAnimations && properties.animationDirection != 'side' ? ' width-img animated animate-image-from-top' : ''}
+                        ${!properties.disableAnimations && properties.animationDirection == 'side' ? ' width-img animated animate-image animateOnce' : ''}"
+                    src="${properties.altFiftyImgPath}" onclick="openVideoModal(this)"/>
+            <img data-sly-test="${! isVideo}" 
+                    class="img-fluid
+                        ${!properties.disableAnimations && properties.animationDirection != 'side' ? ' width-img animated animate-image-from-top' : ''} 
+                        ${!properties.disableAnimations && properties.animationDirection == 'side' ? ' width-img animated animate-image animateOnce' : ''}"
+                    src="${properties.altFiftyImgPath}"/>
+        </sly>
+
+        <!-- Slideshow wrapper -->
+        <div data-sly-test="${properties.altFiftyBgType == 'slideshow'}"
+             data-sly-use.model="${'com.paclife.core.models.PCWRMultifieldItemsModel'}"
+             data-sly-use.randomNumber="${'com.paclife.core.util.RandomNumberGenerator'}"
+             data-animations-disabled="${properties.disableAnimations}"
+             class="altFiftyCarousel altFiftyCarouselLeft-${randomNumber.randomNumber} carousel carousel-fade slide touch-enabled-carousel
+                    ${!properties.disableAnimations && properties.animationDirection != 'side' ? ' width-img animated animate-image-from-top' : ''}
+                    ${!properties.disableAnimations && properties.animationDirection == 'side' ? ' width-img animated animate-image animateOnce' : ''}"
+             data-pause="false">
+             <div data-sly-list.cardItem="${model.multiFieldItems.listChildren}" class="carousel-inner">
+                 <div class="carousel-item item ${cardItemList.index == 0 ? 'active' : ''}">
+                     <img src="${cardItem.altFiftySlideShowImgPath}" class="img-fluid d-block" />                          
+                 </div>
+             </div>
+
+             <!-- Slideshow Progress Bar Wrapper -->
+             <ol data-sly-list.cardItem="${model.multiFieldItems.listChildren}" class="alt-fifty-carousel-indicators-wrapper carousel-indicators">
+                 <li 
+                     data-target=".altFiftyCarouselLeft-${randomNumber.randomNumber}" 
+                     data-slide-to="${cardItemList.index}" 
+                     class="alt-fifty-carousel-indicator alt-fifty-carousel-indicator-${model.countItems}">
+                     <span class="alt-fifty-carousel-progress-indicator animate-progress-bar"></span>
+                 </li>
+             </ol> 
+        </div>
+
+        <!-- Video wrapper -->
+        <div data-sly-test="${properties.altFiftyBgType == 'video'}" 
+                class="alt-fifty-video-wrapper
+                    ${!properties.disableAnimations && properties.animationDirection != 'side' ? ' width-img animated animate-image-from-top' : ''}
+                    ${!properties.disableAnimations && properties.animationDirection == 'side' ? ' width-img animated animate-image animateOnce' : ''}"
+                data-sly-use.inlineVideo="${'com.paclife.core.models.PCWRMultifieldHelperModel' @ nodeName='inlineVideo'}">
+            <sly data-sly-test="${inlineVideo.childResource}"
+                data-sly-use.template="pcwr/components/content/inlineVideo/inlineVideo.html"
+                data-sly-call="${template.inlineVideo @ inlineVideoProperties=inlineVideo.childResource}">
+            </sly>
+        </div>
+
+        <!-- Gray Background Wrapper -->
+        <div data-sly-test="${!properties.disableAnimations}"
+                class="animated ${properties.animationDirection == 'side' ? 'animateUncoverWithOffSet animateUncoverfromLeft' : 'animate-fade-out-top-background animateUncoverfromTop'}">
+        </div>
+    </div>
+    
+    <!-- GIF Image Wrapper -->
+    <div data-sly-test="${properties.altFiftyBgType == 'gifimage'}">
+        <img class="img-fluid" src="${properties.altFiftyGifImgPath}"/>
+    </div>     
+    
+    <!-- Added resource and condition if modal video alignment is set to a non right value -->
+    <div class="alt-fifty-modal-wrapper" data-sly-resource="${@path = 'video', resourceType = 'pcwr/components/content/video'}" data-sly-test="${properties.altFiftyVideo && properties.altFiftyVideoAlignment != 'right'}"></div>
+</div>

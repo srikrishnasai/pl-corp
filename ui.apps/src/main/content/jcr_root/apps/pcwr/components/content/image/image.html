@@ -1,28 +1,52 @@
-<a
-    data-sly-use.image="image.js"
-    data-sly-unwrap="${!image.linkUrl}"
-    href="${image.linkUrl}"
-    onclick="CQ_Analytics.record({event: 'imageClick', values: { imageLink: '${image.linkurl @ context='scriptString'}', imageAsset: '${image.filereference @ context='scriptString'}', imageTitle: '${image.fileName @ context='scriptString'}' }, collect: false, options: { obj: this }, componentPath: '${image.resource.resourceType @ context='scriptString'}'})">
-    <img
-        src="${image.src}"
-        alt="${image.alt}"
-        title="${image.title}"
-        width="${image.width}"
-        height="${image.height}"
-        class="${image.cssClass} img-fluid ${properties.centerHorizontally ? 'mx-auto d-block': ''} ${properties.fullWidth ? 'w-100': ''}"
-        data-emptytext="Image"
-        usemap="${image.imageMaps.hash}"
-        data-sly-test="${image.src}"/>
-</a>
-<small data-sly-test="${properties.jcr:description}">${properties.jcr:description}</small>
-<map
-    data-sly-list="${image.imageMaps.maps}"
-    name="${image.imageMaps.name}">
-    <area
-        shape="${item.type}"
-        coords="${item.coords}"
-        href="${item.href}"
-        target="${item.target}"
-        alt="${item.alt}" 
-        title="${item.title}"/>
-</map>
+<div class="paclife-image pacific-life-image-animation-wrapper animatedParent animateOnce"
+    data-sly-attribute.data-appear-top-offset="${!properties.disableAnimations ? '-150' : ''}">
+    <div
+        class="${!properties.disableAnimations ? ' animated animateOnce display-wrapper-alt' : ''}
+                 ${!properties.disableAnimations && (!properties.animationDirection || properties.animationDirection == 'top') ? ' fadeInDownHalfVeryShort' : ''}
+                 ${!properties.disableAnimations && properties.animationDirection == 'bottom' ? ' fadeInUpShort' : ''}
+                 ${!properties.disableAnimations && properties.animationDirection == 'left' ? ' fadeInLeftShort' : ''}
+                 ${!properties.disableAnimations && properties.animationDirection == 'right' ? ' fadeInRightShort' : ''}">
+        <a data-sly-use.image="image.js" data-sly-unwrap="${!image.linkUrl}" href="${image.linkUrl}"
+            onclick="CQ_Analytics.record({event: 'imageClick', values: { imageLink: '${image.linkurl @ context='scriptString'}', imageAsset: '${image.filereference @ context='scriptString'}', imageTitle: '${image.fileName @ context='scriptString'}' }, collect: false, options: { obj: this }, componentPath: '${image.resource.resourceType @ context='scriptString'}'})">
+
+            <img 
+                src="${image.src}" 
+                alt="${image.alt}" 
+                title="${image.title}" 
+                width="${image.width}"
+                height="${image.height}"
+                class="pacific-life-image ${image.cssClass} img-fluid ${properties.centerHorizontally ? 'mx-auto d-block': ''} ${properties.fullWidth ? 'w-100': ''}"
+                data-emptytext="Image" usemap="${image.imageMaps.hash}" data-sly-test="${image.src}" />
+            <i data-sly-test="${properties.highResImageFileRef}" 
+               class="paclife-image-full-screen-btn material-icons ${properties.highResImageDarkFullScreenIcon ? 'paclife-image-full-screen-btn-dark' : ''}"
+               data-toggle="modal"
+               data-target="#paclife-image-modal">fullscreen</i>  
+                        
+        </a>
+        <small data-sly-test="${properties.jcr:description}">${properties.jcr:description}</small>
+        <map data-sly-list="${image.imageMaps.maps}" name="${image.imageMaps.name}">
+            <area shape="${item.type}" coords="${item.coords}" href="${item.href}" target="${item.target}"
+                alt="${item.alt}" title="${item.title}" />
+        </map>
+    </div>
+</div>
+
+<div data-sly-test="${properties.highResImageFileRef}" id="paclife-image-modal" class="modal fade pcwr-modal-video" tabindex="-1" role="dialog"
+    aria-labelledby="${properties.windowTitle}" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 1240px">
+        <div class="modal-content">
+            <div class="modal-body">
+                <img 
+                     data-img-src="${properties.highResImageFileRef}" 
+                     src=""
+                     alt="${properties.highResImageAlt}"
+                     class="pacific-life-high-res-image ${image.cssClass} img-fluid ${properties.centerHorizontally ? 'mx-auto d-block': ''}"
+                     data-emptytext="Image" />
+            </div>
+            <div class="modal-footer">
+                <h5 class="modal-title" id="${currentNode.identifier}.Title">${properties.highResImageTitle}</h5>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

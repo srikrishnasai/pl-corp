@@ -5,6 +5,40 @@
 @turquoise:#24c5cf;
 @light-grey-bg:#f2f2f2;
 
+//KeyFrames 
+
+@keyframes  scale_overviewhero {
+	
+	0%{
+		transform: scale(1.1);
+	}
+	50% {
+		transform: scale(1);
+	}
+	100%{
+		transform: scale(1.1);
+	}
+}
+@keyframes expand_overview {
+   0%{
+	   transform: scaleX(0);
+   }
+   100%{
+	   transform: scaleX(1);
+   }
+}
+
+@keyframes Scale_Background_overview_hero {
+	0%{
+		transform: scaleY(1);
+	}
+	100%{
+		transform: scaleY(0);
+	}
+}
+
+////////////////////
+
 .overview-hero-wrapper{
 	width:100%;
 	.overview-hero{
@@ -23,6 +57,71 @@
 		min-height:550px;
 	}
 }
+
+.overview-hero-component {
+	.zoom-overview-hero {
+		&.zoom-overview-hero-repeat-repeat {
+			.overview-hero-background-img {
+				-webkit-animation-iteration-count: infinite;
+				animation-iteration-count: infinite;	
+			}
+		}
+		
+		&.zoom-overview-hero-repeat-once {
+			.overview-hero-background-img {
+				-webkit-animation-iteration-count: 1;
+				animation-iteration-count: 1;	
+			}
+		}
+	
+		&.zoom-overview-hero-repeat-none {
+			.overview-hero-background-img {
+				animation: none;
+				-webkit-animation: none;
+				transform: none;
+				transition: none;
+			}	
+		}
+	}
+	
+	.fade-parent{
+		position: relative; 
+		width: 100%;
+		z-index: -1;
+	}
+	
+	.white-overlay-overview-hero{
+		background-color: rgba(255,255,255,1);
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		bottom: -2px;
+		left: 0;
+		transform: scaleY(1);
+		transform-origin: bottom;
+		animation: Scale_Background_overview_hero 0.5s linear forwards;
+	}
+
+	.overview-hero-background-img {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position: top center;
+		transform: scale(1.1);
+		animation: scale_overviewhero 25s linear 1.5s forwards; 
+		-webkit-animation: scale_overviewhero 25s linear 1.5s forwards; 
+
+		&.animations-disabled {
+			animation: none;
+			-webkit-animation: none;
+			transform: none;
+			transition: none;
+		}
+	}	
+}
+
 @media screen and (max-width:768px){
 	.overview-hero-wrapper{
 		.overview-hero{
@@ -42,6 +141,99 @@
 				.card-body{
 					.card-text{text-align:center;}
 				}	
+			}
+		}
+	}
+}
+
+@media (max-width: 767px) {
+	
+	.overview-hero-component.overview-hero-mobile-animations-disabled {
+		
+		.zoom-overview-hero {
+			animation: none; 
+			-webkit-animation: none;
+			transition: none;
+			
+			.overview-hero-background-img {
+				animation: none; 
+				-webkit-animation: none;
+				transition: none;	
+			}
+		}
+		.white-overlay-overview-hero {
+			animation: none;
+			-webkit-animation: none;
+			transform: none;
+			background-color: transparent;
+		}
+		.overview-hero-wrapper{
+			.overview-hero{
+				.overview-hero-copy--animated{
+					animation: none;
+					-webkit-animation: none;
+					transform: none;
+					animation-duration: 0.01s;
+				}
+			}
+		}
+		
+	}	
+}
+
+.overview-hero-wrapper {
+	.overview-hero{
+		.overview-img-overlay{
+			transform: scale(1.1);
+			z-index: -1;
+		}
+		.overview-hero-copy--animated{
+			animation: expand_overview 0.5s linear forwards;
+			transform: scaleX(0);
+			transform-origin: center;
+
+			.card-body{
+				overflow: hidden;
+			}
+		}
+		min-height:550px;
+	}
+}
+
+
+
+// Disabling Animations on IE 10 and 11
+@media screen and (-ms-high-contrast: active) , screen and (-ms-high-contrast: none) {
+	.overview-hero-component {
+		.zoom-overview-hero {
+			animation: none; 
+			-webkit-animation: none;
+			transition: none;
+		}
+		.white-overlay-overview-hero {
+			animation: none;
+			-webkit-animation: none;
+			transform: none;
+			background-color: transparent;
+		}
+		.animate__fadeInDownSmall{
+
+			animation: none;
+			-webkit-animation: none;
+			transform: none;
+			-ms-animation: none;
+			opacity: 1;
+
+		}
+		.overview-hero-wrapper{
+			.overview-hero{
+				.overview-hero-copy--animated{
+					animation: none;
+					-webkit-animation: none;
+					transform: none;
+					-ms-animation: none;
+
+				}
 			}
 		}
 	}

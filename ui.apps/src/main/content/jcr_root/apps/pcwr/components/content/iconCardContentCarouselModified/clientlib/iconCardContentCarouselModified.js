@@ -52,5 +52,34 @@ $(document).ready(function () {
 
 	});
 
+	var checkIfElementIsVisible = function (elem) {
+        var isAnimationDone = elem.find('.go');
+        if (isAnimationDone && isAnimationDone.length > 0) {
+			var isCarousel = elem.attr('data-is-carousel');
+			if(isCarousel && isCarousel === 'true') {
+				elem.find('.icon-card-carousel').carousel();
+			}
+			setTimeout(function() {
+				removeAnimationClasses(elem);
+			}, 1000);
+        } else {
+            setTimeout(function () {
+                checkIfElementIsVisible(elem);
+            });
+        }
+    };
+	
+	var removeAnimationClasses = function(elem) {
+		elem.find('.carousel .carousel-inner.icon-card-carousel-inner').removeClass('animated fadeInDownHalfVeryShort delay-500 go');
+		elem.find('.carousel .carousel-inner.icon-card-carousel-inner').css('opacity', '1');
+		elem.find('.carousel .mobile-dots').css('opacity', '1');
+	};
+
+	$('.icon-card-carousel-component').each(function() {
+		var isAnimationsEnabled = $(this).hasClass('animations-enabled');
+		if(isAnimationsEnabled) {
+			checkIfElementIsVisible($(this));
+		}
+	});
 });
 

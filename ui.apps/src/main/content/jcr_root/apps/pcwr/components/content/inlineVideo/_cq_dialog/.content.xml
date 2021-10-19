@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root
+    xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+    xmlns:granite="http://www.adobe.com/jcr/granite/1.0"
+    xmlns:jcr="http://www.jcp.org/jcr/1.0"
+    xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Inline Video"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        granite:class="cmp-list--editor"
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <videoSettings
+                jcr:primaryType="nt:unstructured"
+                jcr:title="Video Settings"
+                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
+                <items jcr:primaryType="nt:unstructured">
+                    <column
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <width
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                                fieldLabel="Width"
+                                min="100"
+                                step="1"
+                                value="640"
+                                name="./inlineVideo/width" />
+                            <height
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                                fieldLabel="Height"
+                                min="100"
+                                step="1"
+                                value="400"
+                                name="./inlineVideo/height" />
+                            <video
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                fieldDescription="Select a path of a Video"
+                                fieldLabel="Video Path (from AEM) or Youtube Embed Link"
+                                name="./inlineVideo/video"
+                                rootPath="/content/dam" />
+                            <videoId
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Use this to enter an ID for this component"
+                                fieldLabel="Unique Id"
+                                name="./inlineVideo/videoId"/>
+                            <preload
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                emptyOption="{Boolean}true"
+                                fieldDescription="If the video should automatically be downloaded on page load."
+                                fieldLabel="Preload"
+                                name="./inlineVideo/preload"
+                                type="editable">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <auto
+                                        jcr:primaryType="nt:unstructured"
+                                        text="Preload video on page load (auto)"
+                                        value="auto" />
+                                    <metadata
+                                        jcr:primaryType="nt:unstructured"
+                                        text="Preload only video metadata (metadata)"
+                                        value="metadata" />
+                                    <none
+                                        jcr:primaryType="nt:unstructured"
+                                        text="No preloading (none)"
+                                        value="none" />
+                                    <empty
+                                        jcr:primaryType="nt:unstructured"
+                                        text="Skip preload setting (browser default behavior)"
+                                        value="" />
+                                </items>
+                            </preload>
+                            <controls
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                fieldDescription="Check if the browser should not show playback controls."
+                                name="./inlineVideo/hideControls"
+                                text="Hide Controls"
+                                uncheckedValue=""
+                                value="true" />
+                            <autoplay
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                fieldDescription="Start playback automatically, this will mute the video upon play, check the show controls to provide the option for the user to unmute"
+                                name="./inlineVideo/autoplay"
+                                text="Autoplay (will play the video in mute)"
+                                uncheckedValue=""
+                                value="autoplay" />
+                            <loop
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                fieldDescription="Jump back to the start when the end of the video is reached."
+                                name="./inlineVideo/loop"
+                                text="Loop"
+                                uncheckedValue=""
+                                value="true" />
+                        </items>
+                    </column>
+                </items>
+            </videoSettings>
+        </items>
+    </content>
+</jcr:root>

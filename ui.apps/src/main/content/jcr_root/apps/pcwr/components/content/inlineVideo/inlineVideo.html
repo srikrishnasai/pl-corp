@@ -1,0 +1,67 @@
+<!--This template is called in other components where a background video is required-->
+<template 
+    data-sly-template.inlineVideo="${@ inlineVideoProperties}"
+    data-sly-test="inlineVideo">
+    
+    <sly 
+        data-sly-test.configured="${inlineVideoProperties.video && inlineVideoProperties.width && inlineVideoProperties.height}">
+    </sly>
+    <sly data-sly-use.youtube="${'/apps/pcwr/components/content/inlineVideo/youtube.js'}"/>
+    <sly 
+        data-sly-test.videoName="${inlineVideoProperties.windowTitle != null ? inlineVideoProperties.windowTitle : inlineVideoProperties.video}">
+    </sly>
+
+    <!--/* 1. SIMPLEST CASE FIRST: INLINE VIDEO FROM DAM */-->
+    <div id="${inlineVideoProperties.videoId}" 
+        class="text-center inline-video"
+        data-sly-test="${configured && !youtube.isConfigured}">
+
+        <video id="${currentNode.identifier}"
+            data-video-name="${videoName}" 
+            data-component-name="Video"
+            width="${inlineVideoProperties.width}"
+            data-sly-attribute.controls="${!inlineVideoProperties.hideControls}" 
+            data-sly-attribute.class="${inlineVideoProperties.videoClass}" 
+            data-sly-attribute.autoplay="${wcmmode.edit ? '' : inlineVideoProperties.autoplay}" 
+            data-sly-attribute.muted="${inlineVideoProperties.autoplay ? true : false}" 
+            data-sly-attribute.loop="${inlineVideoProperties.loop}" 
+            data-sly-attribute.preload="${inlineVideoProperties.preload}">
+            <source src="${inlineVideoProperties.video}" type="video/mp4" />
+        </video>
+    </div>
+
+    <!--/* 2. SIMPLE TOO: YOUTUBE EMBEDDED */-->
+    <div id="${inlineVideoProperties.videoId}" 
+         class="youtube-iframe-div container-fluid" 
+         data-sly-test="${configured && youtube.isConfigured}" 
+         style="max-width:${inlineVideoProperties.width @ context='attribute'}px">
+        <iframe class="mx-auto d-block" 
+            id="iframe-${currentNode.identifier}"
+            data-video-name="${videoName}" 
+            data-component-name="Video"
+            data-video-is-modal="no"
+            width="${inlineVideoProperties.width}"
+            height="${inlineVideoProperties.height}"
+            src="${youtube.videoIframeUrl}"
+            frameborder="0"
+            allow="${wcmmode.edit ? '' : inlineVideoProperties.autoplay}"
+            data-sly-attribute.allowfullscreen="${!inlineVideoProperties.hideControls}"></iframe>
+    </div>
+
+    <script data-sly-test="${configured}">
+        document.addEventListener("DOMContentLoaded", function(event) {
+            videoInit("${currentNode.identifier @ context='attribute'}", 
+            "${youtube.isConfigured @ context='attribute'}" == 'true');
+        });
+    </script>
+    <script data-sly-test="${youtube.isConfigured}">
+        var youtubeLoader;
+        if(youtubeLoader == undefined) {
+            var tag = document.createElement('script');
+            tag.src = "https://www.youtube.com/iframe_api";
+            var firstScriptTag = document.getElementsByTagName('script')[0];
+            firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+            youtubeLoader = true;
+        }
+    </script>
+</template>

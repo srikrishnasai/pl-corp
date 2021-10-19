@@ -1,70 +1,68 @@
 <!-- Icon Card Content Carousel PCWR-127 -->
 <sly data-sly-use.model="com.paclife.core.models.PCWRMultifieldItemsModel"></sly>
-<div data-component-name="Icon Card Content Carousel"
-    class="container-fluid  icon-card-content-carousel ${properties.colorClass}"
-    data-sly-use.template="core/wcm/components/commons/v1/templates.html">
-    <div data-sly-test="${model.multiFieldItems.listChildren}" class="icon-card-content-wrapper mx-auto">
-        <div class="mx-auto d-block" data-sly-test="${properties.cardContCarTitle}">
-            <h3 class="mx-auto text-center">${properties.cardContCarTitle}</h3>
-        </div>
-        <div id="${properties.cardContId}" class="mod carousel slide row touch-enabled-carousel" data-ride="carousel" data-interval="false">
-            <div class="carousel-inner row w-100 mx-auto icon-card-carousel-inner" role="listbox">
-                <sly data-sly-list.cardItem="${model.multiFieldItems.listChildren}">
-                    <sly data-sly-use.fixedLink="${'com.paclife.core.util.LinkFixer' @ link = cardItem.cardItemBtnLink}"/>
-                    <div data-sly-test="${cardItemList.first}" class="carousel-item col-md-4 icon-card-carousel-item active">
-                        <div class="mx-auto icon-card">
-                            <img class="icon-img mx-auto d-block" src="${cardItem.cardItemIconPath}" alt=""
-                                data-sly-test="${cardItem.cardItemIconPath}"/>
-                            <div class="mx-auto mt-4 d-block">
-                                <h5 class="text-center my-3">${cardItem.cardItemTitle}</h5>
-                                <p class="text-center">${cardItem.cardItemDesc}</p>
-                                <h7 data-sly-test="${cardItem.cardItemActnBtnStatus}" class="cta-text all-text"> <a
-                                    href="${fixedLink.value}"
-                                    class="btn btn-link d-block text-center">
-                                    ${cardItem.cardItemBtnLabel}<i class="material-icons">keyboard_arrow_right</i>
-                                </a></h7>
-                            </div>
-                            <a href="${fixedLink.value}" class='clickable'></a>
-                        </div>
-                    </div>
-                    <div data-sly-test="${!cardItemList.first}" class="carousel-item col-md-4 icon-card-carousel-item">
-                        <div class="mx-auto icon-card">
-                            <img class="icon-img mx-auto d-block" src="${cardItem.cardItemIconPath}" alt=""
-                                data-sly-test="${cardItem.cardItemIconPath}"/>
-                            <div class="mx-auto mt-4 d-block">
-                                <h5 class="text-center my-3">${cardItem.cardItemTitle}</h5>
-                                <p class="text-center">${cardItem.cardItemDesc}</p>
-                                <h7 data-sly-test="${cardItem.cardItemActnBtnStatus}" class="cta-text all-text"> <a
-                                    href="${fixedLink.value}"
-                                    class="btn btn-link d-block text-center">
-                                    ${cardItem.cardItemBtnLabel}<i class="material-icons">keyboard_arrow_right</i>
-                                </a></h7>
-                            </div>
-                            <a href="${fixedLink.value}" class='clickable'></a>
-                        </div>
-                    </div>
-                </sly>
+<div class="icon-card-carousel-component ${!properties.disableAnimations ? 'animatedParent animateOnce animations-enabled' : ''}"
+     data-is-carousel="${model.countItems > 3 ? 'true' : 'false'}"
+     data-sly-attribute.data-appear-top-offset="${!properties.disableAnimations ? '-150' : ''}">
+    <div data-component-name="Icon Card Content Carousel"
+        class="container-fluid icon-card-content-carousel ${properties.colorClass}"
+        data-sly-use.template="core/wcm/components/commons/v1/templates.html">
+        <div data-sly-test="${!properties.disableAnimations && properties.colorClass != 'bgcolor-white'}" class="animated animateOnce icon-card-carousel-white-background"></div>
+        <div data-sly-test="${model.multiFieldItems.listChildren}" 
+             class="icon-card-content-wrapper mx-auto">
+            <div class="${!properties.disableAnimations ? 'animated fadeInDownHalfVeryShort delay-1000 animateOnce display-wrapper-alt' : ''} mx-auto d-block" data-sly-test="${properties.cardContCarTitle}">
+                <h3 class="mx-auto text-center">${properties.cardContCarTitle}</h3>
             </div>
-            <a class="carousel-control-prev ${model.countItems > 3 ? '' : 'd-md-none'}" data-target="${properties.cardContId}" href="javascript:void(0)"
-                role="button" data-slide="prev">
-                <img src="/etc/designs/pcwr/default/images/carousel-arrow-left.svg" class="carousel-arrow-left">
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next ${model.countItems > 3 ? '' : 'd-md-none'}" data-target="${properties.cardContId}" href="javascript:void(0)"
-                role="button" data-slide="next">
-                <img src="/etc/designs/pcwr/default/images/carousel-arrow-right.svg" class="carousel-arrow-right">
-                <span class="sr-only">Next</span>
-            </a>
-            <div class="mx-auto">
-                <!-- mobile "dots" -->
-                <ul class="carousel-indicators list-inline mx-auto"
-                    data-sly-list.cardItem="${model.multiFieldItems.listChildren}">
-                    <li class="list-inline-item cta-text-btn ${cardItemList.first ? 'selected active' : ''}"
-                        id="carousel-selector-${cardItemList.index}" data-slide-to="${cardItemList.index}"
-                        data-target="${properties.cardContId}"></li>
-                </ul>
+            <div id="${properties.cardContId}" 
+                 class="icon-card-carousel mod carousel slide row touch-enabled-carousel" 
+                 data-interval="${model.countItems <= 3 ? 'false' : ''}"
+                 data-pause="hover">
+                <div class="${!properties.disableAnimations ? 'animated fadeInDownHalfVeryShort delay-500' : ''} carousel-inner row w-100 mx-auto icon-card-carousel-inner" role="listbox">
+                    <sly data-sly-list.cardItem="${model.multiFieldItems.listChildren}">
+                        <sly data-sly-use.fixedLink="${'com.paclife.core.util.LinkFixer' @ link = cardItem.cardItemBtnLink}"/>
+                        <div class="carousel-item col-md-4 icon-card-carousel-item ${cardItemList.first ? 'active' : ''} ${fixedLink.value ? 'icon-card-carousel-item-has-link' : ''}">
+                            <div class="mx-auto icon-card">
+                                <img class="icon-img mx-auto d-block" src="${cardItem.cardItemIconPath}" alt=""
+                                     data-sly-test="${(!cardItem.cardItemIconType || cardItem.cardItemIconType == 'icon') && cardItem.cardItemIconPath}"/>
+                                <sly data-sly-test="${cardItem.cardItemIconType == 'animatingNumber'}"
+                                     data-sly-use.numberTemplate="pcwr/components/content/animating-numbers/animating-numbers.html"
+                                     data-sly-call="${numberTemplate.animatingNumbers @ numberProperties=cardItem}">
+                                </sly>
+                                <div class="mx-auto mt-4 d-block">
+                                    <h5 class="text-center my-3">${cardItem.cardItemTitle}</h5>
+                                    <p class="text-center">${cardItem.cardItemDesc}</p>
+                                    <h7 data-sly-test="${cardItem.cardItemActnBtnStatus}" class="cta-text all-text"> <a
+                                        href="${fixedLink.value}"
+                                        class="btn btn-link d-block text-center">
+                                        ${cardItem.cardItemBtnLabel}<i class="material-icons">keyboard_arrow_right</i>
+                                    </a></h7>
+                                </div>
+                                <a href="${fixedLink.value}" class='clickable'></a>
+                            </div>
+                        </div>
+                    </sly>
+                </div>
+                <a class="carousel-control-prev ${model.countItems > 3 ? '' : 'd-md-none'}" data-target="${properties.cardContId}" href="javascript:void(0)"
+                    role="button" data-slide="prev">
+                    <img src="/etc/designs/pcwr/default/images/carousel-arrow-left.svg" class="carousel-arrow-left">
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next ${model.countItems > 3 ? '' : 'd-md-none'}" data-target="${properties.cardContId}" href="javascript:void(0)"
+                    role="button" data-slide="next">
+                    <img src="/etc/designs/pcwr/default/images/carousel-arrow-right.svg" class="carousel-arrow-right">
+                    <span class="sr-only">Next</span>
+                </a>
+                <div class="mx-auto">
+                    <!-- mobile "dots" -->
+                    <ul class="mobile-dots carousel-indicators list-inline mx-auto"
+                        data-sly-list.cardItem="${model.multiFieldItems.listChildren}">
+                        <li class="list-inline-item cta-text-btn ${cardItemList.first ? 'selected active' : ''}"
+                            id="carousel-selector-${cardItemList.index}" data-slide-to="${cardItemList.index}"
+                            data-target="${properties.cardContId}"></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
 </div>
+
 <sly data-sly-call="${template.placeholder @ isEmpty=model.countItems == 0}" />

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root
+    xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+    xmlns:granite="http://www.adobe.com/jcr/granite/1.0"
+    xmlns:jcr="http://www.jcp.org/jcr/1.0"
+    xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Animating Numbers"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        granite:class="cmp-list--editor"
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <animatingNumbers
+                jcr:primaryType="nt:unstructured"
+                jcr:title="Animating Numbers"
+                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
+                <items jcr:primaryType="nt:unstructured">
+                    <column
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <startValue
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Starting Value"
+                                fieldDescription="Enter the Starting value of the animating number"
+                                name="./animatingNumbersStartValue" />
+                            <endValue
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Enter the End value of the animating number"
+                                fieldLabel="End Value"
+                                name="./animatingNumbersEndValue" />
+                             <incrementCounter
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Increment Value"
+                                fieldDescription="Enter the value for the number to increment by"
+                                name="./animatingNumbersIncrementValue" />
+                            <animationInterval
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Time Interval(in milli seconds)"
+                                fieldDescription="Enter the duration for the increment of number in milli seconds"
+                                name="./animatingNumbersAnimationInterval" />
+                            <prefix
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Enter the prefix for the number that displays before the number"
+                                fieldLabel="Number Prefix"
+                                name="./animatingNumbersPrefix" />
+                            <suffix
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Enter the suffix for the number that displays after the number"
+                                fieldLabel="Number Suffix"
+                                name="./animatingNumbersSuffix" />
+                            <label
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Enter the label that displays below the number"
+                                fieldLabel="Label"
+                                name="./animatingNumbersLabel" />
+                            <color
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                fieldLabel="Color"
+                                fieldDescription="Choose the color for the numbers and the label"
+                                name="./animatingNumbersColor">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <turquoise
+                                        jcr:primaryType="nt:unstructured"
+                                        text="Turquoise (#004685)"
+                                        value="turquoise"/>
+                                    <deepBlue
+                                        jcr:primaryType="nt:unstructured"
+                                        text="Deep Blue (#008ED7)"
+                                        value="deep-blue"/>
+                                    <brightBlue
+                                        jcr:primaryType="nt:unstructured"
+                                        text="Bright Blue (#24C5CF)"
+                                        value="bright-blue"/>
+                                    <lightGrey
+                                        jcr:primaryType="nt:unstructured"
+                                        text="Light Grey (#F2F2F2)"
+                                        value="light-grey"/>
+                                    <mediumGrey
+                                        jcr:primaryType="nt:unstructured"
+                                        text="Medium Grey (#979797)"
+                                        value="medium-grey"/>
+                                    <darkGrey
+                                        jcr:primaryType="nt:unstructured"
+                                        text="Dark Grey (#5A5A5A)"
+                                        value="dark-grey"/>
+                                    <black
+                                        jcr:primaryType="nt:unstructured"
+                                        text="Black"
+                                        value="black"/>
+                                    <off-black-bg
+                                        jcr:primaryType="nt:unstructured"
+                                        text="Off Black Bg (#222222)"
+                                        value="off-black-bg"/>
+                                    <gold
+                                        jcr:primaryType="nt:unstructured"
+                                        text="Gold (#FFA800)"
+                                        value="gold"/>
+                                </items>
+                            </color>
+                        </items>
+                    </column>
+                </items>
+            </animatingNumbers>
+        </items>
+    </content>
+</jcr:root>

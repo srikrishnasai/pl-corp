@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
     jcr:primaryType="nt:unstructured"
     jcr:title="Icon Card Content Carousel"
     sling:resourceType="cq/gui/components/authoring/dialog">
@@ -81,48 +81,106 @@
                                             sling:resourceType="granite/ui/components/coral/foundation/container"
                                             name="./multiFieldItems">
                                             <items jcr:primaryType="nt:unstructured">
-                                                <cardItemIconPath
+                                                <cardConfiguration
                                                     jcr:primaryType="nt:unstructured"
-                                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
-                                                    fieldDescription="Please provide Icon path for the Card Item"
-                                                    fieldLabel="Card Item Icon Path"
-                                                    name="./cardItemIconPath"
-                                                    rootPath="/content/dam/paclife"/>
-                                                <cardItemTitle
-                                                    jcr:primaryType="nt:unstructured"
-                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                    fieldDescription="Please provide title for the Card Item"
-                                                    fieldLabel="Card Item Title"
-                                                    name="./cardItemTitle"/>
-                                                <cardItemDesc
-                                                    jcr:primaryType="nt:unstructured"
-                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
-                                                    fieldDescription="Please provide Description for the Card Item"
-                                                    fieldLabel="Card Item Description"
-                                                    name="./cardItemDesc"/>
-                                                <cardItemActnBtnStatus
-                                                    jcr:primaryType="nt:unstructured"
-                                                    sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                                                    name="./cardItemActnBtnStatus"
-                                                    text="Show Action Button"
-                                                    value="true"/>
-                                                <cardItemBtnLabel
-                                                    jcr:primaryType="nt:unstructured"
-                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                    class="hide checkbox-enable-cta"
-                                                    fieldDescription="Please provide label for the button"
-                                                    fieldLabel="Button Label"
-                                                    name="./cardItemBtnLabel"
-                                                    showhidetargetvalue="true"/>
-                                                <cardItemBtnLink
-                                                    jcr:primaryType="nt:unstructured"
-                                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                                    class="hide checkbox-enable-cta"
-                                                    fieldDescription="Please provide link for the button"
-                                                    fieldLabel="Button Link"
-                                                    name="./cardItemBtnLink"
-                                                    rootPath="/content/pl-corp"
-                                                    showhidetargetvalue="true"/>
+                                                    jcr:title="Carousel Card Item"
+                                                    sling:resourceType="granite/ui/components/foundation/layouts/collapsible">
+                                                    <items jcr:primaryType="nt:unstructured">
+                                                        <cardType
+                                                            jcr:primaryType="nt:unstructured"
+                                                            granite:class="cq-dialog-dropdown-showhide"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                            fieldLabel="Icon Type"
+                                                            defaultValue="icon"
+                                                            name="./cardItemIconType">
+                                                            <items jcr:primaryType="nt:unstructured">
+                                                                <icon
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="SVG"
+                                                                    value="icon"/>
+                                                                <number
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="Animating Number"
+                                                                    value="animatingNumber"/>
+                                                            </items>
+                                                            <granite:data 
+                                                                jcr:primaryType="nt:unstructured"
+                                                                cq-dialog-dropdown-showhide-target=".iconcard-type-showhide-target" />
+                                                        </cardType>
+                                                        <cardItemIconPathWrapper
+                                                            jcr:primaryType="nt:unstructured"
+                                                            granite:class="iconcard-type-showhide-target"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                            <items jcr:primaryType="nt:unstructured">
+                                                                <cardItemIconPath
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+                                                                    fieldDescription="Please provide Icon path for the Card Item"
+                                                                    fieldLabel="Card Item Icon Path"
+                                                                    name="./cardItemIconPath"
+                                                                    rootPath="/content/dam/paclife">
+                                                                </cardItemIconPath>
+                                                            </items>
+                                                            <granite:data
+                                                                jcr:primaryType="nt:unstructured" 
+                                                                showhidetargetvalue="icon" />
+                                                        </cardItemIconPathWrapper>
+                                                        <cardItemAnimatingNumber
+                                                            jcr:primaryType="nt:unstructured"
+                                                            granite:class="iconcard-type-showhide-target"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                            <items jcr:primaryType="nt:unstructured">
+                                                                <animatingNumber
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    jcr:title="Animating Number Configuration"
+                                                                    sling:resourceType="granite/ui/components/foundation/layouts/collapsible">
+                                                                    <items 
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        sling:resourceSuperType="/apps/pcwr/components/content/animating-numbers/cq:dialog/content/items/animatingNumbers/items/column/items">
+                                                                    </items>
+                                                                </animatingNumber>
+                                                            </items>
+                                                            <granite:data
+                                                                jcr:primaryType="nt:unstructured" 
+                                                                showhidetargetvalue="animatingNumber" />
+                                                        </cardItemAnimatingNumber>
+                                                        <cardItemTitle
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                            fieldDescription="Please provide title for the Card Item"
+                                                            fieldLabel="Card Item Title"
+                                                            name="./cardItemTitle"/>
+                                                        <cardItemDesc
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                                            fieldDescription="Please provide Description for the Card Item"
+                                                            fieldLabel="Card Item Description"
+                                                            name="./cardItemDesc"/>
+                                                        <cardItemActnBtnStatus
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                            name="./cardItemActnBtnStatus"
+                                                            text="Show Action Button"
+                                                            value="true"/>
+                                                        <cardItemBtnLabel
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                            class="hide checkbox-enable-cta"
+                                                            fieldDescription="Please provide label for the button"
+                                                            fieldLabel="Button Label"
+                                                            name="./cardItemBtnLabel"
+                                                            showhidetargetvalue="true"/>
+                                                        <cardItemBtnLink
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                            class="hide checkbox-enable-cta"
+                                                            fieldDescription="Please provide link for the button"
+                                                            fieldLabel="Button Link"
+                                                            name="./cardItemBtnLink"
+                                                            rootPath="/content/pl-corp"
+                                                            showhidetargetvalue="true"/>
+                                                    </items>
+                                                </cardConfiguration>
                                             </items>
                                         </field>
                                     </cardItems>
@@ -130,6 +188,32 @@
                             </content>
                         </items>
                     </cardItemsTab>
+                    <animations
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Animations"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
+                        <items jcr:primaryType="nt:unstructured">
+                            <content
+                                jcr:primaryType="nt:unstructured"
+                                margin="{Boolean}true"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <disableAnimations
+                                        jcr:primaryType="nt:unstructured"
+                                        granite:class="cq-dialog-checkbox-showhide"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                        name="./disableAnimations"
+                                        text="Disable Animations for Carousel"
+                                        fieldDescription="Click the checkbox to disable the animations"
+                                        value="true">
+                                        <granite:data
+                                            jcr:primaryType="nt:unstructured"
+                                            cq-dialog-checkbox-showhide-target=".disable-animation-showhide-target"/>
+                                    </disableAnimations>
+                                </items>
+                            </content>
+                        </items>
+                    </animations>
                 </items>
             </tabs>
         </items>

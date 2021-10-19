@@ -3,13 +3,42 @@
 <sly data-sly-use.fixedLink="${'com.paclife.core.util.LinkFixer' @ link = properties.target}"/>
 
 <!--/*for blue bg use bg-blue*/-->
-<a data-component-name="CTA Card" data-sly-test="${properties.heading}" class="cta-card-link"
+<a  data-component-name="CTA Card" data-sly-test="${properties.heading}" 
+    class="cta-card-link ${!properties.disableAnimations && properties.disableMobileAnimations ? 'cta-card-mobile-animations-disabled' : ''}" 
     href="${fixedLink.value}" target="${properties.tabWindow}">
-    <div class="cta-card-wrapper text-center ${properties.lightTheme ? '' : 'bg-blue'}">
-        <h4 class="cta-card-title">${properties.heading}</h4>
-        <div class="h7 cta-card-subtitle">${properties.subHeading}</div>
-        <p class="card-text cta-card-btn">
-            <span class="btn btn-primary cta-text-btn">${properties.action}</span>
-        </p>
+    <div class="${!properties.disableAnimations ? 'animatedParent animateOnce' : ''}" 
+         data-sly-attribute.data-appear-top-offset="${!properties.disableAnimations ? '-150' : ''}" >
+        <div class="cta-card-wrapper text-center ${properties.lightTheme ? '' : 'bg-blue'}
+                    ${!properties.disableAnimations ? ' animated display-wrapper-alt' : ''}
+                    ${!properties.disableAnimations && (!properties.animationDirection || properties.animationDirection == 'top') ? ' fadeInDownShort' : ''}
+                    ${!properties.disableAnimations && properties.animationDirection == 'bottom' ? ' fadeInUpShort' : ''}
+                    ${!properties.disableAnimations && properties.animationDirection == 'left' ? ' fadeInLeftShort' : ''}
+                    ${!properties.disableAnimations && properties.animationDirection == 'right' ? ' fadeInRightShort' : ''}" >
+            <h4 class="cta-card-title
+                       ${!properties.disableAnimations ? ' animated delay-500' : ''}
+                       ${!properties.disableAnimations && (!properties.animationDirection || properties.animationDirection == 'top') ? 'fadeInDownShort' : ''}
+                       ${!properties.disableAnimations && properties.animationDirection == 'bottom' ? ' fadeInUpShort' : ''}
+                       ${!properties.disableAnimations && properties.animationDirection == 'left' ? 'fadeInLeftShort' : ''}
+                       ${!properties.disableAnimations && properties.animationDirection == 'right' ? 'fadeInRightShort' : ''}">
+                ${properties.heading}
+            </h4>
+            <div class="h7 cta-card-subtitle
+                        ${!properties.disableAnimations ? ' animated delay-500' : ''}
+                        ${!properties.disableAnimations && (!properties.animationDirection || properties.animationDirection == 'top') ? 'fadeInDownShort' : ''}
+                        ${!properties.disableAnimations && properties.animationDirection == 'bottom' ? ' fadeInUpShort' : ''}
+                        ${!properties.disableAnimations && properties.animationDirection == 'left' ? 'fadeInLeftShort' : ''}
+                        ${!properties.disableAnimations && properties.animationDirection == 'right' ? 'fadeInRightShort' : ''}">
+                ${properties.subHeading}
+            </div>
+            <p class="card-text cta-card-btn
+                      ${!properties.disableAnimations ? ' animated delay-500' : ''}
+                      ${!properties.disableAnimations && (!properties.animationDirection || properties.animationDirection == 'top') ? 'fadeInDownShort' : ''}
+                      ${!properties.disableAnimations && properties.animationDirection == 'bottom' ? ' fadeInUpShort' : ''}
+                      ${!properties.disableAnimations && properties.animationDirection == 'left' ? 'fadeInLeftShort' : ''}
+                      ${!properties.disableAnimations && properties.animationDirection == 'right' ? 'fadeInRightShort' : ''}">
+                <span class="btn btn-primary cta-text-btn">${properties.action}</span>
+            </p>
+        </div>
     </div>
+    
 </a>

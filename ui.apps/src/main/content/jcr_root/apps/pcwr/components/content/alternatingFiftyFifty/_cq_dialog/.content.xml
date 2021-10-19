@@ -1,151 +1,359 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
     jcr:primaryType="nt:unstructured"
     jcr:title="Alternating Fifty Fifty"
+    extraClientlibs="[checkbox-show-hide]"
     sling:resourceType="cq/gui/components/authoring/dialog">
     <content
         jcr:primaryType="nt:unstructured"
-        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
+        sling:resourceType="granite/ui/components/coral/foundation/container">
         <items jcr:primaryType="nt:unstructured">
-            <column
+            <tabs
                 jcr:primaryType="nt:unstructured"
-                sling:resourceType="granite/ui/components/coral/foundation/container">
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
                 <items jcr:primaryType="nt:unstructured">
-                    <altFiftyTitle
+                    <general
                         jcr:primaryType="nt:unstructured"
-                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                        fieldDescription="Please provide title for the component"
-                        fieldLabel="Title"
-                        name="./altFiftyTitle"
-                        required="{Boolean}true"/>
-					<altFiftyTitleColor
-						jcr:primaryType="nt:unstructured"
-						sling:resourceType="granite/ui/components/foundation/form/select"
-						fieldDescription="Select Title Color"
-						fieldLabel="Title Color"
-						name="./altFiftyTitleColor">
-							<items jcr:primaryType="nt:unstructured">
-								<one jcr:primaryType="nt:unstructured"
-								text="None"
-								value=""/>
-								<two jcr:primaryType="nt:unstructured"
-								text="Blue"
-								value="#005EAD"/>
-								<three jcr:primaryType="nt:unstructured"
-								text="Bright Blue"
-								value="#008ed7"/>
-							</items>
-					</altFiftyTitleColor>
-                    <altFiftySubTitle
-                        jcr:primaryType="nt:unstructured"
-                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                        fieldDescription="Please provide a subtitle for the component"
-                        fieldLabel="Subtitle"
-                        name="./altFiftySubTitle"/>
-                	 <altFiftyDesc
-                        jcr:primaryType="nt:unstructured"
-                        sling:resourceType="granite/ui/components/coral/foundation/include"
-						path="pcwr/components/common/commonRTE/cq:dialog/content/items/column/items/richText"/>
-                    <!-- <altFiftyImgPath
-                        jcr:primaryType="nt:unstructured"
-                        sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
-                        fieldDescription="Please provide Image path for the component"
-                        fieldLabel="Image Path"
-                        name="./altFiftyImgPath"
-                        required="{Boolean}true"
-                        rootPath="/content/dam/paclife"/> -->
-                    <altFiftyImg
-                        jcr:primaryType="nt:unstructured"
-                        sling:resourceType="pcwr/cq/gui/components/authoring/dialog/fileupload"
-                        autoStart="{Boolean}false"
-                        class="cq-droptarget"
-                        fieldLabel="Background Image"
-                        fileNameParameter="./altFiftyImgFileName"
-                        fileReferenceParameter="./altFiftyImgPath"
-                        mimeTypes="[image/jpeg,image/png]"
-                        multiple="{Boolean}false"
-                        name="./altFiftyImgFile"
-                        title="Upload Image Asset"
-                        uploadUrl="${suffix.path}"
-                        useHTML5="{Boolean}true"
-                        allowUpload="{Boolean}false"/>                        
-                    <altFiftyImgPos
-                        jcr:primaryType="nt:unstructured"
-                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                        fieldLabel="Image Position"
-                        name="./altFiftyImgPos">
+                        jcr:title="General"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
                         <items jcr:primaryType="nt:unstructured">
-                            <left
+                            <content
                                 jcr:primaryType="nt:unstructured"
-                                text="Left"
-                                value="left"/>
-                            <right
-                                jcr:primaryType="nt:unstructured"
-                                text="Right"
-                                value="right"/>
+                                margin="{Boolean}true"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <altFiftyTitle
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please provide title for the component"
+                                        fieldLabel="Title"
+                                        name="./altFiftyTitle"
+                                        required="{Boolean}true"/>
+                                    <altFiftyTitleColor
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/foundation/form/select"
+                                        fieldDescription="Select Title Color"
+                                        fieldLabel="Title Color"
+                                        name="./altFiftyTitleColor">
+                                            <items jcr:primaryType="nt:unstructured">
+                                                <one jcr:primaryType="nt:unstructured"
+                                                text="None"
+                                                value=""/>
+                                                <two jcr:primaryType="nt:unstructured"
+                                                text="Blue"
+                                                value="#005EAD"/>
+                                                <three jcr:primaryType="nt:unstructured"
+                                                text="Bright Blue"
+                                                value="#008ed7"/>
+                                            </items>
+                                    </altFiftyTitleColor>
+                                    <altFiftySubTitle
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please provide a subtitle for the component"
+                                        fieldLabel="Subtitle"
+                                        name="./altFiftySubTitle"/>
+                                    <altFiftyDesc
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/include"
+                                        path="pcwr/components/common/commonRTE/cq:dialog/content/items/column/items/richText"/>
+                                    <!-- <altFiftyImgPath
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+                                        fieldDescription="Please provide Image path for the component"
+                                        fieldLabel="Image Path"
+                                        name="./altFiftyImgPath"
+                                        required="{Boolean}true"
+                                        rootPath="/content/dam/paclife"/> -->
+                                    <altFiftyActnReqd
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                        name="./altFiftyActnReqd"
+                                        text="Display Action Button ?"
+                                        value="true"/>
+                                    <altFiftyBtnLabel
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please provide label for the button"
+                                        fieldLabel="Button Label"
+                                        name="./altFiftyBtnLabel"/>
+                                    <altFiftyBtnLink
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                        fieldDescription="Please provide link for the button"
+                                        fieldLabel="Button Link"
+                                        name="./altFiftyBtnLink"
+                                        rootPath="/content"/>
+                                    <newTab
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                        text="Open New Tab ?"
+                                        name="./newTab"
+                                        value="true"/>                        
+                                    <altFiftyClass
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please provide class for the component"
+                                        fieldLabel="Class Override"
+                                        name="./altFiftyClass"/>
+                                    <altFiftyId
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Use this to enter an ID for this component"
+                                        fieldLabel="Unique Id"
+                                        name="./altFiftyId"/>
+                                </items>
+                            </content>
                         </items>
-                    </altFiftyImgPos>
-                    <altFiftyActnReqd
+                    </general>
+                    <assetConfiguration
                         jcr:primaryType="nt:unstructured"
-                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                        name="./altFiftyActnReqd"
-                        text="Display Action Button ?"
-                        value="true"/>
-                    <altFiftyBtnLabel
-                        jcr:primaryType="nt:unstructured"
-                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                        fieldDescription="Please provide label for the button"
-                        fieldLabel="Button Label"
-                        name="./altFiftyBtnLabel"/>
-                    <altFiftyBtnLink
-                        jcr:primaryType="nt:unstructured"
-                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                        fieldDescription="Please provide link for the button"
-                        fieldLabel="Button Link"
-                        name="./altFiftyBtnLink"
-                        rootPath="/content"/>
-                    <newTab
-                        jcr:primaryType="nt:unstructured"
-                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                        text="Open New Tab ?"
-                        name="./newTab"
-                        value="true"/>                        
-                    <altFiftyVideo
-                        jcr:primaryType="nt:unstructured"
-                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                        name="./altFiftyVideo"
-                        text="Add a Video"
-                        value="true"/>
-					<altFiftyVideoAlignment
-                        jcr:primaryType="nt:unstructured"
-                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                        fieldLabel="Video Position"
-                        name="./altFiftyVideoAlignment">
+                        jcr:title="Asset Configuration"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
                         <items jcr:primaryType="nt:unstructured">
-                            <left
+                            <content
                                 jcr:primaryType="nt:unstructured"
-                                text="Left"
-                                value="left"/>
-                            <right
-                                jcr:primaryType="nt:unstructured"
-                                text="Right"
-                                value="right"/>
+                                margin="{Boolean}true"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <altFiftyBgType
+                                        jcr:primaryType="nt:unstructured"
+                                        granite:class="cq-dialog-dropdown-showhide"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                        fieldLabel="Asset Type"
+                                        defaultValue="image"
+                                        name="./altFiftyBgType">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <image
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Image"
+                                                value="image"/>
+                                            <imageSlideShow
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Images Slideshow"
+                                                value="slideshow"/>
+                                            <video
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Inline Video"
+                                                value="video"/>
+                                            <gif
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Gif Image"
+                                                value="gifimage"/>
+                                             <default
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Empty"
+                                                value="empty"/>
+                                        </items>
+                                        <granite:data 
+                                            jcr:primaryType="nt:unstructured"
+                                            cq-dialog-dropdown-showhide-target=".altfifty-bgtype-showhide-target" />
+                                    </altFiftyBgType>
+                                    <altFiftyImg
+                                        jcr:primaryType="nt:unstructured"
+                                        granite:class="altfifty-bgtype-showhide-target"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <altFiftyBgImg
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="pcwr/cq/gui/components/authoring/dialog/fileupload"
+                                                autoStart="{Boolean}false"
+                                                class="cq-droptarget"
+                                                fieldLabel="Background Image"
+                                                fileNameParameter="./altFiftyImgFileName"
+                                                fileReferenceParameter="./altFiftyImgPath"
+                                                mimeTypes="[image/jpeg,image/png,image/gif]"
+                                                multiple="{Boolean}false"
+                                                name="./altFiftyImgFile"
+                                                title="Upload Image Asset"
+                                                uploadUrl="${suffix.path}"
+                                                useHTML5="{Boolean}true"
+                                                allowUpload="{Boolean}false"/>                        
+                                        </items>
+                                        <granite:data
+                                            jcr:primaryType="nt:unstructured" 
+                                            showhidetargetvalue="image" />
+                                    </altFiftyImg>
+                                    <altFiftySlideShow
+                                        jcr:primaryType="nt:unstructured"
+                                        granite:class="altfifty-bgtype-showhide-target"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <multifield
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                                composite="{Boolean}true"
+                                                fieldDescription="Click 'Add field' to add a new Image to the Slide show"
+                                                fieldLabel="Images Slide Show">
+                                                <field
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/container"
+                                                    name="./multiFieldItems">
+                                                    <items jcr:primaryType="nt:unstructured">
+                                                        <altFiftyBgImg
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                                            autoStart="{Boolean}false"
+                                                            class="cq-droptarget"
+                                                            fieldLabel="Slideshow Image"
+                                                            fileNameParameter="./altFiftySlideShowImgFileName"
+                                                            fileReferenceParameter="./altFiftySlideShowImgPath"
+                                                            mimeTypes="[image/jpeg,image/png]"
+                                                            multiple="{Boolean}false"
+                                                            name="./altFiftySlideShowImgFile"
+                                                            title="Upload Image Asset"
+                                                            uploadUrl="${suffix.path}"
+                                                            useHTML5="{Boolean}true"
+                                                            allowUpload="{Boolean}false"/>                        
+                                                    </items>
+                                                </field>
+                                            </multifield>
+                                        </items>
+                                        <granite:data
+                                            jcr:primaryType="nt:unstructured" 
+                                            showhidetargetvalue="slideshow" />
+                                    </altFiftySlideShow>
+                                    <altFiftyInlineVideo
+                                        jcr:primaryType="nt:unstructured"
+                                        granite:class="altfifty-bgtype-showhide-target"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <videoConfiguration
+                                                jcr:primaryType="nt:unstructured"
+                                                jcr:title="Inline Video Configuration"
+                                                sling:resourceType="granite/ui/components/foundation/layouts/collapsible">
+                                                <items 
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceSuperType="/apps/pcwr/components/content/inlineVideo/cq:dialog/content/items/videoSettings/items/column/items">
+                                                </items>
+                                            </videoConfiguration>
+                                        </items>
+                                        <granite:data
+                                            jcr:primaryType="nt:unstructured" 
+                                            showhidetargetvalue="video" />
+                                    </altFiftyInlineVideo>
+                                    <altFiftyGifImg
+                                        jcr:primaryType="nt:unstructured"
+                                        granite:class="altfifty-bgtype-showhide-target"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <altFiftyGifBgImg
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                fieldDescription="Provide the path to the GIF Image"
+                                                fieldLabel="Gif Image"
+                                                rootPath="/content/dam/paclife"
+                                                name="./altFiftyGifImgPath">
+                                            </altFiftyGifBgImg>
+                                        </items>
+                                        <granite:data
+                                            jcr:primaryType="nt:unstructured" 
+                                            showhidetargetvalue="gifimage" />
+                                    </altFiftyGifImg>
+                                    <altFiftyImgPos
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                        fieldLabel="Asset Position"
+                                        name="./altFiftyImgPos">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <left
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Left"
+                                                value="left"/>
+                                            <right
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Right"
+                                                value="right"/>
+                                        </items>
+                                    </altFiftyImgPos>
+                                    <altFiftyVideo
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                        name="./altFiftyVideo"
+                                        fieldDescription="Configure the Modal Video settings in the video component dialog"
+                                        text="Add a Modal Video"
+                                        value="true"/>
+                                    <altFiftyVideoAlignment
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                        fieldLabel="Modal Video CTA Position"
+                                        name="./altFiftyVideoAlignment">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <left
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Left"
+                                                value="left"/>
+                                            <right
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Right"
+                                                value="right"/>
+                                        </items>
+                                    </altFiftyVideoAlignment>
+                                </items>
+                            </content>
                         </items>
-                    </altFiftyVideoAlignment>
-					<altFiftyClass
+                    </assetConfiguration>
+                    <animations
                         jcr:primaryType="nt:unstructured"
-                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                        fieldDescription="Please provide class for the component"
-                        fieldLabel="Class Override"
-                        name="./altFiftyClass"/>
-					<altFiftyId
-                        jcr:primaryType="nt:unstructured"
-                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                        fieldDescription="Use this to enter an ID for this component"
-                        fieldLabel="Unique Id"
-                        name="./altFiftyId"/>
+                        jcr:title="Animations"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
+                        <items jcr:primaryType="nt:unstructured">
+                            <content
+                                jcr:primaryType="nt:unstructured"
+                                margin="{Boolean}true"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <disableAnimations
+                                        jcr:primaryType="nt:unstructured"
+                                        granite:class="cq-dialog-checkbox-showhide"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                        name="./disableAnimations"
+                                        text="Disable Animations"
+                                        fieldDescription="Click the checkbox to disable the animations"
+                                        value="true">
+                                        <granite:data
+                                            jcr:primaryType="nt:unstructured"
+                                            cq-dialog-checkbox-showhide-target=".disable-animation-showhide-target"/>
+                                    </disableAnimations>
+                                    <animationSettings
+                                        jcr:primaryType="nt:unstructured"
+                                        granite:class="disable-animation-showhide-target"
+                                        showhidetargetvalue="true"        
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <disableMobileAnimations
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                name="./disableMobileAnimations"
+                                                text="Disable Animations on Mobile"
+                                                fieldDescription="Click the checkbox to disable the animations on mobile"
+                                                value="true"/>
+                                            <animationDirection
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                fieldLabel="Animate From"
+                                                defaultValue="top"
+                                                name="./animationDirection">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <top
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Top"
+                                                        value="top"/>
+                                                    <side
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Side"
+                                                        value="side"/>
+                                                </items>
+                                            </animationDirection>
+                                        </items>
+                                    </animationSettings>
+                                </items>
+                            </content>
+                        </items>
+                    </animations>
                 </items>
-            </column>
+            </tabs>
         </items>
     </content>
 </jcr:root>

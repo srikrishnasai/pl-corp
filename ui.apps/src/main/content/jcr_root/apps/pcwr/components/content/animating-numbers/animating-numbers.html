@@ -1,0 +1,18 @@
+<!--This template is called in other components where a animating numbers are required-->
+<template 
+    data-sly-template.animatingNumbers="${@ numberProperties}"
+    data-sly-test="numberProperties">
+    <div class="animation-wrapper animatedParent"
+         data-appear-offset="-300">
+        <div class="animating-numbers animating-numbers-color-${numberProperties.animatingNumbersColor} animated animateOnce mx-auto"
+             data-animating-numbers-start-value="${numberProperties.animatingNumbersStartValue}"
+             data-animating-numbers-end-value="${numberProperties.animatingNumbersEndValue}"
+             data-animating-numbers-increment-value="${numberProperties.animatingNumbersIncrementValue}"
+             data-animating-numbers-interval="${numberProperties.animatingNumbersAnimationInterval}">
+            <div class="animating-numbers-number-wrapper">
+                ${numberProperties.animatingNumbersPrefix}<span class="animating-numbers-number">${numberProperties.animatingNumbersStartValue}</span>${numberProperties.animatingNumbersSuffix}
+            </div>
+            <div class="animating-numbers-number-label">${numberProperties.animatingNumbersLabel}</div>
+        </div>
+    </div>
+</template>

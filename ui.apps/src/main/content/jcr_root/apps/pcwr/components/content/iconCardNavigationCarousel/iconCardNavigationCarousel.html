@@ -27,16 +27,32 @@
   </div>  
 </div>
 
+
 <!-- /* [2/2] STATIC- Icon Card Nav Carousel PCWR-126- NOTE- use class *offset-top* to overlap with the above component NOTE- use class: bgcolor-blue for blue version- */ -->
-<div data-component-name="Icon Card Navigation Carousel" data-sly-test="${!isCarousel}" id="${properties.cardId}" class="row d-flex justify-content-center my-5 icon-nav-carousel-static ${properties.lightTheme ? '' : 'bgcolor-blue'}" >
+<div data-component-name="Icon Card Navigation Carousel" 
+	 data-sly-test="${!isCarousel}" 
+	 id="${properties.cardId}" 
+	 class="icon-card-nav-carousel row d-flex justify-content-center my-5 icon-nav-carousel-static ${properties.lightTheme ? '' : 'bgcolor-blue'}
+	 		${!properties.disableAnimations ? ' animate__animated animate__fadeIn animate__delay_one_half_s' : ''}
+			${!properties.disableAnimations ? ' icon-card-nav-car-hover-animations-enabled' : ''}
+			${!properties.disableAnimations && properties.enableMobileAnimations ? '' : ' icon-card-nav-car-mobile-animations-disabled'}">
 	   <sly data-sly-list.cardItem="${model.multiFieldItems.listChildren}">	   
        <sly data-sly-use.fixedLink="${'com.paclife.core.util.LinkFixer' @ link = cardItem.cardItemLink}"/>
 		   
 		   <!--  /* icon nav items add class *show-anchor-arrow* below to get anchor arrows */ -->
-		   <div class="col my-md-auto icon-nav-carousel-static-item ${properties.downArrows ? ' show-anchor-arrow' : ''}">
-				<a href="${fixedLink.value}"><img class="mx-auto d-block" src="${cardItem.cardItemIconPath}" alt="" /></a>
+		   
+		   <div class="col my-md-auto icon-nav-carousel-static-item ${properties.downArrows ? ' show-anchor-arrow' : ''}
+		   			   ${!properties.disableAnimations ? ' position-relative' : ''}
+					   ${properties.hoverAnimations && properties.hoverAnimations == 'white' ? ' white-overlay-icon' : ''}">
+			<div data-sly-test="${!properties.disableAnimations}" class="alt-overlay"></div>
+
+				<a href="${fixedLink.value}">
+					<img class="mx-auto d-block" src="${cardItem.cardItemIconPath}" alt="" />
+				</a>
 			 	<div class="mx-auto mt-4 d-block">
+
 			 		<p class="cta-text-btn all-text text-center">
+
 			 			<a href="${fixedLink.value}" class="">${cardItem.cardItemLinkTitle}
 			 				
 			 				<!-- /* optional carrot icon */  -->			

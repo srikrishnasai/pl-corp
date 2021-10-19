@@ -4,7 +4,9 @@
     xmlns:cq="http://www.day.com/jcr/cq/1.0"
     xmlns:jcr="http://www.jcp.org/jcr/1.0"
     xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    xmlns:granite="http://www.adobe.com/jcr/granite/1.0"
     jcr:primaryType="nt:unstructured"
+    extraClientlibs="[checkbox-show-hide]"
     jcr:title="Pacific Life Image"
     sling:resourceType="cq/gui/components/authoring/dialog">
     <content jcr:primaryType="nt:unstructured">
@@ -42,6 +44,121 @@
                     </columns>
                 </items>
             </custProperties>
+            <high-res-image
+                jcr:primaryType="nt:unstructured"
+                jcr:title="High Res Image"
+                sling:resourceType="granite/ui/components/coral/foundation/container"
+                margin="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <columns
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <highResImage
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="pcwr/cq/gui/components/authoring/dialog/fileupload"
+                                        allowUpload="{Boolean}false"
+                                        autoStart="{Boolean}false"
+                                        class="cq-droptarget"
+                                        fieldLabel="High Resolution Image"
+                                        fileNameParameter="./highResImageFileName"
+                                        fileReferenceParameter="./highResImageFileRef"
+                                        mimeTypes="[image/jpeg,image/png]"
+                                        multiple="{Boolean}false"
+                                        name="./highResImageFile"
+                                        title="Upload High Resolution Image"
+                                        uploadUrl="${suffix.path}"
+                                        useHTML5="{Boolean}true"/>
+                                    <fullScreenIcon
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                        name="./highResImageDarkFullScreenIcon"
+                                        text="Use Dark color for full screen icon?"
+                                        value="true"/>
+									<highResImageAlt
+                                        jcr:primaryType="nt:unstructured"
+                                        fieldLabel="alt text"
+                                        fieldDescription="Provide the alt text for the high resolution image"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        name="./highResImageAlt"
+                                        alt="Alt Text for high res image"/>
+                                    <highResImageTitle
+                                        jcr:primaryType="nt:unstructured"
+                                        fieldLabel="Image Title"
+                                        fieldDescription="Provide the title for the high resolution image"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        name="./highResImageTitle"
+                                        alt="Title for high res image"/>
+                                </items>
+                            </column>
+                        </items>
+                    </columns>
+                </items>
+            </high-res-image>
+            <animations
+                jcr:primaryType="nt:unstructured"
+                jcr:title="Animations"
+                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
+                <items jcr:primaryType="nt:unstructured">
+                    <content
+                        jcr:primaryType="nt:unstructured"
+                        margin="{Boolean}true"
+                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <disableAnimations
+                                jcr:primaryType="nt:unstructured"
+                                granite:class="cq-dialog-checkbox-showhide"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                name="./disableAnimations"
+                                text="Disable Animations"
+                                fieldDescription="Click the checkbox to disable the animations"
+                                value="true">
+                                <granite:data
+                                    jcr:primaryType="nt:unstructured"
+                                    cq-dialog-checkbox-showhide-target=".disable-animation-showhide-target"/>
+                            </disableAnimations>
+                            <animationSettings
+                                jcr:primaryType="nt:unstructured"
+                                granite:class="disable-animation-showhide-target"
+                                showhidetargetvalue="true"        
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <animationDirection
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                        fieldLabel="Animate From"
+                                        defaultValue="top"
+                                        name="./animationDirection">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <top
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Top"
+                                                value="top"/>
+                                                <bottom
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Bottom"
+                                                value="bottom"/>
+                                            <left
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Left"
+                                                value="left"/>
+                                            <right
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Right"
+                                                value="right"/>
+                                        </items>
+                                    </animationDirection>
+                                </items>
+                            </animationSettings>
+                        </items>
+                    </content>
+                </items>
+            </animations>
         </items>
     </content>
 </jcr:root>

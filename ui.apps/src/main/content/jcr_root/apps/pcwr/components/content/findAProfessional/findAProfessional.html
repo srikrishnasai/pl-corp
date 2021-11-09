@@ -5,11 +5,15 @@
 <input id="fafp-results-url" type="hidden" value="${properties.target}"/>
     <div data-sly-test="${properties.heading}" data-sly-unwrap>
         <div data-sly-test="${properties.imagePos == 'left'}" class="row py-4">
-            <div class="col-md-6 d-flex justify-content-center align-items-center flex-column">
-                <img class="img-fluid" src="${properties.imagePath}">
+            <div class="col-md-6 d-flex justify-content-center align-items-center flex-column position-relative animatedParent animateOnce" style="overflow: hidden;" data-appear-top-offset='-300'>
+                <div class="animated animate-uncover-with-offset-parent-from-top animateOnce">
+                    <img class="img-fluid width-img" src="${properties.imagePath}">
+                  <div class="animated animate-fade-out-top-background animateUncoverfromTop"></div>
+                </div>
+
             </div>
-            <div class="col-md-6 d-flex justify-content-center align-items-center flex-column">
-                <div class="px-4 text-content-right">
+            <div class="col-md-6 d-flex justify-content-center align-items-center flex-column animatedParent animateOnce" data-appear-top-offset='-300'>
+                <div class="px-4 text-content-right animated fadeInDownHalfShort" style="opacity: 0;">
                     <h3>${properties.heading}</h3>
                     <h6>${properties.subHeading}</h6>
                     <div class="pcwr-richtext">${properties.richText @ context='html'}</div>
@@ -28,8 +32,8 @@
         </div>
 
         <div data-sly-test="${properties.imagePos == 'right'}" class="row py-4">
-            <div class="col-md-6 d-flex justify-content-center align-items-center flex-column order-2 order-md-1">
-                <div class="px-4 text-content-left">
+            <div class="col-md-6 d-flex justify-content-center align-items-center flex-column order-2 order-md-1 animatedParent animateOnce" data-appear-top-offset='-300'>
+                <div class="px-4 text-content-left animated fadeInDownHalfShort" style="opacity: 0;">
                     <h3>${properties.heading}</h3>
                     <h6>${properties.subHeading}</h6>
                     <div class="pcwr-richtext">${properties.richText @ context='html'}</div>
@@ -42,8 +46,11 @@
 					</form>
                 </div>
             </div>
-            <div class="col-md-6 d-flex justify-content-center align-items-center flex-column order-1 order-md-2">
-                <img class="img-fluid" src="${properties.imagePath}">
+            <div class="col-md-6 d-flex justify-content-center align-items-center flex-column order-1 order-md-2 position-relative animatedParent animateOnce" style="overflow: hidden;" data-appear-top-offset='-300'>
+                <div class="animated animate-uncover-with-offset-parent-from-top animateOnce">
+                    <img class="img-fluid" src="${properties.imagePath}">
+                    <div class="animated animate-fade-out-top-background animateUncoverfromTop"></div>
+                </div>
             </div>
         </div>
 

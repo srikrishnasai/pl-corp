@@ -1,16 +1,19 @@
 <sly data-sly-use.template="core/wcm/components/commons/v1/templates.html"/>
 
-<div data-component-name="Insights Card Gallery" class="${properties.colorClass ? properties.colorClass : 'bg-grey'} py-5">
+<div data-component-name="Insights Card Gallery" class="${properties.colorClass ? properties.colorClass : 'bg-grey'} py-5 insights-card-gallery ${properties.disableAnimations ? 'insights-gallery-animations-disabled' : ''}">
 	<input id="url-insight-value" type="hidden" value="${request.requestPathInfo.selectors[0]}"/>
     <input id="randomize-cards" type="hidden" value="${properties.randomize ? 'Yes' : 'No'}"/>
 
 	<sly data-sly-use.cards="insightsCardGallery.js"></sly>
-	<h3 class="text-center mb-2 mx-auto">${properties.headline}</h3>
-	
-	<div class="row" data-sly-resource="${@path ='tagCloud' , resourceType = 'pcwr/components/content/tagCloud', selectors='filtering' } "></div>
-	
-	<div class="insights-gallery-container-wrapper" data-row="${properties.rowNumber ? properties.rowNumber : 2}">
-	<div class="card-deck insights-gallery-container justify-content-center my-shuffled" id="insights-grid">
+	<div class='animatedParent animateOnce' data-appear-top-offset='-100'>
+		<div class='animated fadeInDownShort insight-row' style="opacity: 0;">
+			<h3 class="text-center mx-auto insight-row-heading">${properties.headline}</h3>
+			<div class="row insights-gallery-filters" data-sly-resource="${@path ='tagCloud' , resourceType = 'pcwr/components/content/tagCloud', selectors='filtering' } "></div>
+		</div>
+	</div>
+
+	<div class="animatedParent insights-gallery-container-wrapper" data-appear-top-offset='-150' data-row="${properties.rowNumber ? properties.rowNumber : 2}">
+	<div class="card-deck insights-gallery-container justify-content-center my-shuffled animated animateOnce fadeInDownShort" id="insights-grid">
 		<!-- The mark-up for Product card will go under loop below -->
 		<sly data-sly-list="${cards.cards}">
 			
@@ -29,28 +32,32 @@
 				</div>
 			</div>
 		
+
 			<sly data-sly-test.title='${item.properties["pageTitle"] || item.properties["jcr:title"]}'/>
 			<div data-media-block-title="${title}" 
-				 class="card insights-card insights-card-filter-item" data-sly-use.model="${'com.paclife.core.models.PCWRTagHelperModel' @ tagString = item.properties['insightCategoryTag']}"
+				 class="insights-gallery-card insights-card insights-card-filter-item" data-sly-use.model="${'com.paclife.core.models.PCWRTagHelperModel' @ tagString = item.properties['insightCategoryTag']}"
 				 data-groups="${cardGroups}">
-				<img class="card-img-top insights-img" src="${item.properties['insightCardThumbnail'] || item.properties['imagelink']}" alt="Card image cap">
-				<div class="card-body insights-body">
-					
-					<!--/* Check if Tag has been associated with the page */-->
-					<sly data-sly-test="${item.properties['insightCategoryTag']}">
-						<p class="insights-tag-text">
-							${cardTopics}
-						</p>
-					</sly>
-					
-					<h4 class="card-title insights-title">${title}</h4>
-					<p class="p-alt-16 insights-body-text">${item.properties["insightCardDesc"] || item.properties["jcr:description"]}</p>        
+				<div class="card insights-card-wrapper__inner">
+					<img class="card-img-top insights-img lazyload" loading="lazy" data-src="${item.properties['insightCardThumbnail'] || item.properties['imagelink']}"  src="${item.properties['insightCardThumbnail'] || item.properties['imagelink']}"  alt="Card image cap">
+					<div class="card-body insights-body">
+						
+						<!--/* Check if Tag has been associated with the page */-->
+						<sly data-sly-test="${item.properties['insightCategoryTag']}">
+							<p class="insights-tag-text">
+								${cardTopics}
+							</p>
+						</sly>
+						
+						<h4 class="card-title insights-title">${title}</h4>
+						<p class="p-alt-16 insights-body-text">${item.properties["insightCardDesc"] || item.properties["jcr:description"]}</p>        
+					</div>
+					<div class="card-footer insights-card-footer">
+						<a href="${item.path @ extension='html'}" class="btn btn-primary cta-text-btn d-inline-block">${item.properties["insightCardBtnLabel"] }</a><i class="material-icons insights-icon">schedule</i>        <span class="insights-tag-text">${item.properties["insightCardReadTime"]}</span>
+					</div>
 				</div>
-				<div class="card-footer insights-card-footer">
-					<a href="${item.path @ extension='html'}" class="btn btn-primary cta-text-btn d-inline-block">${item.properties["insightCardBtnLabel"] }</a><i class="material-icons insights-icon">schedule</i>        <span class="insights-tag-text">${item.properties["insightCardReadTime"]}</span>
-				</div>
+				 
 				<!--/*TEST make the full card clickable*/-->
-					<a href="${item.path @ extension='html'}" class='clickable'></a>
+				<a href="${item.path @ extension='html'}" class='clickable'></a>
 			</div>
 		</sly>
 	</div>

@@ -93,6 +93,17 @@
 	    /*workaround to make clickable in IE */
 	    &:hover{background-color:rgba(0, 0, 0, 0.02); opacity: 1;}
 	}
+
+	&.animated {
+		opacity: 0;
+		transform: translateY(220px);
+		transition: all .6s ease;
+
+		&.go {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
 }
 
 .insights-featured-container{       
@@ -148,3 +159,29 @@
 	}
 }
 
+.insights-featured-container-animations-disabled {
+	.animatedParent {
+		.animated,
+		.fadeInDownShort {
+			animation: none !important;
+			-webkit-animation: none !important;
+			transform: none !important;
+			-ms-animation: none !important;
+			opacity: 1 !important;
+		}
+	}
+}
+
+// Disabling Animations on IE 10 and 11
+@media screen and (-ms-high-contrast: active) , screen and (-ms-high-contrast: none) {
+	.insights-featured-container-animations-disabled .animatedParent {
+		.animated,
+		.fadeInDownShort {
+			animation: none !important;
+			-webkit-animation: none !important;
+			transform: none !important;
+			-ms-animation: none !important;
+			opacity: 1 !important;
+		}
+	}
+}

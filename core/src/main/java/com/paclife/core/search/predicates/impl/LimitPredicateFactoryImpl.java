@@ -8,6 +8,8 @@ import com.day.cq.commons.inherit.ComponentInheritanceValueMap;
 import org.apache.felix.scr.annotations.Component;
 import org.apache.felix.scr.annotations.Service;
 
+import org.apache.commons.lang.StringUtils;
+
 //OSGI Annotations
 /*import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Service;*/
@@ -45,10 +47,18 @@ public class LimitPredicateFactoryImpl implements PredicateFactory {
     public Map<String, String> getRequestPredicate(SlingHttpServletRequest request) {
         final Map<String, String> params = new HashMap<String, String>();
 
-        final int limit = new ComponentInheritanceValueMap(request.getResource()).getInherited(PN_LIMIT, DEFAULT_LIMIT);
+        int limit = new ComponentInheritanceValueMap(request.getResource()).getInherited(PN_LIMIT, DEFAULT_LIMIT);
 
+        String numberOfResPerPage = request.getParameter("noOfResPerPage");
+        if(null != numberOfResPerPage && StringUtils.isNotBlank(numberOfResPerPage)) {
+            int numberOfResults = Integer.parseInt(numberOfResPerPage);
+            if(numberOfResults > 0) {
+                limit = numberOfResults;
+            } 
+        } 
+        
         params.put("p.limit", String.valueOf(limit));
-
+        
         return params;
     }
 

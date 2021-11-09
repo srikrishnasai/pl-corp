@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root 
+	xmlns:sling="http://sling.apache.org/jcr/sling/1.0" 
+	xmlns:cq="http://www.day.com/jcr/cq/1.0" 
+	xmlns:jcr="http://www.jcp.org/jcr/1.0" 
+	xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Pie Chart"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+					<general
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="General"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                        	<column
+                        		jcr:primaryType="nt:unstructured"
+                        		sling:resourceType="granite/ui/components/coral/foundation/container">
+                        		<items jcr:primaryType="nt:unstructured">
+		                            <heading
+										jcr:primaryType="nt:unstructured"
+										sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+										fieldLabel="Heading"
+										name="./heading"
+										required="{Boolean}true"/>
+									<subHeading
+										jcr:primaryType="nt:unstructured"
+										sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+										fieldLabel="Subheading"
+										name="./subHeading"/>
+									<description
+										jcr:primaryType="nt:unstructured"
+										sling:resourceType="granite/ui/components/coral/foundation/include"
+										path="pcwr/components/common/commonRTE/cq:dialog/content/items/column/items/richText"/>
+									<chartPos
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                        fieldLabel="Chart Position"
+                                        name="./chartPos">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <left
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Left"
+                                                value="left"/>
+                                            <right
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Right"
+                                                value="right"/>
+                                        </items>
+                                    </chartPos>
+                                </items>
+                        	</column>                                
+                        </items>
+                    </general>
+                    <chart
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Chart Data"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                        	<column
+                        		jcr:primaryType="nt:unstructured"
+                        		sling:resourceType="granite/ui/components/coral/foundation/container">
+                        		<items jcr:primaryType="nt:unstructured">
+									<title
+		                                jcr:primaryType="nt:unstructured"
+		                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+		                                fieldDescription="Please provide Title for chart"
+		                                fieldLabel="Chart Title"
+		                                name="./chartTitle"/>
+									<rmdRemaining
+		                                jcr:primaryType="nt:unstructured"
+		                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+		                                fieldDescription="Please enter Pie Chart value"
+		                                fieldLabel="Pie Chart Value"
+		                                name="./pieChartTotal"/>
+									<chartBars
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                        composite="{Boolean}true"
+                                        eaem-nested=""
+                                        fieldDescription="Click 'Add field' to add a new bar"
+                                        fieldLabel="Pie chart Bars">
+                                        <field
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/container"
+                                            name="./multiFieldItems">
+                                            <items jcr:primaryType="nt:unstructured">
+												<multiFieldItemWrapper
+													jcr:primaryType="nt:unstructured"
+													jcr:title="Bar Data"
+													sling:resourceType="granite/ui/components/foundation/layouts/collapsible">
+													<items 
+														jcr:primaryType="nt:unstructured">
+														<barValue
+															jcr:primaryType="nt:unstructured"
+															sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+															fieldDescription="Please provide value for the bar"
+															fieldLabel="Bar Value"
+															min="0"
+															name="./barValue"/>
+														<barLabel
+															jcr:primaryType="nt:unstructured"
+															sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+															fieldDescription="Please provide value for the bar"
+															fieldLabel="Bar Label"
+															name="./barLabel"/>
+														<barColor
+															jcr:primaryType="nt:unstructured"
+															sling:resourceType="granite/ui/components/coral/foundation/form/select"
+															fieldLabel="Bar Color"
+															fieldDescription="Choose the color for the Bar"
+															name="./barColor">
+															<items jcr:primaryType="nt:unstructured">
+																<deepBlue
+																	jcr:primaryType="nt:unstructured"
+																	text="Deep Blue (#004685)"
+																	value="#004685"/>
+																<brightBlue
+																	jcr:primaryType="nt:unstructured"
+																	text="Bright Blue (#008ed7)"
+																	value="#008ed7"/>
+																<turquoise
+																	jcr:primaryType="nt:unstructured"
+																	text="Turquoise (#24c5cf)"
+																	value="#24c5cf"/>
+																<teal500
+																	jcr:primaryType="nt:unstructured"
+																	text="Teal 500 (#17929A)"
+																	value="#17929A"/>
+																<orange
+																	jcr:primaryType="nt:unstructured"
+																	text="Orange (#FF8F1F)"
+																	value="#FF8F1F"/>
+																<aqua700
+																	jcr:primaryType="nt:unstructured"
+																	text="Aqua 700 (#0093B0)"
+																	value="#0093B0"/>
+																<darkGrey
+																	jcr:primaryType="nt:unstructured"
+																	text="Dark Grey (#053661)"
+																	value="#053661"/>
+																<mediumGrey
+																	jcr:primaryType="nt:unstructured"
+																	text="Medium Grey (#979797)"
+																	value="#979797"/>
+																<aqua600
+																	jcr:primaryType="nt:unstructured"
+																	text="Aqua 600 (#0EAECD)"
+																	value="#0EAECD"/>
+																<gold
+																	jcr:primaryType="nt:unstructured"
+																	text="Gold (#FFA800)"
+																	value="#FFA800"/>
+															</items>
+														</barColor>
+													</items>
+												</multiFieldItemWrapper>    
+                                            </items>
+                                        </field>
+                                    </chartBars>
+                                </items>
+                        	</column>                                
+                        </items>
+                    </chart>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

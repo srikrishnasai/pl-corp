@@ -1,7 +1,7 @@
 <sly data-sly-use.template="core/wcm/components/commons/v1/templates.html"/>
 <sly data-sly-call="${template.placeholder @ isEmpty=!(properties.heading || pageProperties.pageTitle || pageProperties.jcr:title)}"/>
-<div data-component-name="Insight Heading" class="container-fluid ">
-	<div class="insights-heading-wrapper my-5 mx-2 mx-md-auto">
+<div data-component-name="Insight Heading" class="container-fluid animatedParent animateOnce" data-appear-top-offset='-300'>
+	<div class="insights-heading-wrapper my-5 mx-2 mx-md-auto animated fadeInDownShort" style="opacity: 0;">
 		<div class="insights-tag-text" data-sly-use.model="${'com.paclife.core.models.PCWRTagHelperModel' @ tagString = pageProperties.insightCategoryTag}">${model.tag.title}</div>
 		<div class="d-flex align-items-center py-3">
 			<div class="insights-title">${properties.heading || pageProperties.pageTitle || pageProperties.jcr:title}</div>

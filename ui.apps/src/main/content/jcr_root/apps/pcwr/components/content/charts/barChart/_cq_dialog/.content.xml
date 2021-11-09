@@ -1,0 +1,479 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root 
+	xmlns:sling="http://sling.apache.org/jcr/sling/1.0" 
+	xmlns:cq="http://www.day.com/jcr/cq/1.0" 
+	xmlns:jcr="http://www.jcp.org/jcr/1.0" 
+	xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Bar Chart"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+					<general
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="General"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                        	<column
+                        		jcr:primaryType="nt:unstructured"
+                        		sling:resourceType="granite/ui/components/coral/foundation/container">
+                        		<items jcr:primaryType="nt:unstructured">
+		                            <title
+		                                jcr:primaryType="nt:unstructured"
+		                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+		                                fieldDescription="Please provide Title"
+		                                fieldLabel="Title (Optional)"
+		                                name="./title"/>
+									<titleEl
+										jcr:primaryType="nt:unstructured"
+										sling:resourceType="granite/ui/components/coral/foundation/form/select"
+										fieldLabel="Title Style"
+										name="./titleEl">
+										<items jcr:primaryType="nt:unstructured">
+											<h2
+												jcr:primaryType="nt:unstructured"
+												text="H2"
+												value="h2"/>
+											<h3
+												jcr:primaryType="nt:unstructured"
+												text="H3"
+												value="h3"
+												selected="{Boolean}true}"/>
+											
+										</items>
+									</titleEl>		
+		                            <numberOfCharts
+										jcr:primaryType="nt:unstructured"
+										sling:resourceType="granite/ui/components/coral/foundation/form/select"
+										fieldLabel="Number Of Charts"
+										fieldDescription="Choose the number of charts"
+										emptyOption="{Boolean}true"
+										name="./numberOfCharts">
+										<items jcr:primaryType="nt:unstructured">
+											<one
+												jcr:primaryType="nt:unstructured"
+												text="One"
+												value="1"/>
+											<two
+												jcr:primaryType="nt:unstructured"
+												text="Two"
+												value="2"/>
+											<three
+												jcr:primaryType="nt:unstructured"
+												text="Three"
+												value="3"/>
+											<four
+												jcr:primaryType="nt:unstructured"
+												text="Four"
+												value="4"/>
+										</items>
+									</numberOfCharts>
+                                </items>
+                        	</column>                                
+                        </items>
+                    </general>
+                    <chart1
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Chart1"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                        	<column
+                        		jcr:primaryType="nt:unstructured"
+                        		sling:resourceType="granite/ui/components/coral/foundation/container">
+                        		<items jcr:primaryType="nt:unstructured">
+		                            <chart1Heading
+		                                jcr:primaryType="nt:unstructured"
+		                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+		                                fieldDescription="Please provide heading for chart1"
+		                                fieldLabel="Chart1 Heading"
+		                                name="./chart1/chartHeading"/>
+		                            <chart1Label
+		                                jcr:primaryType="nt:unstructured"
+		                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+		                                fieldDescription="Please provide label for the Chart1"
+		                                fieldLabel="Chart1 Sub Heading"
+		                                name="./chart1/chartSubHeading"/>
+		                            <chart1Bars
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                        composite="{Boolean}true"
+                                        eaem-nested=""
+                                        fieldDescription="Click 'Add field' to add a new bar"
+                                        fieldLabel="Chart1 Bars">
+                                        <field
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/container"
+                                            name="./chart1/multiFieldItems">
+                                            <items jcr:primaryType="nt:unstructured">
+												<barValue
+													jcr:primaryType="nt:unstructured"
+													sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+													fieldDescription="Please provide value for the bar"
+													fieldLabel="Bar Value"
+													name="./barValue"/>
+												<barLabel
+													jcr:primaryType="nt:unstructured"
+													sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+													fieldDescription="Please provide label for the bar"
+													fieldLabel="Bar Label"
+													name="./barLabel"/>
+												<barColor
+													jcr:primaryType="nt:unstructured"
+													sling:resourceType="granite/ui/components/coral/foundation/form/select"
+													fieldLabel="Bar Color"
+													fieldDescription="Choose the color for the Bar"
+													name="./barColor">
+													<items jcr:primaryType="nt:unstructured">
+														<turquoise
+															jcr:primaryType="nt:unstructured"
+															text="Turquoise (#24c5cf)"
+															value="#24c5cf"/>
+														<deepBlue
+															jcr:primaryType="nt:unstructured"
+															text="Deep Blue (#004685)"
+															value="#004685"/>
+														<brightBlue
+															jcr:primaryType="nt:unstructured"
+															text="Bright Blue (#008ed7)"
+															value="#008ed7"/>
+														<lightGrey
+															jcr:primaryType="nt:unstructured"
+															text="Light Grey (#F2F2F2)"
+															value="#F2F2F2"/>
+														<mediumGrey
+															jcr:primaryType="nt:unstructured"
+															text="Medium Grey (#979797)"
+															value="#979797"/>
+														<darkGrey
+															jcr:primaryType="nt:unstructured"
+															text="Dark Grey (#5A5A5A)"
+															value="#5A5A5A"/>
+														<black
+															jcr:primaryType="nt:unstructured"
+															text="Black"
+															value="#000"/>
+														<off-black-bg
+															jcr:primaryType="nt:unstructured"
+															text="Off Black Bg (#222222)"
+															value="#222"/>
+														<gold
+															jcr:primaryType="nt:unstructured"
+															text="Gold (#FFA800)"
+															value="#FFA800"/>
+													</items>
+												</barColor>
+                                            </items>
+                                        </field>
+                                    </chart1Bars>
+                                </items>
+                        	</column>                                
+                        </items>
+                    </chart1>
+					<chart2
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Chart2"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                        	<column
+                        		jcr:primaryType="nt:unstructured"
+                        		sling:resourceType="granite/ui/components/coral/foundation/container">
+                        		<items jcr:primaryType="nt:unstructured">
+		                            <chart2Heading
+		                                jcr:primaryType="nt:unstructured"
+		                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+		                                fieldDescription="Please provide heading for chart2"
+		                                fieldLabel="Chart2 Heading"
+		                                name="./chart2/chartHeading"/>
+		                            <chart2Label
+		                                jcr:primaryType="nt:unstructured"
+		                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+		                                fieldDescription="Please provide label for the chart2"
+		                                fieldLabel="Chart2 Sub Heading"
+		                                name="./chart2/chartSubHeading"/>
+		                            <chart2Bars
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                        composite="{Boolean}true"
+                                        eaem-nested=""
+                                        fieldDescription="Click 'Add field' to add a new bar"
+                                        fieldLabel="Chart2 Bars">
+                                        <field
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/container"
+                                            name="./chart2/multiFieldItems">
+                                            <items jcr:primaryType="nt:unstructured">
+												<barValue
+													jcr:primaryType="nt:unstructured"
+													sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+													fieldDescription="Please provide value for the bar"
+													fieldLabel="Bar Value"
+													name="./barValue"/>
+												<barLabel
+													jcr:primaryType="nt:unstructured"
+													sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+													fieldDescription="Please provide label for the bar"
+													fieldLabel="Bar Label"
+													name="./barLabel"/>
+												<barColor
+													jcr:primaryType="nt:unstructured"
+													sling:resourceType="granite/ui/components/coral/foundation/form/select"
+													fieldLabel="Bar Color"
+													fieldDescription="Choose the color for the Bar"
+													name="./barColor">
+													<items jcr:primaryType="nt:unstructured">
+														<turquoise
+															jcr:primaryType="nt:unstructured"
+															text="Turquoise (#24c5cf)"
+															value="#24c5cf"/>
+														<deepBlue
+															jcr:primaryType="nt:unstructured"
+															text="Deep Blue (#004685)"
+															value="#004685"/>
+														<brightBlue
+															jcr:primaryType="nt:unstructured"
+															text="Bright Blue (#008ed7)"
+															value="#008ed7"/>
+														<lightGrey
+															jcr:primaryType="nt:unstructured"
+															text="Light Grey (#F2F2F2)"
+															value="#F2F2F2"/>
+														<mediumGrey
+															jcr:primaryType="nt:unstructured"
+															text="Medium Grey (#979797)"
+															value="#979797"/>
+														<darkGrey
+															jcr:primaryType="nt:unstructured"
+															text="Dark Grey (#5A5A5A)"
+															value="#5A5A5A"/>
+														<black
+															jcr:primaryType="nt:unstructured"
+															text="Black"
+															value="#000"/>
+														<off-black-bg
+															jcr:primaryType="nt:unstructured"
+															text="Off Black Bg (#222222)"
+															value="#222"/>
+														<gold
+															jcr:primaryType="nt:unstructured"
+															text="Gold (#FFA800)"
+															value="#FFA800"/>
+													</items>
+												</barColor>
+                                            </items>
+                                        </field>
+                                    </chart2Bars>
+                                </items>
+                        	</column>                                
+                        </items>
+                    </chart2>
+					<chart3
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="chart3"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                        	<column
+                        		jcr:primaryType="nt:unstructured"
+                        		sling:resourceType="granite/ui/components/coral/foundation/container">
+                        		<items jcr:primaryType="nt:unstructured">
+		                            <chart3Heading
+		                                jcr:primaryType="nt:unstructured"
+		                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+		                                fieldDescription="Please provide heading for chart3"
+		                                fieldLabel="chart3 Heading"
+		                                name="./chart3/chartHeading"/>
+		                            <chart3Label
+		                                jcr:primaryType="nt:unstructured"
+		                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+		                                fieldDescription="Please provide label for the chart3"
+		                                fieldLabel="chart3 Sub Heading"
+		                                name="./chart3/chartSubHeading"/>
+		                            <chart3Bars
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                        composite="{Boolean}true"
+                                        eaem-nested=""
+                                        fieldDescription="Click 'Add field' to add a new bar"
+                                        fieldLabel="chart3 Bars">
+                                        <field
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/container"
+                                            name="./chart3/multiFieldItems">
+                                            <items jcr:primaryType="nt:unstructured">
+												<barValue
+													jcr:primaryType="nt:unstructured"
+													sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+													fieldDescription="Please provide value for the bar"
+													fieldLabel="Bar Value"
+													name="./barValue"/>
+												<barLabel
+													jcr:primaryType="nt:unstructured"
+													sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+													fieldDescription="Please provide label for the bar"
+													fieldLabel="Bar Label"
+													name="./barLabel"/>
+												<barColor
+													jcr:primaryType="nt:unstructured"
+													sling:resourceType="granite/ui/components/coral/foundation/form/select"
+													fieldLabel="Bar Color"
+													fieldDescription="Choose the color for the Bar"
+													name="./barColor">
+													<items jcr:primaryType="nt:unstructured">
+														<turquoise
+															jcr:primaryType="nt:unstructured"
+															text="Turquoise (#24c5cf)"
+															value="#24c5cf"/>
+														<deepBlue
+															jcr:primaryType="nt:unstructured"
+															text="Deep Blue (#004685)"
+															value="#004685"/>
+														<brightBlue
+															jcr:primaryType="nt:unstructured"
+															text="Bright Blue (#008ed7)"
+															value="#008ed7"/>
+														<lightGrey
+															jcr:primaryType="nt:unstructured"
+															text="Light Grey (#F2F2F2)"
+															value="#F2F2F2"/>
+														<mediumGrey
+															jcr:primaryType="nt:unstructured"
+															text="Medium Grey (#979797)"
+															value="#979797"/>
+														<darkGrey
+															jcr:primaryType="nt:unstructured"
+															text="Dark Grey (#5A5A5A)"
+															value="#5A5A5A"/>
+														<black
+															jcr:primaryType="nt:unstructured"
+															text="Black"
+															value="#000"/>
+														<off-black-bg
+															jcr:primaryType="nt:unstructured"
+															text="Off Black Bg (#222222)"
+															value="#222"/>
+														<gold
+															jcr:primaryType="nt:unstructured"
+															text="Gold (#FFA800)"
+															value="#FFA800"/>
+													</items>
+												</barColor>
+                                            </items>
+                                        </field>
+                                    </chart3Bars>
+                                </items>
+                        	</column>                                
+                        </items>
+                    </chart3>  
+					<chart4
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="chart4"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                        	<column
+                        		jcr:primaryType="nt:unstructured"
+                        		sling:resourceType="granite/ui/components/coral/foundation/container">
+                        		<items jcr:primaryType="nt:unstructured">
+		                            <chart4Heading
+		                                jcr:primaryType="nt:unstructured"
+		                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+		                                fieldDescription="Please provide heading for chart4"
+		                                fieldLabel="chart4 Heading"
+		                                name="./chart4/chartHeading"/>
+		                            <chart4Label
+		                                jcr:primaryType="nt:unstructured"
+		                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+		                                fieldDescription="Please provide label for the chart4"
+		                                fieldLabel="chart4 Sub Heading"
+		                                name="./chart4/chartSubHeading"/>
+		                            <chart4Bars
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                        composite="{Boolean}true"
+                                        eaem-nested=""
+                                        fieldDescription="Click 'Add field' to add a new bar"
+                                        fieldLabel="chart4 Bars">
+                                        <field
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/container"
+                                            name="./chart4/multiFieldItems">
+                                            <items jcr:primaryType="nt:unstructured">
+												<barValue
+													jcr:primaryType="nt:unstructured"
+													sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+													fieldDescription="Please provide value for the bar"
+													fieldLabel="Bar Value"
+													name="./barValue"/>
+												<barLabel
+													jcr:primaryType="nt:unstructured"
+													sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+													fieldDescription="Please provide label for the bar"
+													fieldLabel="Bar Label"
+													name="./barLabel"/>
+												<barColor
+													jcr:primaryType="nt:unstructured"
+													sling:resourceType="granite/ui/components/coral/foundation/form/select"
+													fieldLabel="Bar Color"
+													fieldDescription="Choose the color for the Bar"
+													name="./barColor">
+													<items jcr:primaryType="nt:unstructured">
+														<turquoise
+															jcr:primaryType="nt:unstructured"
+															text="Turquoise (#24c5cf)"
+															value="#24c5cf"/>
+														<deepBlue
+															jcr:primaryType="nt:unstructured"
+															text="Deep Blue (#004685)"
+															value="#004685"/>
+														<brightBlue
+															jcr:primaryType="nt:unstructured"
+															text="Bright Blue (#008ed7)"
+															value="#008ed7"/>
+														<lightGrey
+															jcr:primaryType="nt:unstructured"
+															text="Light Grey (#F2F2F2)"
+															value="#F2F2F2"/>
+														<mediumGrey
+															jcr:primaryType="nt:unstructured"
+															text="Medium Grey (#979797)"
+															value="#979797"/>
+														<darkGrey
+															jcr:primaryType="nt:unstructured"
+															text="Dark Grey (#5A5A5A)"
+															value="#5A5A5A"/>
+														<black
+															jcr:primaryType="nt:unstructured"
+															text="Black"
+															value="#000"/>
+														<off-black-bg
+															jcr:primaryType="nt:unstructured"
+															text="Off Black Bg (#222222)"
+															value="#222"/>
+														<gold
+															jcr:primaryType="nt:unstructured"
+															text="Gold (#FFA800)"
+															value="#FFA800"/>
+													</items>
+												</barColor>
+                                            </items>
+                                        </field>
+                                    </chart4Bars>
+                                </items>
+                        	</column>                                
+                        </items>
+                    </chart4>  
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

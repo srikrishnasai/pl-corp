@@ -1,90 +1,159 @@
 <sly data-sly-use.template="core/wcm/components/commons/v1/templates.html"/>
 <sly data-sly-call="${template.placeholder @ isEmpty = !properties.carItem1Title}"/>
 
-<div data-component-name="Scenario Carousel" data-sly-test="${properties.carItem1Title}">
-
+<div class="scenario-carousel-component ${properties.disableAnimations ? 'scenario-carousel-component-animations-disabled' : 'scenario-carousel-component-animations-enabled'}" 
+     data-component-name="Scenario Carousel" 
+     data-sly-attribute.data-is-carousel="${properties.carItem1Title && properties.carItem2Label && properties.carItem2BgImgFileRef ? 'true' : 'false'}"
+     data-sly-test="${properties.carItem1Title}">
     <!-- main slider carousel -->
     <div class="row">
-        <div  class="scenario-carousel  mx-auto" id="slider">
-                <div id="${properties.overrideId || 'scenarioCarousel'}" class="carousel slide touch-enabled-carousel" data-ride="false">
-                    <!-- main slider carousel items -->
-                    <div class="carousel-inner">
-                        <div class="active item carousel-item" data-slide-number="0">
-	                        <div class="scenario-carousel-slide-copy-container">
-	                        	<div class="scenario-carousel-slide-copy text-center p-sm-5 py-5 px-4">
-		                        	<img src="${properties.carItem1IconFileRef}" class="mb-3" />
-		                        	<h5>${properties.carItem1Title}</h5>
-		                        	<p class="p-alt-16">${properties.carItem1Body @ context='html'}</p>
-		                        	<p data-sly-test="${properties.carItem1DisplayCTA}" class="card-text"><a href="${properties.carItem1CTATarget @ extension='html'}" class="btn btn-primary cta-text-btn">${properties.carItem1CTALabel}</a></p>
-	                        	</div>
-	                       	</div>
-                            <img src="${properties.carItem1BgImgFileRef}" class="d-block" />                          
-                        </div>
-                        <div data-sly-test.card2Exists="${properties.carItem2Label && properties.carItem2BgImgFileRef}" class="item carousel-item" data-slide-number="1">
-	                        <div class="scenario-carousel-slide-copy-container">
-	                        	<div class="scenario-carousel-slide-copy text-center p-sm-5 py-5 px-4">
-		                        	<img src="${properties.carItem2IconFileRef}" class="mb-3" />
-		                        	<h5>${properties.carItem2Title}</h5>
-		                        	<p class="p-alt-16">${properties.carItem2Body @ context='html'}</p>
-		                        	<p data-sly-test="${properties.carItem2DisplayCTA}" class="card-text"><a href="${properties.carItem2CTATarget @ extension='html'}" class="btn btn-primary cta-text-btn">${properties.carItem2CTALabel}</a></p>
-	                        	</div>
-	                       	</div>              
-                            <img src="${properties.carItem2BgImgFileRef}" class="d-block" />
-                        </div>
-                        <div  data-sly-test.card3Exists="${properties.carItem3Label && properties.carItem3BgImgFileRef}" class="item carousel-item" data-slide-number="2">
-	                        <div class="scenario-carousel-slide-copy-container">
-	                        	<div class="scenario-carousel-slide-copy text-center p-sm-5 py-5 px-4">
-		                        	<img src="${properties.carItem3IconFileRef}" class="mb-3" />
-		                        	<h5>${properties.carItem3Title}</h5>
-		                        	<p class="p-alt-16">${properties.carItem3Body @ context='html'}</p>
-		                        	<p data-sly-test="${properties.carItem3DisplayCTA}" class="card-text"><a href="${properties.carItem3CTATarget @ extension='html'}" class="btn btn-primary cta-text-btn">${properties.carItem3CTALabel}</a></p>
-	                        	</div>
-	                       	</div>                        
-                            <img src="${properties.carItem3BgImgFileRef}" class="d-block" />
-                        </div>
-                        <div data-sly-test.card4Exists="${properties.carItem4Label && properties.carItem4BgImgFileRef}" class="item carousel-item" data-slide-number="3">
-	                        <div class="scenario-carousel-slide-copy-container">
-	                        	<div class="scenario-carousel-slide-copy text-center p-sm-5 py-5 px-4">
-		                        	<img src="${properties.carItem4IconFileRef}" class="mb-3" />
-		                        	<h5>${properties.carItem4Title}</h5>
-		                        	<p class="p-alt-16">${properties.carItem4Body @ context='html'}</p>
-		                        	<p data-sly-test="${properties.carItem4DisplayCTA}" class="card-text"><a href="${properties.carItem4CTATarget @ extension='html'}" class="btn btn-primary cta-text-btn">${properties.carItem4CTALabel}</a></p>
-	                        	</div>
-	                       	</div>                        
-                            <img src="${properties.carItem4BgImgFileRef}" class="d-block" />
-                        </div>
-                        <div data-sly-test.card5Exists="${properties.carItem5Label && properties.carItem5BgImgFileRef}" class="item carousel-item" data-slide-number="4">
-	                        <div class="scenario-carousel-slide-copy-container">
-	                        	<div class="scenario-carousel-slide-copy text-center p-sm-5 py-5 px-4">
-		                        	<img src="${properties.carItem5IconFileRef}" class="mb-3" />
-		                        	<h5>${properties.carItem5Title}</h5>
-		                        	<p class="p-alt-16">${properties.carItem5Body @ context='html'}</p>
-		                        	<p data-sly-test="${properties.carItem5DisplayCTA}" class="card-text"><a href="${properties.carItem5CTATarget @ extension='html'}" class="btn btn-primary cta-text-btn">${properties.carItem5CTALabel}</a></p>
-	                        	</div>
-	                       	</div>                        
-                            <img src="${properties.carItem5BgImgFileRef}" class="d-block" />
+        <div  class="scenario-carousel mx-auto" id="slider">
+			<div id="${properties.overrideId}" class="scenario-carousel-images carousel slide position-relative animatedParent animateOnce"  
+                 data-appear-top-offset='-150' 
+                 
+                 data-pause="false">
+                <!-- main slider carousel items -->
+                <div class="carousel-inner">
+                    <div class="active item carousel-item" data-slide-number="0">
+                        <div class="animated animate-uncover-with-offset-parent-from-right">                                 
+                            <img src="${properties.carItem1BgImgFileRef}" class="d-block" />   
+                            <div data-sly-test="${!properties.disableAnimations}" class="animated animateUncoverWithOffSet animateUncoverfromLeft delay-1000"></div>  
                         </div>
                     </div>
-					
-					<!--/* Display following only when Multiple tabs configured */-->
-					<sly data-sly-test.multipleScenario="${properties.carItem1Title && (card2Exists || card3Exists || card4Exists || card5Exists)}"> 
-	                    <a class="carousel-control-left" href="#${properties.overrideId || 'scenarioCarousel'}" role="button" data-slide="prev"><img src="/etc/designs/pcwr/default/images/carousel-arrow-left.svg" class=""></a>
-	                    <a class="carousel-control-right" href="#${properties.overrideId || 'scenarioCarousel'}" role="button"  data-slide="next"><img src="/etc/designs/pcwr/default/images/carousel-arrow-right.svg" class=""></a>
-                    
-	                    <!-- main slider carousel nav controls -->
-						<div class="mx-auto">
-		                    <ul class="carousel-indicators list-inline mx-auto">
-		                        <li class="list-inline-item cta-text-btn selected active" id="carousel-selector-0" data-slide-to="0" data-target="#${properties.overrideId || 'scenarioCarousel'}">${properties.carItem1Label}</li>
-		                        <li data-sly-test="${card2Exists}" class="list-inline-item cta-text-btn" id="carousel-selector-1" data-slide-to="1" data-target="#${properties.overrideId || 'scenarioCarousel'}">${properties.carItem2Label}</li>
-		                        <li data-sly-test="${card3Exists}" class="list-inline-item cta-text-btn" id="carousel-selector-2" data-slide-to="2" data-target="#${properties.overrideId || 'scenarioCarousel'}">${properties.carItem3Label}</li>
-		                        <li data-sly-test="${card4Exists}" class="list-inline-item cta-text-btn" id="carousel-selector-3" data-slide-to="3" data-target="#${properties.overrideId || 'scenarioCarousel'}">${properties.carItem4Label} </li>
-		                        <li data-sly-test="${card5Exists}" class="list-inline-item cta-text-btn" id="carousel-selector-4" data-slide-to="4" data-target="#${properties.overrideId || 'scenarioCarousel'}">${properties.carItem5Label}</li>
-		                    </ul>
-	                    </div>
-                    </sly>
-                    <div data-sly-test="${! multipleScenario}" class="single-item-bottom-margin"></div>
+                    <div data-sly-test.card2Exists="${properties.carItem2Label && properties.carItem2BgImgFileRef}" class="item carousel-item" data-slide-number="1">
+                        <div class="animated animate-uncover-with-offset-parent-from-right">
+                            <img src="${properties.carItem2BgImgFileRef}" class="d-block" />
+                            <div data-sly-test="${!properties.disableAnimations}" class="animated animateUncoverWithOffSet animateUncoverfromLeft delay-1000"></div>  
+                        </div>
+                    </div>
+                    <div  data-sly-test.card3Exists="${properties.carItem3Label && properties.carItem3BgImgFileRef}" class="item carousel-item" data-slide-number="2">                                 
+                        <div class="animated animate-uncover-with-offset-parent-from-right">
+                            <img src="${properties.carItem3BgImgFileRef}" class="d-block" />
+                            <div data-sly-test="${!properties.disableAnimations}" class="animated animateUncoverWithOffSet animateUncoverfromLeft delay-1000"></div>  
+                        </div>                       
+                    </div>
+                    <div data-sly-test.card4Exists="${properties.carItem4Label && properties.carItem4BgImgFileRef}" class="item carousel-item" data-slide-number="3">
+                        <div class="animated animate-uncover-with-offset-parent-from-right">
+                            <img src="${properties.carItem4BgImgFileRef}" class="d-block" />
+                            <div data-sly-test="${!properties.disableAnimations}" class="animated animateUncoverWithOffSet animateUncoverfromLeft delay-1000"></div>  
+                        </div>                      
+                    </div>
+                    <div data-sly-test.card5Exists="${properties.carItem5Label && properties.carItem5BgImgFileRef}" class="item carousel-item" data-slide-number="4">
+                        <div class="animated animate-uncover-with-offset-parent-from-right">
+                            <img src="${properties.carItem5BgImgFileRef}" class="d-block" />
+                            <div data-sly-test="${!properties.disableAnimations}" class="animated animateUncoverWithOffSet animateUncoverfromLeft delay-1000"></div>  
+                        </div>                     
+                    </div>
+                </div>
+                
+                <!-- Carousel Indicators wrapper -->
+                <sly data-sly-test.multipleScenario="${properties.carItem1Title && (card2Exists || card3Exists || card4Exists || card5Exists)}"> 
+                    <!-- main slider carousel nav controls -->
+                    <div class="mx-auto animated fadeInUpShort animateOnce display-wrapper-alt">
+                        <ul class="scenario-carousel-indicators carousel-indicators list-inline mx-auto">
+                            <li class="${properties.disableAnimations ? 'active' : ''} scenario-carousel-indicator list-inline-item cta-text-btn selected" 
+                                id="carousel-selector-0" data-slide-to="0">
+                                <span class="scenario-carousel-progress-indicator">
+                                    <span class="animate-progress-bar"></span>
+                                </span>
+                                <span class="scenario-carousel-indicator-text">${properties.carItem1Label}</span>
+                            </li>
+                            <li data-sly-test="${card2Exists}" class="scenario-carousel-indicator list-inline-item cta-text-btn" 
+                                id="carousel-selector-1" data-slide-to="1">
+                                <span class="scenario-carousel-progress-indicator">
+                                    <span class="animate-progress-bar"></span>
+                                </span>
+                                <span class="scenario-carousel-indicator-text">${properties.carItem2Label}</span>
+                            </li>
+                            <li data-sly-test="${card3Exists}" class="scenario-carousel-indicator list-inline-item cta-text-btn"
+                                id="carousel-selector-2" data-slide-to="2">
+                                <span class="scenario-carousel-progress-indicator">
+                                    <span class="animate-progress-bar"></span>
+                                </span>
+                                <span class="scenario-carousel-indicator-text">${properties.carItem3Label}</span>
+                            </li>
+                            <li data-sly-test="${card4Exists}" class="scenario-carousel-indicator list-inline-item cta-text-btn"
+                                id="carousel-selector-3" data-slide-to="3">
+                                <span class="scenario-carousel-progress-indicator">
+                                    <span class="animate-progress-bar"></span>
+                                </span>
+                                <span class="scenario-carousel-indicator-text">${properties.carItem4Label}</span> 
+                            </li>
+                            <li data-sly-test="${card5Exists}" class="scenario-carousel-indicator list-inline-item cta-text-btn" 
+                                id="carousel-selector-4" data-slide-to="4">
+                                <span class="scenario-carousel-progress-indicator">
+                                    <span class="animate-progress-bar"></span>
+                                </span>
+                                <span class="scenario-carousel-indicator-text">${properties.carItem5Label}</span>
+                            </li>
+                        </ul>
+                    </div>
+                </sly>
+
+                <div data-sly-test="${! multipleScenario}" class="single-item-bottom-margin"></div>
             </div>
-        </div>
+			 
+			<div class="card-info-wrapper position-relative ">
+                <div id="${properties.overrideId}" 
+                     class="scenario-carousel-slide-copy-container ${properties.carItem1Title && properties.carItem2Label && properties.carItem2BgImgFileRef ? 'mulcarouselMarginWrapper' : 'carouselMarginWrapper'} scenario-carousel-copy-carousel carousel carousel-fade slide touch-enabled-carousel animatedParent animateOnce" 
+                     data-appear-top-offset='-150'  
+                     data-pause="false">
+                    <div class="carousel-inner">
+                        <div class="active item carousel-item" data-slide-number="0">
+                            <div class="scenario-carousel-slide-copy text-center p-sm-5 py-5 px-4 ">
+                                <img src="${properties.carItem1IconFileRef}" class="mb-3 ${!properties.disableAnimations ? 'animated fadeIn delay-1000' : ''}" />
+                                <div class="${!properties.disableAnimations ? 'animated fadeIn delay-1000' : ''}" style="margin-top: 20px;">
+                                    <h5>${properties.carItem1Title}</h5>
+                                    <p class="p-alt-16">${properties.carItem1Body @ context='html'}</p>
+                                    <p data-sly-test="${properties.carItem1DisplayCTA}" class="card-text"><a href="${properties.carItem1CTATarget @ extension='html'}" class="btn btn-primary cta-text-btn">${properties.carItem1CTALabel}</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item carousel-item" data-slide-number="1">
+                            <div class="scenario-carousel-slide-copy text-center p-sm-5 py-5 px-4 ">
+                                <img src="${properties.carItem1IconFileRef}" class="mb-3 ${!properties.disableAnimations ? 'animated fadeIn delay-1000' : ''}" />
+                                <div class="${!properties.disableAnimations ? 'animated fadeIn delay-1000' : ''}" style="margin-top: 20px;">
+                                    <h5>${properties.carItem2Title}</h5>
+                                    <p class="p-alt-16">${properties.carItem2Body @ context='html'}</p>
+                                    <p data-sly-test="${properties.carItem2DisplayCTA}" class="card-text"><a href="${properties.carItem2CTATarget @ extension='html'}" class="btn btn-primary cta-text-btn">${properties.carItem2CTALabel}</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item carousel-item" data-slide-number="2">
+                            <div class="scenario-carousel-slide-copy text-center p-sm-5 py-5 px-4 ">
+                                <img src="${properties.carItem3IconFileRef}" class="mb-3 ${!properties.disableAnimations ? 'animated fadeIn delay-1000' : ''}" />
+                                <div class="${!properties.disableAnimations ? 'animated fadeIn delay-1000' : ''}" style="margin-top: 20px;">
+                                    <h5>${properties.carItem3Title}</h5>
+                                    <p class="p-alt-16">${properties.carItem3Body @ context='html'}</p>
+                                    <p data-sly-test="${properties.carItem3DisplayCTA}" class="card-text"><a href="${properties.carItem3CTATarget @ extension='html'}" class="btn btn-primary cta-text-btn">${properties.carItem3CTALabel}</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item carousel-item" data-slide-number="3">
+                            <div class="scenario-carousel-slide-copy text-center p-sm-5 py-5 px-4 ">
+                                <img src="${properties.carItem4IconFileRef}" class="mb-3 ${!properties.disableAnimations ? 'animated fadeIn delay-1000' : ''}" />
+                                <div class="${!properties.disableAnimations ? 'animated fadeIn delay-1000' : ''}" style="margin-top: 20px;">
+                                    <h5>${properties.carItem4Title}</h5>
+                                    <p class="p-alt-16">${properties.carItem4Body @ context='html'}</p>
+                                    <p data-sly-test="${properties.carItem4DisplayCTA}" class="card-text"><a href="${properties.carItem4CTATarget @ extension='html'}" class="btn btn-primary cta-text-btn">${properties.carItem4CTALabel}</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item carousel-item" data-slide-number="4">
+                            <div class="scenario-carousel-slide-copy text-center p-sm-5 py-5 px-4 ">
+                                <img src="${properties.carItem5IconFileRef}" class="mb-3 ${!properties.disableAnimations ? 'animated fadeIn delay-1000' : ''}" />
+                                <div class="${!properties.disableAnimations ? 'animated fadeIn delay-1000' : ''}" style="margin-top: 20px;">
+                                    <h5>${properties.carItem5Title}</h5>
+                                    <p class="p-alt-16">${properties.carItem5Body @ context='html'}</p>
+                                    <p data-sly-test="${properties.carItem5DisplayCTA}" class="card-text"><a href="${properties.carItem5CTATarget @ extension='html'}" class="btn btn-primary cta-text-btn">${properties.carItem5CTALabel}</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div data-sly-test="${!properties.disableAnimations}" class="animated animate-fade-out-top-background animateUncoverfromTop"></div>  
+            </div>
+		</div>
 
     </div>
     <!--/main slider carousel-->

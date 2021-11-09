@@ -6,48 +6,92 @@
     window.digitalData.page.onsiteSearchTerm = "${searchResults.searchTerm @ context = 'scriptString'}";
     </script>
 
-	<div class="pt-4">
+	<div class="search">
 		<form id="pl-search-form" class="form-inline justify-content-center" method="get">
-		    <div class="form-group form-group-search-input mx-sm-3 mb-2">
-		        <label for="inputSearchValue" class="sr-only">${searchResults.searchTerm}</label>
-		        <input name="q" type="text" class="form-control" id="inputSearchValue" value = "${searchResults.searchTerm}" placeholder="${properties.placeholder}">
-		    </div>
-		    <button type="submit" class="btn btn-primary cta-text-btn mr-md-5 mb-2">${properties.action}</button>
+			<div class="d-flex search-bar-width">
+			<div class="input-group form-input-search">
+				<div class="input-group-prepend">
+				  <span class="input-group-text"><i class="material-icons">search</i></span>					  
+				</div>
+				<label for="inputSearchValue" class="sr-only">${searchResults.searchTerm}</label>
+				<input name="q" type="text" class="form-control" id="inputSearchValue" value = "${searchResults.searchTerm}" placeholder="${properties.placeholder}">							
+			</div>	
+			<button type="submit" class="btn btn-primary cta-text-btn ml-3">${properties.action}</button>
+		</div>
 		</form>	    		
 	</div>
-    <div class="search-page-wrapper mx-auto" data-sly-test="${!searchResults.results}">
-        Nothing found.
+		
+    <div class="search-page-wrapper-no-results mx-auto" data-sly-test="${!searchResults.results}">
+        <div class="text-wrapper">		
+			<div class="d-flex justify-content-center">
+				<span class="material-icons description" >description</span>					
+			</div>	
+			<div class="d-flex justify-content-center">
+				<p class="no-result-description-text">Sorry, we couldn't find any matches.</p>
+			</div>									
+		</div>
     </div>
 	<div class="search-page-wrapper mx-auto" data-sly-test="${searchResults.results}">
-		<h3 class="search-results-page-title text-center mx-auto">${properties.resultsLabel || 'SEARCH RESULTS' }</h3>
-		<p class="search-results-page-subtitle text-center mt-3 mx-auto" data-sly-use.helper="${'com.paclife.core.models.PCWRSearchResultModel' @ searchResults = searchResults}">
+		<h3 class="search-results-page-title" 
+		data-sly-use.helper="${'com.paclife.core.models.PCWRSearchResultModel' @ searchResults = searchResults}">
+		<!-- <strong> ${properties.resultsLabel || 'Search Results' }</strong> -->
+		<input type="hidden" id="paginationSearchResults" value="${helper.rangeEnd}">
+		</h3>
+		<p class="search-results-page-subtitle mt-3 mx-auto" data-sly-use.helper="${'com.paclife.core.models.PCWRSearchResultModel' @ searchResults = searchResults}">
 			Showing  ${helper.rangeStart} - ${helper.rangeEnd}  of ${searchResults.resultTotal} results found for "${searchResults.searchTerm}"
-		</p>
+		</p> 		
+		<div class="data-container">	
 		<div class="container-search-items" data-sly-list.result="${searchResults.results}">
-			<div class="search-result" data-sly-use.fixedLink="${'com.paclife.core.util.LinkFixer' @ link = result.path}">
-                <a href="${fixedLink.value}" class="DTM-TAG-search-result-link"
+			
+			<div class="search-result" data-sly-use.fixedLink="${'com.paclife.core.util.LinkFixer' @ link = result.path}">								
+				<a href="${fixedLink.value}" class="DTM-TAG-search-result-link"
                    data-search-page="${helper.pageNumber}" 
-                   data-search-position="${resultList.count}">
-				<h6>${result.title}</h6>
+                   data-search-position="${resultList.count}">				
+				   <!-- <input type="hidden" id="paginationSearchResults" value="${resultList.count}"> -->
+				   <h6> <span class="search-results-index-title">${result.title}</span></h6>
 				<p class="p-alt-16">${result.description @ context = 'html'}</p>
 				<span class="pl-search-result-link">${fixedLink.value}</span>
                 </a>
 			</div>	
-		</div>
-		<div class="search-result-pagination">
-			<ul class="pagination" data-sly-list.option="${searchResults.pagination}">
-				
+		</div>	
+	</div>	
+		<div style="display:none;" class="search-result-pagination">			
+			<ul class="pagination" data-sly-list.option="${searchResults.pagination}">																								
 				<li class="page-item ${option.disabled ? 'disabled' : ''}"  >
 					<a class="page-link" href="#" data-offset-value="${option.offset}" data-sly-attribute.tabindex= "${option.active ? '-1' : false} ">
 						<i class="material-icons" data-sly-test="${option.label == 'Previous'}">keyboard_arrow_left</i>
 						${option.label}
-						<i class="material-icons" data-sly-test="${option.label == 'Next'}">keyboard_arrow_right</i>
-					
+						<i class="material-icons" data-sly-test="${option.label == 'Next'}">keyboard_arrow_right</i>					
 					</a>
-				</li>
-				
+				</li>				
 			</ul>
+		</div>		
+
+		<nav style="display:none;" aria-label="Page navigation example">
+			<ul class="pagination justify-content-center" id="pagination-demo" data-sly-list.option="${searchResults.pagination}">			  
+			  <li class="page-item ${option.disabled ? 'disabled' : ''}" >				  
+				  <a class="page-link" href="#" data-offset-value="${option.offset}" data-sly-attribute.tabindex= "${option.active ? '-1' : false} ">
+					<!-- <i class="material-icons" data-sly-test="${option.label == 'Previous'}">keyboard_arrow_left</i> -->
+					${option.label}
+					<!-- <i class="material-icons" data-sly-test="${option.label == 'Next'}">keyboard_arrow_right</i>		 -->
+					<!-- <h5 data-sly-test="${optionList.last}" data-list-size="${optionList.last ? optionList.index : ''}">Hello list size is - ${optionList.index} </h5> -->					
+					<input type="hidden" id="paginationLast" data-sly-test="${optionList.last}" data-list-size="${optionList.last ? optionList.index : ''}" value="${optionList.index}">	  
+				</a>
+			</li>			  
+			</ul>
+		  </nav>	
+		  <div class="pagination-wrapper">		 
+			<div id="pagination-items">
+			  <div class="pagination-number">
+			  <li class="items-text"><a>Items per page</a></li>
+			  <li class="paginationPages setFilterActive" id="10"><a>10</a></li>
+			  <li class="paginationPages setFilterActive" id="5"><a>5</a></li>
+			  <li class="paginationPages setFilterActive" id="25"><a>25</a></li>
+			  <li class="paginationPages setFilterActive" id="50"><a>50</a></li>			  	  
+			</div>
+			</div>
 		</div>
 	</div>
+	<br><br>
 
 </div>

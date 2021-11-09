@@ -19,10 +19,11 @@
         <sly data-sly-call="${itemTemplate.item @ item=item, properties = properties}"></sly>
     	
     	<li data-sly-test="${itemList.last && item.level == 0}" class="nav-item dropdown search-nav-item d-none d-lg-block">
-	    	<a href="#" title="Search" class="nav-link collapsed" data-toggle="collapse" data-target="#searchNavCollapse" aria-controls="searchNavCollapse" id="searchNavHeading"
+	    	<a href="#" title="Search" class="nav-link collapsed navTopToggle" data-toggle="collapse" data-target="#searchNavCollapse" aria-controls="searchNavCollapse" id="searchNavHeading"
 	        role="button" aria-expanded="false">
-	        	<i class="material-icons nav-search-icon">search</i>
+	        	<i class="material-icons nav-search-icon">search</i> 
 	    	</a>
     	</li>
     </ul>
 </template>
+

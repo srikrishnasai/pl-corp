@@ -3,7 +3,7 @@ function openVideoModal(element) {
 }
 $(document).ready(function() {
     var activateAltFiftyCarousel = function(elem) {
-        var isAnimationDone = elem.hasClass('go') || elem.attr('data-animations-disabled') == 'true' ? true : false;
+        var isAnimationDone = elem.closest('.alt-fifty-component').find('.go').length > 0 || elem.attr('data-animations-disabled') == 'true' ? true : false;
             if(isAnimationDone) {
                 setTimeout(function() {
                     elem.carousel();

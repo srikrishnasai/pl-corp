@@ -20,7 +20,8 @@ $(document).ready(function() {
 
     // PLCOM-249
 	$("#searchNavCollapse").on('shown.bs.collapse', function () {
-	    $('#inputSearchValue').focus();
+        $('#inputSearchValue').focus();
+        document.getElementById("inputSearchValue").value = "";
 	});
     
 	$(".touch-enabled-carousel").on("touchstart", function(event){

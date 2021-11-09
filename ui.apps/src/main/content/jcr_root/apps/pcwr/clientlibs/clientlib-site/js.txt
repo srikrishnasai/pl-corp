@@ -22,4 +22,6 @@ js/global.js
 js/paclife-storage.js
 js/css3-animate-it.js
 js/paclife-js-utils.js
+js/Chart.bundle.min.js
+js/pagination.min.js
 #

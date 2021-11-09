@@ -1,0 +1,75 @@
+<sly data-sly-use.template="core/wcm/components/commons/v1/templates.html" />
+<sly data-sly-call="${template.placeholder @ isEmpty=(wcmmode.edit && !properties.title)}" />
+
+<div data-component-name="Pie Chart" class="container-fluid my-5 fifty-fifty pie-chart-component">
+    <!-- When Pie Chart is on the left -->
+    <div data-sly-test="${properties.chartPos == 'left'}" class="row py-4">
+      <div class="col col-sm-12 col-md-12 col-lg-6 col-xl-6  d-flex justify-content-center align-items-center flex-column ">
+         <sly data-sly-use.chartData="${'com.paclife.core.charts.PieChartModel'}" />
+         <div class="content-wrapper animatedParent animateOnce" data-appear-top-offset='-150'>
+            <div class="pie-chart-outer-wrapper animated fadeIn"
+                 data-bar-widths="${chartData.barWidths}"
+                 data-bar-colors="${chartData.barColors}"
+                 data-bar-labels="${chartData.barLabels}">
+               <div class="pie-chart-inner-wrapper">
+                  <canvas id="doughnutChart"></canvas>
+                  <div class="pie-chart-contenet-wrapper">
+                     <p class="chart-text-value animated fadeIn delay-1500" style="opacity: 0;">${properties.pieChartTotal}</p>
+                     <p class="chart-text-second-value animated fadeIn delay-1500" style="opacity: 0;">${properties.chartTitle}</p>
+                  </div>
+               </div>
+            </div>
+            <div id="my-legend-con" class="legend-con animated fadeIn delay-1500" style="opacity: 0;">
+               <ul data-sly-list.bars="${chartData.multiFieldItems}">
+                  <li style="margin-right: 10px;">
+                     <span class="chart-legend" style="background-color: ${bars.barColor @context='styleString'};"></span>
+                     <span class="chart-legend-label-text">${bars.barLabel} - ${bars.barValue} </span>
+                  </li>
+               </ul>
+            </div>
+         </div>
+      </div>
+      <div class="col col-sm-12 col-md-12 col-lg-6 col-xl-6 d-flex justify-content-center align-items-center flex-column animatedParent animateOnce" data-appear-top-offset='-150'>
+         <div class="px-4 text-content-right text-content-pie-chart animated fadeInDownHalfShort displayclass-bar" >
+            <h3>${properties.heading}</h3>
+            <h6>${properties.subHeading}</h6>
+            <div class="pcwr-richtext">${properties.richText @ context='html'}</div>
+         </div>
+      </div>
+   </div>
+   
+   <!-- When Pie Chart is on the right -->
+   <div data-sly-test="${properties.chartPos == 'right'}" class="row py-4">
+      <div class="col col-sm-12 col-md-12 col-lg-6 col-xl-6 d-flex justify-content-center align-items-center flex-column order-2 order-md-1 animatedParent animateOnce" data-appear-top-offset='-150'>
+         <div class="px-4 text-content-left text-content-pie-chart animated fadeInDownHalfShort displayclass-bar" >
+            <h3>${properties.heading}</h3>
+            <h6>${properties.subHeading}</h6>
+            <div class="pcwr-richtext">${properties.richText @ context='html'}</div>
+         </div>
+      </div>
+      <div class="col col-sm-12 col-md-12 col-lg-6 col-xl-6 d-flex justify-content-center align-items-center flex-column order-1 order-md-2">
+         <sly data-sly-use.chartData="${'com.paclife.core.charts.PieChartModel'}" />
+         <div class="content-wrapper animatedParent animateOnce" data-appear-top-offset='-150'>
+            <div class="pie-chart-outer-wrapper"
+                 data-bar-values="${chartData.barValues}"
+                 data-bar-colors="${chartData.barColors}"
+                 data-bar-labels="${chartData.barLabels}">
+               <div class="pie-chart-inner-wrapper" style="height:250px; width:250px;">
+                  <canvas id="doughnutChart"></canvas>
+                  <div class="pie-chart-contenet-wrapper" >
+                     <p class="chart-text-value animated fadeIn delay-1500 " style="opacity: 0;">${properties.pieChartTotal}</p>
+                  </div>
+               </div>
+            </div>
+            <div id="my-legend-con" class="legend-con animated fadeIn  delay-1500" data-appear-top-offset='-150' style="opacity: 0;">
+               <ul data-sly-list.bars="${chartData.multiFieldItems}">
+                  <li>
+                     <span class="chart-legend" style="background-color: ${bars.barColor @context='styleString'};"></span>
+                     <span class="chart-legend-label-text">${bars.barLabel} - ${bars.barValue} </span>
+                  </li>
+               </ul>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>

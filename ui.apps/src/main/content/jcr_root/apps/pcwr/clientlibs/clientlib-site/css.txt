@@ -8,3 +8,4 @@ bottom.less
 animations.css
 animations-ie-fix.css
 animate.css
+pagination.css

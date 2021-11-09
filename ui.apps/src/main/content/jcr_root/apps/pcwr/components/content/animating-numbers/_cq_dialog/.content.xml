@@ -72,15 +72,15 @@
                                 <items jcr:primaryType="nt:unstructured">
                                     <turquoise
                                         jcr:primaryType="nt:unstructured"
-                                        text="Turquoise (#004685)"
+                                        text="Turquoise (#24c5cf)"
                                         value="turquoise"/>
                                     <deepBlue
                                         jcr:primaryType="nt:unstructured"
-                                        text="Deep Blue (#008ED7)"
+                                        text="Deep Blue (#004685)"
                                         value="deep-blue"/>
                                     <brightBlue
                                         jcr:primaryType="nt:unstructured"
-                                        text="Bright Blue (#24C5CF)"
+                                        text="Bright Blue (#008ed7)"
                                         value="bright-blue"/>
                                     <lightGrey
                                         jcr:primaryType="nt:unstructured"
@@ -106,6 +106,10 @@
                                         jcr:primaryType="nt:unstructured"
                                         text="Gold (#FFA800)"
                                         value="gold"/>
+                                    <white
+                                        jcr:primaryType="nt:unstructured"
+                                        text="White"
+                                        value="white"/>
                                 </items>
                             </color>
                         </items>

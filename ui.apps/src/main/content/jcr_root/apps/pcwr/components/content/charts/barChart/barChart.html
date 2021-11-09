@@ -1,0 +1,33 @@
+<sly data-sly-use.template="core/wcm/components/commons/v1/templates.html" />
+<sly data-sly-call="${template.placeholder @ isEmpty = !properties.numberOfCharts}" />
+
+<div data-component-name="Bar Chart" class="bar-chart-component animatedParent animateOnce" data-appear-top-offset='-300' data-sly-test="${properties.numberOfCharts}">
+	<div id="barCharts">
+		<h3 data-sly-element="${properties.titleEl}" class="bar-chart-title animated fadeInLeftShort displayclass-bar">${properties.title}</h3>
+		<div class="bar-charts-wrapper row ${properties.numberOfCharts == '3' ? 'padding-three-bar' : ''}  ${properties.numberOfCharts == '2' ? 'padding-two-bar' : ''} 
+		${properties.numberOfCharts == '4' ? 'padding-four-bar' : ''}">
+
+			<sly data-sly-use.barCharts="${'com.paclife.core.charts.BarChartModel'}" />
+			<sly data-sly-list.chart="${barCharts.charts}">
+				<div class="bar-chart ${properties.numberOfCharts == '3' ? 'col-md-4 col-lg-4 col-xl-4 col-sm-4 col-12' : ''}  ${properties.numberOfCharts == '2' ? 'col-md-6 col-lg-6 col-xl-6 col-sm-6 col-12' : ''}
+				 ${properties.numberOfCharts == '4' ? 'col-md-6 col-lg-6 col-xl-3 col-sm-6 col-12' : ''}  ${properties.numberOfCharts == '1' ? 'col-md-6' : ''} " data-sly-test="${chart.chartHeading || chart.chartSubHeading}">
+					<div class="bar-chart-heading-wrapper">
+						<h6 class="bar-chart-heading animated fadeInLeftShort displayclass-bar">${chart.chartHeading}</h6>
+						<p class="bar-chart-sub-heading animated fadeInLeftShort displayclass-bar">${chart.chartSubHeading}</p>
+					</div>
+					<sly data-sly-list.bars="${chart.chartBarMultiFieldItems}">
+						<div class="bar-chart-bar-wrapper">
+							<div class="d-flex">
+								<div class="bar-chart-bar" data-bar-width="${bars.barWidth}"
+								 	 style="background-color: ${bars.barColor @context='styleString'};">
+								</div>
+								<span class="bar-chart-bar-value animated fadeInLeftShort delay-2750 displayclass-bar" data-bar-value="${bars.barValue}" >${bars.barValue}</span>
+							</div>
+							<p class="bar-chart-bar-label animated fadeInLeftShort displayclass-bar">${bars.barLabel}</p>
+						</div>
+					</sly>
+				</div>
+			</sly>
+		</div>
+	</div>
+</div>

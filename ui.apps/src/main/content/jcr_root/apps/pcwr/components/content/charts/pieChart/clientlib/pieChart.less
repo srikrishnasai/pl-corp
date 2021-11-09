@@ -1,0 +1,111 @@
+@import (reference) "/apps/pcwr/clientlibs/clientlib-site/css/color.less";
+
+.content-wrapper{
+    display: flex;
+    height: 100%;
+    align-items: center;
+    width: 100%;
+    .pie-chart-outer-wrapper{
+        position: relative;
+        // margin-top: 10%;
+        .pie-chart-inner-wrapper{
+            height: 250px;
+            width: 250px;
+        }
+        .pie-chart-contenet-wrapper{
+            position:absolute;
+            left: 50%;
+            transform: translate(-50%);
+            top: 36.5%;
+            text-align: center;
+
+            .chart-text-value{
+                font-family: Montserrat;
+                font-style: normal;
+                font-weight: bold;
+                font-size: 40px !important;
+                line-height: 49px;
+            }
+            .chart-text-second-value{
+                font-family: Montserrat;
+                font-style: normal;
+                font-weight: 600;
+                font-size: 18px !important;
+                line-height: 22px;
+                // margin-left: 13%;
+                margin-top: -10%;
+            }
+
+        }
+    }
+    .legend-con {
+         ul {
+             list-style: none;
+         }
+     
+         li {
+             display: flex;
+             align-items: center;
+             margin-bottom: 4px;
+     
+             span {
+                 display: inline-block;
+             }
+     
+             span.chart-legend {
+                 width: 20px;
+                 height: 20px;
+                 margin-right: 10px;
+                 border-radius:100%
+             }
+         }
+     }  
+}
+
+@media screen and (max-width:576px) {
+    .content-wrapper{
+        flex-direction: column;
+    
+        .pie-chart-outer-wrapper{
+            margin:auto;
+          
+            .pie-chart-contenet-wrapper{
+                top: 37%;
+            }
+        }
+        .legend-con {
+            margin-top: 5%;
+            ul{
+                padding: 0;
+            }
+         }
+    }
+   
+}
+@media screen and (min-width:577px) and (max-width:766px) {
+
+    .content-wrapper{
+       justify-content: center;
+    }    
+}
+
+@media screen and (min-width:767px) and (max-width:991px) {
+
+    .content-wrapper{
+       justify-content: center;
+    }    
+}
+
+@media screen and (min-width:992px) and (max-width:1199px) {
+    .pie-chart-component.fifty-fifty {
+        padding: 1rem;
+        .content-wrapper{
+            gap: 20px;
+            .legend-con {
+                ul {
+                    display: contents;
+                }
+             }
+        }
+    }
+}

@@ -1,5 +1,6 @@
 <div class="paclife-image pacific-life-image-animation-wrapper animatedParent animateOnce"
-    data-sly-attribute.data-appear-top-offset="${!properties.disableAnimations ? '-150' : ''}">
+     data-is-image-center-aligned="${properties.centerHorizontally ? 'true' : 'false'}"
+     data-sly-attribute.data-appear-top-offset="${!properties.disableAnimations ? '-150' : ''}">
     <div
         class="${!properties.disableAnimations ? ' animated animateOnce display-wrapper-alt' : ''}
                  ${!properties.disableAnimations && (!properties.animationDirection || properties.animationDirection == 'top') ? ' fadeInDownHalfVeryShort' : ''}
@@ -18,7 +19,7 @@
                 class="pacific-life-image ${image.cssClass} img-fluid ${properties.centerHorizontally ? 'mx-auto d-block': ''} ${properties.fullWidth ? 'w-100': ''}"
                 data-emptytext="Image" usemap="${image.imageMaps.hash}" data-sly-test="${image.src}" />
             <i data-sly-test="${properties.highResImageFileRef}" 
-               class="paclife-image-full-screen-btn material-icons ${properties.highResImageDarkFullScreenIcon ? 'paclife-image-full-screen-btn-dark' : ''}"
+               class="animated fadeIn delay-1000 paclife-image-full-screen-btn material-icons ${properties.highResImageDarkFullScreenIcon ? 'paclife-image-full-screen-btn-dark' : ''}"
                data-toggle="modal"
                data-target="#paclife-image-modal">fullscreen</i>  
                         
@@ -36,6 +37,9 @@
     <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 1240px">
         <div class="modal-content">
             <div class="modal-body">
+                <div class="modal-body__overlay">
+                    <img class="modal-body__loader-icon" src="/etc/designs/pcwr/default/images/ajax-loader-smallgray.gif">
+                </div>
                 <img 
                      data-img-src="${properties.highResImageFileRef}" 
                      src=""

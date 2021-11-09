@@ -1,9 +1,11 @@
 <sly data-sly-use.template="core/wcm/components/commons/v1/templates.html"/>
 <sly data-sly-call="${template.placeholder @ isEmpty=(wcmmode.edit && !properties.headline)}"/>
-<div data-component-name="Insights Featured Container" class="container-fluid">
+<div data-component-name="Insights Featured Container" 
+	 class="${!properties.disableAnimations ? 'insights-featured-container-animations-disabled' : ''} container-fluid animatedParent animateOnce"  
+	 data-appear-top-offset='-150'>
 	
-	<h3 class="text-center insights-card-main-headline" data-sly-test="${properties.headline}">${properties.headline}</h3>
 	
+	<h3 class="text-center insights-card-main-headline animated fadeInDownShort" style="opacity: 0;" data-sly-test="${properties.headline}">${properties.headline}</h3>
 	<div data-sly-test="${properties.enableTagCloud}" class="row" data-sly-resource="${@path ='tagCloud' , resourceType = 'pcwr/components/content/tagCloud' } "></div>
 	<div class="row insights-featured-container">
 
@@ -22,7 +24,7 @@
 			</div>
 			
             <sly data-sly-test.title='${item.properties["pageTitle"] || item.properties["jcr:title"]}'/>
-			<div class="card insights-card" data-media-block-title="${title}">
+			<div class="card insights-card animated delay-500" data-media-block-title="${title}">
 			    <img class="card-img-top insights-img" src="${item.properties['insightCardThumbnail']}" alt="Card image cap">
 			    <div class="card-body insights-body">
 			    	

@@ -1,41 +1,90 @@
 var Shuffle = window.Shuffle;
 var adjustInsightsCardHeight = $('.insights-card-filter-item').matchHeight({ property: 'height' });
+var gridItems = $('.insights-card');
+
+var showItemsInViewport = function (changes) {
+	changes.forEach(function (change) {
+		if (change.isIntersecting) {
+			change.target.classList.add('in');
+		}
+	});
+};
+  
+  /**
+   * Only the items out of the viewport should transition. This way, the first
+   * visible ones will snap into place.
+   */
+var addTransitionToItems = function () {
+	for (var i = 0; i < this.gridItems.length; i++) {
+		var inner = this.gridItems[i].querySelector('.insights-card-wrapper__inner');
+			
+		if($(this.gridItems[i]).offset().top > $(window).scrollTop()) {
+			inner.classList.add('insights-card-wrapper__inner--transition');
+		} 
+	}
+};
+
+if(window.IntersectionObserver) {
+	var callback = this.showItemsInViewport.bind(this);
+	this.observer = new window.IntersectionObserver(callback, {
+		threshold: 0.3,
+	});
+
+	// Loop through each grid item and add it to the viewport watcher.
+	for (var i = 0; i < this.gridItems.length; i++) {
+		this.observer.observe(this.gridItems[i]);
+	}
+}
 
 var myShuffle2 = new Shuffle(document.querySelector('.my-shuffled'), {
   itemSelector: '.insights-card-filter-item'
   //sizer: '.my-sizer-element',
   ,delimeter: ','  
   ,buffer: 1
-  ,isCentered: true
+  ,isCentered: true,
+  speed: 0
 });
 
 var mvmnt = 0;
 myShuffle2.on(Shuffle.EventType.LAYOUT, function (data) {
+	// Add the transition class to the items after ones that are in the viewport
+	// have received the `in` class.
+	setTimeout(function () {
+		this.addTransitionToItems();
+	}.bind(this), 100);
+	
     console.log('finished moving');
-    
+    /*
     mvmnt++;
     console.log('movement='+mvmnt);
 
-    if(mvmnt>1){
-       console.log('Movement > 1');    
+    if(mvmnt>=1){
+       console.log('Movement >= 1');    
        $('#insights-grid').css('left','0');
      }
+	*/
 });
 
 window.jQuery('span[name="shuffle-filter"]').on('click', function (evt) {
 	var input = evt.currentTarget;
 	if (input.classList.contains('nav-link')) {
+		$('.insights-card').each(function() {
+			$(this).removeClass('in');
+			$(this).find('.insights-card-wrapper__inner').css({'opacity': '1', 'transform': 'none'});
+			$(this).find('.insights-card-wrapper__inner').removeClass('insights-card-wrapper__inner--transition');
+		});
+
 		myShuffle2.filter(input.getAttribute("value"));
 		adjustInsightsCardHeight;
 	}
 });
 
 $(document).ready(function () {
+	
     if( $('#randomize-cards').val() == "Yes" ){
-
         //mvmnt++;
         console.log('Randomize '+mvmnt);
-        
+
         function sortByBlockTitle(element){
             return element.getAttribute('data-media-block-title').toLowerCase();
         }
@@ -46,7 +95,6 @@ $(document).ready(function () {
         };
 
         myShuffle2.sort(options);
-   
     } else {
         console.log("not randomized");
         myShuffle2;
@@ -130,5 +178,3 @@ $(document).ready(function () {
 		findIncHeight();
 	})*/
 });
-
-

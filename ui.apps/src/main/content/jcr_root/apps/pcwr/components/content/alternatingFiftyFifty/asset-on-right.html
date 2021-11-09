@@ -1,7 +1,7 @@
 <!-- Asset Markup when it is on Right -->
 <div class="col-md-6 d-flex justify-content-center align-items-center flex-column order-1 order-md-2 image-block
         ${!properties.disableAnimations ? ' position-relative animatedParent animateOnce overflow-hidden' : ''}" 
-        data-sly-attribute.data-appear-top-offset="${!properties.disableAnimations ? '-200' : ''}">
+        data-sly-attribute.data-appear-top-offset="${!properties.disableAnimations ? '-150' : ''}">
     
     <!-- Animation wrapper for the assets -->
     <div class="animated animateOnce d-flex justify-content-center align-items-center
@@ -11,14 +11,10 @@
         <!-- Image wrapper -->
         <sly data-sly-test="${!properties.altFiftyBgType || properties.altFiftyBgType == 'image'}">
             <img data-sly-test.isVideo="${properties.altFiftyVideo}" 
-                class="img-fluid pointer width-img
-                        ${!properties.disableAnimations && properties.animationDirection != 'side' ? ' animated animate-image-from-top animateOnce' : ''}
-                        ${!properties.disableAnimations && properties.animationDirection == 'side' ? '  animated animate-image-from-right animateOnce' : ''}" 
+                class="img-fluid pointer width-img" 
                 src="${properties.altFiftyImgPath}" onclick="openVideoModal(this)"/>
             <img data-sly-test="${! isVideo}" 
-                class="img-fluid width-img
-                        ${!properties.disableAnimations && properties.animationDirection != 'side' ? ' animated animate-image-from-top animateOnce' : ''} 
-                        ${!properties.disableAnimations && properties.animationDirection == 'side' ? ' animated animate-image-from-right ' : ''}" 
+                class="img-fluid width-img" 
                 src="${properties.altFiftyImgPath}"/>
         </sly>
 
@@ -28,8 +24,8 @@
             data-sly-use.randomNumber="${'com.paclife.core.util.RandomNumberGenerator'}"
             data-animations-disabled="${properties.disableAnimations}"
             class="altFiftyCarousel altFiftyCarouselRight-${randomNumber.randomNumber} carousel carousel-fade slide touch-enabled-carousel 
-                    ${!properties.disableAnimations && properties.animationDirection != 'side' ? ' width-img animated animate-image-from-top' : ''}
-                    ${!properties.disableAnimations && properties.animationDirection == 'side' ? ' width-img animated animate-image-from-right animateOnce' : ''}"
+                    ${!properties.disableAnimations && properties.animationDirection != 'side' ? ' width-img ' : ''}
+                    ${!properties.disableAnimations && properties.animationDirection == 'side' ? ' width-img ' : ''}"
                     data-pause="false">
             <div data-sly-list.cardItem="${model.multiFieldItems.listChildren}" class="carousel-inner">
                 <div class="carousel-item item ${cardItemList.index == 0 ? 'active' : ''}">
@@ -51,8 +47,8 @@
         <!-- Video wrapper -->
         <div data-sly-test="${properties.altFiftyBgType == 'video'}" 
                 class="alt-fifty-video-wrapper
-                    ${!properties.disableAnimations && properties.animationDirection != 'side' ? ' width-img animated animate-image-from-top' : ''}
-                    ${!properties.disableAnimations && properties.animationDirection == 'side' ? ' width-img animated animate-image-from-right animateOnce' : ''}"
+                    ${!properties.disableAnimations && properties.animationDirection != 'side' ? ' width-img ' : ''}
+                    ${!properties.disableAnimations && properties.animationDirection == 'side' ? ' width-img ' : ''}"
                     data-sly-use.inlineVideo="${'com.paclife.core.models.PCWRMultifieldHelperModel' @ nodeName='inlineVideo'}">
             <sly data-sly-test="${inlineVideo.childResource}"
                 data-sly-use.template="pcwr/components/content/inlineVideo/inlineVideo.html"

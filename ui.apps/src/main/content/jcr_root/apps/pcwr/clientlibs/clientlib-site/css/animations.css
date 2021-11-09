@@ -104,6 +104,13 @@
     -o-animation-delay:2.5s;
     animation-delay:2.5s;
 }
+.delay-2750 {
+    -webkit-animation-delay:2.75s;
+    -moz-animation-delay:2.75s;
+    -o-animation-delay:2.75s;
+    animation-delay:2.75s;
+}
+
 .delay-3000 {
     -webkit-animation-delay:3.0s;
     -moz-animation-delay:3.0s;

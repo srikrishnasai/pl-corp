@@ -2,3 +2,80 @@
 [data-login="Hide"] {
     display: none !important;
 }
+@keyframes animate-image-right-to-left {
+    0%   {
+        opacity: 0.6;
+        // transform: translateX(30%);
+        width: 15.313rem;
+    }
+    50%{
+        opacity: 0.6;
+        // transform: translateX(15%);
+        width: 31.25rem;
+    }    
+    100% {
+        opacity: 1;
+        // transform: translateX(0);
+        width: 43.75rem;
+    }
+}
+
+
+.search-nav.show{
+    .form-group-search-input-new{
+        // transform: translateX(30%);
+        width: 15.313rem;
+        animation: animate-image-right-to-left 0.4s linear  forwards;
+    }
+}
+
+.hideNavbar{
+    opacity: 0;
+    cursor: none;
+    pointer-events: none;
+}
+
+.search-nav .form-group-search-input-new{    
+    position: absolute;
+    width: 700px;
+    height: 48px;
+    right: 370px;
+    top: 17px;
+    background: #FFFFFF;
+    border: 1px solid #E7E7E7;
+    box-sizing: border-box;
+    border-radius: 4px;
+
+    input{
+        border: none;
+    }
+
+    .input-group-text{
+        background-color: white;
+        border: none;
+    }
+
+    input:focus{
+        outline: none;
+        box-shadow: none;
+    }
+
+    .input-group-prepend {
+        margin-right: 0;
+
+        button {
+            border-radius: 3px;
+        }
+
+    }
+
+    a{
+        cursor: pointer;
+        margin-top: 10px;
+        margin-right: 12px;
+
+        i{
+            color: #C2C2C2
+        }
+    }
+}

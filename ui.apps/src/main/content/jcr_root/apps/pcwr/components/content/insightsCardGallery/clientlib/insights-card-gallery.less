@@ -137,12 +137,18 @@
 	}
 }
 
-@media (min-width: 767px) and (max-width: 1199px) {
+@media (min-width: 576px) and (max-width: 1199px) {
 	#insights-grid {
 		.insights-gallery-card {
 			.card.insights-card-wrapper__inner img {
 				max-width: 330px;
 				min-width: 330px;
+			}
+			a.clickable{
+				&:hover {
+					width: 330px;
+					left: 15px;
+				}
 			}
 		}
 	}
@@ -156,6 +162,11 @@
 				max-width:22.625rem;
 				min-width: 22.625rem;
 				min-height: 32.625rem;
+			}
+			a.clickable{
+				&:hover {
+					left: 15px;
+				}
 			}
 		}
 	}

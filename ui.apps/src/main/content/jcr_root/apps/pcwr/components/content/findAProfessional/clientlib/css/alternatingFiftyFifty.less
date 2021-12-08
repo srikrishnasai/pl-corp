@@ -15,3 +15,34 @@
 }
 /*IE 11 text not wrapping fix*/
 .text-content-right, .text-content-left{width:100%}
+
+.fifty-fifty.fafp-animations-disabled .animatedParent {
+	.fadeInDownHalfShort, 
+	.fadeInRightHalfShort, 
+	.animate-uncover-with-offset-parent-from-top, 
+	.animate-uncover-with-offset-parent,
+	.animate-uncover-with-offset-parent-from-right,
+	.animate-image-from-top,
+	.animate-image,
+	.animate-image-from-right,
+	.animateUncoverWithOffSet,
+	.animateUncoverfromRight,
+	.animate-fade-out-top-background,
+	.animateUncoverfromLeft
+	.animateUncoverfromTop {
+		animation: none;
+		-webkit-animation: none;
+		transform: none;
+		-ms-animation: none;
+		animation-duration: 0.01s;
+		opacity: 1 !important;
+	}
+	
+	.animateUncoverWithOffSet,
+	.animateUncoverfromRight,
+	.animate-fade-out-top-background,
+	.animateUncoverfromLeft
+	.animateUncoverfromTop {
+		display: none;
+	}
+}

@@ -15,7 +15,7 @@
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/-->
 <template data-sly-template.group="${@ items='The navigation items for the current level', properties = 'Component properties'}" data-sly-use.itemTemplate="item.html">
 
-    <ul class="cmp-navigation__group navbar-nav mx-lg-auto mr-auto g order-lg-0 order-1" data-sly-list="${items}">
+    <ul class="cmp-navigation__group navbar-nav navbar-nav-header mx-lg-auto mr-auto g order-lg-0 order-1" data-sly-list="${items}">
         <sly data-sly-call="${itemTemplate.item @ item=item, properties = properties}"></sly>
     	
     	<li data-sly-test="${itemList.last && item.level == 0}" class="nav-item dropdown search-nav-item d-none d-lg-block">

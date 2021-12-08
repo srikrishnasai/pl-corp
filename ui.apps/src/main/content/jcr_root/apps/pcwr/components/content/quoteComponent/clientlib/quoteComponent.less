@@ -1,0 +1,242 @@
+.quoteComponent{
+    .quoteImgWrapper{
+        width: 100%;
+        margin: 0 auto;
+        position: relative;
+        overflow: hidden;
+        .quoteImage{
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            transform: scale(1.1);
+            position:absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+
+            &.go {
+                animation: scale_quoteImage 25s linear 1.75s forwards; 
+                -webkit-animation: scale_quoteImage 25s linear 1.75s forwards; 
+
+                &.quoteImage-repeat-repeat {
+                    -webkit-animation-iteration-count: infinite;
+				    animation-iteration-count: infinite;	
+                }
+                
+                &.quoteImage-repeat-once {
+                    -webkit-animation-iteration-count: 1;
+				    animation-iteration-count: 1;	
+                }
+
+                &.quoteImage-repeat-none {
+                    animation: none;
+                    -webkit-animation: none;
+                }
+            }
+        }
+
+        .quoteOverlay{
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .quoteContentWrapper{
+
+            position:absolute;
+            left: 50%;
+            transform: translate(-50%);
+            top: 0;
+            bottom: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            
+            .quoteMark-front{
+                color: #0082C4;
+                font-size: 82px ;
+                font-family : -webkit-body;
+                font-style: initial;
+                line-height: 0;
+            }
+                
+            .quoteMark-back{
+                color: #0082C4;
+                font-size: 82px ;
+                font-family : -webkit-body;
+                font-style: initial;
+                line-height: 0;
+                position: relative;
+                top: 10px;
+            }
+           
+            .quoteTextWrapper{
+                font-family: 'Open Sans';
+                font-style: italic;
+                font-weight: bold;
+                font-size: 40px ;
+                line-height: 55px;
+                text-align: center;
+                color: #FFFFFF;
+                margin-bottom: 2rem;
+
+                &.quoteTextAlign--right {
+                    text-align: right;
+                }
+            }
+            .QuoteAuthor{
+                font-family: Merriweather;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 24px;
+                line-height: 30px;
+                color: #FFFFFF;
+                text-align: center;
+                
+                &.quoteAuthorAlign--right {
+                    text-align: right;
+                }
+            }
+        }
+    }
+}
+/*Disbaling animations when configured through dialog*/
+.quoteComponent.quote-component-animations-disabled {
+    .animated,
+    .fadeInDownShort,
+    .animate-uncover-with-offset-parent-from-top,
+    .fadeIn {
+        opacity: 1 !important;
+        transform: none !important;
+        animation: none !important;
+        -webkit-animation: none !important;
+        animation-duration: 0.01s !important;
+    }
+}
+
+
+@keyframes  scale_quoteImage {
+    0%{
+        transform: scale(1.1);
+    }
+	50%{
+		transform: scale(1);
+	}
+	100%{
+		transform: scale(1.1);
+	}
+}
+
+@media screen and (max-width: 1199px){
+    .quoteComponent{
+        .quoteImgWrapper{
+            .quoteContentWrapper{
+                .quoteTextWrapper{
+                    font-size: 29px;
+                    line-height: 51px;
+                }
+                .QuoteAuthor{
+                    font-size: 22px;
+                }
+            }
+        }
+       
+    }
+}
+
+@media screen and (max-width:768px) {
+    .quoteComponent.quoteComponent-mobile-animations-disabled {
+        .animated,
+        .fadeInDownShort,
+        .animate-uncover-with-offset-parent-from-top,
+        .fadeIn {
+            opacity: 1 !important;
+            transform: none !important;
+            animation: none !important;
+            -webkit-animation: none !important;
+            animation-duration: 0.01s !important;
+        }
+    }
+}
+
+@media screen and (max-width:768px) {
+    .quoteComponent{
+        .quoteImgWrapper{
+            .quoteContentWrapper{
+                .quoteTextWrapper{
+                    font-size: 31px ;
+                    line-height: 48px;
+                }
+                .QuoteAuthor{
+                    font-size: 20px;
+                    line-height: 21px;
+                }
+            }
+        }
+       
+    }
+}
+
+@media screen and (max-width:576px) {
+    .quoteComponent{
+        .quoteImgWrapper{
+            .quoteContentWrapper{
+                .quoteTextWrapper{
+                    font-size: 30px !important;
+                    line-height: 1;
+                    .quoteMark-front{
+                        font-size: 53px !important;
+                    }
+                    .quoteMark-back{
+                        font-size: 53px !important;
+                        top: 10px !important;
+                    }
+                }
+                .QuoteAuthor{
+                    font-size: 17px;
+                    line-height: 21px;
+                    text-align: center;
+        
+                }
+            }
+        }
+       
+    }
+}
+
+@media screen and (max-width:1199px) {
+
+    .quoteComponent{
+        .quoteImgWrapper{
+            .quoteContentWrapper{
+                .quoteTextWrapper{
+                    .quoteMark-back{
+                        top: 20px;
+                    }
+                }
+            }
+        }
+       
+    }
+    
+}
+
+@media screen and (-ms-high-contrast: active) , screen and (-ms-high-contrast: none) {
+    .quoteComponent {
+        .animated,
+        .fadeInDownShort,
+        .animate-uncover-with-offset-parent-from-top,
+        .fadeIn,
+        .quoteImage {
+            opacity: 1 !important;
+            transform: none !important;
+            animation: none !important;
+            -webkit-animation: none !important;
+            animation-duration: 0.01s !important;
+        }
+    }
+}
+

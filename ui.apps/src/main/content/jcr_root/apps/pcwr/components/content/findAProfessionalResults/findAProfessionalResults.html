@@ -14,42 +14,183 @@
 	<input type="hidden" id="fafp-webservice-url" value="${config.fafpWebserviceUrl}"/>
 	<input id="fafp-url-zip-code" type="hidden" value="${request.requestPathInfo.selectors[0]}"/>
 	<div data-component-name="Find A Professional Results" class="find-a-pro-results-page">
-		<div class="pt-md-4">
-			<form class="form-inline justify-content-center">
-			    <div class="form-group form-group-search-input mx-sm-3 mb-2">
-			        <label for="fafp-inputSearchValue" class="sr-only">${properties.placeHolderText || 'Enter ZIP code'}</label>
-			        <input type="text" class="form-control" id="fafp-inputSearchValue" placeholder="Enter ZIP code"
-                        value="${request.requestPathInfo.selectors[0]}" 
-                        onkeyup="$('button').prop('disabled', !this.value.match(/^\d{5}$/))">
-			    </div>
-			    <button id="fafp-zip-code-button" type="submit" class="btn btn-primary cta-text-btn mr-md-5 mb-2">GO</button>
-			</form>	    		
+		<div class="pt-md-4 find-a-pro-page-wrapper mx-auto">
+			<div class="row responsive-screen-row">
+				<div class="col-md-8 col-sm-12 col-xs-12">
+					<ul class="nav nav-pills filterTab float-left" id="myTab" role="tablist" >						  
+						  <li class="nav-item fafp-filter insights-gallery-filter">	    		
+							<span class="nav-link cta-text-btn all-text p-4 active show d-flex" id="all" style="cursor:pointer;"
+								 aria-selected="false" data-toggle="pill" name="shuffle-filter" value="all"><span class="filter-text">All</span></span>
+						  </li>		 		 
+						  <li  class="nav-item fafp-filter insights-gallery-filter">	    		
+							<span class="nav-link cta-text-btn all-text p-4 d-flex" id="all" style="cursor:pointer;"
+								 aria-selected="false" data-toggle="pill" name="shuffle-filter" value="annuities"><span class="filter-text">Annuities</span></span>
+						  </li>		 		 
+						  <li  class="nav-item fafp-filter insights-gallery-filter">	    		
+							<span class="nav-link cta-text-btn all-text p-4 d-flex" id="all" style="cursor:pointer;"
+								 aria-selected="false" data-toggle="pill" name="shuffle-filter" value="lifeInsurance"><span class="filter-text">Life Insurance</span></span>
+						  </li>		 		 
+						  <li  class="nav-item fafp-filter insights-gallery-filter">	    		
+							<span class="nav-link cta-text-btn all-text p-4 d-flex" id="all" style="cursor:pointer;"
+								 aria-selected="false" data-toggle="pill" name="shuffle-filter" value="mutualFunds"><span class="filter-text">Mutual Funds</span></span>
+						  </li>		 		 				
+					</ul>
+				</div>
+				<div class="col-md-4 col-sm-12 col-xs-12 responsive-screen-col">
+					<form class="d-flex fapr-search-bar float-right">
+						<!-- <div class="form-group form-group-search-input mx-sm-3 mb-2">
+							<label for="fafp-inputSearchValue" class="sr-only">${properties.placeHolderText || 'Enter ZIP code'}</label>
+							<input type="text" class="form-control" id="fafp-inputSearchValue" placeholder="Enter ZIP code"
+								value="${request.requestPathInfo.selectors[0]}" 
+								onkeyup="$('button').prop('disabled', !this.value.match(/^\d{5}$/))">
+						</div>
+						<button id="fafp-zip-code-button" type="submit" class="btn btn-primary cta-text-btn mr-md-5 mb-2">GO</button>
+						 -->
+		
+						<div class="input-group form-input-search">
+							<div class="input-group-prepend">
+							  <span class="input-group-text"><i class="material-icons">search</i></span>					  
+							</div>
+							<label for="fafp-inputSearchValue" class="sr-only">${properties.placeHolderText || 'Enter ZIP code'}</label>
+							<input type="text" class="form-control" id="fafp-inputSearchValue" placeholder="Enter ZIP code"
+								value="${request.requestPathInfo.selectors[0]}" 
+								onkeyup="$('button').prop('disabled', !this.value.match(/^\d{5}$/))">					
+						</div>	
+						<button id="fafp-zip-code-button" type="submit" class="btn btn-primary cta-text-btn ml-2">GO</button>
+					</form>	  
+				</div>
+			</div>
+
+			<!-- <div class="row mt-4">
+				<div class="col-md-6">
+					<div id="resultlist" class="container-search-items"></div>				
+				</div>
+
+				<div class="col-md-6">
+					<div class="map-view">
+						
+					</div>
+				</div>
+			</div>			  		 -->
 		</div>
+		
+
 		<div class="find-a-pro-page-wrapper mx-auto my-5">
 			<div id="fafp-error-msg" class="row d-none">
 				<div class="col-sm-4"></div> 
 				<div class="col"></div> 
 			</div>
+			<div id="shimmer-container">
+				<div id='find'><div class='shimmer-wrapper'>
+					<div class='line-container'>
+						<div class="info-wrapper">
+							<div class="animate-shimmer line-container-name-width"></div>
+							<div class='line-content-wrapper'>
+								<div class='icon-wrapper'>
+									<div class='stroke animate-shimmer line-container-icon-width'></div>
+									<div class='stroke animate-shimmer line-container-icon-width'></div>
+									<div class='stroke animate-shimmer line-container-icon-width'></div>
+									<div class='stroke animate-shimmer line-container-icon-width'></div>
+								</div>
+								<div class='line-wrapper'>
+									<div class='stroke animate-shimmer line-container-office-width'></div>
+									<div class='stroke animate-shimmer line-container-address-width'></div>
+									<div class='stroke animate-shimmer line-container-mobile-width'></div>
+									<div class='stroke animate-shimmer line-container-other-width'></div>
+								</div>
+							</div>
+						</div>
+						<div class="info-wrapper">
+							<div class="animate-shimmer line-container-name-width"></div>
+							<div class='line-content-wrapper'>
+								<div class='icon-wrapper'>
+									<div class='stroke animate-shimmer line-container-icon-width'></div>
+									<div class='stroke animate-shimmer line-container-icon-width'></div>
+									<div class='stroke animate-shimmer line-container-icon-width'></div>
+									<div class='stroke animate-shimmer line-container-icon-width'></div>
+								</div>
+								<div class='line-wrapper'>
+									<div class='stroke animate-shimmer line-container-office-width'></div>
+									<div class='stroke animate-shimmer line-container-address-width'></div>
+									<div class='stroke animate-shimmer line-container-mobile-width'></div>
+									<div class='stroke animate-shimmer line-container-other-width'></div>
+								</div>
+							</div>
+						</div>
+						<div class="info-wrapper">
+							<div class="animate-shimmer line-container-name-width"></div>
+							<div class='line-content-wrapper'>
+								<div class='icon-wrapper'>
+									<div class='stroke animate-shimmer line-container-icon-width'></div>
+									<div class='stroke animate-shimmer line-container-icon-width'></div>
+									<div class='stroke animate-shimmer line-container-icon-width'></div>
+									<div class='stroke animate-shimmer line-container-icon-width'></div>
+								</div>
+								<div class='line-wrapper'>
+									<div class='stroke animate-shimmer line-container-office-width'></div>
+									<div class='stroke animate-shimmer line-container-address-width'></div>
+									<div class='stroke animate-shimmer line-container-mobile-width'></div>
+									<div class='stroke animate-shimmer line-container-other-width'></div>
+								</div>
+							</div>
+						</div>
+						<div class="info-wrapper">
+							<div class="animate-shimmer line-container-name-width"></div>
+							<div class='line-content-wrapper'>
+								<div class='icon-wrapper'>
+									<div class='stroke animate-shimmer line-container-icon-width'></div>
+									<div class='stroke animate-shimmer line-container-icon-width'></div>
+									<div class='stroke animate-shimmer line-container-icon-width'></div>
+									<div class='stroke animate-shimmer line-container-icon-width'></div>
+								</div>
+								<div class='line-wrapper'>
+									<div class='stroke animate-shimmer line-container-office-width'></div>
+									<div class='stroke animate-shimmer line-container-address-width'></div>
+									<div class='stroke animate-shimmer line-container-mobile-width'></div>
+									<div class='stroke animate-shimmer line-container-other-width'></div>
+								</div>
+							</div>
+						</div>
+						<div class="info-wrapper">
+							<div class="animate-shimmer line-container-name-width"></div>
+							<div class='line-content-wrapper'>
+								<div class='icon-wrapper'>
+									<div class='stroke animate-shimmer line-container-icon-width'></div>
+									<div class='stroke animate-shimmer line-container-icon-width'></div>
+									<div class='stroke animate-shimmer line-container-icon-width'></div>
+									<div class='stroke animate-shimmer line-container-icon-width'></div>
+								</div>
+								<div class='line-wrapper'>
+									<div class='stroke animate-shimmer line-container-office-width'></div>
+									<div class='stroke animate-shimmer line-container-address-width'></div>
+									<div class='stroke animate-shimmer line-container-mobile-width'></div>
+									<div class='stroke animate-shimmer line-container-other-width'></div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class='image-card-shimmer animate-shimmer'></div>
+				</div>
+			</div>
+			</div>
 			<div class="row">
-				<div class="col-sm-4 pl-sm-0 order-md-first order-last">
-					<div id="resultlist" class="container-search-items">
-											
+				<div class="col-md-4 col-sm-6 col-xs-6 order-md-first order-last">
+					<div id="resultlist" class="container-search-items">							
 					</div>	
 				</div>
-				<div class="col px-0 pl-sm-2 order-md-last order-first">
+				<div class="col order-md-last order-first pb-5">
 					<!--/*Currently there is no fixed height on this container in case the map looks longer then it should*/-->
 					<div id="map-container"></div>
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-sm-4 pl-sm-0 order-md-first order-last">	
-					<div class="search-result-pagination mt-5">
+				<div class="col-sm-4 order-md-first order-last ">	
+					<div class="search-result-pagination">
 						<div id="holder" class="pagination ml-sm-0"></div>
 					</div>
 				</div>
-				<div class="col text-center text-sm-left px-sm-0 pl-sm-2 order-md-last order-first"><div id="radius" class="mt-5"></div></div>
-			</div>
-		
+				<div class="col text-center text-sm-left px-sm-0 pl-sm-3 order-md-last order-first mt-2 pb-2"><div id="radius" ></div></div>
+			</div>		
 		</div>
 	</div>
 </sly>

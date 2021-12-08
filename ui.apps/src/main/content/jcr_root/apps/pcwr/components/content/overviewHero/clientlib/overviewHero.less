@@ -122,6 +122,40 @@
 	}	
 }
 
+.overview-hero-component.overview-hero-author-animations-disabled {
+	.zoom-overview-hero {
+		animation: none; 
+		-webkit-animation: none;
+		transition: none;
+	}
+	.white-overlay-overview-hero {
+		animation: none;
+		-webkit-animation: none;
+		transform: none;
+		background-color: transparent;
+	}
+	.animate__fadeInDownSmall{
+
+		animation: none;
+		-webkit-animation: none;
+		transform: none;
+		-ms-animation: none;
+		opacity: 1;
+
+	}
+	.overview-hero-wrapper{
+		.overview-hero{
+			.overview-hero-copy--animated{
+				animation: none;
+				-webkit-animation: none;
+				transform: none;
+				-ms-animation: none;
+
+			}
+		}
+	}
+}
+
 @media screen and (max-width:768px){
 	.overview-hero-wrapper{
 		.overview-hero{
@@ -129,7 +163,13 @@
 				margin-left:1.5rem !important;
 				margin-right:1.5rem !important;
 				width:unset;
-				.card-body{padding: 1rem;}	
+				.card-body{
+					padding: 1rem;
+
+					.card-title {
+						font-size: 30px;
+					}
+				}	
 			}
 		}
 	}

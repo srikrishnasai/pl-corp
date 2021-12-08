@@ -33,8 +33,8 @@
 	 data-sly-test="${!isCarousel}" 
 	 id="${properties.cardId}" 
 	 class="icon-card-nav-carousel row d-flex justify-content-center my-5 icon-nav-carousel-static ${properties.lightTheme ? '' : 'bgcolor-blue'}
-	 		${!properties.disableAnimations ? ' animate__animated animate__fadeIn animate__delay_one_half_s' : ''}
-			${!properties.disableAnimations ? ' icon-card-nav-car-hover-animations-enabled' : ''}
+	 		${!properties.disableAnimations && !wcmmode.edit ? ' animate__animated animate__fadeIn animate__delay_one_half_s' : ''}
+			${!properties.disableAnimations && !wcmmode.edit ? ' icon-card-nav-car-hover-animations-enabled' : ''}
 			${!properties.disableAnimations && properties.enableMobileAnimations ? '' : ' icon-card-nav-car-mobile-animations-disabled'}">
 	   <sly data-sly-list.cardItem="${model.multiFieldItems.listChildren}">	   
        <sly data-sly-use.fixedLink="${'com.paclife.core.util.LinkFixer' @ link = cardItem.cardItemLink}"/>

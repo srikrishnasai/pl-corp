@@ -99,10 +99,14 @@
 	.search-page-wrapper {
 		max-width: 750px;
 		.search-results-page-title {			
-			margin-top: 31px;
+			// margin-top: 31px;
 			font-family: sans-serif;
 			font-weight: 700;
 			// font-size: 24px;
+		}
+
+		.search-results-page-subtitle {
+			text-align: center;
 		}
 
 		.search-results-index-title{
@@ -274,6 +278,47 @@
 		padding: 6px 6px 6px 6px;
 		height: 44px;
 	}
+}
+
+.display-class-search{
+	opacity: 0;
+}
+.search-history-ul{
+    z-index: 999;
+    // margin-left: 12%;
+    // width: 95%;
+}
+
+
+.search-group-item-page{
+    border: none;
+    padding: 0.4rem 1.25rem;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+	align-items: center;
+	border-radius: 5px;
+}
+
+.search .search-header{
+	color: rgb(33, 37, 41);
+}
+
+
+.historySearchItems-page{
+	position: absolute;	
+    width: 35.4rem;
+	box-shadow: 0 13px 20px 0 #00000033; 
+	left: 23.2rem;   
+}
+
+
+.search-group-item-page:hover{
+    background-color: #eee;
+}
+
+.history-icon{
+    font-size: 18px;
 }
 
 

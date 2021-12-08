@@ -14,7 +14,7 @@
   ~ limitations under the License.
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/-->
 <template data-sly-template.group="${@ items='The navigation items for the current level', parent='The Parent page'}" data-sly-use.itemTemplate="item.html">
-    <span class="d-lg-block d-none">${parent.page.properties['jcr:description']}</span>
+    <span class="d-lg-block d-none padding-for-span">${parent.page.properties['jcr:description']}</span>
    	<ul class="cmp-navigation__group g2" data-sly-list="${items}">    	
         <sly data-sly-call="${itemTemplate.item @ item=item}"></sly>
     </ul>

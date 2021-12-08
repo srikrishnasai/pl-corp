@@ -74,6 +74,12 @@
     -o-animation-delay:1.5s;
     animation-delay:1.5s;
 }
+.delay-1650 {
+    -webkit-animation-delay:1.65s;
+    -moz-animation-delay:1.65s;
+    -o-animation-delay:1.65s;
+    animation-delay:1.65s;
+}
 .delay-1750 {
     -webkit-animation-delay:1.75s;
     -moz-animation-delay:1.75s;
@@ -2389,6 +2395,7 @@
 }
 
 
+
 @keyframes  animate_uncover_parent{
 
     0%{
@@ -2443,4 +2450,9 @@
     0% {width: 0%;}
     100% {width: 10%;}
     
+}
+
+.fadeInForQoute.go { 
+    -webkit-animation-name: fadeInForQoute; 
+    animation-name: fadeInForQoute; 
 }

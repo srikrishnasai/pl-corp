@@ -2,7 +2,9 @@
 
 <!--/*NOTE: Add class 'overlay-item-below' to overlay an icon card nav component place below*/-->
 
-<div class="landing-flex-container-wrapper landing-hero-component ${!properties.disableAnimations && properties.enableMobileAnimations ? '' : 'landing-hero-mobile-animations-disabled'}">
+<div class="landing-flex-container-wrapper landing-hero-component 
+            ${wcmmode.edit || wcmmode.design ? 'landing-hero-author-animations-disabled' : ''}
+            ${!properties.disableAnimations && properties.enableMobileAnimations ? '' : 'landing-hero-mobile-animations-disabled'}">
     <div class="landing-hero-background">
         <div data-component-name="Landing Hero" data-sly-test="${properties.landingHeroBgImageFileRef}"
             class="${!properties.disableAnimations ? 'zoom' : ''} zoom-repeat-${properties.backgroundAnimation ? properties.backgroundAnimation : 'repeat'} card detail-hero-img-overlay ${properties.landingHeroOverlay ? 'overlay-item-below' : '' } ">

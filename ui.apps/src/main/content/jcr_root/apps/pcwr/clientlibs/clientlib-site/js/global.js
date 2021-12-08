@@ -3,8 +3,6 @@ if (typeof PacLife === "undefined") {
 }
 
 $(document).ready(function() {
-
-	
 	document.title = document.title + ' | Pacific Life ';
 
     // PLCOM-142: Logic to append .html & open Alt Fifty link in new tab
@@ -39,8 +37,30 @@ $(document).ready(function() {
 			$(this).off("touchmove");
 		});
 	});
-	
-});
+
+  $('.login-back').click(function (e) { 
+    // $('.login-menu').addClass('back-animation-dropdown');
+    $('.login-dropdown.show').addClass('back-animation-dropdown');
+
+    setTimeout(function(){
+      $('.login-dropdown').removeClass('back-animation-dropdown');
+
+    },1500);
+   
+  });
+  $('.mobile-nav-back-btn').click(function(e) {
+    $('.cmp-navigation__item.show').addClass('back-animation-dropdown show');
+      setTimeout(function() {
+        $('.cmp-navigation__item').removeClass('back-animation-dropdown show');
+      }, 1000); 
+    })
+  });
+  
+
+
+ 
+
+
 
 //PLCOM-359
 

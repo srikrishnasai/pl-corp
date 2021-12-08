@@ -6,19 +6,24 @@
     window.digitalData.page.onsiteSearchTerm = "${searchResults.searchTerm @ context = 'scriptString'}";
     </script>
 
-	<div class="search">
-		<form id="pl-search-form" class="form-inline justify-content-center" method="get">
+	<div class="search d-flex justify-content-center mt-3">
+		<!-- <form id="pl-search-form" class="form-inline justify-content-center" method="get">
 			<div class="d-flex search-bar-width">
 			<div class="input-group form-input-search">
 				<div class="input-group-prepend">
 				  <span class="input-group-text"><i class="material-icons">search</i></span>					  
 				</div>
-				<label for="inputSearchValue" class="sr-only">${searchResults.searchTerm}</label>
-				<input name="q" type="text" class="form-control" id="inputSearchValue" value = "${searchResults.searchTerm}" placeholder="${properties.placeholder}">							
+				<label for="inputValueSearch-page" class="sr-only">${searchResults.searchTerm}</label>
+				<input name="q" type="text" autocomplete="off" class="form-control" id="inputValueSearch-page" value = "${searchResults.searchTerm}" placeholder="${properties.placeholder}">							
 			</div>	
 			<button type="submit" class="btn btn-primary cta-text-btn ml-3">${properties.action}</button>
 		</div>
-		</form>	    		
+		</form>	  
+		<span>
+			<ul class="list-group searchItem-page historySearchItems-page">			
+			</ul> 
+		</span>  		 -->
+		<h3 class="search-header mt-4 mb-4">Search Results</h3>
 	</div>
 		
     <div class="search-page-wrapper-no-results mx-auto" data-sly-test="${!searchResults.results}">
@@ -37,7 +42,7 @@
 		<!-- <strong> ${properties.resultsLabel || 'Search Results' }</strong> -->
 		<input type="hidden" id="paginationSearchResults" value="${helper.rangeEnd}">
 		</h3>
-		<p class="search-results-page-subtitle mt-3 mx-auto" data-sly-use.helper="${'com.paclife.core.models.PCWRSearchResultModel' @ searchResults = searchResults}">
+		<p class="search-results-page-subtitle mt-2 mb-4 mx-auto" data-sly-use.helper="${'com.paclife.core.models.PCWRSearchResultModel' @ searchResults = searchResults}" data-total-result="${searchResults.resultTotal}">
 			Showing  ${helper.rangeStart} - ${helper.rangeEnd}  of ${searchResults.resultTotal} results found for "${searchResults.searchTerm}"
 		</p> 		
 		<div class="data-container">	
@@ -67,27 +72,29 @@
 			</ul>
 		</div>		
 
-		<nav style="display:none;" aria-label="Page navigation example">
+		<nav aria-label="Page navigation" class="d-none">
 			<ul class="pagination justify-content-center" id="pagination-demo" data-sly-list.option="${searchResults.pagination}">			  
-			  <li class="page-item ${option.disabled ? 'disabled' : ''}" >				  
-				  <a class="page-link" href="#" data-offset-value="${option.offset}" data-sly-attribute.tabindex= "${option.active ? '-1' : false} ">
+			  <li class="page-item ${option.disabled ? 'disabled' : ''}" >				    
+				<a class="page-link" href="#" data-offset-value="${option.offset}" data-sly-attribute.tabindex= "${option.active ? '-1' : false} ">
 					<!-- <i class="material-icons" data-sly-test="${option.label == 'Previous'}">keyboard_arrow_left</i> -->
 					${option.label}
 					<!-- <i class="material-icons" data-sly-test="${option.label == 'Next'}">keyboard_arrow_right</i>		 -->
-					<!-- <h5 data-sly-test="${optionList.last}" data-list-size="${optionList.last ? optionList.index : ''}">Hello list size is - ${optionList.index} </h5> -->					
-					<input type="hidden" id="paginationLast" data-sly-test="${optionList.last}" data-list-size="${optionList.last ? optionList.index : ''}" value="${optionList.index}">	  
+					<input type="hidden" id="paginationLast" data-sly-test="${optionList.last}" data-list-size="${searchResults.resultTotal ? searchResults.resultTotal : ''}" value="${searchResults.resultTotal}">	  
 				</a>
 			</li>			  
 			</ul>
 		  </nav>	
-		  <div class="pagination-wrapper">		 
+
+		 
+		  <div class="pagination-wrapper ">	
+		
 			<div id="pagination-items">
 			  <div class="pagination-number">
-			  <li class="items-text"><a>Items per page</a></li>
-			  <li class="paginationPages setFilterActive" id="10"><a>10</a></li>
+				<li class="items-text"><a>Items per page</a></li>
 			  <li class="paginationPages setFilterActive" id="5"><a>5</a></li>
+			  <li class="paginationPages setFilterActive" id="10"><a>10</a></li>
 			  <li class="paginationPages setFilterActive" id="25"><a>25</a></li>
-			  <li class="paginationPages setFilterActive" id="50"><a>50</a></li>			  	  
+			  <li class="paginationPages setFilterActive" id="50"><a>50</a></li>	  	  
 			</div>
 			</div>
 		</div>

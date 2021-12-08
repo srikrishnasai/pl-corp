@@ -4,7 +4,10 @@
 <sly data-sly-use.template="core/wcm/components/commons/v1/templates.html" />
 <sly data-sly-call="${template.placeholder @ isEmpty=(wcmmode.edit && ! someFieldConfigured)}" />
 
-<div class="detail-hero-component ${properties.disableAnimations ? 'detail-hero-animations-disabled' : ''} ${!properties.disableAnimations && properties.enableMobileAnimations ? '' : 'detail-hero-mobile-animations-disabled'}"
+<div class="detail-hero-component 
+     ${wcmmode.edit ? 'detail-hero-author-animations-disabled' : ''}
+     ${properties.disableAnimations ? 'detail-hero-animations-disabled' : ''} 
+     ${!properties.disableAnimations && properties.enableMobileAnimations ? '' : 'detail-hero-mobile-animations-disabled'}"
      data-component-name="Detail Hero" 
      data-sly-test="${someFieldConfigured}">
     <div class="detail-hero-wrapper mx-auto" >

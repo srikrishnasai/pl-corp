@@ -18,7 +18,9 @@
 
 </style> 
 
-<div class="overview-hero-component ${!properties.disableAnimations && properties.enableMobileAnimations ? '' : 'overview-hero-mobile-animations-disabled'}"
+<div class="overview-hero-component 
+	${wcmmode.edit || wcmmode.design ? 'overview-hero-author-animations-disabled' : ''}
+	 ${!properties.disableAnimations && properties.enableMobileAnimations ? '' : 'overview-hero-mobile-animations-disabled'}"
 	 data-component-name="Overview Hero" 
 	 data-sly-test="${someFieldConfigured}">
 

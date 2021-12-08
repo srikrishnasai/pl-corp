@@ -1,4 +1,4 @@
-<nav data-component-name="Top Navigation" class="navbar navbar-expand-lg plcorp-main-nav d-print-flex">
+<nav data-component-name="Top Navigation" class="navbar navbar-expand-lg plcorp-main-nav d-print-flex position-relative">
 	<!--/* ADD BUTTON MOBILE START------------*/-->
     	
     	<sly data-sly-use.model="${'com.paclife.core.models.PCWRUtilModel'}" />
@@ -13,14 +13,17 @@
 	  	
 	  <!--/* ADD BUTTON MOBILE END----------*/-->
 	<!--/*removed:id="header-navbar"*/-->
-	
-	<div class="cmp-navigation--header collapse navbar-collapse" id="navbarSupportedContent" data-parent=".plcorp-main-nav">
-		<!-- <a class="navbar-brand left-nav-items" href="#"><img alt="" src="/etc/designs/pcwr/default/images/logo-horiz.svg"></a> -->
-		<div data-sly-resource="${'navigation' @ resourceType='pcwr/components/structure/parts/customNavigation'}" data-sly-unwrap="${!wcmmode.edit}"></div>
-        
-        <span id="login-box" data-login="${properties.hideLogin ? 'Hide' : ''}">
-		<div class="${wcmmode.edit ? 'position-relative mr-5 w-25' : ''}" data-sly-resource="${'login' @ resourceType='pcwr/components/structure/parts/login'}" data-sly-unwrap="${!wcmmode.edit}"></div>
-        </span>    
+
+
+		<div class="cmp-navigation--header collapse navbar-collapse" id="navbarSupportedContent" data-parent=".plcorp-main-nav">
+			<!-- <a class="navbar-brand left-nav-items" href="#"><img alt="" src="/etc/designs/pcwr/default/images/logo-horiz.svg"></a> -->
+			<div data-sly-resource="${'navigation' @ resourceType='pcwr/components/structure/parts/customNavigation'}" data-sly-unwrap="${!wcmmode.edit}"></div>
+			
+			<div class="login-container">
+				 <span id="login-box" data-login="${properties.hideLogin ? 'Hide' : ''}">
+					<div class="${wcmmode.edit ? 'position-relative mr-5 w-25' : ''}" data-sly-resource="${'login' @ resourceType='pcwr/components/structure/parts/login'}" data-sly-unwrap="${!wcmmode.edit}"></div>
+				</span>   
+			</div>
 			
 		<span data-sly-test="${!wcmmode.edit}" name="more-menu-toggle" class="more-menu-toggle order-last d-lg-block d-none" data-more="${properties.hideMore ? 'Hide' : ''}"><i class="material-icons">menu</i>More</span>
       	
@@ -32,10 +35,12 @@
 					<form class="form-inline justify-content-lg-center" action="${helper.childProperties.target @ extension='html'}">
 					    <div class="form-group form-group-search-input mx-lg-3 mb-2 mx-0">
 					        <label for="inputSearchValue" class="sr-only">${helper.childProperties.placeholder}</label>
-					        <input name="q" type="text" class="form-control py-0" id="inputSearchValue" placeholder="${helper.childProperties.placeholder}">
+					        <input name="q" autocomplete="off" type="text" class="form-control py-0 inputValueSearch" id="inputSearchValue" placeholder="${helper.childProperties.placeholder}">
 						</div>						
-						<button type="submit" class="btn btn-primary cta-text-btn mb-2 d-none d-lg-block">${helper.childProperties.action || 'SEARCH'}</button> <span class="search-nav-close-icon pl-md-4" data-toggle="collapse" data-target="#searchNavCollapse"><i class="material-icons nav-close-icon">close</i></span>			
-					</form>   
+						<button type="submit" class="btn btn-primary cta-text-btn mb-2 d-lg-block searchSubmit-mb">${helper.childProperties.action || 'SEARCH'}</button> <span class="search-nav-close-icon pl-md-4" data-toggle="collapse" data-target="#searchNavCollapse"><i class="material-icons nav-close-icon">close</i></span>			
+					</form>  
+					<ul class="list-group searchItem historySearchItems historySearchItems-mb">
+					</ul> 				 
 				</sly> 		
 			</div>			 
 	   </div>	   
@@ -47,20 +52,27 @@
 				action="${helper.childProperties.target @ extension='html'}"				
 				>
 				<label for="inputSearchValue" class="sr-only">${helper.childProperties.placeholder}</label>
-				<div class="input-group  form-group-search-input-new ">
-					<div class="input-group-prepend">
-					  <span class="input-group-text"><i class="material-icons">search</i></span>					  
-					</div>
-					<input name="q" type="text" class="form-control y-0" id="inputSearchValue" placeholder="${helper.childProperties.placeholder}">							
-					<div class="input-group-prepend">
-						<a data-toggle="collapse" data-target="#searchNavCollapse" class="showNavbar"><i class="material-icons">clear</i></a>
+				<div class="search-wrapper">
+					<div class="input-group  form-group-search-input-new ">
+						<div class="input-group-prepend">
+						  <span class="input-group-text"><i class="material-icons">search</i></span>					  
+						</div>
+						<input id="inputSearchValue" name="q" type="text" autocomplete="off" class="form-control y-0 inputValueSearch"  placeholder="${helper.childProperties.placeholder}">
+						<div class="input-group-prepend">
+							<a data-toggle="collapse" data-target="#searchNavCollapse" class="showNavbar"><i class="material-icons">clear</i></a>
+						</div>	
+						<div class="input-group-prepend">
+							<button type="submit" class="btn btn-primary cta-text-btn searchSubmit">${helper.childProperties.action || 'SEARCH'}</button> 									
+						</div>					
 					</div>	
-					<div class="input-group-prepend">
-						<button type="submit" class="btn btn-primary cta-text-btn">${helper.childProperties.action || 'SEARCH'}</button> 			
-					</div>					
-				</div>					
-				</form>  				
+				</div>
+								
+				</form>  	
+				<ul class="list-group searchItem historySearchItems">
+				</ul>			
 			</sly> 		
-		</div>			 
+		</div>					 
    </div>	
 </nav>
+
+

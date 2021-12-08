@@ -88,6 +88,73 @@
 @media (max-width: 575.98px) {
 	h1{&.large-hero-title{font-size:45px;}}
 }
+	
+.landing-hero-component.landing-hero-author-animations-disabled {
+	.zoom.detail-hero-img-overlay{
+		animation: none;
+		-webkit-animation: none;
+		transform: none;
+		-ms-animation: none;
+		.hero-background-img-wrapper{
+			.landing-hero-background-img{
+				animation: none;
+				-webkit-animation: none;
+				transform: none;
+				-ms-animation: none;
+
+			}
+		}
+	}	
+	.white-overlay-landing-hero,.landing-overlay{
+		display: none;
+		animation: none;
+		-webkit-animation: none;
+		transform: none;
+		-ms-animation: none;
+	}
+	.animate__fadeInDownHalfBig,.animate__fadeInDownSmall{
+
+		animation: none;
+		-webkit-animation: none;
+		transform: none;
+		-ms-animation: none;
+		opacity: 1;
+
+	}
+	.card-img-overlay{
+		position: absolute !important;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%,-50%);
+	}
+}	
+
+@media (max-width: 767px) {
+	
+	.landing-hero-component.landing-hero-mobile-animations-disabled {
+		.zoom {
+			animation: none; 
+			transition: none;
+		}
+		.detail-hero-img-overlay {
+			.landing-hero-background-img {
+				animation: none;
+				-webkit-animation: none;
+				transform: none;
+				transition: none;
+			}
+		}
+		.white-overlay-landing-hero {
+			animation: none;
+			-webkit-animation: none;
+			transform: none;
+			background-color: transparent;
+		}
+		.landing-overlay {
+			display: none;
+		}
+	}	
+}
 
 @media (max-width: 767px) {
 	

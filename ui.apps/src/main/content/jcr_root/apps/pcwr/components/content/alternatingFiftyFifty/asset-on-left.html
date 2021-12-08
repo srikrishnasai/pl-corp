@@ -11,14 +11,10 @@
         <!-- Image wrapper -->
         <sly data-sly-test="${!properties.altFiftyBgType || properties.altFiftyBgType == 'image'}">
             <img data-sly-test.isVideo="${properties.altFiftyVideo}" 
-                    class="img-fluid pointer
-                        ${!properties.disableAnimations && properties.animationDirection != 'side' ? ' width-img' : ''}
-                        ${!properties.disableAnimations && properties.animationDirection == 'side' ? ' width-img' : ''}"
+                    class="img-fluid pointer width-img"
                     src="${properties.altFiftyImgPath}" onclick="openVideoModal(this)"/>
             <img data-sly-test="${! isVideo}" 
-                    class="img-fluid
-                        ${!properties.disableAnimations && properties.animationDirection != 'side' ? ' width-img' : ''} 
-                        ${!properties.disableAnimations && properties.animationDirection == 'side' ? ' width-img' : ''}"
+                    class="img-fluid width-img"
                     src="${properties.altFiftyImgPath}"/>
         </sly>
 
@@ -27,9 +23,7 @@
              data-sly-use.model="${'com.paclife.core.models.PCWRMultifieldItemsModel'}"
              data-sly-use.randomNumber="${'com.paclife.core.util.RandomNumberGenerator'}"
              data-animations-disabled="${properties.disableAnimations}"
-             class="altFiftyCarousel altFiftyCarouselLeft-${randomNumber.randomNumber} carousel carousel-fade slide touch-enabled-carousel
-                    ${!properties.disableAnimations && properties.animationDirection != 'side' ? ' width-img' : ''}
-                    ${!properties.disableAnimations && properties.animationDirection == 'side' ? ' width-img' : ''}"
+             class="altFiftyCarousel altFiftyCarouselLeft-${randomNumber.randomNumber} carousel carousel-fade slide touch-enabled-carousel width-img"
              data-pause="false">
              <div data-sly-list.cardItem="${model.multiFieldItems.listChildren}" class="carousel-inner">
                  <div class="carousel-item item ${cardItemList.index == 0 ? 'active' : ''}">
@@ -50,9 +44,7 @@
 
         <!-- Video wrapper -->
         <div data-sly-test="${properties.altFiftyBgType == 'video'}" 
-                class="alt-fifty-video-wrapper
-                    ${!properties.disableAnimations && properties.animationDirection != 'side' ? ' width-img' : ''}
-                    ${!properties.disableAnimations && properties.animationDirection == 'side' ? ' width-img' : ''}"
+                class="alt-fifty-video-wrapper width-img"
                 data-sly-use.inlineVideo="${'com.paclife.core.models.PCWRMultifieldHelperModel' @ nodeName='inlineVideo'}">
             <sly data-sly-test="${inlineVideo.childResource}"
                 data-sly-use.template="pcwr/components/content/inlineVideo/inlineVideo.html"

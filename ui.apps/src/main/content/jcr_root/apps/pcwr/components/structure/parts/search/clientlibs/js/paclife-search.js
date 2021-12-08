@@ -2,6 +2,19 @@ $(function() {
 
 	// var someElement= document.getElementById("myElement");
 	// someElement.className += " newclass";
+
+	console.log("re",$('.search-results-page-subtitle').attr("data-total-result"));
+
+	 	let totalResult = $('.search-results-page-subtitle').attr("data-total-result");
+		 console.log("total",totalResult);
+
+		 if(totalResult < 10 ){
+			 $('.pagination-wrapper').addClass('display-class-search');
+		 }
+		 else{
+			$('.pagination-wrapper').removeClass('display-class-search');
+		 }
+
 	
 	
 	$('.page-link').click(function(e) {
@@ -24,7 +37,8 @@ $(function() {
 		var pageLimit = e.currentTarget.id;	
 		var url = new URL(window.location.href);
 		var search_params = url.searchParams;
-		search_params.set('noOfResPerPage', pageLimit);		
+		search_params.set('noOfResPerPage', pageLimit);
+		search_params.set('offset', 0);		
 		window.location.search = search_params.toString();		
 	});
 	
@@ -36,7 +50,10 @@ $(function() {
 		var setPageLimit = searchParams.get("noOfResPerPage") || 10;			
 		
 		if($("#paginationLast").val()) {
-			var number = $("#paginationLast").val() - 1;			
+			var noOfResults = $("#paginationLast").val();
+			
+			// var number = $("#paginationLast").val() - 1;			
+			var number = Math.ceil(noOfResults / setPageLimit);
 			var total = number*setPageLimit;
 			var arr = Array.apply(null, Array(total)).map(function(u, i){
 				return i+1;
@@ -102,6 +119,9 @@ $(function() {
 		if(setActiveClass === "50"){
 			$("#50").addClass("active");
 		}
+
+		
+		
 		
 	});
 });

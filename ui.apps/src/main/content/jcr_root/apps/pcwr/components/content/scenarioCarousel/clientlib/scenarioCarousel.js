@@ -31,10 +31,10 @@ $(document).ready(function () {
             elem.find('.scenario-carousel-copy-carousel').carousel({
                 interval: false,
                 pause: true
-            }).on('slide.bs.carousel', function () { 
+            }).on('slide.bs.carousel', function (e) { 
                 percent = 1;
                 if(window.innerWidth < 768) {
-                    elem.find('.scenario-carousel-images').carousel('next');
+                    elem.find('.scenario-carousel-images').carousel(e.to);
                 }
             });
 

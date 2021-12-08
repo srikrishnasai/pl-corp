@@ -1,7 +1,7 @@
 <sly data-sly-use.template="core/wcm/components/commons/v1/templates.html"/>
 <sly data-sly-call="${template.placeholder @ isEmpty=(wcmmode.edit && !properties.heading)}"/>
 
-<div data-component-name="Find A Professional" class="container-fluid my-5 fifty-fifty">
+<div data-component-name="Find A Professional" class="container-fluid my-5 fifty-fifty ${wcmmode.edit || properties.disableAnimations ? 'fafp-animations-disabled' : ''}">
 <input id="fafp-results-url" type="hidden" value="${properties.target}"/>
     <div data-sly-test="${properties.heading}" data-sly-unwrap>
         <div data-sly-test="${properties.imagePos == 'left'}" class="row py-4">

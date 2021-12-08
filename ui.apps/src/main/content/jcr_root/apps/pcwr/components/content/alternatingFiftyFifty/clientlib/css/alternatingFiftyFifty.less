@@ -131,6 +131,36 @@
 	transform: translate3d(0, 0, 0);
 }
 
+.alt-fifty-component.alt-fifty-author-animations-disabled .animatedParent {
+	.fadeInDownHalfShort, 
+	.fadeInRightHalfShort, 
+	.animate-uncover-with-offset-parent-from-top, 
+	.animate-uncover-with-offset-parent,
+	.animate-uncover-with-offset-parent-from-right,
+	.animate-image-from-top,
+	.animate-image,
+	.animate-image-from-right,
+	.animateUncoverWithOffSet,
+	.animateUncoverfromRight,
+	.animate-fade-out-top-background,
+	.animateUncoverfromLeft
+	.animateUncoverfromTop {
+		animation: none;
+		-webkit-animation: none;
+		transform: none;
+		-ms-animation: none;
+		opacity: 1;
+	}
+	
+	.animateUncoverWithOffSet,
+	.animateUncoverfromRight,
+	.animate-fade-out-top-background,
+	.animateUncoverfromLeft
+	.animateUncoverfromTop {
+		display: none;
+	}
+}
+
 @media (max-width: 767px) { 
 	.alt-fifty-component.alt-fifty-mobile-animations-disabled .animatedParent {
 		.fadeInDownHalfShort, 

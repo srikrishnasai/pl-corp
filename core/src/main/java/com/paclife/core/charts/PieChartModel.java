@@ -63,7 +63,7 @@ public class PieChartModel {
 								this.barColors.add(barColor);
 								this.barLabels.add(barLabel);
 								
-								this.authoredBarValues.add(Double.parseDouble(barValue));
+								this.authoredBarValues.add(Double.parseDouble(barValue.replaceAll(",","").trim().replaceAll(" ", "")));
 								pieChartMultiFieldItemsPojo.setBarValue(barValue);
 								pieChartMultiFieldItemsPojo.setBarColor(barColor);
 								pieChartMultiFieldItemsPojo.setBarLabel(barLabel);
@@ -82,7 +82,7 @@ public class PieChartModel {
 				}
 
 				for(PieChartMultiFieldItemsPojo multiFieldItem : this.multiFieldItems) {
-					double currentBarValue = Double.parseDouble(multiFieldItem.getBarValue());
+					double currentBarValue = Double.parseDouble(multiFieldItem.getBarValue().replaceAll(",","").trim().replaceAll(" ", ""));
 					double barWidth = Math.round( ( currentBarValue / pieChartTotal ) * 100 );
 					
 					if(barWidth > 5) {

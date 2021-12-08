@@ -186,6 +186,58 @@
 	}
 }
 
+.detail-hero-component.detail-hero-author-animations-disabled {
+	.detail-hero-background-img {
+		animation: none; 
+		-webkit-animation: none;
+		transition: none;
+	}
+	.detail-hero-background{
+		width: 1140px;
+		height: 550px;
+		animation: none;
+		-webkit-animation: none;
+		transform: none;
+		-ms-animation: none;
+	}
+	.gray-overlay{
+		display: none;
+		animation: none;
+		-webkit-animation: none;
+		transform: none;
+		-ms-animation: none;
+	}
+	
+	.detail-hero-wrapper {
+		.detail-hero {
+			.detail-hero-copy--animate {
+				width: 504px;
+				height: 288px;
+				animation: none;
+				transition: none;
+				.card-body{
+					.animate__fadeInRightSmall{
+						animation: none;
+						-webkit-animation: none;
+						transform: none;
+						-ms-animation: none;
+						opacity: 1;
+					}
+				}
+			}
+		}
+	}
+	.detail-hero-img-txt {
+		.animate__fadeInLeftSmall{
+			animation: none;
+			-webkit-animation: none;
+			transform: none;
+			-ms-animation: none;
+			opacity: 1;
+		}
+	}
+}	
+
 //styles for disabling animations on mobile
 @media screen and (max-width: 767px) {
 	.detail-hero-component.detail-hero-mobile-animations-disabled {

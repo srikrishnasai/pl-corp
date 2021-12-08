@@ -93,7 +93,7 @@ public class BarChartModel {
 						item.setBarValue(barValue);
 						item.setBarLabel(childValueMap.getOrDefault("barLabel", StringUtils.EMPTY).toString());
 						item.setBarColor(childValueMap.getOrDefault("barColor", StringUtils.EMPTY).toString());
-						barValues.add(Double.parseDouble(barValue));
+						barValues.add(Double.parseDouble(barValue.replaceAll(",","").trim().replaceAll(" ", "")));
 						multiFieldItems.add(item);
 					}
 				}
@@ -105,7 +105,7 @@ public class BarChartModel {
 			Double maxBarValue = Collections.max(barValues);
 			if(null != maxBarValue && maxBarValue > 0) {
 				for(int i = 0; i < multiFieldItems.size(); i++) {
-					Double currentBarValue = Double.parseDouble(multiFieldItems.get(i).getBarValue());
+					Double currentBarValue = Double.parseDouble(multiFieldItems.get(i).getBarValue().replaceAll(",","").trim().replaceAll(" ", ""));
 					if(Double.compare(maxBarValue, currentBarValue) == 0) {
 						multiFieldItems.get(i).setBarWidth("100");
 					} else {

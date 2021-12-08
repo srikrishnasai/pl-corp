@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Quote Component"
+    extraClientlibs="[quote-component-checkbox-show-hide,checkbox-show-hide]"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <general
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="General"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
+                        <items jcr:primaryType="nt:unstructured">
+                            <content
+                                jcr:primaryType="nt:unstructured"
+                                margin="{Boolean}true"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                   <quoteText
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                        fieldDescription="Please provide Quote text"
+                                        fieldLabel="Quote Text"
+                                        name="./quoteText"/>
+                                    <nonbreak
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldLabel="Non-Breaking Phrases for Quote text"
+                                        name="./nonbreak"/>
+                                    <quoteTextAlignment
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/foundation/form/select"
+                                        fieldDescription="Quote Text Alignment"
+                                        fieldLabel="Quote Text Alignment"
+                                        name="./quoteTextAlignment">
+                                            <items jcr:primaryType="nt:unstructured">
+                                                <center 
+                                                    jcr:primaryType="nt:unstructured"
+                                                    text="center"
+                                                    value="center"/>
+                                                <right 
+                                                    jcr:primaryType="nt:unstructured"
+                                                    text="right"
+                                                    value="right"/>
+                                            </items>
+                                    </quoteTextAlignment>
+                                    <quoteSubText
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please provide name of Quote Author"
+                                        fieldLabel="Quote Author"
+                                        name="./quoteAuthor"/>
+                                    <quoteAuthorAlignment
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/foundation/form/select"
+                                        fieldDescription="Quote Author Alignment"
+                                        fieldLabel="Quote Author Alignment"
+                                        name="./quoteAuthorAlignment">
+                                            <items jcr:primaryType="nt:unstructured">
+                                                <center 
+                                                    jcr:primaryType="nt:unstructured"
+                                                    text="center"
+                                                    value="center"/>
+                                                <right 
+                                                    jcr:primaryType="nt:unstructured"
+                                                    text="right"
+                                                    value="right"/>
+                                            </items>
+                                    </quoteAuthorAlignment>
+                                    <image
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="pcwr/cq/gui/components/authoring/dialog/fileupload"
+                                        allowUpload="{Boolean}false"
+                                        autoStart="{Boolean}false"
+                                        class="cq-droptarget"
+                                        fieldLabel="Background Image"
+                                        fileNameParameter="./quoteBgImageFileName"
+                                        fileReferenceParameter="./quoteBgImageFileRef"
+                                        mimeTypes="[image/jpeg,image/png]"
+                                        multiple="{Boolean}false"
+                                        name="./quoteBgImageFile"
+                                        title="Upload Image Asset"
+                                        uploadUrl="${suffix.path}"
+                                        useHTML5="{Boolean}true"/>
+                                    <quoteOverlayColor
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/colorfield"
+                                        value="{Boolean}true"
+                                        fieldDescription="Choose the color for the overlay on the image"
+                                        fieldLabel="Overlay Color"
+                                        name="./quoteOverlayColor"/>
+                                    <quoteMarksUnicodeCheckbox
+                                        jcr:primaryType="nt:unstructured"
+                                        granite:class="cq-dialog-checkbox-hideshow"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                        value="{Boolean}true"
+                                        fieldDescription="specify unicode character for enclosing quote marks"
+                                        text="Specify unicode character"
+                                        name="./quoteMarksUnicodeCheckbox">
+                                        <granite:data
+                                            jcr:primaryType="nt:unstructured"
+                                            cq-dialog-checkbox-hide-show-target=".quote-marks-unicode-showhide-target"/>
+                                    </quoteMarksUnicodeCheckbox>
+                                    <quoteMarksUnicodeContainer
+                                        jcr:primaryType="nt:unstructured"
+                                        granite:class="quote-marks-unicode-showhide-target"
+                                        showhidetargetvalue=""        
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <quoteMarksOpeningUnicode
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Please provide unicode character for the enclosing quote marks e.x. &#8220;"
+                                                fieldLabel="Quote Marks Opening Unicode"
+                                                name="./quoteMarksUnicode"/>
+                                            <quoteMarksClosingUnicode
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Please provide unicode character for the enclosing quote marks e.x. &#8222;"
+                                                fieldLabel="Quote Marks Closing Unicode"
+                                                name="./quoteMarksClosingUnicode"/>
+                                        </items>
+                                    </quoteMarksUnicodeContainer>
+                                </items>
+                            </content>
+                        </items>
+                    </general>
+                    <animations
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Settings"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
+                        <items jcr:primaryType="nt:unstructured">
+                            <content
+                                jcr:primaryType="nt:unstructured"
+                                margin="{Boolean}true"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <disableAnimations
+                                        jcr:primaryType="nt:unstructured"
+                                        granite:class="cq-dialog-checkbox-showhide"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                        name="./disableAnimations"
+                                        text="Disable Animations"
+                                        fieldDescription="Click the checkbox to disable the animations"
+                                        value="true">
+                                        <granite:data
+                                            jcr:primaryType="nt:unstructured"
+                                            cq-dialog-checkbox-showhide-target=".disable-animation-showhide-target"/>
+                                    </disableAnimations>
+                                    <animationSettings
+                                        jcr:primaryType="nt:unstructured"
+                                        granite:class="disable-animation-showhide-target"
+                                        showhidetargetvalue="true"        
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <disableMobileAnimationsOnly
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                name="./disableMobileAnimationsOnly"
+                                                text="Disable Animations on Mobile"
+                                                fieldDescription="Click the checkbox to disable the animations on mobile"
+                                                value="true"/>                                            
+                                            <backgroundAnimation
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/foundation/form/select"
+                                                fieldDescription="Select the Repetition of ZoomIn and ZoomOut of Background Image"
+                                                fieldLabel="Background Animation of Image"
+                                                name="./backgroundAnimation">
+                                                    <items jcr:primaryType="nt:unstructured">
+                                                        <once   
+                                                            jcr:primaryType="nt:unstructured"
+                                                            text="Once"
+                                                            value="once"/>
+                                                        <repeat 
+                                                            jcr:primaryType="nt:unstructured"
+                                                            text="Repeat"
+                                                            value="repeat"/>
+                                                        <off 
+                                                            jcr:primaryType="nt:unstructured"
+                                                            text="None"
+                                                            value="none"/>
+                                                    </items>
+                                            </backgroundAnimation>
+                                        </items>
+                                    </animationSettings>
+                                    <hideOverlay
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                        value="{Boolean}true"
+                                        fieldDescription="Click the checkbox to hide the overlay"
+                                        text="Hide Overlay"
+                                        name="./hideOverlay"/>
+                                    <hideOpeningQuote
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                        value="{Boolean}true"
+                                        fieldDescription="Click the checkbox to hide the opening Quote"
+                                        text="Hide Opening Quote"
+                                        name="./hideOpeningQuote"/>
+                                    <hideClosingQuote
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                        value="{Boolean}true"
+                                        fieldDescription="Click the checkbox to hide the closing quote"
+                                        text="Hide Closing Quote"
+                                        name="./hideClosingQuote"/>
+                                </items>
+                            </content>
+                        </items>
+                    </animations>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

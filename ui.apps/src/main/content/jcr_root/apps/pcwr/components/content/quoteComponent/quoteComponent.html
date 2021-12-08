@@ -1,0 +1,32 @@
+<sly data-sly-test.someFieldConfigured="${properties.quoteText || properties.quoteComponentBgImageFileRef}"></sly>
+
+<sly data-sly-use.template="core/wcm/components/commons/v1/templates.html" />
+<sly data-sly-call="${template.placeholder @ isEmpty=(wcmmode.edit && !someFieldConfigured)}" />
+
+<div class="quoteComponent animatedParent animateOnce ${properties.disableAnimations ? 'quote-component-animations-disabled' : ''} ${properties.disableMobileAnimationsOnly ? 'quoteComponent-mobile-animations-disabled' : ''}"
+     data-appear-top-offset="-150">
+    <div class="row">
+        <div class="quoteImgWrapper">
+            <img src="${properties.quoteBgImageFileRef}"  style="opacity: 0;"/>
+            <div class="animated quoteImage quoteImage-repeat-${properties.backgroundAnimation ? properties.backgroundAnimation : 'once'}" style="background-image: url('${properties.quoteBgImageFileRef @ context='styleString'}')">  </div>
+            <div class="animated animate-uncover-with-offset-parent-from-top animateOnce" style="background-color: #ffffff;"></div>
+            <div data-sly-test="${!properties.hideOverlay}" class="quoteOverlay animated fadeInDown delay-750"  style="background-color: ${ properties.quoteOverlayColor  @context='styleString'}; opacity: 0; "></div>
+
+            <div class="quoteContentWrapper animatedParent animateOnce" data-appear-top-offset="-150">
+                <div class="animated fadeInDownShort delay-1650" style="opacity: 0;">
+                    <p class="quoteTextWrapper quoteTextAlign--${properties.quoteTextAlignment ? properties.quoteTextAlignment : ''}">
+                        <span data-sly-test="${!properties.hideOpeningQuote}" class="quoteMark-front animated fadeIn delay-1650">${properties.quoteMarksUnicodeCheckbox ? properties.quoteMarksUnicode : '&#8220;' @ context='html'}</span>
+                        <span class="quoteText">
+                            <sly data-sly-use.text="${'nonbreak.js'}" />
+                            ${text @ context = 'html'}
+                        </span> 
+                        <span data-sly-test="${!properties.hideClosingQuote}" class="quoteMark-back animated fadeIn delay-1650" style="opacity: 0;">
+                            ${properties.quoteMarksUnicodeCheckbox ? properties.quoteMarksClosingUnicode : '&#8222;' @ context='html'}
+                    </span>
+                    </p>
+                    <p class="QuoteAuthor quoteAuthorAlign--${properties.quoteAuthorAlignment ? properties.quoteAuthorAlignment : ''}">${properties.quoteAuthor}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

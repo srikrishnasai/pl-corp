@@ -1,8 +1,10 @@
+
 if($('.find-a-pro-results-page').length > 0) {
 	
-	google.maps.event.addDomListener(window, 'load', initialize);
+	google.maps.event.addDomListener(window, 'load', initialize);	
 
 	var options;
+    var data;
 	var mapContainer;
 	var $mapContainerEl;
 	var map;
@@ -17,10 +19,11 @@ if($('.find-a-pro-results-page').length > 0) {
 	var pageno = 1;
 	var bounds = new google.maps.LatLngBounds();
 	var autocomplete;
-	var loadingGif ="<div id='find'><img src='/etc/designs/pcwr/default/images/throbber_13.gif' width='32' height='32' /><br><br><span>Searching. . . </span></div>";
+	// var loadingGif =``;
 	var noAdvisorsFoundMsg = "There were no advisors found in your area. Please enter a different Zip Code and try again.";
 	var systemError = "System maintenance is being performed. Please try again later.";
 	var srvcerr = "System maintenance is currently being performed. Please try again later.";
+
 	//hide points of interest
 	var noPoi = [
 	{
@@ -36,11 +39,12 @@ if($('.find-a-pro-results-page').length > 0) {
 		maximumAge : 300000,
 		timeout : 10000
 	};
-
+	
 	function initialize() {
 		
 		$inputLocation = $('#fafp-inputSearchValue');
-		$mapContainerEl = $('#map-container');
+		// $mapContainerEl = $('#shimmer-container');
+        $("#map-container").css('display','none');
 		// Initialize map.
 		options = {
 			center : new google.maps.LatLng(41, -95),
@@ -82,12 +86,12 @@ if($('.find-a-pro-results-page').length > 0) {
 		setLocation(position.coords.latitude, position.coords.longitude);		
 	}
 	
-	function showMap(lat, lon) {
-		
-		$("#map-container p").remove();
-		
+	function showMap(lat, lon) {	
+        $("#shimmer-container").hide();			
+		$("#map-container p").remove();	
+        $('#map-container').css('display','block');	
+        	
 		var dateTime  = new Date();
-
 		mapContainer = document.getElementById('map-container');
 		map = new google.maps.Map(mapContainer, options);
 		marker = new google.maps.Marker();
@@ -142,9 +146,9 @@ if($('.find-a-pro-results-page').length > 0) {
 	    
 	    $(".container-search-items").empty();
 	    $("#holder").empty();
-	    $("#find").remove();
+	    // $("#find").remove();
 	    
-	    $mapContainerEl.prepend( loadingGif );
+	    // $mapContainerEl.prepend( loadingGif );
 	    
 	    var query = $inputLocation.val();
 	    if(query == '') {
@@ -158,18 +162,94 @@ if($('.find-a-pro-results-page').length > 0) {
 	    	var locURL = url + "latitude=" + lat + "&longitude=" + long+"&query=" +query+"&time="+time;
 		}
 		
-		$.get( locURL, function(data) {
-	    	showMap(lat, long);
-	        markerList(data);
-	    })
-	    .done(function() {
-	    	$("#find").remove();
-	    })
-	    .fail(function() {
-	    	$("#find").remove();
-	    	displayMessage( srvcerr );
-	    });	    
+		$.get( locURL, function(results) {
+            data = results;
+            showMap(lat, long);
+            markerList(results);
+        }).done(function() {
+            $('#shimmer-container').hide();
+        }).fail(function() {
+            $('#shimmer-container').hide();
+            displayMessage( srvcerr );
+        });
+	// Filter Data Code
+	$('.nav-item.fafp-filter').click(function(event) {				
+		event.preventDefault();	
+		var filterOption;	
+				
+		if(event.target.lastChild){			
+			filterOption = event.target.lastChild.textContent;
+		}
+
+		if(event.target.firstChild.parentElement.nextElementSibling){			
+			filterOption = event.target.firstChild.parentElement.nextElementSibling.innerHTML;
+		}
+		
+		if(filterOption === 'Annuities'){
+			var resultItemList = [];
+			var newData = getFilteredData(filterOption, data);
+			var resultItemHtml = getResultItemHtml(newData);						
+			resultItemList.push(resultItemHtml);					
+			if(newData.length < 5){
+				$('.search-result-pagination').addClass('d-none');
+			} else {
+				$('.search-result-pagination').removeClass('d-none');
+			}						
+			markerList(newData);		
+		}
+		if(filterOption === 'Life Insurance'){
+			var resultItemList = [];
+			console.log('inside Life insurance');		
+			getFilteredData(filterOption, data);
+			var newData = getFilteredData(filterOption, data);	
+			var resultItemHtml = getResultItemHtml(newData);
+			resultItemList.push(resultItemHtml);			
+			if(newData.length < 5){
+				$('.search-result-pagination').addClass('d-none');
+			} else {
+				$('.search-result-pagination').removeClass('d-none');
+			}		
+			markerList(newData);
+		}
+		if(filterOption === 'Mutual Funds'){
+			var resultItemList = [];			
+			getFilteredData(filterOption, data);
+			var newData = getFilteredData('Mutual Fund', data);	
+			var resultItemHtml = getResultItemHtml(newData);
+			resultItemList.push(resultItemHtml);			
+			if(newData.length < 5){
+				$('.search-result-pagination').addClass('d-none');
+			} else {
+				$('.search-result-pagination').removeClass('d-none');
+			}			
+			markerList(newData);
+		}
+
+		if(filterOption === 'All'){
+			var resultItemList = [];			
+			var resultItemHtml = getResultItemHtml(data);						
+			resultItemList.push(resultItemHtml);			
+			if(data.length < 5){
+				$('.search-result-pagination').addClass('d-none');
+			} else {
+				$('.search-result-pagination').removeClass('d-none');
+			}							
+			markerList(data);		
+		}		
+	});
+
 	}
+
+	//filer Array results 
+	function getFilteredData(optionName, resultdData){		
+		var filteredArray = resultdData.filter(function(data){		
+			var result = data.productFamily.split(', ');
+			var filter = result[result.indexOf(optionName)];			
+			return filter;				
+		})												
+		return filteredArray;
+	}
+
 
 	// display search results
 	function markerList(data) { 
@@ -182,7 +262,9 @@ if($('.find-a-pro-results-page').length > 0) {
 		// analytics
 		window.digitalData.page.onsiteSearchResult = data.length;
 		window.digitalData.page.onsiteSearchTerm = $("#fafp-inputSearchValue").val() || $("#fafp-url-zip-code").val() || 'Current Location';
-		_satellite.track('find-a-pro-results');
+		if(_satellite) {
+			_satellite.track('find-a-pro-results');
+		}
 		
 		if(data != null && data.length == 0 ){
 			displayMessage(noAdvisorsFoundMsg);
@@ -215,8 +297,8 @@ if($('.find-a-pro-results-page').length > 0) {
 	       	//min and max limits for multiplier, for random numbers
 	        //keep the range pretty small, so markers are kept close by
 	        var min = .999999;
-	        var max = 1.000001;
-
+			var max = 1.000001;
+			var markerIcon = "/etc/designs/pcwr/default/images/location-32-px.svg";			
 	        //check marker position
 	        if (i > 1 && oldpos.equals(mpos)) {
 	            var newLat = mpos.lat() * (Math.random() * (max - min) + min);
@@ -227,8 +309,8 @@ if($('.find-a-pro-results-page').length > 0) {
 	        
 	        oldpos = mpos;
 	        
-	        advMarker = new google.maps.Marker({
-	            icon: 'http://maps.google.com/mapfiles/ms/icons/ltblue-dot.png',
+	        advMarker = new google.maps.Marker({				
+				icon: markerIcon,
 	            //position: new google.maps.LatLng( this.latitude, this.longitude ),
 	            position: mpos,
 	            map: map,
@@ -244,17 +326,19 @@ if($('.find-a-pro-results-page').length > 0) {
 	        allMarkers.push(advMarker);
 	        
 	        var infowindow = new google.maps.InfoWindow();
-	        infoboxes.push(infowindow); 
-	        
-	        var resultItemHtml = getResultItemHtml(this, businessName, phoneHtml, dist, i);
-	        resultItemList.push(resultItemHtml);
+			infoboxes.push(infowindow); 
+						
+
+			var resultItemHtml = getResultItemHtml(this, i);						
+			resultItemList.push(resultItemHtml);			
 	        
 	        addMarkerListenerForResultItem(advMarker, i, infowindow, mapInfoBoxContent);
 	    });
 	    
 	    $('.container-search-items').empty();
 	    $('.container-search-items').append(resultItemList.join(''));
-	    
+				
+
 	    registerResultItemClickEvent();
 	    
         /* pagination - initiate plugin */
@@ -268,9 +352,15 @@ if($('.find-a-pro-results-page').length > 0) {
         pnum = 0;
         
         //pagination
-        $("#holder a").click(function() {
-            showMarkers( $(this).text() );			
-        });
+        $("#holder a").click(function(e) {
+			showMarkers( $(this).text() );			
+
+			if(!e.currentTarget.classList.contains('jp-disabled')){				
+				window.scrollTo({ top: 100, behavior: 'smooth' });	
+			}		
+		});
+		
+		$(".search-result-pagination").css({'opacity':'1'})	 
 	}
 	
 	function showMarkers(num) {
@@ -327,7 +417,8 @@ if($('.find-a-pro-results-page').length > 0) {
 	        bounds.extend( allMarkers[j].position );
 	        resize();
 	    }
-	    
+		
+		
 	    //populate radius
 	    $("#radius").html("We have located " + allMarkers.length + " advisors within a " + allMarkers[allMarkers.length - 1].distance.toFixed(1) + " mile radius of " + $inputLocation.val());
 	}
@@ -344,19 +435,20 @@ if($('.find-a-pro-results-page').length > 0) {
 	function jpage() {
 		$("#holder").jPages({
 	        containerID : "resultlist",
-	        perPage : 5,
-	        previous    : "previous",
-	        next        : "next"
+	        perPage 	: 5,
+	        previous    : "",
+	        next        : ""
 	    });
 	}
 	
+
 	function appendMaterialIcons() {
-		$('.jp-previous').prepend('<i class="material-icons">keyboard_arrow_left</i>');
-		$('.jp-next').append('<i class="material-icons">keyboard_arrow_right</i>');
+		$('.jp-previous').prepend('<');
+		$('.jp-next').append('>');
 	}
 	
 	function registerResultItemClickEvent() {
-		$('.container-search-items div').click(function() {
+		$('.container-search-items div').click(function() {			
 			var mid = this.id.substr(12);
             $(allMarkers).each(function( i ) {
                 if(allMarkers[i].id == mid){
@@ -373,40 +465,113 @@ if($('.find-a-pro-results-page').length > 0) {
           return function() {
                clearlist();
                
-              var pid = "#result-item-" + advMarker.get("id");
-              $( pid ).css({"background-color":"#CDF4FA","color":"#333"});
+			  var pid = "#result-item-" + advMarker.get("id");			  
+			  
+			   $(pid).find('.row-padding').addClass('active');			   
+			//    $(pid).find('.row-padding').hover(
+			// 	function() {
+			// 		console.log('here')
+			// 	  $( this ).addClass('temp').removeClass('animate-line-map');
+			// 	}, function() {
+			// 		console.log('gone')
+			// 	  $( this ).removeClass('temp').addClass('animate-line-map');
+			// 	}
+			//   );	
+			   			   			   			              
               closeInfo();
               infowindow.setContent(mapInfoBoxContent);
               infowindow.open(map, advMarker);
             }
           })(advMarker, i, infowindow, mapInfoBoxContent));
-	}
-	
-	function getResultItemHtml(obj, businessName, phoneHtml, dist, i) {
-		var itemId = "result-item-" + i;
+	}	
+
+	function getResultItemHtml(obj, i) {
+		var productFamily = '';				
+		if(obj && obj.productFamily){
+            var multipleForms = obj.productFamily.split(',');			
+            productFamily += multipleForms;	
+        }	
+        
+        var bl = '';
+        if(obj.businessLine2) {
+           bl = ", " + obj.businessLine2;
+        } else {
+            bl = '';  
+        }
+
+		var itemId = "result-item-" + i;		
 		var resultItem = 	"<div id='" + itemId + "' class='search-result'>"	+
-							"<h6>"+ obj.firstName + " " + obj.lastName + "</h6>"	+
-							"<p class='p-alt-16'><strong>" + businessName + "</strong></p>" 	+
-							"<p class='p-alt-16'>" + obj.businessLine1 + "<p>" +
-							"<p class='p-alt-16'>" + obj.businessCity + ", " + obj.businessState + " " + obj.businessZip + "<p>"	+
-							phoneHtml +
-							"<p class='p-alt-16'><strong>Offers: </strong>"+ obj.productFamily + "<p>"	+
-							"<p class='p-alt-16'><strong>Distance: </strong>"+ dist + " miles<p>"	+
-							"</div>";		
-		return resultItem;
-	}
+							"<div class='border-wrapper'><div class='border-animate animate-border-height'></div></div>" +
+							"<div class='row row-padding animate-line-map'>" +							
+							"<div><div class='col-10 mb-2'><h6 class='p-alt-20 p-name-heading'>"+ obj.firstName + " " + obj.lastName + "</h6></div>"	+
+							"<div class='col col-12'><span class='d-flex'><span class='material-icons'>work</span><p class='p-alt-16 ml-2'>" + obj.firmName + "</p></span></div>" + 
+							"<div class='col col-12 d-flex address-column' onclick='copyAddressToClipBoard("+ i + ")' ><span class='d-flex'><span class='material-icons'>location_on</span> <p id='fafp-location-address' class='p-alt-16 ml-2 address'>"+ obj.businessLine1 + bl +", " + obj.businessCity + ", " + obj.businessState + " " + obj.businessZip +"</p></span><div class='ml-2 copy-icon'><a class='copyButtonfn' onclick='copyAddressToClipBoard("+ i + ")' ><span title='Copy' class='material-icons content_copy_icon'>content_copy</span> <span class='material-icons content_copied_icon d-none'>done</span> </a></div></div>" +
+                            "<div class='col col-12'><span class='d-flex'><span class='material-icons'>phone</span><p class='p-alt-16 ml-2'>" + obj.phoneNo + "</p></span></div>" + 
+                            // "<div class='col col-12'><span class='d-flex'><span class='material-icons'>public</span> <p class='p-alt-16 ml-2'>www.website.com</p></span></div>" +							
+							"<div class='col col-12'><div class='d-flex'><span class='material-icons mr-2'>dashboard</span>" + productFamily + "</div></div></div>"   +                                       
+							"</div>" + 
+							"</div>";			
+        return resultItem; 
+    }
 	
-	function getMapInfoBoxContent(obj, fullName, businessName, phoneHtml) {
-		
-        var content = '<div id="infobox"><div><b>' + fullName + '</b></div>' + businessName
-        + obj.businessLine1 + '<br>'
-        + obj.businessCity + ', ' + obj.businessState + ' ' + obj.businessZip + '<br><br>' 
-        + phoneHtml 
-		+ "<br><b>Offers:</b> " + obj.productFamily
-		+ '</div>';
+	function getMapInfoBoxContent(obj, fullName, businessName, phoneHtml) {	    
+		var bl = '';
+        if(obj.businessLine2) {
+           bl = ", " + obj.businessLine2;
+        } else {
+            bl = '';  
+        }
+		                
+		var content = '<div class="animatedParent animateOnce"><div id="infobox" class="infobox animated fadeInLeftShort go"><div class="mb-3 ml-1 fw-6"><b class="p-alt-18 p-name-heading">' + fullName 
+		+ '</b></div>' + 
+		'<div class="d-flex"><span class="material-icons">work</span><p class="p-alt-16 ml-2">'  
+		+ businessName +'</p></div>' 
+		+ '<div class="d-flex"><div><span class="material-icons">place</span></div><p class="p-alt-16 ml-2">'
+		+ obj.businessLine1 + bl +", " + obj.businessCity + ", " + obj.businessState + " " + obj.businessZip + '</p></div>' 
+        + "<div class='d-flex'><span class='material-icons'>phone</span><p class='p-alt-16 ml-2'>" + obj.phoneNo + "</p></div>" 
+		+ "<div class='d-flex'><span class='material-icons'>dashboard</span><p class='p-alt-16 ml-2 mb-0'>" + obj.productFamily
+		+ '</p></div></div></div>';
         
         return content;
 	}
+			
+
+	function copyAddressToClipBoard(e){		
+		
+		// https://api.jquery.com/eq/#eq-index 
+
+		var elementHide = $('.content_copy_icon').eq(e);				
+		elementHide.addClass('d-none');
+
+		var elementShow = $('.content_copied_icon').eq(e);		
+		elementShow.removeClass('d-none');
+
+		setTimeout(function(){
+			elementShow.addClass('d-none');
+			elementHide.removeClass('d-none');
+		},2000)
+
+		var address = $('.address')[e].innerText;				
+		var textArea = document.createElement("textarea");
+		textArea.value = address;
+
+		textArea.style.top = "0";
+		textArea.style.left = "0";
+		textArea.style.position = "fixed";
+		document.body.appendChild(textArea);
+		textArea.focus();
+		textArea.select();
+	  
+		
+		  var successful = document.execCommand('copy');		  
+		  var msg = successful ? '' : '';
+		  console.log(msg);		  
+		
+	  
+		document.body.removeChild(textArea);	
+	}
+
+	
 	
 	function formatPhoneNumber(phoneNo) {
 		var ph = '';
@@ -435,7 +600,13 @@ if($('.find-a-pro-results-page').length > 0) {
 		if(firmName== null || firmName=='NULL' || firmName==' ' || firmName.length<=0 ){
 			businessName = '';
 		} else {
-			businessName = '<i>' + firmName + '</i><br>';
+			if(Array.isArray(firmName)) {
+				$(firmName).each(function( i ) {
+					businessName += '<i>' + firmName[i] + '</i><br>'
+				});
+			} else {
+				businessName = '<i>' + firmName + '</i><br>';
+			}			
 		}
 		
 		return businessName;
@@ -455,7 +626,7 @@ if($('.find-a-pro-results-page').length > 0) {
 		}
 	
 	function clearlist(){
-	     $("[id^=result-item]").css({"background-color":"#ffffff","color":"#666"});
+		 $("[id^=result-item]").find('.row-padding').removeClass('active');	 
 	}
 	function displayMessage(msg) {
 		$(".container-search-items").empty();
@@ -471,6 +642,9 @@ if($('.find-a-pro-results-page').length > 0) {
 	function geo_error() {
 		//Leave blank
 	}
+
+
+
 	
 	/* On FAFP Results page --> When user enters Zip Code and clicks CTA: 
 	 * 
@@ -479,8 +653,11 @@ if($('.find-a-pro-results-page').length > 0) {
 	$('#fafp-zip-code-button').click(function(event) {
 		event.preventDefault();
 		var zipCode = $inputLocation.val();
-		if(zipCode) {
-			$mapContainerEl.html("");
+		if(zipCode) {			
+			// $mapContainerEl.html("");
+            // $mapContainerEl.prepend(loadingGif);
+            $('#shimmer-container').show();
+            // $('#').css(propertyName, value);
 			getCoordinatesFromZipCode(zipCode);			
 		}
 		
@@ -491,9 +668,9 @@ if($('.find-a-pro-results-page').length > 0) {
 	 *  If coords valid --> Call setLocation()
 	 * */
     
-	function getCoordinatesFromZipCode(zipCode) {
-		
+	function getCoordinatesFromZipCode(zipCode) {				
 		var geocoder = new google.maps.Geocoder();
+		console.log('GEO CODER',geocoder);		
         geocoder.geocode({ 
             componentRestrictions: {
                   country: 'US',
@@ -501,8 +678,7 @@ if($('.find-a-pro-results-page').length > 0) {
             }
         }, function(results, status) {
 
-		//geocoder.geocode({'address': zipCode}, function(results, status) {
-            
+		//geocoder.geocode({'address': zipCode}, function(results, status) {            
 			if (status == google.maps.GeocoderStatus.OK) {
 
 				var result = results[0];
@@ -529,9 +705,12 @@ if($('.find-a-pro-results-page').length > 0) {
 			}
 			
 		});
-	}
-	function geoCodeService() {}
+	}	
 }
+
+
+
+
 
 
 

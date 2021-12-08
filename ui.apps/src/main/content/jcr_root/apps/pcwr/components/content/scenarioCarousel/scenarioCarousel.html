@@ -1,7 +1,9 @@
 <sly data-sly-use.template="core/wcm/components/commons/v1/templates.html"/>
 <sly data-sly-call="${template.placeholder @ isEmpty = !properties.carItem1Title}"/>
 
-<div class="scenario-carousel-component ${properties.disableAnimations ? 'scenario-carousel-component-animations-disabled' : 'scenario-carousel-component-animations-enabled'}" 
+<div class="scenario-carousel-component 
+            ${wcmmode.edit || wcmmode.design ? 'scenario-carousel-component-author-animations-disabled' : ''}
+            ${properties.disableAnimations ? 'scenario-carousel-component-animations-disabled' : 'scenario-carousel-component-animations-enabled'}" 
      data-component-name="Scenario Carousel" 
      data-sly-attribute.data-is-carousel="${properties.carItem1Title && properties.carItem2Label && properties.carItem2BgImgFileRef ? 'true' : 'false'}"
      data-sly-test="${properties.carItem1Title}">
@@ -111,7 +113,7 @@
                         </div>
                         <div data-sly-test.card2Exists="${properties.carItem2Label && properties.carItem2BgImgFileRef}" class="item carousel-item" data-slide-number="1">
                             <div class="scenario-carousel-slide-copy text-center p-sm-5 py-5 px-4 ">
-                                <img src="${properties.carItem1IconFileRef}" class="mb-3 ${!properties.disableAnimations ? 'animated fadeIn delay-1000' : ''}" />
+                                <img src="${properties.carItem2IconFileRef}" class="mb-3 ${!properties.disableAnimations ? 'animated fadeIn delay-1000' : ''}" />
                                 <div class="${!properties.disableAnimations ? 'animated fadeIn delay-1000' : ''}" style="margin-top: 20px;">
                                     <h5>${properties.carItem2Title}</h5>
                                     <p class="p-alt-16">${properties.carItem2Body @ context='html'}</p>

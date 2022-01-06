@@ -329,7 +329,7 @@ if($('.find-a-pro-results-page').length > 0) {
 			infoboxes.push(infowindow); 
 						
 
-			var resultItemHtml = getResultItemHtml(this, i);						
+			var resultItemHtml = getResultItemHtml(this, businessName, i);						
 			resultItemList.push(resultItemHtml);			
 	        
 	        addMarkerListenerForResultItem(advMarker, i, infowindow, mapInfoBoxContent);
@@ -485,7 +485,7 @@ if($('.find-a-pro-results-page').length > 0) {
           })(advMarker, i, infowindow, mapInfoBoxContent));
 	}	
 
-	function getResultItemHtml(obj, i) {
+	function getResultItemHtml(obj, businessName, i) {
 		var productFamily = '';				
 		if(obj && obj.productFamily){
             var multipleForms = obj.productFamily.split(',');			
@@ -499,12 +499,21 @@ if($('.find-a-pro-results-page').length > 0) {
             bl = '';  
         }
 
+		var firmLabel = '';
+
+		if(businessName == ''){
+			firmLabel = '';
+		} else {
+			firmLabel = "<div class='col col-12'><span class='d-flex'><span class='material-icons'>work</span><p class='p-alt-16 ml-2'>" + businessName + "</p></span></div>";
+		}
+
 		var itemId = "result-item-" + i;		
 		var resultItem = 	"<div id='" + itemId + "' class='search-result'>"	+
 							"<div class='border-wrapper'><div class='border-animate animate-border-height'></div></div>" +
 							"<div class='row row-padding animate-line-map'>" +							
-							"<div><div class='col-10 mb-2'><h6 class='p-alt-20 p-name-heading'>"+ obj.firstName + " " + obj.lastName + "</h6></div>"	+
-							"<div class='col col-12'><span class='d-flex'><span class='material-icons'>work</span><p class='p-alt-16 ml-2'>" + obj.firmName + "</p></span></div>" + 
+							"<div><div class='col-10 mb-2'><h6 class='p-alt-20 p-name-heading'>"+ obj.firstName + " " + obj.lastName + "</h6></div>" +
+							//"<div class='col col-12'><span class='d-flex'><span class='material-icons'>work</span><p class='p-alt-16 ml-2'>" + obj.firmName + "</p></span></div>" + 
+							firmLabel +
 							"<div class='col col-12 d-flex address-column' onclick='copyAddressToClipBoard("+ i + ")' ><span class='d-flex'><span class='material-icons'>location_on</span> <p id='fafp-location-address' class='p-alt-16 ml-2 address'>"+ obj.businessLine1 + bl +", " + obj.businessCity + ", " + obj.businessState + " " + obj.businessZip +"</p></span><div class='ml-2 copy-icon'><a class='copyButtonfn' onclick='copyAddressToClipBoard("+ i + ")' ><span title='Copy' class='material-icons content_copy_icon'>content_copy</span> <span class='material-icons content_copied_icon d-none'>done</span> </a></div></div>" +
                             "<div class='col col-12'><span class='d-flex'><span class='material-icons'>phone</span><p class='p-alt-16 ml-2'>" + obj.phoneNo + "</p></span></div>" + 
                             // "<div class='col col-12'><span class='d-flex'><span class='material-icons'>public</span> <p class='p-alt-16 ml-2'>www.website.com</p></span></div>" +							
@@ -521,11 +530,19 @@ if($('.find-a-pro-results-page').length > 0) {
         } else {
             bl = '';  
         }
-		                
+		
+		var businessLabel = '';
+
+		if(businessName == '') {
+			businessLabel = '';
+		} else {
+			businessLabel = '<div class="d-flex"><span class="material-icons">work</span><p class="p-alt-16 ml-2">'+ businessName +'</p></div>' ;
+		}
+
 		var content = '<div class="animatedParent animateOnce"><div id="infobox" class="infobox animated fadeInLeftShort go"><div class="mb-3 ml-1 fw-6"><b class="p-alt-18 p-name-heading">' + fullName 
-		+ '</b></div>' + 
-		'<div class="d-flex"><span class="material-icons">work</span><p class="p-alt-16 ml-2">'  
-		+ businessName +'</p></div>' 
+		+ '</b></div>' 
+		//+ '<div class="d-flex"><span class="material-icons">work</span><p class="p-alt-16 ml-2">'+ businessName +'</p></div>' 
+		+ businessLabel
 		+ '<div class="d-flex"><div><span class="material-icons">place</span></div><p class="p-alt-16 ml-2">'
 		+ obj.businessLine1 + bl +", " + obj.businessCity + ", " + obj.businessState + " " + obj.businessZip + '</p></div>' 
         + "<div class='d-flex'><span class='material-icons'>phone</span><p class='p-alt-16 ml-2'>" + obj.phoneNo + "</p></div>" 
@@ -597,16 +614,15 @@ if($('.find-a-pro-results-page').length > 0) {
 	
 	function formatBusinessName(firmName) {
 		 var businessName = '';
-		if(firmName== null || firmName=='NULL' || firmName==' ' || firmName.length<=0 ){
+
+		if( firmName[0].firmName== null || firmName[0].firmName=='NULL' || firmName[0].firmName==' ' || firmName[0].firmName=='' ){
 			businessName = '';
 		} else {
-			if(Array.isArray(firmName)) {
-				$(firmName).each(function( i ) {
-					businessName += '<i>' + firmName[i] + '</i><br>'
-				});
-			} else {
-				businessName = '<i>' + firmName + '</i><br>';
-			}			
+
+			$(firmName).each(function( i ) {
+				businessName += firmName[i].firmName + '<br>';
+			});
+		
 		}
 		
 		return businessName;

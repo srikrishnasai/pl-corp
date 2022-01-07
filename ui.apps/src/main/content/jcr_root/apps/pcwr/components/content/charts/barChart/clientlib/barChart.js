@@ -25,8 +25,14 @@ $(document).ready(function () {
           if(isAnimationDone === false){
             baseElement.find('.bar-chart-bar').each(function () {
                 let value = Number(tab_attribs[increment]); 
+                var $barWrapper = $(this).closest('.bar-chart-bar-inner-wrapper');
+                if($barWrapper && $barWrapper.length > 0) {
+                    var totalWidth = $barWrapper.width();
+                    var labelWidth = $barWrapper.find('.bar-chart-bar-value').length > 0 ? $barWrapper.find('.bar-chart-bar-value').width() : 0; 
+                    value = ((totalWidth - labelWidth - 10) * value) / 100;
+                }
                 $(this).animate({
-                    width : value + "%"
+                    width : value + "px"
                 },{
                     duration: 1000,
                     easing: "linear"

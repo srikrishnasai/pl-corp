@@ -120,6 +120,13 @@
 													fieldDescription="Please provide value for the bar"
 													fieldLabel="Bar Value"
 													name="./barValue"/>
+												<tip
+													jcr:primaryType="nt:unstructured"
+													sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+													disabled="{Boolean}true"
+													renderReadOnly="{Boolean}true"
+													renderHidden="{Boolean}true"
+													value="The bar value field accepts only numbers, decimals and numbers separated by commas, please do not input special characters like $"/>					
 												<barLabel
 													jcr:primaryType="nt:unstructured"
 													sling:resourceType="granite/ui/components/coral/foundation/form/textfield"

@@ -6,7 +6,8 @@
 	xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
     jcr:primaryType="nt:unstructured"
     jcr:title="Pie Chart"
-    sling:resourceType="cq/gui/components/authoring/dialog">
+    sling:resourceType="cq/gui/components/authoring/dialog"
+	extraClientlibs="[pcwr.authoring.input.validation]">
     <content
         jcr:primaryType="nt:unstructured"
         sling:resourceType="granite/ui/components/coral/foundation/container">
@@ -107,7 +108,8 @@
 															fieldDescription="Please provide value for the bar"
 															fieldLabel="Bar Value"
 															min="0"
-															name="./barValue"/>
+															name="./barValue"
+															validation="special-character-validation"/>
 														<tip
 															jcr:primaryType="nt:unstructured"
 															sling:resourceType="granite/ui/components/coral/foundation/form/textfield"

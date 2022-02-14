@@ -20,7 +20,7 @@ if($('.find-a-pro-results-page').length > 0) {
 	var bounds = new google.maps.LatLngBounds();
 	var autocomplete;
 	// var loadingGif =``;
-	var noAdvisorsFoundMsg = "There were no advisors found in your area. Please enter a different Zip Code and try again.";
+	var noAdvisorsFoundMsg = $('.find-a-pro-results-page').attr('data-no-results-message') ? $('.find-a-pro-results-page').attr('data-no-results-message') : "No financial professionals selling this product were found within 50 miles of this zip code.";
 	var systemError = "System maintenance is being performed. Please try again later.";
 	var srvcerr = "System maintenance is currently being performed. Please try again later.";
 
@@ -163,91 +163,38 @@ if($('.find-a-pro-results-page').length > 0) {
 		}
 		
 		$.get( locURL, function(results) {
-            data = results;
-            showMap(lat, long);
-            markerList(results);
+			var selectedFilter = ''
+			// Check if any filter is active 
+			data = results;
+			var selectedFilter = $('.nav-item.fafp-filter .active').first() ? $('.nav-item.fafp-filter .active .filter-text').first().attr('data-filter-value') : undefined;
+			if(selectedFilter !== "all"){
+				results = getFilteredData(selectedFilter , results)
+			}
+			showMap(lat, long);
+			markerList(results);
+			setTimeout(function() {
+				$('#shimmer-container').hide();
+			});
         }).done(function() {
             $('#shimmer-container').hide();
         }).fail(function() {
             $('#shimmer-container').hide();
             displayMessage( srvcerr );
         });
-	// Filter Data Code
-	$('.nav-item.fafp-filter').click(function(event) {				
-		event.preventDefault();	
-		var filterOption;	
-				
-		if(event.target.lastChild){			
-			filterOption = event.target.lastChild.textContent;
-		}
 
-		if(event.target.firstChild.parentElement.nextElementSibling){			
-			filterOption = event.target.firstChild.parentElement.nextElementSibling.innerHTML;
-		}
 		
-		if(filterOption === 'Annuities'){
-			var resultItemList = [];
-			var newData = getFilteredData(filterOption, data);
-			var resultItemHtml = getResultItemHtml(newData);						
-			resultItemList.push(resultItemHtml);					
-			if(newData.length < 5){
-				$('.search-result-pagination').addClass('d-none');
-			} else {
-				$('.search-result-pagination').removeClass('d-none');
-			}						
-			markerList(newData);		
-		}
-		if(filterOption === 'Life Insurance'){
-			var resultItemList = [];
-			console.log('inside Life insurance');		
-			getFilteredData(filterOption, data);
-			var newData = getFilteredData(filterOption, data);	
-			var resultItemHtml = getResultItemHtml(newData);
-			resultItemList.push(resultItemHtml);			
-			if(newData.length < 5){
-				$('.search-result-pagination').addClass('d-none');
-			} else {
-				$('.search-result-pagination').removeClass('d-none');
-			}		
-			markerList(newData);
-		}
-		if(filterOption === 'Mutual Funds'){
-			var resultItemList = [];			
-			getFilteredData(filterOption, data);
-			var newData = getFilteredData('Mutual Fund', data);	
-			var resultItemHtml = getResultItemHtml(newData);
-			resultItemList.push(resultItemHtml);			
-			if(newData.length < 5){
-				$('.search-result-pagination').addClass('d-none');
-			} else {
-				$('.search-result-pagination').removeClass('d-none');
-			}			
-			markerList(newData);
-		}
-
-		if(filterOption === 'All'){
-			var resultItemList = [];			
-			var resultItemHtml = getResultItemHtml(data);						
-			resultItemList.push(resultItemHtml);			
-			if(data.length < 5){
-				$('.search-result-pagination').addClass('d-none');
-			} else {
-				$('.search-result-pagination').removeClass('d-none');
-			}							
-			markerList(data);		
-		}		
-	});
-
 	}
 
 	//filer Array results 
 	function getFilteredData(optionName, resultdData){		
-		var filteredArray = resultdData.filter(function(data){		
-			var result = data.productFamily.split(', ');
-			var filter = result[result.indexOf(optionName)];			
-			return filter;				
-		})												
-		return filteredArray;
+		if(resultdData) {
+			var filteredArray = resultdData.filter(function(data){		
+				var result = data.productFamily.split(', ');
+				var filter = result[result.indexOf(optionName)];			
+				return filter;				
+			})												
+			return filteredArray;
+		}
 	}
 
 
@@ -334,7 +281,7 @@ if($('.find-a-pro-results-page').length > 0) {
 	        
 	        addMarkerListenerForResultItem(advMarker, i, infowindow, mapInfoBoxContent);
 	    });
-	    
+
 	    $('.container-search-items').empty();
 	    $('.container-search-items').append(resultItemList.join(''));
 				
@@ -648,8 +595,9 @@ if($('.find-a-pro-results-page').length > 0) {
 		$(".container-search-items").empty();
 	    $("#holder").empty();
 	    
-	    $('#fafp-error-msg').toggleClass('d-none');
-	    $('#fafp-error-msg .col').text(msg);
+	    $('#fafp-error-msg').removeClass('d-none');
+	    $('#fafp-error-msg .px-4').text(msg);
+		$("#radius").empty();
 	}
 	
 	function hideErrorMessage() {
@@ -672,12 +620,42 @@ if($('.find-a-pro-results-page').length > 0) {
 		if(zipCode) {			
 			// $mapContainerEl.html("");
             // $mapContainerEl.prepend(loadingGif);
+			hideErrorMessage();
             $('#shimmer-container').show();
             // $('#').css(propertyName, value);
 			getCoordinatesFromZipCode(zipCode);			
 		}
 		
 	});
+
+	/**
+	 * On FAFP Results Page --> When user clicks on the filters
+	 */
+	$('.nav-item.fafp-filter').click(function(event) {				
+		event.preventDefault();	
+		$('#fafp-error-msg').addClass('d-none');
+		
+		var filterOption = $(this).find('.filter-text').attr('data-filter-value');
+
+		if(filterOption === 'Long-term Care') {
+			$('.fafp-long-term-care-msg').fadeIn();
+		} else {
+			$('.fafp-long-term-care-msg').fadeOut();
+		}
+		
+		var resultItemList = [];			
+		var newData = filterOption !== 'all' ? getFilteredData(filterOption, data) : data;
+		var resultItemHtml = getResultItemHtml(newData);						
+							
+		resultItemList.push(resultItemHtml);			
+		if(newData.length < 5){
+			$('.search-result-pagination').addClass('d-none');
+		} else {
+			$('.search-result-pagination').removeClass('d-none');
+		}							
+		markerList(newData);			
+	});
+
 	
 	/* Code to get Co-ordinates from Zip Code
 	 * 
@@ -693,7 +671,7 @@ if($('.find-a-pro-results-page').length > 0) {
                   postalCode: zipCode
             }
         }, function(results, status) {
-
+			
 		//geocoder.geocode({'address': zipCode}, function(results, status) {            
 			if (status == google.maps.GeocoderStatus.OK) {
 
@@ -715,9 +693,14 @@ if($('.find-a-pro-results-page').length > 0) {
 					$("label[for='fafp-inputSearchValue']").html(geoZip);
 					address = geoZip;
 		        }
-
 				setLocation(coords.lat(), coords.lng());
 				//return coords;
+			}
+			else{
+				$('#shimmer-container').hide();
+				markerList([])
+				data = [];
+				$("#radius").empty();
 			}
 			
 		});

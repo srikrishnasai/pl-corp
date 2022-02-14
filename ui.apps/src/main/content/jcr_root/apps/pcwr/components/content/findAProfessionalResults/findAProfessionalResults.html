@@ -13,30 +13,34 @@
 	
 	<input type="hidden" id="fafp-webservice-url" value="${config.fafpWebserviceUrl}"/>
 	<input id="fafp-url-zip-code" type="hidden" value="${request.requestPathInfo.selectors[0]}"/>
-	<div data-component-name="Find A Professional Results" class="find-a-pro-results-page">
+	<div data-component-name="Find A Professional Results" class="find-a-pro-results-page" data-no-results-message="${properties.noResultsMessage}">
 		<div class="pt-md-4 find-a-pro-page-wrapper mx-auto">
 			<div class="row responsive-screen-row">
-				<div class="col-md-8 col-sm-12 col-xs-12">
-					<ul class="nav nav-pills filterTab float-left" id="myTab" role="tablist" >						  
+				<div class="col-md-9 col-sm-12 col-xs-12">
+					<ul class="nav nav-pills filterTab float-left" role="tablist" >						  
 						  <li class="nav-item fafp-filter insights-gallery-filter">	    		
-							<span class="nav-link cta-text-btn all-text p-4 active show d-flex" id="all" style="cursor:pointer;"
-								 aria-selected="false" data-toggle="pill" name="shuffle-filter" value="all"><span class="filter-text">All</span></span>
+							<span class="nav-link cta-text-btn all-text p-4 active show d-flex" style="cursor:pointer;"
+								 aria-selected="false" data-toggle="pill"><span class="filter-text" data-filter-value="all">All</span></span>
 						  </li>		 		 
 						  <li  class="nav-item fafp-filter insights-gallery-filter">	    		
-							<span class="nav-link cta-text-btn all-text p-4 d-flex" id="all" style="cursor:pointer;"
-								 aria-selected="false" data-toggle="pill" name="shuffle-filter" value="annuities"><span class="filter-text">Annuities</span></span>
+							<span class="nav-link cta-text-btn all-text p-4 d-flex" style="cursor:pointer;"
+								 aria-selected="false" data-toggle="pill" value="Annuities"><span class="filter-text" data-filter-value="Annuities">Annuities</span></span>
 						  </li>		 		 
 						  <li  class="nav-item fafp-filter insights-gallery-filter">	    		
-							<span class="nav-link cta-text-btn all-text p-4 d-flex" id="all" style="cursor:pointer;"
-								 aria-selected="false" data-toggle="pill" name="shuffle-filter" value="lifeInsurance"><span class="filter-text">Life Insurance</span></span>
+							<span class="nav-link cta-text-btn all-text p-4 d-flex" style="cursor:pointer;"
+								 aria-selected="false" data-toggle="pill" value="Life Insurance"><span class="filter-text" data-filter-value="Life Insurance">Life Insurance</span></span>
 						  </li>		 		 
 						  <li  class="nav-item fafp-filter insights-gallery-filter">	    		
-							<span class="nav-link cta-text-btn all-text p-4 d-flex" id="all" style="cursor:pointer;"
-								 aria-selected="false" data-toggle="pill" name="shuffle-filter" value="mutualFunds"><span class="filter-text">Mutual Funds</span></span>
+							<span class="nav-link cta-text-btn all-text p-4 d-flex" style="cursor:pointer;"
+								 aria-selected="false" data-toggle="pill" value="Mutual Fund"><span class="filter-text" data-filter-value="Mutual Fund">Mutual Funds</span></span>
+						  </li>		 	
+						  <li  class="nav-item fafp-filter insights-gallery-filter">	    		
+							<span class="nav-link cta-text-btn all-text p-4 d-flex" style="cursor:pointer;"
+								 aria-selected="false" data-toggle="pill" value="Long-term Care"><span class="filter-text" data-filter-value="Long-term Care">Long-Term Care</span></span>
 						  </li>		 		 				
 					</ul>
 				</div>
-				<div class="col-md-4 col-sm-12 col-xs-12 responsive-screen-col">
+				<div class="col-md-3 col-sm-12 col-xs-12 responsive-screen-col">
 					<form class="d-flex fapr-search-bar float-right">
 						<!-- <div class="form-group form-group-search-input mx-sm-3 mb-2">
 							<label for="fafp-inputSearchValue" class="sr-only">${properties.placeHolderText || 'Enter ZIP code'}</label>
@@ -60,7 +64,14 @@
 					</form>	  
 				</div>
 			</div>
-
+			<div class="row responsive-screen-row">
+				<div class="col-md-12 col-sm-12 col-xs-12">
+					<div class="fafp-long-term-care-msg">
+						<p>For inquiries regarding long-term care, note that a financial professional must be properly licensed and appointed to sell life insurance and long-term care insurance, and that you may be contacted as a result of your inquiry.</p>
+					</div>
+				</div>
+			</div>
+			
 			<!-- <div class="row mt-4">
 				<div class="col-md-6">
 					<div id="resultlist" class="container-search-items"></div>				
@@ -76,9 +87,8 @@
 		
 
 		<div class="find-a-pro-page-wrapper mx-auto my-5">
-			<div id="fafp-error-msg" class="row d-none">
-				<div class="col-sm-4"></div> 
-				<div class="col"></div> 
+			<div id="fafp-error-msg" class="row d-none justify-content-center">
+				<div class="px-4"></div> 
 			</div>
 			<div id="shimmer-container">
 				<div id='find'><div class='shimmer-wrapper'>

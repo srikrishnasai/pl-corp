@@ -9,8 +9,10 @@
          <div class="content-wrapper animatedParent animateOnce" data-appear-top-offset='-150'>
             <div class="pie-chart-outer-wrapper animated fadeIn"
                  data-bar-widths="${chartData.barWidths}"
-                 data-bar-colors="${chartData.barColors}"
-                 data-bar-labels="${chartData.barLabels}">
+                 data-bar-colors="${chartData.barColors}">
+               <div data-sly-list="${chartData.barLabels}">
+                  <input type="hidden" class="bar-label" value="${item}">
+               </div>
                <div class="pie-chart-inner-wrapper">
                   <canvas id="doughnutChart"></canvas>
                   <div class="pie-chart-content-wrapper animated fadeInForQoute displayclass-bar delay-750" >
@@ -53,8 +55,10 @@
          <div class="content-wrapper animatedParent animateOnce" data-appear-top-offset='-150'>
             <div class="pie-chart-outer-wrapper animated fadeIn"
                  data-bar-widths="${chartData.barWidths}"
-                 data-bar-colors="${chartData.barColors}"
-                 data-bar-labels="${chartData.barLabels}">
+                 data-bar-colors="${chartData.barColors}">
+                 <div data-sly-list="${chartData.barLabels}">
+                     <input type="hidden" class="bar-label" value="${item}">
+                  </div>
                <div class="pie-chart-inner-wrapper">
                   <canvas id="doughnutChart"></canvas>
                   <div class="pie-chart-content-wrapper animated fadeInForQoute delay-750">

@@ -88,7 +88,7 @@ public class PieChartModel {
 					if(barWidth > 5) {
 						multiFieldItem.setBarWidth(Double.toString(barWidth));
 						this.barWidths.add(barWidth);
-					} else if(barWidth > 0 && barWidth <= 5) {
+					} else if(barWidth >= 0 && barWidth <= 5) {
 						this.barWidths.add(6D);
 					}
 				}

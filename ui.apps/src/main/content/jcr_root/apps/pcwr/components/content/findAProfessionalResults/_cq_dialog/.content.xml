@@ -46,7 +46,13 @@
                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                         fieldLabel="Placeholder Text"
                         fieldDescription="Defaults to 'Enter ZIP code'"
-                        name="./placeHolderText"/>	                  
+                        name="./placeHolderText"/>	
+                    <noResultsMessage
+                        jcr:primaryType="nt:unstructured"
+                        fieldLabel="No Results Message"
+                        name="./noResultsMessage"
+                        fieldDescription="Please enter a message to display when there are no financial professionals found for a zip code"
+						sling:resourceType="granite/ui/components/coral/foundation/form/textarea"/>               
                 </items>
             </column>
         </items>

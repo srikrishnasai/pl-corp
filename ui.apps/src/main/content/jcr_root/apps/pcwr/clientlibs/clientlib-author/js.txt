@@ -1,0 +1,1 @@
+restrict-input-special-character.js

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0"
+    jcr:primaryType="sling:OrderedFolder">
+    <nav jcr:primaryType="nt:unstructured">
+        <tools jcr:primaryType="nt:unstructured">
+            <pc-tools
+                jcr:primaryType="nt:unstructured"
+                jcr:title="Pacific Life Tools"
+                id="cq-tools-pc-tools"
+                order="{Long}200">
+                <wordsupdater
+                    jcr:description="To edit a list of stop words or synonyms for search enhancement."
+                    jcr:primaryType="nt:unstructured"
+                    jcr:title="Oak Index Stop/Synonyms Updater"
+                    href_i18n="/etc/oak-index-dictionary.html"
+                    icon="collectionEdit"
+                    id="cq-stopword"
+                    target="_blank"/>
+            </pc-tools>
+        </tools>
+    </nav>
+</jcr:root>

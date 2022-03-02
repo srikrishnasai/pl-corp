@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:oak="http://jackrabbit.apache.org/oak/ns/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0" xmlns:rep="internal"
+    jcr:mixinTypes="[rep:AccessControllable]"
+    jcr:primaryType="nt:unstructured">
+    <cqPageLuceneCorpSuggest
+        jcr:primaryType="oak:QueryIndexDefinition"
+        async="[async]"
+        compatVersion="{Long}2"
+        evaluatePathRestrictions="{Boolean}true"
+        excludedPaths="[/var,/etc/replication,/etc/workflow/instances,/jcr:system]"
+        reindex="{Boolean}false"
+        reindexCount="{Long}1"
+        seed="{Long}-4285672018531991600"
+        suggestAnalyzed="{Boolean}true"
+        type="lucene">
+        <aggregates jcr:primaryType="nt:unstructured">
+            <cq:Page jcr:primaryType="nt:unstructured">
+                <include0
+                    jcr:primaryType="nt:unstructured"
+                    path="jcr:content"
+                    relativeNode="{Boolean}true"/>
+            </cq:Page>
+            <nt:file jcr:primaryType="nt:unstructured">
+                <include0
+                    jcr:primaryType="nt:unstructured"
+                    path="jcr:content"/>
+            </nt:file>
+            <cq:PageContent jcr:primaryType="nt:unstructured">
+                <include0
+                    jcr:primaryType="nt:unstructured"
+                    path="*"/>
+                <include1
+                    jcr:primaryType="nt:unstructured"
+                    path="*/*"/>
+                <include2
+                    jcr:primaryType="nt:unstructured"
+                    path="*/*/*"/>
+                <include3
+                    jcr:primaryType="nt:unstructured"
+                    path="*/*/*/*"/>
+				<include4
+                    jcr:primaryType="nt:unstructured"
+                    path="*/*/*/*/*"/>
+				<include5
+                    jcr:primaryType="nt:unstructured"
+                    path="*/*/*/*/*/*"/>
+				<include6
+                    jcr:primaryType="nt:unstructured"
+                    path="*/*/*/*/*/*/*"/>
+				<include7
+                    jcr:primaryType="nt:unstructured"
+                    path="*/*/*/*/*/*/*/*"/>
+				<include8
+                    jcr:primaryType="nt:unstructured"
+                    path="*/*/*/*/*/*/*/*/*"/>
+				<include9
+                    jcr:primaryType="nt:unstructured"
+                    path="*/*/*/*/*/*/*/*/*/*"/>
+				<include10
+                    jcr:primaryType="nt:unstructured"
+                    path="*/*/*/*/*/*/*/*/*/*/*"/>
+            </cq:PageContent>
+        </aggregates>
+		<analyzers jcr:primaryType="nt:unstructured">
+            <default jcr:primaryType="nt:unstructured">
+                <charFilters jcr:primaryType="nt:unstructured">
+                    <Mapping jcr:primaryType="nt:unstructured"/>
+                </charFilters>
+                <tokenizer
+                    jcr:primaryType="nt:unstructured"
+                    name="Standard"/>
+                <filters jcr:primaryType="nt:unstructured">
+                    <LowerCase jcr:primaryType="nt:unstructured"/>
+					<Stop
+                    jcr:primaryType="nt:unstructured"
+                    words="stop.txt"/>
+					<Synonym
+                    jcr:primaryType="nt:unstructured"
+                    synonyms="synonym.txt"/>
+                </filters>
+            </default>
+        </analyzers>
+        <indexRules jcr:primaryType="nt:unstructured">
+            <cq:Page jcr:primaryType="nt:unstructured">
+                <properties jcr:primaryType="nt:unstructured">
+                    <jcrTitle
+                        jcr:primaryType="nt:unstructured"
+                        analyzed="{Boolean}true"
+                        name="jcr:content/jcr:title"
+                        nodeScopeIndex="{Boolean}true"
+                        propertyIndex="{Boolean}true"
+                        type="String"
+						boost="{Double}2.0"
+                        useInSpellcheck="{Boolean}true"
+                        useInSuggest="{Boolean}true"/>
+                    <pageTitle
+                        jcr:primaryType="nt:unstructured"
+                        analyzed="{Boolean}true"
+                        name="jcr:content/pageTitle"
+                        nodeScopeIndex="{Boolean}true"
+                        propertyIndex="{Boolean}true"
+                        type="String"
+                        useInSpellcheck="{Boolean}true"
+                        useInSuggest="{Boolean}true"/>
+                    <navTitle
+                        jcr:primaryType="nt:unstructured"
+                        name="jcr:content/navTitle"
+                        nodeScopeIndex="{Boolean}true"
+                        propertyIndex="{Boolean}true"
+                        type="String"
+                        useInSpellcheck="{Boolean}true"
+                        useInSuggest="{Boolean}true"/>
+                    <nodeName
+                        jcr:primaryType="nt:unstructured"
+                        name=":nodeName"
+                        nodeScopeIndex="{Boolean}true"
+                        propertyIndex="{Boolean}true"
+                        type="String"/>
+                    <cqLastRolledoutBy
+                        jcr:primaryType="nt:unstructured"
+                        name="jcr:content/cq:lastRolledoutBy"
+                        propertyIndex="{Boolean}true"
+                        type="String"/>
+                    <location
+                        jcr:primaryType="nt:unstructured"
+                        name="jcr:content/location"
+                        notNullCheckEnabled="{Boolean}true"
+                        propertyIndex="{Boolean}true"
+                        type="String"/>
+                    <damSearchElevate
+                        jcr:primaryType="nt:unstructured"
+                        analyzed="{Boolean}true"
+                        boost="{Double}100.0"
+                        name="jcr:content/search_promote"
+                        nodeScopeIndex="{Boolean}true"
+                        propertyIndex="{Boolean}true"
+						useInSpellcheck="{Boolean}true"
+                        useInSuggest="{Boolean}true"/>
+                    <jcrDescription
+                        jcr:primaryType="nt:unstructured"
+                        analyzed="{Boolean}true"
+                        name="jcr:content/jcr:description"
+                        nodeScopeIndex="{Boolean}true"
+                        propertyIndex="{Boolean}true"
+                        type="String"
+                        useInSpellcheck="{Boolean}true"
+                        useInSuggest="{Boolean}true"/>
+                </properties>
+            </cq:Page>
+        </indexRules>
+        <suggest
+            jcr:primaryType="nt:unstructured"
+            suggestUpdateFrequencyMinutes="{Long}1"/>
+    </cqPageLuceneCorpSuggest>
+    <cqPageLuceneCorpSearch
+        jcr:primaryType="oak:QueryIndexDefinition"
+        async="[async,nrt]"
+        compatVersion="{Long}2"
+        evaluatePathRestrictions="{Boolean}true"
+        excludedPaths="[/var,/etc/replication,/etc/workflow/instances,/jcr:system]"
+        includedPaths="[/content/pl-corp]"
+		queryPaths="[/content/pl-corp]"
+        reindex="{Boolean}false"
+        reindexCount="{Long}5"
+        seed="{Long}4285672018531991592"
+        type="lucene">
+        <aggregates jcr:primaryType="nt:unstructured">
+            <cq:Page jcr:primaryType="nt:unstructured">
+                <include0
+                    jcr:primaryType="nt:unstructured"
+                    path="jcr:content"
+                    relativeNode="{Boolean}true"/>
+            </cq:Page>
+            <nt:file jcr:primaryType="nt:unstructured">
+                <include0
+                    jcr:primaryType="nt:unstructured"
+                    path="jcr:content"/>
+            </nt:file>
+            <cq:PageContent jcr:primaryType="nt:unstructured">
+                <include0
+                    jcr:primaryType="nt:unstructured"
+                    path="*"/>
+                <include1
+                    jcr:primaryType="nt:unstructured"
+                    path="*/*"/>
+                <include2
+                    jcr:primaryType="nt:unstructured"
+                    path="*/*/*"/>
+                <include3
+                    jcr:primaryType="nt:unstructured"
+                    path="*/*/*/*"/>
+				<include4
+                    jcr:primaryType="nt:unstructured"
+                    path="*/*/*/*/*"/>
+				<include5
+                    jcr:primaryType="nt:unstructured"
+                    path="*/*/*/*/*/*"/>
+				<include6
+                    jcr:primaryType="nt:unstructured"
+                    path="*/*/*/*/*/*/*"/>
+				<include7
+                    jcr:primaryType="nt:unstructured"
+                    path="*/*/*/*/*/*/*/*"/>
+				<include8
+                    jcr:primaryType="nt:unstructured"
+                    path="*/*/*/*/*/*/*/*/*"/>
+				<include9
+                    jcr:primaryType="nt:unstructured"
+                    path="*/*/*/*/*/*/*/*/*/*"/>
+				<include10
+                    jcr:primaryType="nt:unstructured"
+                    path="*/*/*/*/*/*/*/*/*/*/*"/>
+            </cq:PageContent>
+        </aggregates>
+        <analyzers jcr:primaryType="nt:unstructured">
+            <default jcr:primaryType="nt:unstructured">
+                <charFilters jcr:primaryType="nt:unstructured">
+                    <Mapping jcr:primaryType="nt:unstructured"/>
+                </charFilters>
+                <tokenizer
+                    jcr:primaryType="nt:unstructured"
+                    name="Standard"/>
+                <filters jcr:primaryType="nt:unstructured">
+                    <LowerCase jcr:primaryType="nt:unstructured"/>
+					<Stop
+                    jcr:primaryType="nt:unstructured"
+                    words="stop.txt"/>
+					<Synonym
+                    jcr:primaryType="nt:unstructured"
+                    synonyms="synonym.txt"/>
+                    <PorterStem jcr:primaryType="nt:unstructured"/>
+                </filters>
+            </default>
+        </analyzers>
+        <indexRules jcr:primaryType="nt:unstructured">
+            <cq:Page jcr:primaryType="nt:unstructured">
+                <properties jcr:primaryType="nt:unstructured">
+                    <cqLastModified
+                        jcr:primaryType="nt:unstructured"
+                        name="jcr:content/cq:lastModified"
+                        ordered="{Boolean}true"
+                        propertyIndex="{Boolean}true"
+                        type="Date"/>
+                    <jcrTitle
+                        jcr:primaryType="nt:unstructured"
+                        analyzed="{Boolean}true"
+                        name="jcr:content/jcr:title"
+                        nodeScopeIndex="{Boolean}true"
+                        propertyIndex="{Boolean}true"
+                        type="String"
+						boost="{Double}2.0"
+                        useInSpellcheck="{Boolean}true"
+                        useInSuggest="{Boolean}true"/>
+                    <pageTitle
+                        jcr:primaryType="nt:unstructured"
+                        analyzed="{Boolean}true"
+                        name="jcr:content/pageTitle"
+                        nodeScopeIndex="{Boolean}true"
+                        propertyIndex="{Boolean}true"
+                        type="String"
+                        useInSpellcheck="{Boolean}true"
+                        useInSuggest="{Boolean}true"/>
+                    <navTitle
+                        jcr:primaryType="nt:unstructured"
+                        name="jcr:content/navTitle"
+                        nodeScopeIndex="{Boolean}true"
+                        propertyIndex="{Boolean}true"
+                        type="String"
+                        useInSpellcheck="{Boolean}true"
+                        useInSuggest="{Boolean}true"/>
+                    <nodeName
+                        jcr:primaryType="nt:unstructured"
+                        name=":nodeName"
+                        nodeScopeIndex="{Boolean}true"
+                        propertyIndex="{Boolean}true"
+                        type="String"
+                        useInSpellcheck="{Boolean}true"
+                        useInSuggest="{Boolean}true"/>
+                    <cqLastRolledoutBy
+                        jcr:primaryType="nt:unstructured"
+                        name="jcr:content/cq:lastRolledoutBy"
+                        propertyIndex="{Boolean}true"
+                        type="String"/>
+                    <location
+                        jcr:primaryType="nt:unstructured"
+                        name="jcr:content/location"
+                        notNullCheckEnabled="{Boolean}true"
+                        propertyIndex="{Boolean}true"
+                        type="String"/>
+                    <damSearchElevate
+                        jcr:primaryType="nt:unstructured"
+                        analyzed="{Boolean}true"
+                        boost="{Double}100.0"
+                        name="jcr:content/search_promote"
+                        nodeScopeIndex="{Boolean}true"
+                        propertyIndex="{Boolean}true"/>
+                </properties>
+            </cq:Page>
+        </indexRules>
+        <suggest
+            jcr:primaryType="nt:unstructured"
+            suggestUpdateFrequencyMinutes="{Long}1"/>
+    </cqPageLuceneCorpSearch>
+</jcr:root>

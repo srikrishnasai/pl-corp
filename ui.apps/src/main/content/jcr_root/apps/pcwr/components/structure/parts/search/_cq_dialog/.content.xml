@@ -28,19 +28,25 @@
                                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                         fieldDescription="Enter some text like 'What are you looking for?'"
                                         fieldLabel="Search Field Placeholder"
+										sling:hideResource="{Boolean}true"
                                         name="./placeholder"/>          
 				                    <action
 				                        jcr:primaryType="nt:unstructured"
 				                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
 				                        fieldLabel="Action"
+										sling:hideResource="{Boolean}true"
 				                        name="./action"/>				                                                                                           	
-                                    <searchPath
+                                    <searchPaths
                                         jcr:primaryType="nt:unstructured"
-                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                        fieldDescription="Specify search paths to be used (comma-separated)"
-                                        fieldLabel="Search Path"
-                                        name="./searchPaths"
-                                        value="/content/pl-corp,/content/dam/pl-corp"/>   
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                        fieldDescription="Specify search paths to be used"
+                                        fieldLabel="Search Paths">
+										<field
+										jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+										name="./searchingPaths"
+										rootPath="/content"/>
+                                    </searchPaths>										
 				                    <resultsLabel
 				                        jcr:primaryType="nt:unstructured"
 				                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"

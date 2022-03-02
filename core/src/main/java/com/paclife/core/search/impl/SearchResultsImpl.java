@@ -1,13 +1,11 @@
 package com.paclife.core.search.impl;
 
-import com.paclife.core.search.SearchResult;
-import com.paclife.core.search.SearchResults;
-import com.paclife.core.search.SearchResultsPagination;
-import com.paclife.core.search.predicates.PredicateResolver;
-import com.paclife.core.search.predicates.impl.FullltextPredicateFactoryImpl;
-import com.paclife.core.search.providers.SearchProvider;
-import com.day.cq.commons.inherit.ComponentInheritanceValueMap;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.util.List;
+import java.util.Map;
+
+import javax.annotation.PostConstruct;
+import javax.inject.Inject;
+
 import org.apache.commons.lang.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.ResourceResolver;
@@ -19,101 +17,95 @@ import org.apache.sling.models.annotations.injectorspecific.Self;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.annotation.PostConstruct;
-import javax.inject.Inject;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
+import com.day.cq.commons.inherit.ComponentInheritanceValueMap;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.paclife.core.search.SearchResult;
+import com.paclife.core.search.SearchResults;
+import com.paclife.core.search.SearchResultsPagination;
+import com.paclife.core.search.predicates.PredicateResolver;
+import com.paclife.core.search.predicates.impl.FullltextPredicateFactoryImpl;
+import com.paclife.core.search.providers.SearchProvider;
 
-@Model(
-        adaptables = SlingHttpServletRequest.class,
-        adapters = SearchResults.class,
-        resourceType = "pcwr/components/structure/parts/search"
-)
-@Exporter(
-        name = "jackson",
-        selector = "results",
-        extensions = "json",
-        options = {
-                @ExporterOption(name = "SerializationFeature.WRITE_NULL_MAP_VALUES", value = "true"),
-                @ExporterOption(name = "SerializationFeature.WRITE_DATES_AS_TIMESTAMPS", value = "false")
-        }
-)
+@Model(adaptables = SlingHttpServletRequest.class, adapters = SearchResults.class, resourceType = "pcwr/components/structure/parts/search")
+@Exporter(name = "jackson", selector = "results", extensions = "json", options = {
+		@ExporterOption(name = "SerializationFeature.WRITE_NULL_MAP_VALUES", value = "true"),
+		@ExporterOption(name = "SerializationFeature.WRITE_DATES_AS_TIMESTAMPS", value = "false") })
 public class SearchResultsImpl implements SearchResults {
-    private static final Logger log = LoggerFactory.getLogger(SearchResultsImpl.class);
+	private static final Logger log = LoggerFactory.getLogger(SearchResultsImpl.class);
 
-    @Self
-    private SlingHttpServletRequest request;
+	@Self
+	private SlingHttpServletRequest request;
 
-    @OSGiService
-    private PredicateResolver predicateResolver;
+	@OSGiService
+	private PredicateResolver predicateResolver;
 
-    @Inject
-    private ResourceResolver resourceResolver;
+	@Inject
+	private ResourceResolver resourceResolver;
 
-    @Inject
-    private SearchProvider searchProvider;
+	@Inject
+	private SearchProvider searchProvider;
 
-    private List<SearchResult> searchResults;
+	private List<SearchResult> searchResults;
 
-    private List<SearchResultsPagination> pagination;
+	private List<SearchResultsPagination> pagination;
 
-    private long timeTaken = -1;
-    
-    private String totalResults;
-    
-    private com.day.cq.search.result.SearchResult result;
+	private long timeTaken = -1;
 
-    @PostConstruct
-    private void initModel() {
-        final Map<String, String> searchPredicates = predicateResolver.getRequestPredicates(request);
+	private String totalResults;
 
-        if (isSearchable()) {
-            result = searchProvider.search(resourceResolver, searchPredicates);
-            pagination = searchProvider.buildPagination(result, "Previous", "Next");
-            searchResults = searchProvider.buildSearchResults(result);
-            totalResults = computeTotalMatches(result);
-            timeTaken = result.getExecutionTimeMillis();
-        }
-    }
+	private com.day.cq.search.result.SearchResult result;
 
-    private boolean isSearchable() {
-        return StringUtils.isNotBlank(getSearchTerm())
-            || new ComponentInheritanceValueMap(request.getResource()).getInherited("allowBlankFulltext", false);
-    }
+	@PostConstruct
+	private void initModel() {
+		final Map<String, String> searchPredicates = predicateResolver.getRequestPredicates(request);
 
-    private String computeTotalMatches(com.day.cq.search.result.SearchResult result) {
-    	String totalResult = String.valueOf(result.getTotalMatches());
+		if (isSearchable()) {
+			result = searchProvider.search(resourceResolver, searchPredicates);
+			pagination = searchProvider.buildPagination(result, "Previous", "Next");
+			searchResults = searchProvider.buildSearchResults(result);
+			totalResults = computeTotalMatches(result);
+			timeTaken = result.getExecutionTimeMillis();
+		}
+	}
 
-    	//Returning a String with '+' character in the case guessTotal is being used
-    	if(result.hasMore()) {
-    		totalResult += "+";
-    	}
-    	return totalResult;
-    }
+	private boolean isSearchable() {
+		return StringUtils.isNotBlank(getSearchTerm())
+				|| new ComponentInheritanceValueMap(request.getResource()).getInherited("allowBlankFulltext", false);
+	}
 
-    @Override
-    public List<SearchResult> getResults() {
-    	log.info("----- SearchResultsImpl getResults -----" );
-        return searchResults;
-    }
+	private String computeTotalMatches(com.day.cq.search.result.SearchResult result) {
+		String totalResult = String.valueOf(result.getTotalMatches());
 
-    @JsonIgnore
-    @Override
-    public List<SearchResultsPagination> getPagination() {
-        return pagination;
-    }
+		// Returning a String with '+' character in the case guessTotal is being used
+		if (result.hasMore()) {
+			totalResult += "+";
+		}
+		return totalResult;
+	}
 
-    @Override
-    public String getSearchTerm() {
-    	log.info("----- SearchResultsImpl getSearchTerm -----" + request.getParameter(FullltextPredicateFactoryImpl.REQUEST_PARAM));
-        return request.getParameter(FullltextPredicateFactoryImpl.REQUEST_PARAM);
-    }
+	@Override
+	public List<SearchResult> getResults() {
+		log.info("----- SearchResultsImpl getResults -----");
+		return searchResults;
+	}
 
-    @Override
-    public long getTimeTaken() {
-        return timeTaken;
-    }
+	@JsonIgnore
+	@Override
+	public List<SearchResultsPagination> getPagination() {
+		return pagination;
+	}
+
+	@Override
+	public String getSearchTerm() {
+		log.info("----- SearchResultsImpl getSearchTerm -----"
+				+ request.getParameter(FullltextPredicateFactoryImpl.REQUEST_PARAM));
+		return request.getParameter(FullltextPredicateFactoryImpl.REQUEST_PARAM);
+	}
+
+	@Override
+	public long getTimeTaken() {
+		return timeTaken;
+	}
 
 	@Override
 	public String getResultTotal() {

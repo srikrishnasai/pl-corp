@@ -5,7 +5,6 @@ $(document).ready(function () {
     var checkIfElementIsVisibleForChart = function (baseElement,elem) {
         var startAnimation = elem.hasClass('go');
         if (startAnimation) {
-            console.log("true");
 			setTimeout(function() {
 				animateBar(elem,baseElement);
 			}, 1200);

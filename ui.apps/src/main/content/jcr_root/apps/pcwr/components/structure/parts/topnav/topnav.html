@@ -2,6 +2,8 @@
 	<!--/* ADD BUTTON MOBILE START------------*/-->
     	
     	<sly data-sly-use.model="${'com.paclife.core.models.PCWRUtilModel'}" />
+		<sly data-sly-use.helper="${'com.paclife.core.models.PCWRSearchResultModel' @ childNodeName = 'navigation'}"/>
+
     	
     	<a class="navbar-brand left-nav-items" href="${model.homePagePath}"><img alt="" src="${properties.paclifeLogoPath || '/etc/designs/pcwr/default/images/logo-horiz.svg'}"></a>
     	<button class="btn btn-link ml-auto pr-0 d-lg-none search-nav-toggle-btn collapsed" data-toggle="collapse" data-target="#searchNavCollapse" aria-expanded="false" aria-controls="searchNavCollapse" id="searchNavHeading">
@@ -29,28 +31,23 @@
       	
 	</div>	
 	<div id="more-menu" class="${wcmmode.edit ? 'position-relative mr-5 w-25' : 'more-menu text-left'}" data-sly-resource="${'moreSection' @ resourceType='pcwr/components/structure/parts/moreSection'}" data-more="${properties.hideMore ? 'Hide' : ''}"></div>
-       <div id="searchNavCollapse" class="search-nav mobileNav w-100 collapse" aria-labelledby="searchNavHeading" data-parent=".plcorp-main-nav">
+       <div id="searchNavCollapse" class="search-nav mobileNav w-100 collapse" aria-labelledby="searchNavHeading" data-resourcepath="${resource.path}" data-searchrootpath="${helper.childProperties.target}" data-parent=".plcorp-main-nav">
 			<div class="pt-lg-4">
 				<sly data-sly-use.helper="${'com.paclife.core.models.PCWRSearchResultModel' @ childNodeName = 'navigation'}">
-					<form class="form-inline justify-content-lg-center" action="${helper.childProperties.target @ extension='html'}">
+					<div class="form-inline justify-content-lg-center">
 					    <div class="form-group form-group-search-input mx-lg-3 mb-2 mx-0">
 					        <label for="inputSearchValue" class="sr-only">${helper.childProperties.placeholder}</label>
 					        <input name="q" autocomplete="off" type="text" class="form-control py-0 inputValueSearch" id="inputSearchValue" placeholder="${helper.childProperties.placeholder}">
 						</div>						
 						<button type="submit" class="btn btn-primary cta-text-btn mb-2 d-lg-block searchSubmit-mb">${helper.childProperties.action || 'SEARCH'}</button> <span class="search-nav-close-icon pl-md-4" data-toggle="collapse" data-target="#searchNavCollapse"><i class="material-icons nav-close-icon">close</i></span>			
-					</form>  
+					</div>  
 					<ul class="list-group searchItem historySearchItems historySearchItems-mb">
 					</ul> 				 
 				</sly> 		
 			</div>			 
 	   </div>	   
-	   
-	   <div id="searchNavCollapse" class="search-nav collapse desktopNav" aria-labelledby="searchNavHeading" data-parent=".plcorp-main-nav">
+	   <div id="searchNavCollapse" class="search-nav collapse desktopNav" aria-labelledby="searchNavHeading" data-searchrootpath="${helper.childProperties.target}" data-resourcepath="${resource.path}" data-parent=".plcorp-main-nav">
 		<div class="pt-lg-4">
-			<sly data-sly-use.helper="${'com.paclife.core.models.PCWRSearchResultModel' @ childNodeName = 'navigation'}">
-				<form 				
-				action="${helper.childProperties.target @ extension='html'}"				
-				>
 				<label for="inputSearchValue" class="sr-only">${helper.childProperties.placeholder}</label>
 				<div class="search-wrapper">
 					<div class="input-group  form-group-search-input-new ">
@@ -67,10 +64,9 @@
 					</div>	
 				</div>
 								
-				</form>  	
-				<ul class="list-group searchItem historySearchItems">
-				</ul>			
-			</sly> 		
+				<div id="historySearchItemsList" class="list-group searchItem">
+					<ul class="historySearchItems"></ul>
+				</div>		
 		</div>					 
    </div>	
 </nav>

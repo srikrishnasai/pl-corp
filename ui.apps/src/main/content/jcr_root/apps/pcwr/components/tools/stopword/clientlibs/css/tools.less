@@ -1,0 +1,186 @@
+.toolContainer {
+  margin : 2rem 0rem;
+  padding: 0px 10rem;
+  flex   : 1;
+
+  .coral3-Tab:focus {
+    text-decoration: none;
+    outline        : none;
+  }
+
+  .dropdown {
+    position: absolute;
+    right   : 11rem;
+    top     : 6rem;
+    z-index : 999;
+  }
+
+  coral-panel {
+    border    : 0;
+    background: transparent;
+  }
+
+  coral-panel-content {
+    display       : flex;
+    flex-direction: column;
+    gap           : 1rem;
+    flex          : 1;
+  }
+
+  coral-tablist {
+    margin-bottom: 1rem;
+  }
+
+  .tools__input {
+    flex: 0.5;
+  }
+
+  .tools__inputContainer {
+    display: flex;
+    gap    : 1rem;
+  }
+
+  .stopword__search_input {
+    width  : 30%;
+    z-index: 2;
+  }
+
+  .tools__button {
+    &:hover {
+      transform        : translate(0px, 5px);
+      -webkit-transform: translate(0px, 5px);
+      box-shadow       : 0px 1px 0px 0px;
+      transform        : scale(1.1) perspective(1px);
+    }
+  }
+
+  .tools__buttonContainer {
+    display: flex;
+    width  : 100%;
+    flex   : 0.6;
+
+  }
+
+  .coral3-Select-overlay {
+    left: 0px !important;
+    top : 38px !important;
+  }
+
+
+
+  .tool__reindex {
+    align-self: flex-end;
+  }
+
+  .tool__toast--show {
+    visibility       : visible !important;
+    -webkit-animation: fadein 1s, fadeout 1s 2.5s;
+    animation        : fadein 1s, fadeout 1s 2.5s;
+    align-self       : center;
+    position         : fixed;
+    top              : 5rem;
+    z-index: 1000;
+  }
+
+  .tool__toast--error {
+    background: lightcoral;
+    color     : white;
+
+    .coral3-Alert-typeIcon {
+      color: white;
+    }
+  }
+
+  .tool__toast {
+    visibility: hidden;
+  }
+
+  .table {
+    display    : flex;
+    align-items: center;
+    flex-wrap  : wrap;
+    height     : max-content;
+  }
+
+  coral-tag {
+    margin: 0.5rem;
+  }
+
+  .inputSynonym {
+    outline     : none;
+    border      : 0;
+    padding-left: 0.5rem;
+    flex        : 1
+  }
+
+  button:disabled,button[disabled]{
+    cursor: not-allowed;
+  }
+
+  @-webkit-keyframes fadein {
+    from {
+      top    : 0;
+      opacity: 0;
+    }
+
+    to {
+      top    : 5rem;
+      opacity: 1;
+    }
+  }
+
+  @keyframes fadein {
+    from {
+      top    : 0;
+      opacity: 0;
+    }
+
+    to {
+      top    : 5rem;
+      opacity: 1;
+    }
+  }
+
+  @-webkit-keyframes fadeout {
+    from {
+      top    : 5em;
+      opacity: 1;
+    }
+
+    to {
+      top    : 0;
+      opacity: 0;
+    }
+  }
+
+  @keyframes fadeout {
+    from {
+      top    : 5em;
+      opacity: 1;
+    }
+
+    to {
+      top    : 0;
+      opacity: 0;
+    }
+  }
+}
+
+@media  screen and (max-width: 768px) {
+  .toolContainer {
+    padding: 0px 3rem;
+  };
+
+  .tools__input {
+    flex: 1 !important;
+  };
+
+  .stopword__search_input {
+    width: 40% !important;
+  };
+
+  .tools__buttonContainer {
+    flex: 0.8 !important;
+  }
+
+}

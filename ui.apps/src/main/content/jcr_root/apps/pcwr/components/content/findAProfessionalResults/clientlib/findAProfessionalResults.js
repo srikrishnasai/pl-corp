@@ -632,7 +632,8 @@ if($('.find-a-pro-results-page').length > 0) {
 	 * On FAFP Results Page --> When user clicks on the filters
 	 */
 	$('.nav-item.fafp-filter').click(function(event) {				
-		event.preventDefault();	
+		event.preventDefault();
+		clearMarkers(null);	
 		$('#fafp-error-msg').addClass('d-none');
 		
 		var filterOption = $(this).find('.filter-text').attr('data-filter-value');

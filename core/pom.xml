@@ -198,11 +198,29 @@
 			<version>1</version>
 			<scope>provided</scope>
 		</dependency>
-
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-annotations</artifactId>
 			<version>2.5.3</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>2.5.3</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.5.3</version>
+		</dependency>
+        <!-- https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api -->
+		<dependency>
+		    <groupId>javax.xml.bind</groupId>
+		    <artifactId>jaxb-api</artifactId>
+		    <version>2.1</version>
 		</dependency>
 
 		<dependency>
@@ -216,6 +234,12 @@
               <artifactId>httpclient</artifactId>
               <version>4.5.5</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt -->
+        <dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt</artifactId>
+			<version>0.6.0</version>
+		</dependency>
 
 	</dependencies>
 
@@ -246,6 +270,14 @@
                 <configuration>
                     <instructions>
                         <Bundle-SymbolicName>com.paclife.pcwr-core</Bundle-SymbolicName>
+                        <Import-Package>
+								 !android.util;resolution:=optional,
+								 !org.bouncycastle.jce;resolution:=optional,
+								 !org.bouncycastle.jce.spec;resolution:=optional,
+								 javax.inject;version=0.0.0,*
+						</Import-Package>
+                        <Embed-Dependency>jjwt;inline=true</Embed-Dependency>
+ 						<Embed-Transitive>true</Embed-Transitive>
                     </instructions>
                     <buildDirectory>${basedir}/../ui.apps/src/main/content/jcr_root/apps/pcwr/install</buildDirectory>
                 </configuration>

@@ -1,0 +1,4 @@
+#base=js
+stopword.js
+synonym.js
+common.js

@@ -47,6 +47,29 @@
 
                                         </items>
                                     </title>
+									<searchconfigs
+                                        jcr:primaryType="nt:unstructured"
+                                        jcr:title="Search Configurations"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/fieldset">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <hideinsearch
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                name="./hideInSearch"
+                                                text="Hide in Search"
+                                                value="true"/>
+                                            <searchPromote
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                                fieldLabel="Search Promote"
+                                                renderReadOnly="{Boolean}false">
+                                                <field
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    name="./search_promote"/>
+                                            </searchPromote>
+                                        </items>
+                                    </searchconfigs>
                                 </items>
                             </column>
                         </items>

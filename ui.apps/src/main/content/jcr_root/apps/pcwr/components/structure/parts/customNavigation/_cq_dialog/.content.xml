@@ -79,7 +79,7 @@
 				                        sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
 				                        fieldLabel="Target"
 				                        name="./target"
-				                        rootPath="/content/pl-corp"/> 		                    		                                
+				                        rootPath="/content/pl-corp"/>										
                                 </items>
                         	</column>                                
                         </items>

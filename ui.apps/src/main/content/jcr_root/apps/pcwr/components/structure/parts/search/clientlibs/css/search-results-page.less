@@ -127,7 +127,7 @@
 		.container-search-items {
 			.search-result {
 				display: flex;
-				margin-bottom: 50px;
+				margin-bottom: 5%;
 				
 				.icon-cloud{
 					color: @bright-blue;
@@ -280,30 +280,18 @@
 	}
 }
 
-.display-class-search{
-	opacity: 0;
-}
+// .display-class-search{
+// 	opacity: 0;
+// }
 .search-history-ul{
     z-index: 999;
     // margin-left: 12%;
     // width: 95%;
 }
 
-
-.search-group-item-page{
-    border: none;
-    padding: 0.4rem 1.25rem;
-    cursor: pointer;
-    font-size: 16px;
-    display: flex;
-	align-items: center;
-	border-radius: 5px;
-}
-
 .search .search-header{
 	color: rgb(33, 37, 41);
 }
-
 
 .historySearchItems-page{
 	position: absolute;	
@@ -311,15 +299,153 @@
 	box-shadow: 0 13px 20px 0 #00000033; 
 	left: 23.2rem;   
 }
+.search-results-page{
+	#shimmer-container-Search{
 
+        .shimmer-wrapper{
+            display: flex;
+            justify-content: center;
+            .animate-shimmer {
+                animation: shimmer 3s;
+                animation-iteration-count: infinite;
+                // background: linear-gradient(to right, #e6e6e6 5%, #cccccc 25%, #e6e6e6 35%);
+				background: #f6f7f8;
+				background-image: linear-gradient(to right, #f6f7f8 0%, #f2f4f7 10%, #f0f0f2 20%, #f2f4f7 30%, #f6f7f8 40%, #f6f7f8 100%);
+                background-size: 1000px 100%;
+            } 
+            .line-container{
+                width: 52%;
+				display: flex;
+				flex-direction: column;
+				gap: 30px;
+				
+				.info-wrapper{
+					display: flex;
+                	flex-direction: column;
+					width: 100%;
 
-.search-group-item-page:hover{
-    background-color: #eee;
+					.line-container-result-width {
+						width: 77%;
+						height: 24px;
+						margin-left: 11%;
+						margin-bottom: 3%;
+					}
+					.pagination-width {
+						width: 100%;
+						margin-top: 3%;
+						height: 24px;
+					}
+					.line-content-wrapper{
+						.line-wrapper{
+							display: flex;
+							flex-direction: column;
+							gap: 5px;
+							width: 100%;
+
+							.link-container{
+								display: flex;
+								.link-container-icon-width {
+									width: 5%;
+									margin-right: 1%;
+								}
+								.link-container-name-width{
+									width: 80%;
+								}
+							}
+							
+							.link-container-desc-width {
+								width: 100%;
+							}
+							.link-container-width {
+								width: 80%;
+							}
+							
+						}
+						.stroke {
+							height: 22px;
+						}
+					}
+					.margin-top{
+						margin-top: 5%;
+					}
+
+				}
+            }   
+        }
 }
 
-.history-icon{
-    font-size: 18px;
 }
+
+
+.search-result{
+
+	.pdf-view{
+		opacity: 0;
+		visibility: hidden;
+	}
+	.pdf-img-wrapper:hover{
+		.pdf-view{
+			opacity: 1;
+			visibility: visible;
+			transition: all 0.5s linear;
+		}
+	}	
+	.thumbnail-wrapper{
+		border: 1px solid lightgray;
+		box-shadow: 4px 5px 10px 0 lightgray;
+		height: 100px;
+	}
+	.searchResultPdf{
+		display: flex;
+		flex-direction: row;
+		gap: 15px;
+	}
+	.v-tooltip {
+		height: 255px;
+		
+		// padding: 12px 10px 2px 10px;
+		position: absolute;
+		bottom: 52px;
+		left: 50%;
+		z-index: 999;
+		box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+		background-color: #fff;
+		transform: translateX(-50%);
+		white-space: normal;
+	
+		&::after {
+			content: '';
+			position: absolute;			    					
+			left: 48%;
+			bottom: -5px;
+			width: 10px;
+			height: 10px;
+			transform: rotate(135deg);
+			background-color: #ffffff;
+			box-shadow: 2px -2px 3px rgba(0, 0, 0, 0.1);                                
+		}
+	
+		&.modifier--content-right-bottom {
+			left: 54px;
+			right: auto;
+			transform: translateX(30px);
+			top: auto;
+			bottom: 0px;
+	
+			&::after {
+				left: -5px;
+				bottom: 45px;
+				top: auto;
+				box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+			}
+		}
+		&__desc {
+			height: 255px;
+		}
+	}
+
+}
+
 
 
 @media (max-width: 613px) {
@@ -348,4 +474,51 @@
 		padding-right: 1.5rem;
 	}
 }
+
+@media screen and (max-width:576px) {
+
+	.searchResultPdf{
+        display: flex;
+        flex-direction: column;
+        overflow-wrap: anywhere;
+        gap: 20px;
+    }
+	.pdf-img-wrapper{
+		position: relative;
+		.v-tooltip {
+			height: 235px;
+			&__desc {
+				height: 235px;
+			}
+		}
+	}
+	
+	
+}
+
+
+@media screen and (max-width:1199px) {
+
+	#shimmer-container-Search{
+        .shimmer-wrapper{
+            .line-container{
+                width: 90%;
+				display: flex;
+				flex-direction: column;
+				gap: 30px;
+            }   
+        }
+	}
+	.searchResultPdf{
+        overflow-wrap: anywhere;
+    }
+}
+
+
+
+	
+	
+
+
+
 

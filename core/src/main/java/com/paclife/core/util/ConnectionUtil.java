@@ -7,17 +7,11 @@ import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
-import java.nio.charset.Charset;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-// Code Scan Remediation
-import java.net.SocketTimeoutException;
-
-
 
 public class ConnectionUtil {
 	public static final String OSB_DEV_URL = "http://soa.amf.pacificlife.net:6101/soaqa/Services/";
@@ -26,17 +20,19 @@ public class ConnectionUtil {
 	public static final String OSB_PROD_URL = "http://esb.amfsoa.pacificlife.com/Services/";
 	public static final Logger log = LoggerFactory.getLogger(ConnectionUtil.class);
 
-	public static String getResponseString(String urlString){
-		return getResponseString(null,  urlString, null, null);
+	public static String getResponseString(String urlString) {
+		return getResponseString(null, urlString, null, null);
 
 	}
+
 	/**
 	 *
 	 * @param slingRequest
 	 * @param urlString
 	 * @return
 	 */
-	public static String getResponseString(SlingHttpServletRequest slingRequest, String urlString,String clientId,String clientSecret){
+	public static String getResponseString(SlingHttpServletRequest slingRequest, String urlString, String clientId,
+			String clientSecret) {
 		URL url;
 		StringBuffer response = new StringBuffer("");
 		try {
@@ -44,7 +40,7 @@ public class ConnectionUtil {
 			InputStream stream = null;
 
 			// SonarQube - try with a resource
-			try(BufferedReader br = new BufferedReader(new InputStreamReader(stream))) {
+			try (BufferedReader br = new BufferedReader(new InputStreamReader(stream))) {
 				URLConnection conn = url.openConnection();
 
 				// Code Scan Remediation
@@ -52,41 +48,41 @@ public class ConnectionUtil {
 				conn.setConnectTimeout(60 * 1000); // x * 1000 = x seconds
 				conn.setReadTimeout(60 * 1000);
 
-				if(slingRequest != null){
-					conn.setRequestProperty ("client_id", clientId);
-					conn.setRequestProperty ("client_secret", clientSecret);
+				if (slingRequest != null) {
+					conn.setRequestProperty("client_id", clientId);
+					conn.setRequestProperty("client_secret", clientSecret);
 				}
-				conn.setRequestProperty ("Content-Type", "application/json");
+				conn.setRequestProperty("Content-Type", "application/json");
 				stream = conn.getInputStream();
-				if(log.isDebugEnabled()){
-					log.debug("GSAConnectionUtil: URL connect Stream for"+urlString);
+				if (log.isDebugEnabled()) {
+					log.debug("GSAConnectionUtil: URL connect Stream for" + urlString);
 				}
-				//put output stream into a string
-				//BufferedReader br = new BufferedReader(new InputStreamReader(stream));
-				//,Charset.forName("ISO-8859-1")));
+				// put output stream into a string
+				// BufferedReader br = new BufferedReader(new InputStreamReader(stream));
+				// ,Charset.forName("ISO-8859-1")));
 
 				String line;
-		        while ((line = br.readLine()) != null) {
-		        	response.append(line);
-		        	response.append('\n');
-		        }
-				if(log.isDebugEnabled()){
-					log.debug("GSAConnectionUtil: response: "+response.toString());
-					log.debug("GSAConnectionUtil: Payload size: "+response.length());
+				while ((line = br.readLine()) != null) {
+					response.append(line);
+					response.append('\n');
+				}
+				if (log.isDebugEnabled()) {
+					log.debug("GSAConnectionUtil: response: " + response.toString());
+					log.debug("GSAConnectionUtil: Payload size: " + response.length());
 				}
 
-		        //br.close();
+				// br.close();
 
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
-				log.error("getResponseString IOException",e);
+				log.error("getResponseString IOException", e);
 				e.printStackTrace();
 			} finally {
-				if(stream != null) {
-					try{
+				if (stream != null) {
+					try {
 						stream.close();
-					} catch(Exception e){
-						log.error( "Stream Close Exception",e);
+					} catch (Exception e) {
+						log.error("Stream Close Exception", e);
 					}
 				}
 			}
@@ -97,51 +93,54 @@ public class ConnectionUtil {
 		}
 		return response.toString();
 	}
-	public static String getServiceUrl(SlingHttpServletRequest slingRequest){
+
+	public static String getServiceUrl(SlingHttpServletRequest slingRequest) {
 		String requestHost = getRequestHost(slingRequest);
 
 		// SonarQube duplicate critical issue
 		String siteUtilsDup = "SiteUtils";
 		String getOSBUrlDup = "getServiceUrl";
 
-		log.debug(siteUtilsDup,getOSBUrlDup, "---->getOSBUrl ::" + requestHost);
-		if(StringUtils.contains(requestHost, "test") || StringUtils.contains(requestHost, "dev")
-			 || StringUtils.contains(requestHost, "dcorp")){
-			log.debug(siteUtilsDup,getOSBUrlDup,"---->getOSBUrl 1" );
+		log.debug(siteUtilsDup, getOSBUrlDup, "---->getOSBUrl ::" + requestHost);
+		if (StringUtils.contains(requestHost, "test") || StringUtils.contains(requestHost, "dev")
+				|| StringUtils.contains(requestHost, "dcorp")) {
+			log.debug(siteUtilsDup, getOSBUrlDup, "---->getOSBUrl 1");
 			return OSB_DEV_URL;
-		} else if(StringUtils.contains(requestHost, "modeloffice")
-				|| StringUtils.contains(requestHost, "mo") ||  StringUtils.contains(requestHost, "prdauthor")){
-			log.debug(siteUtilsDup,getOSBUrlDup,"---->getOSBUrl 2" );
+		} else if (StringUtils.contains(requestHost, "modeloffice") || StringUtils.contains(requestHost, "mo")
+				|| StringUtils.contains(requestHost, "prdauthor")) {
+			log.debug(siteUtilsDup, getOSBUrlDup, "---->getOSBUrl 2");
 			return OSB_QA_URL;
 		} else {
-            log.debug(siteUtilsDup,getOSBUrlDup,"---->getOSBUrl 3" );
-            return OSB_PROD_URL;
-        }
+			log.debug(siteUtilsDup, getOSBUrlDup, "---->getOSBUrl 3");
+			return OSB_PROD_URL;
+		}
 	}
 
-	public static String getOSBUrl(SlingHttpServletRequest slingRequest){
+	public static String getOSBUrl(SlingHttpServletRequest slingRequest) {
 		String requestHost = getRequestHost(slingRequest);
-		log.debug("SiteUtils","getOSBUrl", "---->getOSBUrl ::" + requestHost);
-		if(StringUtils.contains(requestHost, "test") || StringUtils.contains(requestHost, "dev")
-			 || StringUtils.contains(requestHost, "dcorp")){
-			log.debug("SiteUtils","getOSBUrl","---->getOSBUrl 1" );
+		log.debug("SiteUtils", "getOSBUrl", "---->getOSBUrl ::" + requestHost);
+		if (StringUtils.contains(requestHost, "test") || StringUtils.contains(requestHost, "dev")
+				|| StringUtils.contains(requestHost, "dcorp")) {
+			log.debug("SiteUtils", "getOSBUrl", "---->getOSBUrl 1");
 			return OSB_DEV_URL;
-		}else if(StringUtils.contains(requestHost, "modeloffice")
-				|| StringUtils.contains(requestHost, "mo") ||  StringUtils.contains(requestHost, "prdauthor")){
-			log.debug("SiteUtils","getOSBUrl","---->getOSBUrl 2" );
+		} else if (StringUtils.contains(requestHost, "modeloffice") || StringUtils.contains(requestHost, "mo")
+				|| StringUtils.contains(requestHost, "prdauthor")) {
+			log.debug("SiteUtils", "getOSBUrl", "---->getOSBUrl 2");
 			return OSB_QA_URL;
 		}
-		log.debug("SiteUtils","getOSBUrl","---->getOSBUrl 3" );
+		log.debug("SiteUtils", "getOSBUrl", "---->getOSBUrl 3");
 		return OSB_PROD_URL;
 	}
-	public static String getRequestHost(SlingHttpServletRequest slingRequest){
-	    String reqHost = null;
-	    if (slingRequest != null) {
-	      reqHost = slingRequest.getHeader("Referer");
-	      if (reqHost == null || reqHost.length() <= 0) {
-	        reqHost = slingRequest.getHeader("Host");
-          }
-	    }
-	    return reqHost;
+
+	public static String getRequestHost(SlingHttpServletRequest slingRequest) {
+		String reqHost = null;
+		if (slingRequest != null) {
+			reqHost = slingRequest.getHeader("Referer");
+			if (reqHost == null || reqHost.length() <= 0) {
+				reqHost = slingRequest.getHeader("Host");
+			}
+		}
+		return reqHost;
 	}
+
 }

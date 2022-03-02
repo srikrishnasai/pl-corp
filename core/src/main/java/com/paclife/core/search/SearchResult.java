@@ -1,32 +1,41 @@
 package com.paclife.core.search;
 
-import aQute.bnd.annotation.ProviderType;
-
 import java.util.Collection;
 import java.util.List;
 
+import aQute.bnd.annotation.ProviderType;
+
 @ProviderType
 public interface SearchResult {
-       
-   public static final int DESCRIPTION_MAX_LENGTH = 320;
-   public static final  String DESCRIPTION_ELLIPSIS = " ... ";
 
-    enum ContentType {
-        PAGE,
-        ASSET
-    }
+	public static final int DESCRIPTION_MAX_LENGTH = 320;
+	public static final String DESCRIPTION_ELLIPSIS = " ... ";
 
-    ContentType getContentType();
+	enum ContentType {
+		PAGE, ASSET
+	}
 
-    List<String> getTagIds();
+	String getContentType();
 
-    String getURL();
+	List<String> getTagIds();
 
-    String getPath();
+	String getURL();
 
-    String getTitle();
+	void setFixedUrl(String path);
 
-    String getDescription();
+	String getPath();
 
-    void setExcerpts(Collection<String> excerpt);
+	String getTitle();
+
+	String getDescription();
+
+	String getIcon();
+
+	String[] getKeywords();
+
+	String getThumbnail();
+
+	void setExcerpts(Collection<String> excerpt);
+
+	String getThumbnailWebPreview();
 }

@@ -15,6 +15,7 @@
 ###############################################################################
 js/jquery-3.2.1.min.js
 js/bootstrap.bundle.min.js
+js/font-observer.js
 js/lightslider.min.js
 js/shuffle.js
 js/jquery.matchHeight-min.js

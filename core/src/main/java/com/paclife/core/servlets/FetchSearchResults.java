@@ -80,7 +80,7 @@ public class FetchSearchResults extends SlingAllMethodsServlet {
 			if (isSearchable(request)) {
 				result = searchProvider.search(request.getResourceResolver(), searchPredicates);
 				pagination = searchProvider.buildPagination(result, "Previous", "Next");
-				searchResults = searchProvider.buildSearchResults(result);
+				searchResults = searchProvider.buildSearchResults(result, searchTerm);
 				totalResults = computeTotalMatches(result);
 				timeTaken = result.getExecutionTimeMillis();
 				if (searchResults != null && !searchResults.isEmpty()) {

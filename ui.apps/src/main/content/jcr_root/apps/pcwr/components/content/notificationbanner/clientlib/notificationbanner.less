@@ -1,0 +1,67 @@
+//
+// variables
+//
+@import (reference) "/apps/pcwr/clientlibs/clientlib-site/css/color.less";
+
+.notification_bar {
+    display: flex;
+    width:100%;
+    z-index:100;
+    align-items: center;
+   	padding: 1.5% 4%;
+    justify-content: space-between;
+    background-color: @light-grey-bg;
+    // for fade effect
+    opacity: 0;
+
+    .text {
+        max-width: 90%;
+        display: inline-block;
+        margin-bottom: 0;
+        margin-right: 2%; 
+
+        p{
+            margin-bottom:0;
+            font-size:16px;
+        }
+    }
+    // if animations are disabled
+    &.notification_bar--disableAnimations {
+        opacity: 1;
+    }
+
+    &.fade-banner{
+        opacity: 0;
+    }
+    
+    &.show-banner{
+        opacity: 1 !important;
+        transition: opacity 500ms linear 1.5s;
+    }    
+    
+}
+
+@media screen and (max-width: 767px) {
+	.notification_bar{
+        flex-direction: column;
+        padding: unset;
+
+        .text {
+            width: 100%;
+            margin: 4%;
+        }
+        .bannerButton{
+            margin-bottom: 4%;
+        }
+
+	}
+}
+
+@media screen and (min-width: 768px) and (max-width: 1200px) {
+	.notification_bar{
+        padding: 2.5% 4%;
+
+	}
+}
+
+

@@ -39,7 +39,8 @@ $( document ).ready(function(e) {
 $('.paginationPages').click(function(e){
 	var pageLimit = e.currentTarget.id;	
 	var text = searchFinalText;
-	$('.search-page-wrapper').addClass('d-none');
+	$('.search-page-wrapper').addClass('search-display-none');
+	$('.search-page-wrapper').removeClass('search-display-block');
 	$('.pagination-wrapper').addClass('d-none');
 	$('#shimmer-container-Search').removeClass('d-none');
 	if (history.pushState) {
@@ -80,9 +81,11 @@ function doAjaxSeach(text,setPageLimit,defaultOffset,flag,pageNumber){
 	var textSearch;
 	searchFinalText=text;
 	itemPerPageLimit=setPageLimit;
-	$('.search-page-wrapper').addClass('d-none');
-	$('.pagination-wrapper').addClass('d-none');
 	$('#shimmer-container-Search').removeClass('d-none');
+	$('.search-page-wrapper').addClass('search-display-none');
+	$('.search-page-wrapper').removeClass('search-display-block');
+	$('.pagination-wrapper').addClass('d-none');
+	$('.search-page-wrapper').removeClass('transition-search');
 	var path = $('#UrlEndpoint').val();
 	if(text === "" || text === undefined){
 		$('#shimmer-container-Search').addClass('d-none');
@@ -107,7 +110,12 @@ function doAjaxSeach(text,setPageLimit,defaultOffset,flag,pageNumber){
 					$(".search-page-wrapper-no-results").removeClass('d-none');
 				}
 				else{
-					$('.search-page-wrapper').removeClass('d-none');
+					$('.search-page-wrapper').removeClass('search-display-none');
+					$('.search-page-wrapper').addClass('search-display-block');
+					setTimeout(function () {  
+						$('#shimmer-container-Search').addClass('d-none');
+						$('.search-page-wrapper').addClass('transition-search');
+					},100)
 					$('.pagination-wrapper').removeClass('d-none');
 					$('#shimmer-container-Search').addClass('d-none');
 					$(".search-page-wrapper-no-results").addClass('d-none');
@@ -119,14 +127,24 @@ function doAjaxSeach(text,setPageLimit,defaultOffset,flag,pageNumber){
 					$('.info-wrapper-result').append(infoparagraph);
 					var searchResultData = '';
 					var searchResultDataList = [];
+					description="";
+					readmore = "";
+					link ="";
+					searchResultDataFinal = "";
 					//Will set the search results
 					for(var i=0;i<resultData.length;i++){
+							readmore = "";
+							link ="";
+							searchResultData="";
 							if(resultData[i].contentType === 'page'){
 								searchResultData= '<div class="search-result">'
 								+'<a href="'+resultData[i].fixedUrl+'" class="DTM-TAG-search-result-link" data-search-page="'+pageNumber+'" data-search-position="="'+i+'" >'				
 								+'<h6> <span class="search-results-index-title">'+resultData[i].title+'</span></h6>'
-								+'<p class="p-alt-16">'+resultData[i].description+'</p>'
-								+'<span class="pl-search-result-link">'+location.origin+resultData[i].fixedUrl+'</span>'
+								+'<div class="p-alt-16 show-read-more">'+resultData[i].description+'</div>';
+								if(resultData[i].description.length > 300){
+									readmore = '<div class="read-more readDesc">READ MORE ></div>'
+								}
+								link = '<span class="pl-search-result-link">'+location.origin+resultData[i].fixedUrl+'</span>'
 								+'</a></div>';
 							}
 							else{
@@ -142,11 +160,15 @@ function doAjaxSeach(text,setPageLimit,defaultOffset,flag,pageNumber){
 								+'</div>'
 								+'<div>'
 								+'<h6> <span class="search-results-index-title">'+resultData[i].title+'</span></h6>'
-								+'<p class="p-alt-16">'+resultData[i].description+'</p>'
-								+'<span class="pl-search-result-link">'+location.origin+resultData[i].fixedUrl+'</span>'
+								+'<p class="p-alt-16 show-read-more">'+resultData[i].description+'...</p>';
+								if(resultData[i].description.length > 300){
+								 	readmore = '<div class="read-more readDesc">READ MORE ></div>';
+								}
+								link = '<span class="pl-search-result-link">'+location.origin+resultData[i].fixedUrl+'</span>'
 								+'</div></a></div>';
 							}
-							searchResultDataList.push(searchResultData);
+							searchResultDataFinal = searchResultData + readmore + link ;
+							searchResultDataList.push(searchResultDataFinal);
 					}
 					$('.container-search-items').empty();
 					$('.container-search-items').append(searchResultDataList);
@@ -167,6 +189,21 @@ function doAjaxSeach(text,setPageLimit,defaultOffset,flag,pageNumber){
 					//Will call the function to set the active class for pagination-wrapper
 					setActiveItem(setPageLimit.toString());
 
+
+					$(".read-more").click(function(e){						
+						e.preventDefault();
+						if($(this).text() == 'READ MORE >'){
+							$(this).siblings(".show-read-more").addClass('height-auto');
+							$(this).text('READ LESS >');
+						}
+						else{
+							$(this).siblings(".show-read-more").removeClass('height-auto');
+							$(this).text('READ MORE >');
+						}
+						
+					});
+					
+					
 					window.digitalData.page.onsiteSearchResult = totalResult;
 					window.digitalData.page.onsiteSearchTerm = textSearch;
 				}
@@ -228,7 +265,8 @@ function pagination(name,totalResult) {
 		nextText: '>',
 		afterGoButtonOnClick: function(data, pagination) {	
 				var offset = (pagination - 1) * setPageLimit ;
-				$('.search-page-wrapper').addClass('d-none');
+				$('.search-page-wrapper').addClass('search-display-none');
+				$('.search-page-wrapper').removeClass('search-display-block');
 				$('.pagination-wrapper').addClass('d-none');
 				$('#shimmer-container-Search').removeClass('d-none');  
 				window.scrollTo({ top: 100, behavior: 'smooth' });	 
@@ -256,7 +294,8 @@ function pagination(name,totalResult) {
 		},
 		afterPageOnClick: function(data, pagination) {	
 				var offset = (pagination - 1) * setPageLimit ; 				
-				$('.search-page-wrapper').addClass('d-none');
+				$('.search-page-wrapper').addClass('search-display-none');
+				$('.search-page-wrapper').removeClass('search-display-block');
 				$('.pagination-wrapper').addClass('d-none');
 				$('#shimmer-container-Search').removeClass('d-none');
 				window.scrollTo({ top: 100, behavior: 'smooth' });	
@@ -285,7 +324,8 @@ function pagination(name,totalResult) {
 		afterPreviousOnClick: function(data, pagination) {	
 									
 				var offset = (pagination - 1) * setPageLimit;
-				$('.search-page-wrapper').addClass('d-none');
+				$('.search-page-wrapper').addClass('search-display-none');
+				$('.search-page-wrapper').removeClass('search-display-block');
 				$('.pagination-wrapper').addClass('d-none');
 				$('#shimmer-container-Search').removeClass('d-none');
 				window.scrollTo({ top: 100, behavior: 'smooth' });	
@@ -313,7 +353,8 @@ function pagination(name,totalResult) {
 		},
 		beforeNextOnClick: function(data, pagination) {		
 				var offset = (pagination - 1) * setPageLimit ;
-				$('.search-page-wrapper').addClass('d-none');
+				$('.search-page-wrapper').addClass('search-display-none');
+				$('.search-page-wrapper').removeClass('search-display-block');
 				$('.pagination-wrapper').addClass('d-none');
 				$('#shimmer-container-Search').removeClass('d-none');
 				window.scrollTo({ top: 100, behavior: 'smooth' });	

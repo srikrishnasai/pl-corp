@@ -289,6 +289,8 @@
     // width: 95%;
 }
 
+
+
 .search .search-header{
 	color: rgb(33, 37, 41);
 }
@@ -314,7 +316,8 @@
                 background-size: 1000px 100%;
             } 
             .line-container{
-                width: 52%;
+                width: 100%;
+				max-width: 750px;
 				display: flex;
 				flex-direction: column;
 				gap: 30px;
@@ -443,10 +446,79 @@
 			height: 255px;
 		}
 	}
+	.readDesc{
+		font-size: 14px;
+		font-weight: 700;
+		font-family: 'Montserrat';
+		color: #008ED7;
+	}
+	.readDesc:hover{
+		color: #005b8b;
+		transition: color .4s;
+		text-decoration: none;
+	}
+	.height-auto{	
+		max-height:50rem !important;
+		transition: max-height 0.8s cubic-bezier(0.9, 0, 0.8, 0.2) !important;
+	}
+	.show-read-more{
+		text-align: justify;
+		max-height: 70px;
+		overflow: hidden;
+		transition:max-height 0.8s cubic-bezier(0, 1, 0, 1);
+	}
+}
 
+@media (max-width: 613px) {
+	#pagination-items .pagination-number {
+		position: relative !important;
+		float: none !important;
+    	display: flex !important;    
+		justify-content: center !important;
+		margin-bottom: 10px;
+	}
+
+	.search-results-page .pagination-wrapper {
+		height: 100%;
+	}
+
+	#pagination-items .paginationjs {		
+    	display: flex;    
+    	justify-content: center;
+	}
+}
+.search-display-none{
+	display: none;
+}
+.search-display-block{
+	display: block;
+	opacity: 0;
+}
+
+.transition-search{
+	opacity: 1;
+	transition: all 0.5s linear;
 }
 
 
+@media screen and (max-width:576px) {
+
+	.searchResultPdf{
+        display: flex;
+        flex-direction: column;
+        overflow-wrap: anywhere;
+        gap: 20px;
+    }
+	.pdf-img-wrapper{
+		position: relative;
+		.v-tooltip {
+			height: 235px;
+			&__desc {
+				height: 235px;
+			}
+		}
+	}
+}
 
 @media (max-width: 613px) {
 	#pagination-items .pagination-number {
@@ -468,33 +540,23 @@
 }
 
 
+@media screen and (max-width:767px) {
+	.pdf-img-wrapper{
+		display: none !important;
+	}
+	
+}
+
 @media (max-width: 768px) {
-	.search-page-wrapper {
+	.search-page-wrapper,
+    #shimmer-container-Search .shimmer-wrapper .line-container
+	 {
 		padding-left: 1.5rem;
 		padding-right: 1.5rem;
 	}
 }
 
-@media screen and (max-width:576px) {
 
-	.searchResultPdf{
-        display: flex;
-        flex-direction: column;
-        overflow-wrap: anywhere;
-        gap: 20px;
-    }
-	.pdf-img-wrapper{
-		position: relative;
-		.v-tooltip {
-			height: 235px;
-			&__desc {
-				height: 235px;
-			}
-		}
-	}
-	
-	
-}
 
 
 @media screen and (max-width:1199px) {

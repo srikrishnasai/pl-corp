@@ -30,7 +30,16 @@
         opacity: 0;
     }
 }
-
+@keyframes fadeInDownhShort { 
+    0% { 
+        opacity: 0; 
+        transform: translateY(-20px); 
+    } 
+    100% { 
+        opacity: 1; 
+        transform: translateY(0); 
+    } 
+} 
 @keyframes height_animation_nav_header {
     0%{
         height: 0;
@@ -48,12 +57,15 @@
     }
     
 }
-.navbar-nav-header{
-    opacity: 0;
-    
-}
+
 .fadein_navbar{
-    animation: fadein_navbar 0.5s linear forwards;
+    opacity: 0;
+    // animation: fadein_navbar 0.5s linear 0.5s forwards;
+}
+
+.show_navbar{
+    opacity: 1 !important;
+    transition: all 0.5s linear;
 }
 
 
@@ -158,7 +170,11 @@
 }
 
 .open-searchlist{    
-         animation: animate-image-right-to-left 0.5s linear  forwards;
+
+    animation-name:  fadeInDownhShort;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    animation-delay: 0.5s;
 }  
 
 
@@ -192,13 +208,15 @@
 }
 
 .historySearchItems{
-
     width: 100%;    
-    right: 0;
     position: absolute;
-    left: auto;
     padding: 0;
+    // -webkit-transform: translateY(-400px); 
+    transform: translateY(-20px); 
 }
+
+
+
 
 .historySearchItems-mb{
     position: absolute !important;
@@ -262,7 +280,7 @@
         position: static !important;
         z-index: 1;
         opacity: 0;
-        animation: fadein_navbar 0.5s linear forwards;
+        animation: fadein_navbar 0.5s linear 0.5s forwards;
 
     }
     
@@ -286,9 +304,30 @@
         }
     
     }  
+    .historySearchItems{
+        opacity: 0;
+    }
     .open-searchlist{    
-        animation: animate-image-right-to-left 0.5s linear  forwards;
+         animation-name:  fadeInDownhShort;
+         animation-duration: 1s;
+         animation-fill-mode: both;
+         animation-delay: 0.5s;
     }    
+}
+
+/* Material Icons in top nav are hided first and then fadedIn through JS */ 
+.topnav .material-icons.d-none-imp {
+	opacity: 0;
+	visibility: hidden;
+	max-width: 20px;
+	min-width: 17px;
+}
+
+.navbar-brand{
+  min-width: 13%;
+}
+.search-nav-item{
+  min-width: 50px;
 }
 
 @media screen and (min-width:1200px) {
@@ -396,7 +435,7 @@
             opacity: 0;
         }
         .animate-mobile-nav-button{
-            animation: fadein_navbar 0.5s linear forwards;
+            animation: fadein_navbar 0.5s linear 0.5s forwards;
         }
 
 
@@ -474,8 +513,14 @@
     .search-wrapper{
         right: 47%;
     }
+    .historySearchItems{
+        opacity: 0;
+    }
     .open-searchlist{    
-        animation: animate-image-right-to-left 0.5s linear  forwards;
+         animation-name:  fadeInDownhShort;
+         animation-duration: 1s;
+         animation-fill-mode: both;
+         animation-delay: 0.5s;
     }   
     .searchItem {
         transform: translateX(45%);
@@ -510,6 +555,5 @@
     }  
     
 }
-
 
 

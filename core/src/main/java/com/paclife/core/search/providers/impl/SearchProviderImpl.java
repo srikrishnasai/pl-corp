@@ -1,7 +1,6 @@
 package com.paclife.core.search.providers.impl;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
@@ -9,6 +8,7 @@ import java.util.regex.Pattern;
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
 
+import org.apache.commons.lang3.StringUtils;
 // Felix Imports
 import org.apache.felix.scr.annotations.Component;
 import org.apache.felix.scr.annotations.Reference;
@@ -21,10 +21,12 @@ import org.osgi.service.metatype.annotations.Reference;*/
 
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
+import org.apache.sling.api.resource.ValueMap;
 import org.apache.sling.models.factory.ModelFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.day.cq.commons.jcr.JcrConstants;
 import com.day.cq.dam.api.DamConstants;
 import com.day.cq.search.Predicate;
 import com.day.cq.search.PredicateGroup;
@@ -82,10 +84,10 @@ public class SearchProviderImpl implements SearchProvider {
 
 	private List<Hit> consolidate(List<Hit> hits) throws RepositoryException {
 		List<Hit> consolidatedHits = new ArrayList<>();
-		//Map<String, Hit> pages = new HashMap<>();
+		// Map<String, Hit> pages = new HashMap<>();
 		for (Hit hit : hits) {
 			log.info("Hit Score ::{} and its path ::{}", hit.getScore(), hit.getPath());
-			//checkHit(consolidatedHits, pages, hit);
+			// checkHit(consolidatedHits, pages, hit);
 			consolidatedHits.add(hit);
 		}
 		return consolidatedHits;
@@ -152,7 +154,7 @@ public class SearchProviderImpl implements SearchProvider {
 
 	@Override
 	public final List<com.paclife.core.search.SearchResult> buildSearchResults(
-			com.day.cq.search.result.SearchResult result) {
+			com.day.cq.search.result.SearchResult result, String searchTerm) {
 		final List<com.paclife.core.search.SearchResult> searchResults = new ArrayList<com.paclife.core.search.SearchResult>();
 
 		for (Hit hit : result.getHits()) {
@@ -162,7 +164,17 @@ public class SearchProviderImpl implements SearchProvider {
 				// Augment the Search Result model with attributes that cannot be obtained
 				// directly from the resource
 				List<String> excerpts = new ArrayList<String>();
-				excerpts.add(hit.getExcerpt());
+				String metaDescription = StringUtils.EMPTY;
+				ValueMap vm = hit.getProperties();
+				if (null != vm) {
+					if (vm.containsKey(JcrConstants.JCR_DESCRIPTION)) {
+						metaDescription = vm.get(JcrConstants.JCR_DESCRIPTION, String.class);
+					}
+				}
+				if (StringUtils.containsIgnoreCase(metaDescription, searchTerm.trim())) {
+					metaDescription = metaDescription.replaceAll("(?i)"+searchTerm.trim(), "<strong>" + searchTerm.trim() + "</strong>");
+				}
+				excerpts.add(metaDescription);
 				searchResult.setExcerpts(excerpts);
 
 				searchResults.add(searchResult);

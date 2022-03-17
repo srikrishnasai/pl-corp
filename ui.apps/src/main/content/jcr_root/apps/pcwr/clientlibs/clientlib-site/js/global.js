@@ -56,9 +56,28 @@ $(document).ready(function() {
     })
   });
   
+  
 
+/* Adds an observer to the Material Icons font */
+var font = new FontFaceObserver('Material Icons', {
+  weight: 400
+});
 
- 
+/* Material Icons font is loaded, fadeIn the material icons */
+font.load().then(function () {
+  $('.plcorp-mobile-menu-btn').addClass('animate-mobile-nav-button');
+  $('.search-nav-toggle-btn').addClass('animate-mobile-nav-button');
+  $('.navbar-nav-header').addClass('show_navbar');
+  $('.topnav .material-icons').each(function() {
+    $(this).removeClass('d-none-imp');
+  });     
+}, function () {
+  console.log('Material Icons Font is not available');
+  $('.topnav .material-icons').each(function() {
+    $(this).removeClass('d-none-imp');
+    $('.navbar-nav-header').addClass('show_navbar');
+  });  
+});
 
 
 

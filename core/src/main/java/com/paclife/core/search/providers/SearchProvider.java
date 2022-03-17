@@ -15,5 +15,5 @@ public interface SearchProvider {
 
 	List<SearchResultsPagination> buildPagination(SearchResult result, String previousLabel, String nextLabel);
 
-    List<com.paclife.core.search.SearchResult> buildSearchResults(SearchResult result);
+    List<com.paclife.core.search.SearchResult> buildSearchResults(SearchResult result, String searchTerm);
 }

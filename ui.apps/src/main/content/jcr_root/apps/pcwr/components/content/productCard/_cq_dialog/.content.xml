@@ -256,6 +256,49 @@
                             </column>
                         </items>
                     </resourceLinks>
+                    <paclife
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Search"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                jcr:primaryType="nt:unstructured"
+                                margin="{Boolean}true"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <tip
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        disabled="{Boolean}true"
+                                        renderReadOnly="{Boolean}true"
+                                        value="The following properties are applicable only to the PL.com Search"/>
+                                    <searchconfigs
+                                        jcr:primaryType="nt:unstructured"
+                                        jcr:title="Search Configurations"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/fieldset">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <hideinsearch
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                name="./hideInSearch"
+                                                text="Hide in Search"
+                                                value="true"/>
+                                            <searchPromote
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                                fieldLabel="Search Promote"
+                                                renderReadOnly="{Boolean}false">
+                                                <field
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    name="./search_promote"/>
+                                            </searchPromote>
+                                        </items>
+                                    </searchconfigs>
+                                </items>
+                            </column>
+                        </items>
+                    </paclife>
                 </items>
             </tabs>
         </items>

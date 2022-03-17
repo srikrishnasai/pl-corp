@@ -1,0 +1,20 @@
+<span id="wcmmmode" data-wcm-mode="${wcmmode.toString}"> </span>
+<sly data-sly-use.template="core/wcm/components/commons/v1/templates.html" />
+<sly data-sly-call="${template.placeholder @ isEmpty=(wcmmode.edit || !properties.cookiedescription)}" />
+<div data-sly-test="${properties.cookiedescription}" class="${!properties.disableAnimation ? 'animatedParent animateOnce' : ''} " data-appear-top-offset="${!properties.disableAnimation ? '-150' : ''}">
+     <div class="notification_bar ${!properties.disableAnimation ? '' : 'notification_bar--disableAnimations'}
+                 ${properties.bannerPosition == 'none' && !properties.disableAnimation ? 'animated fadeInCustom' : ''}
+                 ${properties.bannerPosition != 'none' && !properties.disableAnimation ? 'fade-banner' : ''} 
+                 ${properties.bannerType == 'cookienotification' ? 'cookienotification' : 'normalnotification'}"
+          data-sly-attribute.data-cookie-expiry="${properties.expiryday}"
+          data-sly-attribute.data-banner-type="${properties.bannerType}"
+          data-sly-attribute.data-banner-position="${properties.bannerPosition}">
+          <div class="text">${properties.cookiedescription @context='html'}</div>
+          <button id="cookie-button" data-sly-test="${properties.buttonlabel}"
+               class="btn btn-primary cta-text-btn bannerButton"
+               data-sly-attribute.data-button-type="${properties.buttonType}"
+               data-sly-attribute.data-path="${properties.target}"
+               data-sly-attribute.data-path-tab="${properties.linkTabTarget}"
+               onclick="setBannerType(this)">${properties.buttonlabel}</button>
+     </div>
+</div>

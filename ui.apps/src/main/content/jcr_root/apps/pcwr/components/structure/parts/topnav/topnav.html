@@ -7,10 +7,10 @@
     	
     	<a class="navbar-brand left-nav-items" href="${model.homePagePath}"><img alt="" src="${properties.paclifeLogoPath || '/etc/designs/pcwr/default/images/logo-horiz.svg'}"></a>
     	<button class="btn btn-link ml-auto pr-0 d-lg-none search-nav-toggle-btn collapsed" data-toggle="collapse" data-target="#searchNavCollapse" aria-expanded="false" aria-controls="searchNavCollapse" id="searchNavHeading">
-	  		<i class="material-icons nav-search-icon">search</i>
+	  		<i class="material-icons d-none-imp d-none-imp nav-search-icon">search</i>
  		</button>
 	  	<button class="navbar-toggler plcorp-mobile-menu-btn collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-	    	<i class="material-icons"></i>
+	    	<i class="material-icons d-none-imp d-none-imp"></i>
 	  	</button>
 	  	
 	  <!--/* ADD BUTTON MOBILE END----------*/-->
@@ -27,7 +27,7 @@
 				</span>   
 			</div>
 			
-		<span data-sly-test="${!wcmmode.edit}" name="more-menu-toggle" class="more-menu-toggle order-last d-lg-block d-none" data-more="${properties.hideMore ? 'Hide' : ''}"><i class="material-icons">menu</i>More</span>
+		<span data-sly-test="${!wcmmode.edit}" name="more-menu-toggle" class="more-menu-toggle order-last d-lg-block d-none" data-more="${properties.hideMore ? 'Hide' : ''}"><i class="material-icons d-none-imp d-none-imp">menu</i>More</span>
       	
 	</div>	
 	<div id="more-menu" class="${wcmmode.edit ? 'position-relative mr-5 w-25' : 'more-menu text-left'}" data-sly-resource="${'moreSection' @ resourceType='pcwr/components/structure/parts/moreSection'}" data-more="${properties.hideMore ? 'Hide' : ''}"></div>
@@ -39,7 +39,7 @@
 					        <label for="inputSearchValue" class="sr-only">${helper.childProperties.placeholder}</label>
 					        <input name="q" autocomplete="off" type="text" class="form-control py-0 inputValueSearch" id="inputSearchValue" placeholder="${helper.childProperties.placeholder}">
 						</div>						
-						<button type="submit" class="btn btn-primary cta-text-btn mb-2 d-lg-block searchSubmit-mb">${helper.childProperties.action || 'SEARCH'}</button> <span class="search-nav-close-icon pl-md-4" data-toggle="collapse" data-target="#searchNavCollapse"><i class="material-icons nav-close-icon">close</i></span>			
+						<button type="submit" class="btn btn-primary cta-text-btn mb-2 d-lg-block searchSubmit-mb">${helper.childProperties.action || 'SEARCH'}</button> <span class="search-nav-close-icon pl-md-4" data-toggle="collapse" data-target="#searchNavCollapse"><i class="material-icons d-none-imp d-none-imp nav-close-icon">close</i></span>			
 					</div>  
 					<ul class="list-group searchItem historySearchItems historySearchItems-mb">
 					</ul> 				 
@@ -52,11 +52,11 @@
 				<div class="search-wrapper">
 					<div class="input-group  form-group-search-input-new ">
 						<div class="input-group-prepend">
-						  <span class="input-group-text"><i class="material-icons">search</i></span>					  
+						  <span class="input-group-text"><i class="material-icons d-none-imp d-none-imp">search</i></span>					  
 						</div>
 						<input id="inputSearchValue" name="q" type="text" autocomplete="off" class="form-control y-0 inputValueSearch"  placeholder="${helper.childProperties.placeholder}">
 						<div class="input-group-prepend">
-							<a data-toggle="collapse" data-target="#searchNavCollapse" class="showNavbar"><i class="material-icons">clear</i></a>
+							<a data-toggle="collapse" data-target="#searchNavCollapse" class="showNavbar"><i class="material-icons d-none-imp d-none-imp">clear</i></a>
 						</div>	
 						<div class="input-group-prepend">
 							<button type="submit" class="btn btn-primary cta-text-btn searchSubmit">${helper.childProperties.action || 'SEARCH'}</button> 									

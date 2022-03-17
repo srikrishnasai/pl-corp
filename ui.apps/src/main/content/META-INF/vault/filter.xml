@@ -7,6 +7,7 @@
 	<filter root="/oak:index/cqPageLuceneCorpSearch" mode="merge"/>
 	<filter root="/apps/dam/gui/coral/components/admin" mode="update"/>
     <filter root="/etc/oak-index-dictionary" />
+    <filter root="/apps/foundation/components/redirect" mode="merge"/>
     <filter root="/apps/cq/core/content/nav/tools/pc-tools" />
 	<filter root="/conf/global/settings/dam/adminui-extension/metadataschema/default/application/pdf"/>
 </workspaceFilter>

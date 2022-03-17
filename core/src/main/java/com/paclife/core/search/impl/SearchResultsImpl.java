@@ -62,7 +62,7 @@ public class SearchResultsImpl implements SearchResults {
 		if (isSearchable()) {
 			result = searchProvider.search(resourceResolver, searchPredicates);
 			pagination = searchProvider.buildPagination(result, "Previous", "Next");
-			searchResults = searchProvider.buildSearchResults(result);
+			searchResults = searchProvider.buildSearchResults(result, request.getParameter(FullltextPredicateFactoryImpl.REQUEST_PARAM));
 			totalResults = computeTotalMatches(result);
 			timeTaken = result.getExecutionTimeMillis();
 		}

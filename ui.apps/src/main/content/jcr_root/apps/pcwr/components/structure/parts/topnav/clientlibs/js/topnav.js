@@ -4,15 +4,17 @@ var searchArray = JSON.parse(localStorage.getItem('searchItems')) || [];
 
 var currentFocus = -1;
 
+// $(document).ready(function () {
+//     setTimeout(function(){
+//         $('.fadein_navbar').css('animation', 'none');
+//         $('.navbar-nav-header').css('opacity', '1');
+//      },500)
+    
+// });
+
+
 
 $(window).on('load', function () {
-    $('.navbar-nav-header').addClass('fadein_navbar');
-    $('.plcorp-mobile-menu-btn').addClass('animate-mobile-nav-button');
-    $('.search-nav-toggle-btn').addClass('animate-mobile-nav-button');
-    setTimeout(function () {
-        $('.fadein_navbar').css('animation', 'none');
-        $('.navbar-nav-header').css('opacity', '1');
-    }, 500)
     hasSearchClass = document.getElementsByClassName('search-results-page');
     hasSearchClass = hasSearchClass.length;
     // When user click on back or forward button from browser
@@ -110,8 +112,22 @@ $(".inputValueSearch").keydown(function (e) {
                     }
                 }
             }
-            $('.searchItem').addClass('d-none');
-            $('.showNavbar').click();
+            // $('.searchItem').addClass('d-none');
+            // $('.showNavbar').click();
+            var width = $(window).width();
+            var searchBarDesktop = 1139;
+            if(width < searchBarDesktop){
+                var result = $('.search-nav-close-icon').hasClass('collapsed');
+                if (!result) {
+                    $('.search-nav-close-icon').click();
+                }
+            }
+            else{
+                var hasShowClass = $('#searchNavCollapse').hasClass('show');
+                if(hasShowClass){
+                    $('.showNavbar').click();
+                }
+            }
 
         }
         else {

@@ -19,9 +19,9 @@
     <!--/* If Page Level is 0 and Has Children, behave as Dropdown */-->   
 	<a data-sly-test.isDropdown="${item.children.size > 0  && item.level == 0}" href title="${item.title}"
        class="cmp-navigation__item-link  nav-link "  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" 
-       aria-expanded="false"><span class="nav-menu-dropdown-title">${item.title}</span> <i class="nav-menu-dropdown-title material-icons d-sm-inline-block ${wcmmode.edit ? 'd-none' : ''}">keyboard_arrow_down</i>
+       aria-expanded="false"><span class="nav-menu-dropdown-title">${item.title}</span> <i class="nav-menu-dropdown-title material-icons d-none-imp d-sm-inline-block ${wcmmode.edit ? 'd-none' : ''}">keyboard_arrow_down</i>
     	<div class="mobile-nav-back-btn d-none">
-	    	<div><i class="material-icons" style="vertical-align: bottom;font-size:20px">keyboard_arrow_left</i><span>back</span></div>
+	    	<div><i class="material-icons d-none-imp" style="vertical-align: bottom;font-size:20px">keyboard_arrow_left</i><span>back</span></div>
     	</div>
     </a>
 	

@@ -16,7 +16,7 @@
 <template data-sly-template.group="${@ items='The navigation items for the current level'}" data-sly-use.itemTemplate="item.html">
 
 	 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-	 <span class="pl-md-4 position-absolute d-none d-lg-inline" style="right:10px;"><i class="material-icons nav-close-icon">close</i></span>
+	 <span class="pl-md-4 position-absolute d-none d-lg-inline" style="right:10px;"><i class="material-icons d-none-imp nav-close-icon">close</i></span>
 	    <ul class="cmp-navigation__group" data-sly-list="${items}">
 	        <sly data-sly-call="${itemTemplate.item @ item=item}"></sly>
 	    </ul>

@@ -419,6 +419,28 @@
     animation-name: fadeIn; 
 }
 
+
+/**********
+* Fade In Custom*
+**********/ 
+@-webkit-keyframes fadeInCustom{ 
+    0% {opacity: 0;} 
+    100% {opacity: 1;
+        display:block;} 
+} 
+@keyframes fadeInCustom { 
+    0% {opacity: 0;} 
+    100% {opacity: 1;  
+        display:block;} 
+}
+.fadeInCustom{
+    opacity:0;
+}
+.fadeInCustom.go { 
+    -webkit-animation-name: fadeInCustom; 
+    animation-name: fadeInCustom; 
+}
+
 /**********
 * Grow in *
 ***********/

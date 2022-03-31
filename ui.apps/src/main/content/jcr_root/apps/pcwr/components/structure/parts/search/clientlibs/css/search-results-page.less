@@ -128,7 +128,7 @@
 			.search-result {
 				display: flex;
 				margin-bottom: 5%;
-				
+				flex-direction: column;
 				.icon-cloud{
 					color: @bright-blue;
 				}
@@ -143,15 +143,22 @@
 					text-decoration: none;
 					transition: color .1s linear;
 
-					.pl-search-result-link:hover {
-						color: darken(@bright-blue, 10%);
-						transition: color .1s linear;
-					}
+
 
 					&:active {
 						color: darken(@bright-blue, 20%);
 					}
 				}
+				.pl-search-result-link {
+					cursor: pointer;
+				}
+                .pl-search-result-link:hover {
+						color: darken(@bright-blue, 10%);
+						transition: color .1s linear;
+					}
+                .pl-search-result-link-pdf{
+                    margin-top:10px;
+                }
 			}
 		}
 	}
@@ -386,6 +393,9 @@
 		opacity: 0;
 		visibility: hidden;
 	}
+    .pdf-img-wrapper{
+		height: fit-content;
+	}
 	.pdf-img-wrapper:hover{
 		.pdf-view{
 			opacity: 1;
@@ -451,7 +461,10 @@
 		font-weight: 700;
 		font-family: 'Montserrat';
 		color: #008ED7;
+        width:fit-content;
+        cursor: pointer;
 	}
+
 	.readDesc:hover{
 		color: #005b8b;
 		transition: color .4s;

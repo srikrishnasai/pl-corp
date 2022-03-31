@@ -57,7 +57,7 @@
             
             .quoteMark-front{
                 color: #0082C4;
-                font-size: 82px ;
+                // font-size: 82px ;
                 font-family : -webkit-body;
                 font-style: initial;
                 line-height: 0;
@@ -65,7 +65,7 @@
                 
             .quoteMark-back{
                 color: #0082C4;
-                font-size: 82px ;
+                // font-size: 82px ;
                 font-family : -webkit-body;
                 font-style: initial;
                 line-height: 0;
@@ -77,8 +77,6 @@
                 font-family: 'Open Sans';
                 font-style: italic;
                 font-weight: bold;
-                font-size: 40px ;
-                line-height: 55px;
                 text-align: center;
                 color: #FFFFFF;
                 margin-bottom: 2rem;
@@ -87,11 +85,14 @@
                     text-align: right;
                 }
             }
+
+          
+
             .QuoteAuthor{
                 font-family: Merriweather;
                 font-style: normal;
                 font-weight: normal;
-                font-size: 24px;
+                // font-size: 24px;
                 line-height: 30px;
                 color: #FFFFFF;
                 text-align: center;
@@ -134,12 +135,44 @@
     .quoteComponent{
         .quoteImgWrapper{
             .quoteContentWrapper{
-                .quoteTextWrapper{
+                .quoteTextWrapper-ipadpro-large{
                     font-size: 29px;
                     line-height: 51px;
                 }
+                .quoteTextWrapper-ipadpro-medium{
+                    // font-size: 24px;
+                    // line-height: 41px;
+                    font-size: 30px;
+                    line-height: 40px;
+                }
+                .quoteTextWrapper-ipadpro-small{
+                    // font-size: 20px;
+                    font-size: 24px;
+                    line-height: 31px;
+                }
+                .quoteMark-ipadpro-front-large, .quoteMark-ipadpro-back-large {
+                    font-size: 80px ;                    
+                }
+                    
+                .quoteMark-ipadpro-front-medium, .quoteMark-ipadpro-back-medium{
+                    font-size: 70px ;                    
+                }
+                .quoteMark-ipadpro-front-small, .quoteMark-ipadpro-back-small {
+                    font-size: 60px ;                    
+                }
                 .QuoteAuthor{
-                    font-size: 22px;
+                    
+                    &.quoteAuthor--ipadpro--large {
+                        font-size: 25px !important;
+                    }
+                    &.quoteAuthor--ipadpro--medium {
+                        // font-size: 20px !important;
+                        font-size: 22px !important;
+                    }
+                    &.quoteAuthor--ipadpro--small {
+                        // font-size: 18px !important;
+                        font-size: 20px !important;
+                    }
                 }
             }
         }
@@ -166,13 +199,46 @@
     .quoteComponent{
         .quoteImgWrapper{
             .quoteContentWrapper{
-                .quoteTextWrapper{
-                    font-size: 31px ;
+                .quoteTextWrapper-ipad-large{
+                    font-size: 30px ;
                     line-height: 48px;
                 }
+                .quoteTextWrapper-ipad-medium{
+                    // font-size: 21px ;
+                    // line-height: 38px;
+                    font-size: 24px ;
+                    line-height: 35px;
+                }
+                .quoteTextWrapper-ipad-small{
+                    // font-size: 15px ;
+                    font-size: 24px ;
+                    line-height: 28px;
+                }
+                .quoteMark-ipad-front-large, .quoteMark-ipad-back-large {
+                    font-size: 80px ;                    
+                }
+                .quoteMark-ipad-front-medium, .quoteMark-ipad-back-medium {
+                    font-size: 70px ;                    
+                }
+                    
+                .quoteMark-ipad-front-small, .quoteMark-ipad-back-small {
+                    font-size: 60px ;                    
+                }
+                    
                 .QuoteAuthor{
-                    font-size: 20px;
-                    line-height: 21px;
+                    &.quoteAuthor--ipad--large {
+                        font-size: 25px !important;
+                    }
+                    &.quoteAuthor--ipad--medium {
+                        // font-size: 18px !important;
+                            font-size: 20px !important;
+
+                    }
+                    &.quoteAuthor--ipad--small {
+                        // font-size: 15px !important;
+                        font-size: 18px !important;
+
+                    }
                 }
             }
         }
@@ -185,20 +251,58 @@
         .quoteImgWrapper{
             .quoteContentWrapper{
                 .quoteTextWrapper{
-                    font-size: 30px !important;
-                    line-height: 1;
-                    .quoteMark-front{
+                    padding: 10px;
+                }
+                .quoteTextWrapper-mobile-large{
+                    font-size: 27px !important;
+                    line-height: 1.2;
+                    .quoteMark-front-mobile-large{
                         font-size: 53px !important;
                     }
-                    .quoteMark-back{
-                        font-size: 53px !important;
+                    .quoteMark-back-mobile-large{
                         top: 10px !important;
+                        font-size: 53px !important;
+                    }
+                }
+                .quoteTextWrapper-mobile-medium{
+                    font-size: 20px !important;
+                    line-height: 1.5;
+                    .quoteMark-front-mobile-medium{
+                        font-size: 35px !important;
+                    }
+                    .quoteMark-back-mobile-medium{
+                        top: 10px !important;
+                        font-size: 35px !important;
+                    }
+                }
+                .quoteTextWrapper-mobile-small{
+                    font-size: 15px !important;
+                    line-height: 1.5;
+                    .quoteMark-front-mobile-small{
+                        font-size: 33px !important;
+                    }
+                    .quoteMark-back-mobile-small{
+                        top: 10px !important;
+                        font-size: 33px !important;
                     }
                 }
                 .QuoteAuthor{
-                    font-size: 17px;
-                    line-height: 21px;
+                    
                     text-align: center;
+                    &.quoteAuthor--mobile--large {
+                        font-size: 24px !important;
+                    }
+
+                    &.quoteAuthor--mobile--medium {
+                        font-size: 20px !important;
+                    }
+
+                    &.quoteAuthor--mobile--small {
+                        line-height: 21px;
+                        font-size: 12px !important;
+                    }
+                   
+                    
         
                 }
             }
@@ -212,6 +316,7 @@
     .quoteComponent{
         .quoteImgWrapper{
             .quoteContentWrapper{
+                min-width: 80%;
                 .quoteTextWrapper{
                     .quoteMark-back{
                         top: 20px;
@@ -240,3 +345,47 @@
     }
 }
 
+@media screen and (min-width:1199px) {
+
+    .quoteComponent{
+        .quoteImgWrapper{
+            .quoteContentWrapper{
+    
+               .quoteMark-desktop-front-large, .quoteMark-desktop-back-large{
+                    font-size: 80px ;                    
+                }
+                .quoteMark-desktop-front-medium, .quoteMark-desktop-back-medium{
+                    font-size: 70px ;                    
+                }
+                .quoteMark-desktop-front-small, .quoteMark-desktop-back-small{
+                    font-size: 60px ;                    
+                }
+                    
+                .quoteTextWrapper-desktop-large{
+                    font-size: 40px ;
+                    line-height: 50px;
+                }
+                .quoteTextWrapper-desktop-medium{
+                    font-size: 30px ;
+                    line-height: 45px;
+                }
+                .quoteTextWrapper-desktop-small{
+                    font-size: 25px ;
+                    line-height: 35px;
+                }
+
+                .QuoteAuthor{                    
+                    &.quoteAuthor--desktop--large{
+                        font-size: 30px;
+                    }
+                    &.quoteAuthor--desktop--medium{
+                        font-size: 24px;
+                    }
+                    &.quoteAuthor--desktop--small{
+                        font-size: 21px;
+                    }
+                }
+            }
+        }
+    }
+}

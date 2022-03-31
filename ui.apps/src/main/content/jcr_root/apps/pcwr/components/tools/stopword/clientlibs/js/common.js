@@ -45,6 +45,7 @@ function createOption(name, value, selected) {
  * @param {function} noIndexFoundCB - function to be triggered when no side index is found
  */
 function onSelectionChange(loadData ,noIndexFoundCB) {
+    $("#wait").removeClass("d-none")
     selectedSiteIndex = $("#selectSite").val();
     if(selectedSiteIndex !== "null")
     setTimeout(loadData, 0);

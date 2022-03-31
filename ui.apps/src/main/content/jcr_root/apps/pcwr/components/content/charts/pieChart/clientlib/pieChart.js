@@ -43,7 +43,7 @@ $(document).ready(function() {
                             x: (chart.chartArea.left + chart.chartArea.right) / 2,
                             y: (chart.chartArea.top + chart.chartArea.bottom) / 2,
                             radius: (chart.outerRadius + chart.innerRadius) / 2,
-                            thickness: (chart.outerRadius - chart.innerRadius) / 2,
+                            thickness: (chart.outerRadius - chart.innerRadius) / 2-1,
                             backgroundColor: arc._model.backgroundColor
                         }
   
@@ -101,7 +101,7 @@ $(document).ready(function() {
   
                 data: {
   
-                    labels: barLabels,
+                    labels: authoredBarLabels,
   
                     datasets: [{
                         data: barWidths,
@@ -126,7 +126,7 @@ $(document).ready(function() {
                     }
                 }
             };
-            var ctx = document.getElementById("doughnutChart").getContext("2d");
+            var ctx = elem.find("#doughnutChart");
   
             var myChart = new Chart(ctx, config);
   

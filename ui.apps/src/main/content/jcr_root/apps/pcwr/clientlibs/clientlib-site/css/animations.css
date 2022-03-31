@@ -766,6 +766,48 @@
     animation-name: fadeInDown; 
 }
 
+
+
+/*************
+* customFadeInDown *
+*************/
+
+@-webkit-keyframes customFadeInDown { 
+    0% { 
+        opacity: 0; 
+        -webkit-transform: translateY(-400px); 
+    } 
+    50%{
+       opacity: 0.3; 
+    }
+    100% { 
+        opacity: 1; 
+        -webkit-transform: translateY(0); 
+    } 
+} 
+@keyframes customFadeInDown { 
+    0% { 
+        opacity: 0; 
+        transform: translateY(-400px); 
+    } 
+    50%{
+       opacity: 0.3; 
+    }
+    100% { 
+        opacity: 1; 
+        transform: translateY(0); 
+    } 
+} 
+.customFadeInDown{ 
+    opacity: 0; 
+    -webkit-transform: translateY(-400px); 
+    transform: translateY(-400px);
+}
+.customFadeInDown.go { 
+    -webkit-animation-name: customFadeInDown; 
+    animation-name: customFadeInDown; 
+}
+
 /*****************
 * rotateIn *
 *****************/

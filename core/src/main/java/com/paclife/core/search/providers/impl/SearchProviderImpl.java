@@ -61,8 +61,15 @@ public class SearchProviderImpl implements SearchProvider {
 		try {
 			// limit and offset have to be handled here, because of component results
 			// collapsing onto pages throws it off
-			int limit = Integer.parseInt(predicates.remove("p.limit"));
-			int offset = Integer.parseInt(predicates.remove("p.offset"));
+			int limit = 10;
+			int offset = 0;
+			
+			if(predicates.containsKey("p.limit")) {
+				limit = Integer.parseInt(predicates.remove("p.limit"));
+			}
+			if(predicates.containsKey("p.offset")) {
+				offset = Integer.parseInt(predicates.remove("p.offset"));	
+			}
 
 			predicates.put("p.limit", String.valueOf(Integer.MAX_VALUE)); // important
 

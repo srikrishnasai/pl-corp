@@ -12,6 +12,24 @@
             // margin-top: 20%;
             text-align: center;
         }
+        .h3-bar-title-sup{
+			font-size: 20px;
+            vertical-align: super;
+            margin-left: 1%;
+            top: -0.3em;
+        }
+        .h2-bar-title-sup{
+			font-size: 24px;
+            vertical-align: super;
+            margin-left: 1%;
+            top: -0.3em;
+        }
+        .chart-heading-sup{
+			font-size: 14px;
+            vertical-align: super;
+            margin-left: 1%;
+            top: -0.2em;
+        }
 
         .bar-charts-wrapper {
             // display: flex;
@@ -30,9 +48,9 @@
                 margin-left: 0;
                 padding-left: 20px;
                 padding-right: 20px;
-                &:first-child {
-                    padding-left: 15px;
-                }
+                // &:first-child {
+                //     padding-left: 15px;
+                // }
                 &:last-child {
                     padding-right: 15px;
                 }
@@ -70,16 +88,19 @@
     opacity: 0;
 }
 
-.padding-two-bar{
-    padding-left: 11% !important;
-    padding-right: 10% !important;
-}
+// .padding-two-bar{
+//     padding-left: 11% !important;
+//     padding-right: 10% !important;
+// }
 
 
-.padding-three-bar{
-    padding-left: 10.5% !important;
-    padding-right: 8% !important;
-}
+
+
+
+// .padding-three-bar{
+//     padding-left: 10.5% !important;
+//     padding-right: 8% !important;
+// }
 
 @media screen and (max-width: 576px) {
     .bar-chart-component {
@@ -87,6 +108,19 @@
             .bar-chart-title{
                 margin-bottom: 15px;
             }
+            .h3-bar-title-sup{
+                top: -0.2em;
+                margin-left: 2%;
+        	}
+            .h2-bar-title-sup{
+                top: -0.1em;
+                margin-left: 2%;
+            }
+            .chart-heading-sup{
+                font-size: 12px;
+                top: -0.25em;
+                margin-left: 2%;
+        	}
             .bar-charts-wrapper {
                 // flex-direction: column;
                 max-width: 90%;
@@ -110,8 +144,21 @@
 @media screen and (max-width : 768px) {
     .bar-chart-component {
         #barCharts {
+            .h3-bar-title-sup{
+                top: -0.2em;
+                margin-left: 2%;
+        	}
+            .h2-bar-title-sup{
+                top: -0.1em;
+                margin-left: 2%;
+            }
+            .chart-heading-sup{
+                font-size: 12px;
+                top: -0.25em;
+                margin-left: 2%;
+        	}
             .padding-two-bar{
-                padding-left: 4% !important;
+                padding-left: 3% !important;
                 padding-right: 4% !important;
             }
 
@@ -120,7 +167,7 @@
                 padding-right: 2% !important;
             }
             .padding-four-bar{
-                padding-left: 5% !important;
+                padding-left: 3% !important;
                 padding-right: 5% !important;
             }
 
@@ -131,7 +178,7 @@
 @media screen and (max-width : 1199px) {
 
     .padding-two-bar{
-        padding-left: 3% !important;
+        padding-left: 2.5% !important;
         padding-right: 3% !important;
     }
 
@@ -141,11 +188,30 @@
     }
 
     .padding-four-bar{
-        padding-left: 3% !important;
+        padding-left: 2.5% !important;
         padding-right: 4% !important;
     }
 
     
+}
+
+@media screen and (min-width: 2400px) {
+    .bar-chart-component {
+        #barCharts {
+			.h3-bar-title-sup{
+                top: -0.2em;
+                margin-left: 0.5%;
+        	}
+            .h2-bar-title-sup{
+                top: -0.1em;
+                margin-left: 0.5%;
+            }
+            .chart-heading-sup{
+                font-size: 16px;
+                margin-left: 0.5%;
+        	}
+        }
+    }
 }
 
 @media screen and (-ms-high-contrast: active) , screen and (-ms-high-contrast: none) {

@@ -1,10 +1,14 @@
 <sly data-sly-use.clientLib="/libs/granite/sightly/templates/clientlib.html" />
 <sly data-sly-call="${clientlib.all @ categories='tools.stopword'}" />
 <span id="sitesData" data-value="${properties.sites}"></span>
+<div id="wait" class="initial-loader">
+    <coral-wait size="L">
+    </coral-wait>
+</div>
 <coral-tabview class="toolContainer">
     <coral-tablist target="coral-demo-panel-1">
-        <coral-tab id="stopwordTab" class="coral-Heading coral-Heading--2" >Stop Words</coral-tab>
-        <coral-tab id="synonymTab" class="coral-Heading coral-Heading--2" >Synonyms</coral-tab>
+        <coral-tab id="stopwordTab" class="coral-Heading coral-Heading--2">Stop Words</coral-tab>
+        <coral-tab id="synonymTab" class="coral-Heading coral-Heading--2">Synonyms</coral-tab>
     </coral-tablist>
     <coral-select class="dropdown" id="selectSite">
     </coral-select>
@@ -14,19 +18,22 @@
                 <input id="stopword-input" class="tools__input" is="coral-textfield" placeholder="Add a word"
                     name="stopword" value="">
                 <aside class="tools__buttonContainer" id="button-group">
-                    <button class="tools__button" is="coral-button" variant="primary" type="button" id="add-button">
-                        Add
+                    <button class="tools__button loader-button" is="coral-button" variant="primary" type="button"
+                        id="add-button">
+                        <div class="spinner d-none"></div>
+                        <span> Add</span>
                     </button>
                 </aside>
                 <coral-search id="search" class="stopword__search_input" placeholder="Search" name="field">
                 </coral-search>
-                <button class="tools__button tool__reindex" disabled is="coral-button" id="stopwordReindex"
-                    variant="primary" type="button">
-                    Reindex
+                <button class="tools__button tool__reindex loader-button" disabled is="coral-button"
+                    id="stopwordReindex" variant="primary" type="button">
+                    <div class="spinner d-none"></div>
+                    <span>Reindex</span>
                 </button>
             </div>
             <section id="table">
-                <table id="stopwordTable"  is="coral-table">
+                <table id="stopwordTable" is="coral-table">
                     <colgroup>
                         <col is="coral-table-column" fixedwidth>
                         <col is="coral-table-column">
@@ -45,8 +52,12 @@
             <coral-dialog id="modal">
                 <coral-dialog-header>Delete Stop word</coral-dialog-header>
                 <coral-dialog-content id="dialogContent"></coral-dialog-content>
-                <coral-dialog-footer><button id="deleteButton" is="coral-button" variant="warning"
-                        coral-close="">Delete</button></coral-dialog-footer>
+                <coral-dialog-footer>
+                    <button class="loader-button" id="deleteButton" is="coral-button" variant="warning" type="button">
+                        <div class="spinner d-none"></div>
+                        <span>Delete</span>
+                    </button>
+                </coral-dialog-footer>
             </coral-dialog>
             <coral-alert class="tool__toast" id="alert">
                 <coral-alert-header></coral-alert-header>
@@ -58,15 +69,17 @@
                 <input id="synonym-input" class="tools__input" is="coral-textfield" placeholder="Add a word"
                     name="stopword" value="">
                 <aside class="tools__buttonContainer" id="button-group">
-                    <button class="tools__button" is="coral-button" variant="primary" type="button" id="synonym-button">
-                        Add
+                    <button class="tools__button loader-button" is="coral-button" variant="primary" type="button"
+                        id="synonym-button">
+                        <div class="spinner d-none"></div><span> Add </span>
                     </button>
                 </aside>
                 <coral-search id="synonymSearch" class="stopword__search_input" placeholder="Search" name="field">
                 </coral-search>
-                <button class="tools__button tool__reindex" disabled is="coral-button" id="synonymReindex"
+                <button class="tools__button tool__reindex loader-button" disabled is="coral-button" id="synonymReindex"
                     variant="primary" type="button">
-                    Reindex
+
+                    <div class="spinner d-none"></div> <span>Reindex</span>
                 </button>
             </div>
             <section id="table2">
@@ -95,8 +108,11 @@
                 <coral-dialog-header>Delete Synonyms Row</coral-dialog-header>
                 <coral-dialog-content id="synonymDialogContent">Are you sure you want to delete this row ?
                 </coral-dialog-content>
-                <coral-dialog-footer><button id="deleteSynonym" is="coral-button" variant="warning"
-                        coral-close="">Delete</button></coral-dialog-footer>
+                <coral-dialog-footer><button class="loader-button" id="deleteSynonym" is="coral-button"
+                        variant="warning" type="button">
+                        <div class="spinner d-none"></div>
+                        <span>Delete</span>
+                    </button></coral-dialog-footer>
             </coral-dialog>
             <coral-alert class="tool__toast" id="snonymAlert">
                 <coral-alert-header></coral-alert-header>

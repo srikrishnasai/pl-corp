@@ -64,7 +64,7 @@ var createRow = function (data, id) {
         id +
         '" variant="quiet" value="' +
         id +
-        '" data-type="edit" icon="edit" iconsize="S" /></td><td is="coral-table-cell" class="coral-Table-row" role="row"><button is="coral-button" id="delete' +
+        '" data-type="edit" icon="edit" class="loader-button" iconsize="S" ><div class="spinner d-none"></div></button></td><td is="coral-table-cell" class="coral-Table-row" role="row"><button is="coral-button" id="delete' +
         id +
         '" variant="quiet" data-type="delete" icon="delete" iconsize="S"></button></td></tr>';
 
@@ -78,10 +78,10 @@ var createRow = function (data, id) {
  * @returns {boolean} A boolean value telling if the word exists or not
  */
 var checkIfWordExists = function (data, word) {
-    var word = word.trim();
+    var word = word.trim().toLowerCase();
     return Object.keys(data).some(function (key) {
         return data[key].split(",").some(function (el) {
-            return el.trim() === word;
+            return el.trim().toLowerCase() === word;
         });
     });
 };
@@ -110,6 +110,7 @@ var enableReindexButton = function () {
  */
 var disableReindexButton = function () {
     $("#synonymReindex").attr("disabled", "disabled");
+    $("#synonymReindex").find(".spinner").addClass("d-none");
 };
 /**
  * @description Empty the search input field
@@ -152,6 +153,7 @@ function onCheckClicked(editButton, deleteButton, inputElement) {
     deleteButton.attr("icon", "delete");
     changeButtonsDisableState(false);
     deleteButton.css("cursor", "pointer");
+    editButton.find(".spinner").addClass("d-none");
 }
 
 $(window).on("load", function () {
@@ -199,6 +201,11 @@ $(window).on("load", function () {
         console.error(thrownError);
         showAlert(SERVER_ERROR_MESSAGE, false);
         $("#synonym-button").removeAttr("disabled");
+        $("#synonym-button").find(".spinner").addClass("d-none")
+        $("#synonymReindex").find(".spinner").addClass("d-none")
+        synonymDialog.hide()
+        $("#deleteSynonym").find(".spinner").addClass("d-none")
+        $("#deleteSynonym").removeAttr("disabled");
     }
 
     /**
@@ -225,8 +232,10 @@ $(window).on("load", function () {
                 tableBodyData = noRecordFoundDueToServerIssue;
                 synonymTableBody.append(tableBodyData);
                 handleAjaxError(xhr, ajaxOptions, thrownError);
+                $("#wait").addClass("d-none")
             },
             success: function (data) {
+                $("#wait").addClass("d-none")
                 synonymData = typeof data === DATA_TYPE_OBJECT ? data.data : JSON.parse(data.data);
                 appendData(synonymData);
             },
@@ -253,6 +262,8 @@ $(window).on("load", function () {
      * @returns null
      */
     function removeIndex(index) {
+        $("#deleteSynonym").find(".spinner").removeClass("d-none")
+        $("#deleteSynonym").attr("disabled", "disabled");
         $.ajax({
             url: SYNONYM_REMOVE_URL() + index,
             type: "GET",
@@ -265,6 +276,9 @@ $(window).on("load", function () {
                     appendData(synonymData);
                     $("#synonymSearch").val("");
                     enableReindexButton();
+                    synonymDialog.hide();
+                    $("#deleteSynonym").find(".spinner").addClass("d-none")
+                    $("#deleteSynonym").removeAttr("disabled");
                 }
             },
         });
@@ -342,7 +356,7 @@ $(window).on("load", function () {
      * @description Handler to handle the event when user clicks on the add button
      */
     function addWord() {
-        var input = $("#synonym-input").val();
+        var input = $("#synonym-input").val().toLowerCase();
         if (input) {
             if (input.includes(" ")) {
                 showAlert("Please enter one word only", false);
@@ -351,6 +365,7 @@ $(window).on("load", function () {
             } else {
                 if (!checkIfWordExists(synonymData, input)) {
                     $("#synonym-button").attr("disabled", "disabled");
+                    $("#synonym-button").find(".spinner").removeClass("d-none");
                     $.ajax({
                         url: SYNONYM_ADD_URL() + encodeURIComponent(input.trim()),
                         type: "GET",
@@ -366,8 +381,10 @@ $(window).on("load", function () {
                                 enableReindexButton();
                                 emptySearch();
                                 $("#synonym-button").removeAttr("disabled");
+                                $("#synonym-button").find(".spinner").addClass("d-none");
                             } else {
                                 $("#synonym-button").removeAttr("disabled");
+                                $("#synonym-button").find(".spinner").addClass("d-none");
                             }
                         },
                     });
@@ -387,13 +404,14 @@ $(window).on("load", function () {
     function onDeleteHandler() {
         removeIndex(selectedIndex);
         $("#synonymSearch").val("");
-        synonymDialog.hide();
     }
 
     /**
      * @description Handler to handle the reindex button click event by making the reindex ajax call. If successful showing success alert or else showing error alert
      */
     function reindexHandler() {
+        $("#synonymReindex").find(".spinner").removeClass("d-none")
+        $("#synonymReindex").attr("disabled", "disabled");
         $.ajax({
             url: REINDEX_URL(),
             type: "GET",
@@ -471,7 +489,7 @@ $(window).on("load", function () {
                                  * and if search bar is on find it's real index value and if all conditions pass than make ajax call to add the word
                                  */
                                 if (inputElement.val().trim().length > 0) {
-                                    var inputElementValue = inputElement.val();
+                                    var inputElementValue = inputElement.val().toLowerCase();
                                     var indexValue = i;
                                     if ($("#synonymSearch").val()) {
                                         indexValue = findOriginalIndex(synonymData, synonymDataCopy[i - 1]) + 1;
@@ -486,6 +504,8 @@ $(window).on("load", function () {
                                         showAlert("Please enter word without hyphen", false);
                                     } else {
                                         inputElement.attr("disabled", "disabled");
+                                        editButton.find(".spinner").removeClass("d-none");
+                                        editButton.first().attr("icon", "");
                                         $.ajax({
                                             url:
                                                 SYNONYM_ADD_URL() +
@@ -496,6 +516,8 @@ $(window).on("load", function () {
                                             error: function (xhr, ajaxOptions, thrownError) {
                                                 handleAjaxError(xhr, ajaxOptions, thrownError);
                                                 $(inputElem.first()).removeAttr("disabled");
+                                                editButton.find(".spinner").addClass("d-none");
+                                                editButton.first().attr("icon", "check");
                                             },
                                             success: function (data) {
                                                 var responseData =
@@ -506,7 +528,7 @@ $(window).on("load", function () {
                                                     enableReindexButton();
                                                     synonymData[indexValue] = responseData.data[indexValue];
                                                     var tag = createTag(
-                                                        inputElement.val(),
+                                                        inputElementValue,
                                                         i - 1,
                                                         synonymData[indexValue].split(",").length
                                                     );
@@ -553,16 +575,20 @@ $(window).on("load", function () {
                                     } else {
                                         var inputElement = inputElem.first();
                                         $(inputElement).attr("disabled", "disabled");
+                                        editButton.find(".spinner").removeClass("d-none");
+                                        editButton.first().attr("icon", "");
                                         $.ajax({
                                             url:
                                                 SYNONYM_ADD_URL() +
-                                                encodeURIComponent(e.target.value.trim()) +
+                                                encodeURIComponent(e.target.value.trim().toLowerCase()) +
                                                 "&id=" +
                                                 indexValue,
                                             type: "GET",
                                             error: function (xhr, ajaxOptions, thrownError) {
                                                 handleAjaxError(xhr, ajaxOptions, thrownError);
                                                 $(inputElement).removeAttr("disabled");
+                                                editButton.find(".spinner").addClass("d-none");
+                                                editButton.first().attr("icon", "check");
                                             },
                                             success: function (data) {
                                                 var responseData =
@@ -571,7 +597,7 @@ $(window).on("load", function () {
                                                     if ($("#synonymSearch").val())
                                                         synonymDataCopy[i - 1] = responseData.data[indexValue];
                                                     var tag = createTag(
-                                                        e.target.value,
+                                                        e.target.value.toLowerCase(),
                                                         i - 1,
                                                         synonymData[i].split(",").length
                                                     );
@@ -583,12 +609,12 @@ $(window).on("load", function () {
                                                     showAlert(e.target.value + " added successfully", true);
                                                     $(inputElement).val("");
                                                     synonymData[indexValue] = responseData.data[indexValue];
-                                                    $(inputElement).removeAttr("disabled");
+                                                    
+                                                } 
+                                                $(inputElement).removeAttr("disabled");
                                                     $(inputElement).focus();
-                                                } else {
-                                                    $(inputElement).removeAttr("disabled");
-                                                    $(inputElement).focus();
-                                                }
+                                                    editButton.find(".spinner").addClass("d-none");
+                                                    editButton.first().attr("icon", "check");
                                             },
                                         });
                                     }

@@ -6,6 +6,7 @@ public class BarChartPojo {
 
 	private String chartHeading;
 	private String chartSubHeading;
+	private String chartHeadingSup;
 	private List<BarChartMultiFieldItemsPojo> chartBarMultiFieldItems;
 
 	public String getChartHeading() {
@@ -14,6 +15,14 @@ public class BarChartPojo {
 
 	public void setChartHeading(String chartHeading) {
 		this.chartHeading = chartHeading;
+	}
+
+	public String getChartHeadingSup() {
+		return chartHeadingSup;
+	}
+
+	public void setChartHeadingSup(String chartHeadingSup) {
+		this.chartHeadingSup = chartHeadingSup;
 	}
 
 	public String getChartSubHeading() {

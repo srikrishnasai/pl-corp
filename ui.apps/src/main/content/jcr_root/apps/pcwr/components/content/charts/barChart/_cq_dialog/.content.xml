@@ -33,6 +33,12 @@
 		                                fieldDescription="Please provide Title"
 		                                fieldLabel="Title (Optional)"
 		                                name="./title"/>
+                                    <titlesuperscript
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please enter superscript text"
+                                        fieldLabel="Title Superscript (Optional)"
+                                        name="./titleSuperScript"/>
 									<titleEl
 										jcr:primaryType="nt:unstructured"
 										sling:resourceType="granite/ui/components/coral/foundation/form/select"
@@ -97,6 +103,12 @@
 		                                fieldDescription="Please provide heading for chart1"
 		                                fieldLabel="Chart1 Heading"
 		                                name="./chart1/chartHeading"/>
+                                    <chart1HeadingSup
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please enter superscript text"
+                                        fieldLabel="Chart Heading Superscript (Optional)"
+                                        name="./chart1/chartHeadingSup"/>
 		                            <chart1Label
 		                                jcr:primaryType="nt:unstructured"
 		                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -203,6 +215,12 @@
 		                                fieldDescription="Please provide heading for chart2"
 		                                fieldLabel="Chart2 Heading"
 		                                name="./chart2/chartHeading"/>
+                                    <chart2HeadingSup
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please enter superscript text"
+                                        fieldLabel="Chart Heading Superscript (Optional)"
+                                        name="./chart2/chartHeadingSup"/>
 		                            <chart2Label
 		                                jcr:primaryType="nt:unstructured"
 		                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -302,6 +320,12 @@
 		                                fieldDescription="Please provide heading for chart3"
 		                                fieldLabel="chart3 Heading"
 		                                name="./chart3/chartHeading"/>
+                                    <chart3HeadingSup
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please enter superscript text"
+                                        fieldLabel="Chart Heading Superscript (Optional)"
+                                        name="./chart3/chartHeadingSup"/>
 		                            <chart3Label
 		                                jcr:primaryType="nt:unstructured"
 		                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -336,7 +360,7 @@
 												<barColor
 													jcr:primaryType="nt:unstructured"
 													sling:resourceType="granite/ui/components/coral/foundation/form/select"
-													fieldLabel="Bar Color"
+                                                    fieldLabel="Bar Color"
 													fieldDescription="Choose the color for the Bar"
 													name="./barColor">
 													<items jcr:primaryType="nt:unstructured">
@@ -401,6 +425,12 @@
 		                                fieldDescription="Please provide heading for chart4"
 		                                fieldLabel="chart4 Heading"
 		                                name="./chart4/chartHeading"/>
+                                    <chart4HeadingSup
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please enter superscript text"
+                                        fieldLabel="Chart Heading Superscript (Optional)"
+                                        name="./chart4/chartHeadingSup"/>
 		                            <chart4Label
 		                                jcr:primaryType="nt:unstructured"
 		                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"

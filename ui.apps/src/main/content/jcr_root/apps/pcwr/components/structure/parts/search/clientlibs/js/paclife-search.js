@@ -21,6 +21,7 @@ $( document ).ready(function(e) {
 		var defaultOffset = searchParams.get("offset") || "0";
 		var text = searchParams.get("q");
 		if(text === "" || text === null){
+			$('#shimmer-container-Search').addClass('d-none');
 			$(".search-page-wrapper-no-results").removeClass('d-none');
 		}
 		else{
@@ -140,7 +141,7 @@ function doAjaxSeach(text,setPageLimit,defaultOffset,flag,pageNumber){
 								searchResultData= '<div class="search-result">'
 								+'<a href="'+resultData[i].fixedUrl+'" class="DTM-TAG-search-result-link" data-search-page="'+pageNumber+'" data-search-position="="'+i+'" >'				
 								+'<h6> <span class="search-results-index-title">'+resultData[i].title+'</span></h6>'
-								+'<div class="p-alt-16 show-read-more">'+resultData[i].description+'</div>';
+								+'<div class="p-alt-16 show-read-more">'+resultData[i].description+'</div></a>';
 								if(resultData[i].description.length > 300){
 									readmore = '<div class="read-more readDesc">READ MORE ></div>'
 								}
@@ -150,23 +151,25 @@ function doAjaxSeach(text,setPageLimit,defaultOffset,flag,pageNumber){
 							else{
 								searchResultData= '<div class="search-result">'
 								+'<a href="'+resultData[i].fixedUrl+'" class="DTM-TAG-search-result-link searchResultPdf " data-search-page="'+pageNumber+'" data-search-position="'+i+'" target="_blank" type="application/pdf" style="position:relative;">'	
-								+'<div class="pdf-img-wrapper">'
-								+'<div class="v-tooltip modifier--content-right-bottom modifier--visible pdf-view">'
-								+'<div class="v-tooltip__wrap">'
-								+'<img src="'+resultData[i].thumbnailWebPreview+'"  class="v-tooltip__desc"/>'
-								+'</div>'
-								+'</div>'
-								+'<img src="'+resultData[i].thumbnail+'" class="thumbnail-wrapper"/>'
-								+'</div>'
-								+'<div>'
-								+'<h6> <span class="search-results-index-title">'+resultData[i].title+'</span></h6>'
-								+'<p class="p-alt-16 show-read-more">'+resultData[i].description+'...</p>';
+									+'<div class="pdf-img-wrapper">'
+										+'<div class="v-tooltip modifier--content-right-bottom modifier--visible pdf-view">'
+											+'<div class="v-tooltip__wrap">'
+												+'<img src='+resultData[i].thumbnailWebPreview+' class="v-tooltip__desc"/>'
+											+'</div>'
+										+'</div>'
+									+'<img src="'+resultData[i].thumbnail+'" class="thumbnail-wrapper"/>'
+									+'</div>'
+									+'<div class="search-title-wrapper">'
+										+'<h6> <span class="search-results-index-title">'+resultData[i].title+'</span></h6>'
+										+'<div class="p-alt-16 show-read-more">'+resultData[i].description+'</div>'
+									+'</div>'
+								+'</a>';
 								if(resultData[i].description.length > 300){
 								 	readmore = '<div class="read-more readDesc">READ MORE ></div>';
 								}
-								link = '<span class="pl-search-result-link">'+location.origin+resultData[i].fixedUrl+'</span>'
-								+'</div></a></div>';
-							}
+                                link = '<span class="pl-search-result-link-pdf pl-search-result-link" style="margin-top:10px;">'+location.origin+resultData[i].fixedUrl+'</span>'
+                                +'</div>';
+                            }
 							searchResultDataFinal = searchResultData + readmore + link ;
 							searchResultDataList.push(searchResultDataFinal);
 					}
@@ -193,13 +196,20 @@ function doAjaxSeach(text,setPageLimit,defaultOffset,flag,pageNumber){
 					$(".read-more").click(function(e){						
 						e.preventDefault();
 						if($(this).text() == 'READ MORE >'){
-							$(this).siblings(".show-read-more").addClass('height-auto');
+							$(this).siblings('.DTM-TAG-search-result-link').find(".show-read-more").addClass('height-auto');
 							$(this).text('READ LESS >');
 						}
 						else{
-							$(this).siblings(".show-read-more").removeClass('height-auto');
+							$(this).siblings('.DTM-TAG-search-result-link').find(".show-read-more").removeClass('height-auto');
 							$(this).text('READ MORE >');
 						}
+						
+					});
+					
+					$('.pl-search-result-link').click(function (e) { 
+						e.preventDefault();
+						window.location.href = $(this).text();
+					
 						
 					});
 					

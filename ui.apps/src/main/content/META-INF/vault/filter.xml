@@ -3,8 +3,8 @@
     <filter root="/apps/pcwr"/>
     <filter root="/etc/designs/pcwr"/>
     <filter root="/apps/sling" />
-	<filter root="/oak:index/cqPageLuceneCorpSuggest" mode="merge"/>
-	<filter root="/oak:index/cqPageLuceneCorpSearch" mode="merge"/>
+	<filter root="/oak:index/cqPageLuceneCorpSuggest" mode="update"/>
+	<filter root="/oak:index/cqPageLuceneCorpSearch" mode="update"/>
 	<filter root="/apps/dam/gui/coral/components/admin" mode="update"/>
     <filter root="/etc/oak-index-dictionary" />
     <filter root="/apps/foundation/components/redirect" mode="merge"/>

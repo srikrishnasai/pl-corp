@@ -54,6 +54,8 @@ public class BarChartModel {
 								chartProperties.getOrDefault("chartHeading", StringUtils.EMPTY).toString());
 						barChartPojo.setChartSubHeading(
 								chartProperties.getOrDefault("chartSubHeading", StringUtils.EMPTY).toString());
+						barChartPojo.setChartHeadingSup(
+								chartProperties.getOrDefault("chartHeadingSup", StringUtils.EMPTY).toString());
 						Resource multifield = resourceResolver
 								.getResource(chart.getPath() + MULTIFIELD_ITEMS_NODE_NAME);
 

@@ -22,6 +22,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.day.cq.commons.inherit.ComponentInheritanceValueMap;
+import com.day.cq.search.result.Hit;
 import com.day.cq.wcm.api.NameConstants;
 import com.paclife.core.search.SearchResult;
 import com.paclife.core.search.SearchResultsPagination;
@@ -75,10 +76,22 @@ public class FetchSearchResults extends SlingAllMethodsServlet {
 		Map<String, String> searchPredicates = predicateResolver.getRequestPredicates(request);
 		log.debug("Search Map ::{} for searchTerm ::{} and offset ::{} and noOfResPerPage ::{}", searchPredicates,
 				searchTerm, offset, noOfResPerPage);
+		boolean isMultiWord = isMultiWord(searchTerm);
+		String modifiedSearchTerm = isMultiWord ? "\"" + searchTerm + "\"" : searchTerm;
 		JSONObject jObj = new JSONObject();
 		try {
 			if (isSearchable(request)) {
-				result = searchProvider.search(request.getResourceResolver(), searchPredicates);
+				if (isMultiWord) {
+					searchPredicates.put("fulltext", modifiedSearchTerm);
+					result = searchProvider.search(request.getResourceResolver(), searchPredicates);
+					List<Hit> hits = result.getHits();
+					if (null != hits && hits.size() == 0) {
+						searchPredicates.put("fulltext", searchTerm);
+						result = searchProvider.search(request.getResourceResolver(), searchPredicates);
+					}
+				} else {
+					result = searchProvider.search(request.getResourceResolver(), searchPredicates);
+				}
 				pagination = searchProvider.buildPagination(result, "Previous", "Next");
 				searchResults = searchProvider.buildSearchResults(result, searchTerm);
 				totalResults = computeTotalMatches(result);
@@ -118,8 +131,17 @@ public class FetchSearchResults extends SlingAllMethodsServlet {
 		} catch (JSONException e) {
 			log.error("Error Occured while parsing Json Object ::{}", e.getMessage());
 		}
-		//response.getWriter().write(jObj.toString());
+		// response.getWriter().write(jObj.toString());
 		response.getWriter().print(jObj);
+	}
+
+	private boolean isMultiWord(String searchTerm) {
+		String[] words = searchTerm.trim().split(" ");
+		log.info("is Multi Word ::{}", words.toString());
+		if (words.length >= 2) {
+			return true;
+		}
+		return false;
 	}
 
 	private String getFixedUrl(String path, SlingHttpServletRequest request) {

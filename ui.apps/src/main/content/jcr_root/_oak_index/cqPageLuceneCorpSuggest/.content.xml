@@ -87,7 +87,7 @@
                         nodeScopeIndex="{Boolean}true"
                         propertyIndex="{Boolean}true"
                         type="String"
-						boost="{Double}2.0"
+						boost="{Double}240"
                         useInSpellcheck="{Boolean}true"
                         useInSuggest="{Boolean}true"/>
                     <pageTitle

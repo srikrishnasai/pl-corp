@@ -3,7 +3,7 @@
 
 <div data-component-name="Bar Chart" class="bar-chart-component animatedParent animateOnce" data-appear-top-offset='-300' data-sly-test="${properties.numberOfCharts}">
 	<div id="barCharts">
-		<h3 data-sly-element="${properties.titleEl}" class="bar-chart-title animated fadeInLeftShort displayclass-bar">${properties.title}</h3>
+		<h3 data-sly-element="${properties.titleEl}" class="bar-chart-title animated fadeInLeftShort displayclass-bar">${properties.title}<sup class= "${properties.titleEl == 'h2' ? 'h2-bar-title-sup' : 'h3-bar-title-sup'}">${properties.titleSuperScript}</sup></h3>
 		<div class="bar-charts-wrapper row ${properties.numberOfCharts == '3' ? 'padding-three-bar' : ''}  ${properties.numberOfCharts == '2' ? 'padding-two-bar' : ''} 
 		${properties.numberOfCharts == '4' ? 'padding-four-bar' : ''}">
 
@@ -12,7 +12,7 @@
 				<div class="bar-chart ${properties.numberOfCharts == '3' ? 'col-md-4 col-lg-4 col-xl-4 col-sm-4 col-12' : ''}  ${properties.numberOfCharts == '2' ? 'col-md-6 col-lg-6 col-xl-6 col-sm-6 col-12' : ''}
 				 ${properties.numberOfCharts == '4' ? 'col-md-6 col-lg-6 col-xl-3 col-sm-6 col-12' : ''}  ${properties.numberOfCharts == '1' ? 'col-md-6' : ''} " data-sly-test="${chart.chartHeading || chart.chartSubHeading}">
 					<div class="bar-chart-heading-wrapper">
-						<h6 class="bar-chart-heading animated fadeInLeftShort displayclass-bar">${chart.chartHeading}</h6>
+						<h6 class="bar-chart-heading animated fadeInLeftShort displayclass-bar">${chart.chartHeading}<sup class="chart-heading-sup">${chart.chartHeadingSup}</sup></h6>
 						<p class="bar-chart-sub-heading animated fadeInLeftShort displayclass-bar">${chart.chartSubHeading}</p>
 					</div>
 					<sly data-sly-list.bars="${chart.chartBarMultiFieldItems}">

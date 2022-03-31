@@ -86,6 +86,11 @@ $(window).on("load", function () {
         console.error(thrownError);
         showAlert(SERVER_ERROR_MESSAGE, false);
         $("#add-button").removeAttr("disabled");
+        $("#deleteButton").removeAttr("disabled");
+        $("#deleteButton").find(".spinner").addClass("d-none");
+        $("#add-button").find(".spinner").addClass("d-none");
+        $("#stopwordReindex").find(".spinner").addClass("d-none");
+        dialog.hide();
     }
 
     /**
@@ -105,6 +110,7 @@ $(window).on("load", function () {
             showAlert(data.message, false);
         }
         $("#add-button").removeAttr("disabled");
+        $("#add-button").find(".spinner").addClass("d-none");
     }
 
     /** Fetch the data during the initial load */
@@ -121,8 +127,10 @@ $(window).on("load", function () {
 
                 tableBody.append(tableBodyData);
                 showAlert(SERVER_ERROR_MESSAGE, false);
+                $("#wait").addClass("d-none")
             },
             success: function (data) {
+                $("#wait").addClass("d-none")
                 var responseData = typeof data === DATA_TYPE_OBJECT ? data : JSON.parse(data);
                 if (responseData.status) {
                     stopWordData = responseData.data;
@@ -168,14 +176,20 @@ $(window).on("load", function () {
     /**Listener when delete button is presses */
     dialog.on("click", "#deleteButton", function () {
         var value = encodeURIComponent(stopWordData[selectedIndex - 1]);
+        $("#deleteButton").attr("disabled", "disabled");
+        $("#deleteButton").find(".spinner").removeClass("d-none");
         $.ajax({
             url: getUrl("remove", value),
             type: "GET",
             error: handleAjaxError,
-            success: successHandler,
+            success: function (data) {
+                successHandler(data);
+                $("#deleteButton").removeAttr("disabled");
+                $("#deleteButton").find(".spinner").addClass("d-none");
+                dialog.hide();
+            },
         });
         $("#search").val("");
-        dialog.hide();
     });
 
     /**Listener when user types in the input box  */
@@ -239,6 +253,7 @@ $(window).on("load", function () {
             } else {
                 var url = getUrl(apiCall, encodeURIComponent(input.toLowerCase()));
                 $("#add-button").attr("disabled", "disabled");
+                $("#add-button").find(".spinner").removeClass("d-none");
                 $.ajax({
                     url: url,
                     type: "GET",
@@ -255,6 +270,7 @@ $(window).on("load", function () {
         clickHandler("update");
     });
     $("#stopwordReindex").on("click", function () {
+        $("#stopwordReindex").find(".spinner").removeClass("d-none");
         $.ajax({
             url: REINDEX_URL(),
             type: "GET",
@@ -264,6 +280,7 @@ $(window).on("load", function () {
                 if (responseData.status) {
                     showAlert("Reindex done successfully", true);
                 } else showAlert("Something went wrong", false);
+                $("#stopwordReindex").find(".spinner").addClass("d-none");
             },
         });
         $("#stopwordReindex").attr("disabled", "disabled");

@@ -170,7 +170,7 @@ function doAjaxSeach(text,setPageLimit,defaultOffset,flag,pageNumber){
                                 link = '<span class="pl-search-result-link-pdf pl-search-result-link" style="margin-top:10px;">'+location.origin+resultData[i].fixedUrl+'</span>'
                                 +'</div>';
                             }
-							searchResultDataFinal = searchResultData + readmore + link ;
+							searchResultDataFinal = searchResultData + readmore;
 							searchResultDataList.push(searchResultDataFinal);
 					}
 					$('.container-search-items').empty();

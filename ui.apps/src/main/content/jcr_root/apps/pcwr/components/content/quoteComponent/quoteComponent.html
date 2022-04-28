@@ -1,13 +1,13 @@
 <sly data-sly-test.someFieldConfigured="${properties.quoteText || properties.quoteComponentBgImageFileRef}"></sly>
 
 <sly data-sly-use.template="core/wcm/components/commons/v1/templates.html" />
-<sly data-sly-call="${template.placeholder @ isEmpty=(wcmmode.edit && !someFieldConfigured)}" />
+<sly data-sly-call="${template.placeholder @ isEmpty=(wcmmode.edit && !quoteBgImageFileRef)}" />
 
 <div class="quoteComponent animatedParent animateOnce ${properties.disableAnimations ? 'quote-component-animations-disabled' : ''} ${properties.disableMobileAnimationsOnly ? 'quoteComponent-mobile-animations-disabled' : ''}"
     data-appear-top-offset="-150">
     <div class="row">
         <div class="quoteImgWrapper animatedParent animateOnce" data-appear-top-offset="-150">
-            <img src="${properties.quoteBgImageFileRef}" style="opacity: 0;" />
+            <img src="${properties.quoteBgImageFileRef}" style="opacity: 0;" class="quoteImageMain" />
             <div class="animated quoteImage quoteImage-repeat-${properties.backgroundAnimation ? properties.backgroundAnimation : 'once'}"
                 style="background-image: url('${properties.quoteBgImageFileRef @ context='styleString'}')"> </div>
             <div class="animated animate-uncover-with-offset-parent-from-top animateOnce"
@@ -15,6 +15,11 @@
             <div data-sly-test="${!properties.hideOverlay}" class="quoteOverlay animated customFadeInDown delay-750"
                 style=" opacity: 0; background-color: ${ properties.quoteOverlayColor  @context='styleString'};  ">
             </div>
+
+            <input type="hidden" class="landing-lg-img" value="${properties.quoteBgImageFileRef}">
+            <input type="hidden" class="landing-sm-img" value="${properties.quoteMobileBgImageFileRef ? properties.quoteMobileBgImageFileRef : 'false1' }">
+
+            
 
             <div class="quoteContentWrapper animatedParent animateOnce" data-appear-top-offset="-150">
                 <div class="animated fadeInDownShort delay-1750" style="opacity: 0;">
@@ -24,7 +29,7 @@
                                quoteTextWrapper-mobile-${properties.mobileFontSize ? properties.mobileFontSize : 'large'}
                                quoteTextWrapper-ipad-${properties.ipadFontSize ? properties.ipadFontSize : 'large'} 
                                quoteTextWrapper-ipadpro-${properties.ipadFontSize ? properties.ipadFontSize : 'large'}">
-                        <span data-sly-test="${!properties.hideOpeningQuote}"
+                        <span data-sly-test="${!properties.hideOpeningQuote && properties.quoteText}"
                             class="quoteMark-front animated fadeIn delay-1750
                                      quoteMark-desktop-front-${properties.desktopFontSize ? properties.desktopFontSize : 'large'}
                                      quoteMark-front-mobile-${properties.mobileFontSize ? properties.mobileFontSize : 'large'}
@@ -35,7 +40,7 @@
                             <sly data-sly-use.text="${'nonbreak.js'}" />
                             ${text @ context = 'html'}
                         </span>
-                        <span data-sly-test="${!properties.hideClosingQuote}" class="quoteMark-back animated fadeIn delay-1750
+                        <span data-sly-test="${!properties.hideClosingQuote && properties.quoteText}" class="quoteMark-back animated fadeIn delay-1750
                                 quoteMark-desktop-back-${properties.desktopFontSize ? properties.desktopFontSize : 'large'}
                                 quoteMark-back-mobile-${properties.mobileFontSize ? properties.mobileFontSize : 'large'}
                                 quoteMark-ipad-back-${properties.ipadFontSize ? properties.ipadFontSize : 'large'} 

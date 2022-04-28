@@ -72,6 +72,61 @@
                         		jcr:primaryType="nt:unstructured"
                         		sling:resourceType="granite/ui/components/coral/foundation/container">
                         		<items jcr:primaryType="nt:unstructured">
+								<chartHeading
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Please provide Heading for chart"
+                                        fieldLabel="Chart Heading"
+                                        name="./chartHeading"/>
+                                                <chartHeadingColor
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                            fieldLabel="Chart Heading Color"
+                                                            fieldDescription="Choose the color for the Chart Heading"
+                                                            name="./chartHeadingColor">
+                                                            <items jcr:primaryType="nt:unstructured">
+                                                                <deepBlue
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="Deep Blue (#004685)"
+                                                                    value="#004685"/>
+                                                                <brightBlue
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="Bright Blue (#008ED7)"
+                                                                    value="#008ED7"/>
+                                                                <turquoise
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="Turquoise (#24C5CF)"
+                                                                    value="#24C5CF"/>
+                                                                <teal500
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="Teal 500 (#17929A)"
+                                                                    value="#17929A"/>
+                                                                <orange
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="Orange (#FF8F1F)"
+                                                                    value="#FF8F1F"/>
+                                                                <aqua700
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="Aqua 700 (#0093B0)"
+                                                                    value="#0093B0"/>
+                                                                <darkGrey
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="Dark Grey (#053661)"
+                                                                    value="#053661"/>
+                                                                <mediumGrey
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="Medium Grey (#979797)"
+                                                                    value="#979797"/>
+                                                                <aqua600
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="Aqua 600 (#0EAECD)"
+                                                                    value="#0EAECD"/>
+                                                                <gold
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="Gold (#FFA800)"
+                                                                    value="#FFA800"/>
+                                                            </items>
+                                                        </chartHeadingColor>
 									<title
 		                                jcr:primaryType="nt:unstructured"
 		                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"

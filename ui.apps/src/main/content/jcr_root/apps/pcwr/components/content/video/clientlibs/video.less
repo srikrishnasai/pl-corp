@@ -16,14 +16,64 @@
 } 
 
 .pcwr-modal-video {
+
+	background: rgba(0,0,0, 0.5);
+	overflow: hidden !important;
+	
+	.modal-dialog{
+		height: 100%;
+		margin: 0 auto !important;
+	}
+
+	.modal-header{
+		border-bottom: none;
+		padding-left: 0;
+		padding-right: 0;
+		padding-bottom: 0;
+		.modal-title{
+			color: white;
+			text-transform:capitalize;
+			vertical-align:baseline;
+		}
+		.close{
+			color: rgba(211, 211, 211,1);
+			opacity: 1;
+			font-size: 2.75rem;
+			margin: 0;
+			padding: 0;
+			padding-left: 10px;
+			text-shadow: none;
+			line-height: 0.75;
+			vertical-align: baseline;
+			outline: none;	
+		}
+		
+	}
+
 	.modal-body {
+		position: relative;
 		padding: 0;
 		text-align: center!important;
 	}
 	.modal-content {
 		border: 0;
+		background-color: transparent !important;
 	}
 	.modal-footer {
 		justify-content: space-between;
 	}
 }
+
+@media screen 
+  and (min-width: 375px) 
+  and (max-width: 812px) 
+  and (orientation: landscape) { 
+	.modal-header{
+		.modal-title{
+			font-size: 16px !important;
+		}
+		.close{
+			font-size: 1rem;
+		}
+	}
+  }

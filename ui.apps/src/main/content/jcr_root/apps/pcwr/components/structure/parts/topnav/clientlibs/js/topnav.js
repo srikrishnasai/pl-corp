@@ -3,17 +3,6 @@ var timer = null;
 var searchArray = JSON.parse(localStorage.getItem('searchItems')) || [];
 
 var currentFocus = -1;
-
-// $(document).ready(function () {
-//     setTimeout(function(){
-//         $('.fadein_navbar').css('animation', 'none');
-//         $('.navbar-nav-header').css('opacity', '1');
-//      },500)
-    
-// });
-
-
-
 $(window).on('load', function () {
     hasSearchClass = document.getElementsByClassName('search-results-page');
     hasSearchClass = hasSearchClass.length;
@@ -240,7 +229,7 @@ $('.inputValueSearch').on('focus', function (e) {
 
 });
 
-$('.inputValueSearch').on('input', async function () {
+$('.inputValueSearch').on('input',function () {
     var text = $('.inputValueSearch').val();
     var resourcepath = $('#searchNavCollapse').data('resourcepath');
     var searchrootpath = $('#searchNavCollapse').data('searchrootpath');

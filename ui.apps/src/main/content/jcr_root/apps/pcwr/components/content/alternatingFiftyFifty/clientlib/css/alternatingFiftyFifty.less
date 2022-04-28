@@ -76,11 +76,7 @@
 .parent-wrapper-alt{
 	max-height: 100%;
 }
-.alt-fifty-modal-wrapper {
-	.cta-text-btn {
-		display: none;
-	}
-}
+
 @keyframes altFiftyCarouselProgressIndicator {
     0% {width: 1%;}
 	20% {width: 20%;}
@@ -133,6 +129,7 @@
 
 .alt-fifty-component.alt-fifty-author-animations-disabled .animatedParent {
 	.fadeInDownHalfShort, 
+	.fadeInDownHalfVeryShort,
 	.fadeInRightHalfShort, 
 	.animate-uncover-with-offset-parent-from-top, 
 	.animate-uncover-with-offset-parent,
@@ -161,9 +158,20 @@
 	}
 }
 
+.alt-fifty-component.alt-fifty-animations-disabled .animatedParent {
+	.fadeInDownHalfVeryShort {
+		animation: none;
+		-webkit-animation: none;
+		transform: none;
+		-ms-animation: none;
+		opacity: 1;
+	}
+}
+
 @media (max-width: 767px) { 
 	.alt-fifty-component.alt-fifty-mobile-animations-disabled .animatedParent {
 		.fadeInDownHalfShort, 
+		.fadeInDownHalfVeryShort,
 		.fadeInRightHalfShort, 
 		.animate-uncover-with-offset-parent-from-top, 
 		.animate-uncover-with-offset-parent,

@@ -1,65 +1,87 @@
 @import (reference) "/apps/pcwr/clientlibs/clientlib-site/css/color.less";
 
-.content-wrapper{
-    display: flex;
-    height: 100%;
-    align-items: center;
-    width: 100%;
-    .pie-chart-outer-wrapper{
-        position: relative;
-        // margin-top: 10%;
-        .pie-chart-inner-wrapper{
-            height: 250px;
-            width: 250px;
-        }
-        .pie-chart-content-wrapper{
-            position:absolute;
-            left: 50%;
-            transform: translate(-50%);
-            top: 36.5%;
+.pie-chart-component{
+    .line-heading-wrapper{
+        width: 100%;
+        margin-bottom: 10px;
+        .line-background {
+            position: relative;
+            z-index: 1;
             text-align: center;
-
-            .chart-text-value{
-                font-family: Montserrat;
-                font-style: normal;
-                font-weight: bold;
-                font-size: 40px !important;
-                line-height: 49px;
+            text-transform: uppercase;
+            &:before {
+                border-top: 2px solid;
+                content:"";
+                margin: 0 auto;
+                position: absolute;
+                top: 50%;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                z-index: -1;
             }
-            .chart-text-second-value{
-                font-family: Montserrat;
-                font-style: normal;
-                font-weight: 600;
-                font-size: 18px !important;
-                line-height: 22px;
-                // margin-left: 13%;
-                margin-top: -10%;
+            span {
+                background: #fff;
+                padding-left: 8px;
+                padding-right: 8px;
             }
-
         }
     }
-    .legend-con {
-         ul {
-             list-style: none;
-         }
-     
-         li {
-             display: flex;
-             align-items: center;
-             margin-bottom: 4px;
-     
-             span {
-                 display: inline-block;
-             }
-     
-             span.chart-legend {
-                 width: 20px;
-                 height: 20px;
-                 margin-right: 10px;
-                 border-radius:100%
-             }
-         }
-     }  
+    .content-wrapper{
+        display: flex;
+        height: 100%;
+        align-items: center;
+        width: 100%;
+        .pie-chart-outer-wrapper{
+            position: relative;
+            // margin-top: 10%;
+            .pie-chart-inner-wrapper{
+                height: 250px;
+                width: 250px;
+            }
+            .pie-chart-content-wrapper{
+                position:absolute;
+                left: 50%;
+                transform: translate(-50%);
+                top: 36.5%;
+                text-align: center;
+                .chart-text-value{
+                    font-family: Montserrat;
+                    font-style: normal;
+                    font-weight: bold;
+                    font-size: 40px !important;
+                    line-height: 49px;
+                }
+                .chart-text-second-value{
+                    font-family: Montserrat;
+                    font-style: normal;
+                    font-weight: 600;
+                    font-size: 18px !important;
+                    line-height: 22px;
+                    // margin-left: 13%;
+                    margin-top: -10%;
+                }
+            }
+        }
+        .legend-con {
+            ul {
+                list-style: none;
+            }
+            li {
+                display: flex;
+                margin-bottom: 4px;
+                .chart-legend {
+                    min-width: 20px;
+                    width: 20px;
+                    height: 20px;
+                    margin-right: 10px;
+                    border-radius:100%;
+                    display: inline-block;
+                    margin-top: 5px;
+                }
+            }
+       }
+    }
 }
 
 @media screen and (max-width:576px) {

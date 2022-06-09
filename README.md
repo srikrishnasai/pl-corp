@@ -1,6 +1,6 @@
 # paclife-corp-ui
 
-This is an AEM (Adobe Experience Manager) build for paclife-corp-ui (https://www.pacificlife.com).
+This is an AEM (Adobe Experience Manager) build for paclife-corp-ui.
 
 ## Modules
 
